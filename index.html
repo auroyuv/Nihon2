@@ -6,11 +6,11 @@
   <title>NihonHub | All-in-One JLPT N5 to N2 Japanese Learning Hub</title>
   
   <!-- SEO & Open Graph Meta Tags -->
-  <meta name="description" content="A comprehensive, cumulative Japanese learning portal for JLPT N5, N4, N3, and N2. Features Kanji, Vocabulary, Grammar, interactive Flashcards, Quizzes, Furigana toggles, and native speech audio.">
-  <meta name="keywords" content="Japanese, JLPT, N5, N4, N3, N2, Kanji, Grammar, Vocabulary, Learn Japanese, Flashcards, Quiz">
+  <meta name="description" content="A comprehensive, cumulative Japanese learning portal for JLPT N5, N4, N3, and N2. Features Kanji, Vocabulary, Grammar, Reading Comprehension, Listening Practice, interactive Flashcards, and native speech audio.">
+  <meta name="keywords" content="Japanese, JLPT, N5, N4, N3, N2, Kanji, Grammar, Vocabulary, Reading, Listening, Flashcards, Quiz">
   <meta name="author" content="NihonHub">
   <meta property="og:title" content="NihonHub - JLPT N5 to N2 Learning Platform">
-  <meta property="og:description" content="Master Japanese from N5 foundation through N2 upper-intermediate with cumulative study paths, interactive SRS flashcards, and native audio.">
+  <meta property="og:description" content="Master Japanese from N5 foundation through N2 upper-intermediate with modular study paths, textbook tracking, and native audio.">
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
@@ -46,7 +46,7 @@
             type="text" 
             id="global-search-input" 
             class="search-input" 
-            placeholder="Search Kanji, Vocab, Grammar (e.g., 行く, taberu, eat)..."
+            placeholder="Search Kanji, Vocab, Grammar, Textbooks (e.g., Sou Matome, 食べる)..."
             autocomplete="off"
           />
           <kbd class="search-kbd">/</kbd>
@@ -127,6 +127,12 @@
       <button class="nav-tab-btn" data-tab="grammar">
         <span class="tab-jp-badge">文法</span> Grammar Guide
       </button>
+      <button class="nav-tab-btn" data-tab="reading">
+        <span class="tab-jp-badge">読解</span> Reading
+      </button>
+      <button class="nav-tab-btn" data-tab="listening">
+        <span class="tab-jp-badge">聴解</span> Listening
+      </button>
       <button class="nav-tab-btn" data-tab="flashcards">
         <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect width="18" height="13" x="3" y="3" rx="2"/><path d="m21 8-9 6-9-6"/><path d="M3 17h18"/>
@@ -167,7 +173,7 @@
               <div id="dash-overall-bar" class="progress-bar-fill" style="width: 0%;"></div>
             </div>
           </div>
-          <div style="display: flex; gap: 12px; margin-top: 20px;">
+          <div style="display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap;">
             <button class="btn-primary" onclick="window.NihonHub.switchTab('flashcards')">Start Daily Review</button>
             <button class="fc-ctrl-btn" onclick="window.NihonHub.switchTab('quiz')">Take a Quiz</button>
           </div>
@@ -188,15 +194,15 @@
       <div class="featured-grid">
         <div id="dash-featured-grammar"></div>
         <div class="card-glass" style="padding: 24px;">
-          <div class="featured-tag">Study Strategy</div>
-          <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Why Cumulative Learning?</h3>
+          <div class="featured-tag">Textbook & Source Support</div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Multi-Source Mastery</h3>
           <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 12px;">
-            Higher JLPT exams like <strong>N2</strong> test foundational vocabulary, particles, and grammar from <strong>N5, N4, and N3</strong> in complex contexts.
+            Content is tagged with standard Japanese curriculum references including <strong>Nihongo Sou Matome</strong>, <strong>Marugoto</strong>, <strong>Minna no Nihongo</strong>, and <strong>Shin Kanzen Master</strong>.
           </p>
           <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 20px; line-height: 1.8;">
-            <li>Keep <strong>Cumulative Mode</strong> ON to review lower levels automatically.</li>
-            <li>Use the <strong>Furigana Toggle</strong> when preparing for reading speed tests.</li>
-            <li>Use the sound button on any word or sentence to train pitch and intonation.</li>
+            <li>Check the <strong>Book Badges</strong> on each card to see which textbooks feature the Kanji/grammar point.</li>
+            <li>Practice <strong>Reading (読解)</strong> and <strong>Listening (聴解)</strong> for complete exam readiness.</li>
+            <li>Use the search bar to search across any book name or lesson!</li>
           </ul>
         </div>
       </div>
@@ -229,7 +235,25 @@
       <div id="grammar-list" class="grammar-list"></div>
     </section>
 
-    <!-- TAB 5: FLASHCARDS (SRS) -->
+    <!-- TAB 5: READING COMPREHENSION (読解) -->
+    <section id="tab-reading" class="tab-pane">
+      <div class="section-header-row">
+        <h2 class="section-title">Reading Comprehension (読解)</h2>
+        <span id="reading-count" class="section-count-tag">Loading Passages...</span>
+      </div>
+      <div id="reading-list" class="reading-list"></div>
+    </section>
+
+    <!-- TAB 6: LISTENING PRACTICE (聴解) -->
+    <section id="tab-listening" class="tab-pane">
+      <div class="section-header-row">
+        <h2 class="section-title">Listening Practice (聴解)</h2>
+        <span id="listening-count" class="section-count-tag">Loading Dialogs...</span>
+      </div>
+      <div id="listening-list" class="listening-list"></div>
+    </section>
+
+    <!-- TAB 7: FLASHCARDS (SRS) -->
     <section id="tab-flashcards" class="tab-pane">
       <div class="flashcards-container">
         <!-- Category Filter -->
@@ -295,7 +319,7 @@
       </div>
     </section>
 
-    <!-- TAB 6: MOCK EXAMS & QUIZ -->
+    <!-- TAB 8: MOCK EXAMS & QUIZ -->
     <section id="tab-quiz" class="tab-pane">
       <div class="quiz-container">
         <div class="quiz-card-box card-glass">
@@ -377,7 +401,7 @@
       </div>
     </section>
 
-    <!-- TAB 7: KANA TABLES -->
+    <!-- TAB 9: KANA TABLES -->
     <section id="tab-kana" class="tab-pane">
       <div class="kana-section-block">
         <div class="section-header-row">
@@ -396,7 +420,7 @@
       </div>
     </section>
 
-    <!-- TAB 8: BOOKMARKS -->
+    <!-- TAB 10: BOOKMARKS -->
     <section id="tab-bookmarks" class="tab-pane">
       <div class="section-header-row">
         <h2 class="section-title">Saved Bookmarks</h2>
@@ -419,14 +443,48 @@
   <footer class="site-footer">
     <p><strong>NihonHub</strong> &mdash; Comprehensive JLPT N5 to N2 Cumulative Learning Hub</p>
     <div class="footer-links">
-      <span>Built with Modern HTML5, CSS3, & Vanilla JS</span>
+      <span>Modular Data Architecture</span>
+      <span>•</span>
+      <span>Textbook Source Tracking</span>
       <span>•</span>
       <span>Zero-Build GitHub Pages Ready</span>
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="js/data.js"></script>
+  <!-- Modular Datasets -->
+  <script src="data/kana.js"></script>
+  <script src="data/quizzes.js"></script>
+
+  <!-- N5 Data -->
+  <script src="data/n5/kanji.js"></script>
+  <script src="data/n5/vocabulary.js"></script>
+  <script src="data/n5/grammar.js"></script>
+  <script src="data/n5/reading.js"></script>
+  <script src="data/n5/listening.js"></script>
+
+  <!-- N4 Data -->
+  <script src="data/n4/kanji.js"></script>
+  <script src="data/n4/vocabulary.js"></script>
+  <script src="data/n4/grammar.js"></script>
+  <script src="data/n4/reading.js"></script>
+  <script src="data/n4/listening.js"></script>
+
+  <!-- N3 Data -->
+  <script src="data/n3/kanji.js"></script>
+  <script src="data/n3/vocabulary.js"></script>
+  <script src="data/n3/grammar.js"></script>
+  <script src="data/n3/reading.js"></script>
+  <script src="data/n3/listening.js"></script>
+
+  <!-- N2 Data -->
+  <script src="data/n2/kanji.js"></script>
+  <script src="data/n2/vocabulary.js"></script>
+  <script src="data/n2/grammar.js"></script>
+  <script src="data/n2/reading.js"></script>
+  <script src="data/n2/listening.js"></script>
+
+  <!-- Master Data Loader & Application Engine -->
+  <script src="data/data-loader.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 /**
  * NihonHub - Interactive Application Engine
  * All-in-One JLPT N5 to N2 Japanese Learning Experience
+ * Supports Kanji, Vocabulary, Grammar, Reading (読解), Listening (聴解), SRS Flashcards, and Mock Exams.
  */
 
 (function () {
@@ -14,14 +15,16 @@
     check: `<svg class="ui-icon text-success" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
     circle: `<svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/></svg>`,
     sun: `<svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`,
-    moon: `<svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`
+    moon: `<svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`,
+    play: `<svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
+    book: `<svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>`
   };
 
   // --- APPLICATION STATE ---
   const state = {
     currentTab: 'dashboard',
-    selectedLevel: 'ALL', // 'ALL', 'N5', 'N4', 'N3', 'N2'
-    cumulativeMode: true, // If true and level=N2, includes N5, N4, N3, N2
+    selectedLevel: 'ALL',
+    cumulativeMode: true,
     searchQuery: '',
     showFurigana: true,
     showRomaji: true,
@@ -36,7 +39,7 @@
       deck: [],
       currentIndex: 0,
       isFlipped: false,
-      category: 'all', // 'all', 'kanji', 'vocab', 'grammar'
+      category: 'all',
       level: 'ALL',
       studiedCount: 0
     },
@@ -53,6 +56,11 @@
       timerInterval: null,
       results: []
     },
+
+    // Interactive exercises state (Reading & Listening answers)
+    readingAnswers: {},
+    listeningAnswers: {},
+    activeAudioSequence: null,
 
     // Modal state
     activeModal: null
@@ -155,7 +163,7 @@
   }
 
   // --- AUDIO SYNTHESIS ---
-  function speakJapanese(text) {
+  function speakJapanese(text, onEnd) {
     if (!('speechSynthesis' in window)) {
       alert('Speech synthesis is not supported in this browser.');
       return;
@@ -172,7 +180,30 @@
     const jaVoice = voices.find(v => v.lang.startsWith('ja') || v.lang.includes('JP'));
     if (jaVoice) utterance.voice = jaVoice;
 
+    if (onEnd) {
+      utterance.onend = onEnd;
+      utterance.onerror = onEnd;
+    }
+
     window.speechSynthesis.speak(utterance);
+  }
+
+  // Plays dialogue line by line with natural pauses
+  function playDialogueSequence(lines) {
+    if (!Array.isArray(lines) || lines.length === 0) return;
+    window.speechSynthesis.cancel();
+    let index = 0;
+
+    function playNext() {
+      if (index >= lines.length) return;
+      const line = lines[index];
+      speakJapanese(line.text || line, () => {
+        index++;
+        setTimeout(playNext, 600);
+      });
+    }
+
+    playNext();
   }
 
   // --- FURIGANA PARSER ---
@@ -183,23 +214,47 @@
     });
   }
 
+  // Helper: Render source badges
+  function renderSourcesHtml(sources) {
+    if (!Array.isArray(sources) || sources.length === 0) return '';
+    return `
+      <div class="source-badges-row">
+        ${sources.map(s => `
+          <span class="source-pill" title="${s.notes ? s.notes : s.chapter || s.lesson || ''}">
+            ${UI_ICONS.book} ${s.book}${s.chapter ? ` (${s.chapter})` : s.lesson ? ` (${s.lesson})` : ''}
+          </span>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  // Helper: Render level pills for item
+  function renderLevelPills(levels) {
+    const arr = Array.isArray(levels) ? levels : [levels || 'N5'];
+    return arr.map(lvl => `<span class="level-badge badge-${lvl.toLowerCase()}">${lvl}</span>`).join(' ');
+  }
+
   // --- FILTERING ENGINE (CUMULATIVE LOGIC) ---
-  function matchLevel(itemLevel) {
+  function matchLevel(item) {
+    const itemLevels = item.levels || (item.level ? [item.level] : ['N5']);
     if (state.selectedLevel === 'ALL') return true;
+    
     if (!state.cumulativeMode) {
-      return itemLevel === state.selectedLevel;
+      return itemLevels.includes(state.selectedLevel);
     }
-    const currentThreshold = LEVEL_ORDER[state.selectedLevel] || 4;
-    const itemRank = LEVEL_ORDER[itemLevel] || 1;
-    return itemRank <= currentThreshold;
+    
+    const selectedRank = LEVEL_ORDER[state.selectedLevel] || 4;
+    return itemLevels.some(lvl => (LEVEL_ORDER[lvl] || 1) <= selectedRank);
   }
 
   function filterItems(items, searchFields = []) {
     const q = state.searchQuery.trim().toLowerCase();
     return items.filter(item => {
-      if (!matchLevel(item.level)) return false;
+      if (!matchLevel(item)) return false;
       if (!q) return true;
-      return searchFields.some(field => {
+      
+      // Check search fields
+      const matchedField = searchFields.some(field => {
         const val = item[field];
         if (typeof val === 'string') return val.toLowerCase().includes(q);
         if (Array.isArray(val)) {
@@ -207,6 +262,15 @@
         }
         return false;
       });
+
+      // Also search in sources / books
+      const matchedSource = Array.isArray(item.sources) && item.sources.some(s => 
+        (s.book && s.book.toLowerCase().includes(q)) || 
+        (s.chapter && s.chapter.toLowerCase().includes(q)) ||
+        (s.lesson && s.lesson.toLowerCase().includes(q))
+      );
+
+      return matchedField || matchedSource;
     });
   }
 
@@ -368,6 +432,17 @@
         return;
       }
 
+      const dialogAudioBtn = e.target.closest('[data-play-dialog]');
+      if (dialogAudioBtn) {
+        e.stopPropagation();
+        const listeningId = dialogAudioBtn.getAttribute('data-play-dialog');
+        const item = window.JLPT_DATA.listening.find(l => l.id === listeningId);
+        if (item && item.dialog) {
+          playDialogueSequence(item.dialog);
+        }
+        return;
+      }
+
       const bookmarkBtn = e.target.closest('[data-bookmark-id]');
       if (bookmarkBtn) {
         e.stopPropagation();
@@ -410,6 +485,8 @@
     renderKanji();
     renderVocabulary();
     renderGrammar();
+    renderReading();
+    renderListening();
     renderKana();
     renderBookmarks();
     renderFlashcard();
@@ -422,6 +499,8 @@
       case 'kanji': renderKanji(); break;
       case 'vocab': renderVocabulary(); break;
       case 'grammar': renderGrammar(); break;
+      case 'reading': renderReading(); break;
+      case 'listening': renderListening(); break;
       case 'flashcards': renderFlashcard(); break;
       case 'kana': renderKana(); break;
       case 'bookmarks': renderBookmarks(); break;
@@ -438,10 +517,12 @@
 
   // --- DASHBOARD RENDERER ---
   function renderDashboard() {
-    const totalKanji = JLPT_DATA.kanji.length;
-    const totalVocab = JLPT_DATA.vocabulary.length;
-    const totalGrammar = JLPT_DATA.grammar.length;
-    const totalItems = totalKanji + totalVocab + totalGrammar;
+    const totalKanji = window.JLPT_DATA.kanji.length;
+    const totalVocab = window.JLPT_DATA.vocabulary.length;
+    const totalGrammar = window.JLPT_DATA.grammar.length;
+    const totalReading = window.JLPT_DATA.reading.length;
+    const totalListening = window.JLPT_DATA.listening.length;
+    const totalItems = totalKanji + totalVocab + totalGrammar + totalReading + totalListening;
 
     const masteredCount = state.mastered.size;
     const overallProgress = totalItems > 0 ? Math.min(100, Math.round((masteredCount / totalItems) * 100)) : 0;
@@ -454,15 +535,18 @@
 
     const levelStatsGrid = document.getElementById('dash-level-stats');
     if (levelStatsGrid) {
-      levelStatsGrid.innerHTML = JLPT_DATA.levels.map(lvl => {
-        const lvlKanji = JLPT_DATA.kanji.filter(k => k.level === lvl.id).length;
-        const lvlVocab = JLPT_DATA.vocabulary.filter(v => v.level === lvl.id).length;
-        const lvlGrammar = JLPT_DATA.grammar.filter(g => g.level === lvl.id).length;
-        const totalLvlItems = lvlKanji + lvlVocab + lvlGrammar;
+      levelStatsGrid.innerHTML = window.JLPT_DATA.levels.map(lvl => {
+        const lvlKanji = window.JLPT_DATA.kanji.filter(k => (k.levels || [k.level]).includes(lvl.id)).length;
+        const lvlVocab = window.JLPT_DATA.vocabulary.filter(v => (v.levels || [v.level]).includes(lvl.id)).length;
+        const lvlGrammar = window.JLPT_DATA.grammar.filter(g => (g.levels || [g.level]).includes(lvl.id)).length;
+        const lvlReading = window.JLPT_DATA.reading.filter(r => (r.levels || [r.level]).includes(lvl.id)).length;
+        const lvlListening = window.JLPT_DATA.listening.filter(l => (l.levels || [l.level]).includes(lvl.id)).length;
+        const totalLvlItems = lvlKanji + lvlVocab + lvlGrammar + lvlReading + lvlListening;
 
         const masteredLvl = Array.from(state.mastered).filter(id => {
-          const item = [...JLPT_DATA.kanji, ...JLPT_DATA.vocabulary, ...JLPT_DATA.grammar].find(x => x.id === id);
-          return item && item.level === lvl.id;
+          const all = [...window.JLPT_DATA.kanji, ...window.JLPT_DATA.vocabulary, ...window.JLPT_DATA.grammar, ...window.JLPT_DATA.reading, ...window.JLPT_DATA.listening];
+          const item = all.find(x => x.id === id);
+          return item && (item.levels || [item.level]).includes(lvl.id);
         }).length;
 
         const pct = totalLvlItems > 0 ? Math.round((masteredLvl / totalLvlItems) * 100) : 0;
@@ -490,8 +574,8 @@
     }
 
     // Daily Featured Word & Grammar
-    const featWord = JLPT_DATA.vocabulary[0];
-    const featGrammar = JLPT_DATA.grammar[0];
+    const featWord = window.JLPT_DATA.vocabulary[0];
+    const featGrammar = window.JLPT_DATA.grammar[0];
 
     const featWordContainer = document.getElementById('dash-featured-word');
     if (featWordContainer && featWord) {
@@ -505,6 +589,7 @@
           </div>
           <p class="featured-romaji">${featWord.romaji}</p>
           <p class="featured-meaning">${featWord.meaning}</p>
+          ${renderSourcesHtml(featWord.sources)}
           <div class="featured-example">
             <p class="ja-example">${parseFurigana(featWord.example.furigana)}</p>
             <p class="en-example">${featWord.example.en}</p>
@@ -524,6 +609,7 @@
           </div>
           <p class="featured-meaning">${featGrammar.meaning}</p>
           <div class="grammar-formula-chip">${featGrammar.formula}</div>
+          ${renderSourcesHtml(featGrammar.sources)}
           <div class="featured-example">
             <p class="ja-example">${parseFurigana(featGrammar.examples[0].furigana)}</p>
             <p class="en-example">${featGrammar.examples[0].en}</p>
@@ -538,7 +624,7 @@
     const container = document.getElementById('kanji-grid');
     if (!container) return;
 
-    const filtered = filterItems(JLPT_DATA.kanji, ['char', 'meaning', 'onyomi', 'kunyomi', 'level']);
+    const filtered = filterItems(window.JLPT_DATA.kanji, ['char', 'meaning', 'onyomi', 'kunyomi']);
     const countEl = document.getElementById('kanji-count');
     if (countEl) countEl.textContent = `Showing ${filtered.length} Kanji (${getActiveLevelLabel()})`;
 
@@ -553,7 +639,7 @@
       return `
         <div class="kanji-card card-glass ${isMastered ? 'is-mastered' : ''}" data-kanji-modal-id="${k.id}">
           <div class="card-top-actions">
-            <span class="level-badge badge-${k.level.toLowerCase()}">${k.level}</span>
+            <div>${renderLevelPills(k.levels || k.level)}</div>
             <div class="card-action-icons">
               <button class="icon-btn ${isBookmarked ? 'active' : ''}" data-bookmark-id="${k.id}" title="Bookmark">
                 ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
@@ -575,6 +661,7 @@
               <span class="reading-val">${k.kunyomi || '-'}</span>
             </div>
           </div>
+          ${renderSourcesHtml(k.sources)}
           <div class="kanji-card-footer">
             <span>${k.strokes} strokes</span>
             <button class="audio-btn sm" data-speak="${k.char}" title="Pronounce">${UI_ICONS.volume}</button>
@@ -589,7 +676,7 @@
     const container = document.getElementById('vocab-list');
     if (!container) return;
 
-    const filtered = filterItems(JLPT_DATA.vocabulary, ['word', 'reading', 'romaji', 'meaning', 'level', 'pos']);
+    const filtered = filterItems(window.JLPT_DATA.vocabulary, ['word', 'reading', 'romaji', 'meaning', 'pos']);
     const countEl = document.getElementById('vocab-count');
     if (countEl) countEl.textContent = `Showing ${filtered.length} Words (${getActiveLevelLabel()})`;
 
@@ -605,7 +692,7 @@
         <div class="vocab-card card-glass ${isMastered ? 'is-mastered' : ''}">
           <div class="vocab-main-col">
             <div class="vocab-header-row">
-              <span class="level-badge badge-${v.level.toLowerCase()}">${v.level}</span>
+              <div>${renderLevelPills(v.levels || v.level)}</div>
               <span class="pos-badge">${v.pos}</span>
             </div>
             <div class="vocab-word-row">
@@ -615,6 +702,7 @@
             </div>
             <div class="vocab-romaji">${v.romaji}</div>
             <div class="vocab-meaning">${v.meaning}</div>
+            ${renderSourcesHtml(v.sources)}
             <div class="vocab-example-box">
               <p class="ja-example">${parseFurigana(v.example.furigana)}</p>
               <p class="en-example">${v.example.en}</p>
@@ -638,7 +726,7 @@
     const container = document.getElementById('grammar-list');
     if (!container) return;
 
-    const filtered = filterItems(JLPT_DATA.grammar, ['pattern', 'meaning', 'formula', 'explanation', 'nuance', 'level']);
+    const filtered = filterItems(window.JLPT_DATA.grammar, ['pattern', 'meaning', 'formula', 'explanation', 'nuance']);
     const countEl = document.getElementById('grammar-count');
     if (countEl) countEl.textContent = `Showing ${filtered.length} Grammar Points (${getActiveLevelLabel()})`;
 
@@ -654,7 +742,7 @@
         <div class="grammar-card card-glass ${isMastered ? 'is-mastered' : ''}">
           <div class="grammar-header">
             <div class="grammar-title-row">
-              <span class="level-badge badge-${g.level.toLowerCase()}">${g.level}</span>
+              <div>${renderLevelPills(g.levels || g.level)}</div>
               <span class="grammar-pattern">${g.pattern}</span>
               <button class="audio-btn" data-speak="${g.pattern}" title="Listen">${UI_ICONS.volume}</button>
             </div>
@@ -674,6 +762,7 @@
           </div>
           <p class="grammar-explanation">${g.explanation}</p>
           ${g.nuance ? `<div class="grammar-nuance"><span class="nuance-tag">Nuance:</span> ${g.nuance}</div>` : ''}
+          ${renderSourcesHtml(g.sources)}
           <div class="grammar-examples">
             <div class="examples-header">Example Sentences:</div>
             ${g.examples.map(ex => `
@@ -691,13 +780,199 @@
     }).join('');
   }
 
+  // --- READING COMPREHENSION RENDERER ---
+  function renderReading() {
+    const container = document.getElementById('reading-list');
+    if (!container) return;
+
+    const filtered = filterItems(window.JLPT_DATA.reading, ['title', 'genre']);
+    const countEl = document.getElementById('reading-count');
+    if (countEl) countEl.textContent = `Showing ${filtered.length} Passages (${getActiveLevelLabel()})`;
+
+    if (filtered.length === 0) {
+      container.innerHTML = `<div class="empty-state">No reading passages found matching your filters.</div>`;
+      return;
+    }
+
+    container.innerHTML = filtered.map(r => {
+      const isBookmarked = state.bookmarks.has(r.id);
+      const isMastered = state.mastered.has(r.id);
+      return `
+        <div class="reading-card card-glass ${isMastered ? 'is-mastered' : ''}">
+          <div class="reading-header">
+            <div class="reading-meta">
+              <div>${renderLevelPills(r.levels || r.level)}</div>
+              <span class="genre-badge">${r.genre}</span>
+              <h3 class="reading-title">${r.title}</h3>
+            </div>
+            <div class="card-action-icons">
+              <button class="audio-btn" data-speak="${r.passage.ja}" title="Read aloud">${UI_ICONS.volume}</button>
+              <button class="icon-btn ${isBookmarked ? 'active' : ''}" data-bookmark-id="${r.id}" title="Bookmark">
+                ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
+              </button>
+              <button class="icon-btn ${isMastered ? 'active' : ''}" data-master-id="${r.id}" title="Mark Mastered">
+                ${isMastered ? UI_ICONS.check : UI_ICONS.circle}
+              </button>
+            </div>
+          </div>
+          ${renderSourcesHtml(r.sources)}
+          
+          <div class="reading-passage-box">
+            <p class="ja-passage-text">${parseFurigana(r.passage.furigana)}</p>
+            <details class="passage-translation-details">
+              <summary>Show English Translation</summary>
+              <p class="en-passage-text">${r.passage.en}</p>
+            </details>
+          </div>
+
+          ${r.vocabularyNotes && r.vocabularyNotes.length > 0 ? `
+            <div class="vocab-notes-box">
+              <span class="vocab-notes-label">Key Vocabulary Notes:</span>
+              <div class="vocab-notes-tags">
+                ${r.vocabularyNotes.map(v => `<span class="v-note-tag">${v.word} (${v.reading}): ${v.meaning}</span>`).join('')}
+              </div>
+            </div>
+          ` : ''}
+
+          <div class="reading-questions-container">
+            <div class="section-sub-title">Comprehension Questions:</div>
+            ${r.questions.map((q, qIdx) => {
+              const answerState = state.readingAnswers[`${r.id}_${qIdx}`];
+              return `
+                <div class="reading-q-item" id="rq-${r.id}-${qIdx}">
+                  <div class="q-title"><strong>Q${qIdx + 1}:</strong> ${q.question}</div>
+                  <div class="q-options-grid">
+                    ${q.options.map((opt, oIdx) => {
+                      let btnClass = 'q-opt-btn';
+                      if (answerState !== undefined) {
+                        if (oIdx === q.answerIndex) btnClass += ' correct';
+                        else if (oIdx === answerState && oIdx !== q.answerIndex) btnClass += ' incorrect';
+                      }
+                      return `
+                        <button class="${btnClass}" onclick="window.NihonHub.handleReadingAnswer('${r.id}', ${qIdx}, ${oIdx})">
+                          <span class="opt-prefix">${['A', 'B', 'C', 'D'][oIdx]}</span>
+                          <span>${opt}</span>
+                        </button>
+                      `;
+                    }).join('')}
+                  </div>
+                  ${answerState !== undefined ? `
+                    <div class="q-feedback-box ${answerState === q.answerIndex ? 'correct' : 'incorrect'}">
+                      <strong>${answerState === q.answerIndex ? 'Correct (正解)' : 'Incorrect (不正解)'}:</strong> ${q.explanation}
+                    </div>
+                  ` : ''}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // --- LISTENING PRACTICE RENDERER ---
+  function renderListening() {
+    const container = document.getElementById('listening-list');
+    if (!container) return;
+
+    const filtered = filterItems(window.JLPT_DATA.listening, ['title', 'situation']);
+    const countEl = document.getElementById('listening-count');
+    if (countEl) countEl.textContent = `Showing ${filtered.length} Dialogs (${getActiveLevelLabel()})`;
+
+    if (filtered.length === 0) {
+      container.innerHTML = `<div class="empty-state">No listening dialogues found matching your filters.</div>`;
+      return;
+    }
+
+    container.innerHTML = filtered.map(l => {
+      const isBookmarked = state.bookmarks.has(l.id);
+      const isMastered = state.mastered.has(l.id);
+      return `
+        <div class="listening-card card-glass ${isMastered ? 'is-mastered' : ''}">
+          <div class="listening-header">
+            <div class="listening-meta">
+              <div>${renderLevelPills(l.levels || l.level)}</div>
+              <h3 class="listening-title">${l.title}</h3>
+              <p class="listening-situation"><strong>Situation:</strong> ${l.situation}</p>
+            </div>
+            <div class="card-action-icons">
+              <button class="icon-btn ${isBookmarked ? 'active' : ''}" data-bookmark-id="${l.id}" title="Bookmark">
+                ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
+              </button>
+              <button class="icon-btn ${isMastered ? 'active' : ''}" data-master-id="${l.id}" title="Mark Mastered">
+                ${isMastered ? UI_ICONS.check : UI_ICONS.circle}
+              </button>
+            </div>
+          </div>
+          ${renderSourcesHtml(l.sources)}
+
+          <!-- Audio Player Bar -->
+          <div class="dialog-player-box card-glass">
+            <div class="dialog-player-controls">
+              <button class="btn-primary sm" data-play-dialog="${l.id}">
+                ${UI_ICONS.play} Play Dialogue Audio
+              </button>
+              <span class="audio-hint-text">Natural conversational pauses</span>
+            </div>
+
+            <details class="dialog-script-details">
+              <summary>View Dialogue Transcript / Script</summary>
+              <div class="dialog-lines-list">
+                ${l.dialog.map(line => `
+                  <div class="dialog-line-row">
+                    <span class="speaker-tag">${line.speaker}:</span>
+                    <span class="line-text">${parseFurigana(line.furigana || line.text)}</span>
+                    <button class="audio-btn sm" data-speak="${line.text}" title="Listen line">${UI_ICONS.volume}</button>
+                  </div>
+                `).join('')}
+              </div>
+            </details>
+          </div>
+
+          <!-- Listening Questions -->
+          <div class="listening-questions-container">
+            <div class="section-sub-title">Listening Comprehension Questions:</div>
+            ${l.questions.map((q, qIdx) => {
+              const answerState = state.listeningAnswers[`${l.id}_${qIdx}`];
+              return `
+                <div class="reading-q-item" id="lq-${l.id}-${qIdx}">
+                  <div class="q-title"><strong>Q${qIdx + 1}:</strong> ${q.question}</div>
+                  <div class="q-options-grid">
+                    ${q.options.map((opt, oIdx) => {
+                      let btnClass = 'q-opt-btn';
+                      if (answerState !== undefined) {
+                        if (oIdx === q.answerIndex) btnClass += ' correct';
+                        else if (oIdx === answerState && oIdx !== q.answerIndex) btnClass += ' incorrect';
+                      }
+                      return `
+                        <button class="${btnClass}" onclick="window.NihonHub.handleListeningAnswer('${l.id}', ${qIdx}, ${oIdx})">
+                          <span class="opt-prefix">${['A', 'B', 'C', 'D'][oIdx]}</span>
+                          <span>${opt}</span>
+                        </button>
+                      `;
+                    }).join('')}
+                  </div>
+                  ${answerState !== undefined ? `
+                    <div class="q-feedback-box ${answerState === q.answerIndex ? 'correct' : 'incorrect'}">
+                      <strong>${answerState === q.answerIndex ? 'Correct (正解)' : 'Incorrect (不正解)'}:</strong> ${q.explanation}
+                    </div>
+                  ` : ''}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
   // --- KANA RENDERER ---
   function renderKana() {
     const hContainer = document.getElementById('hiragana-grid');
     const kContainer = document.getElementById('katakana-grid');
 
     if (hContainer) {
-      hContainer.innerHTML = JLPT_DATA.kana.hiragana.map(k => {
+      hContainer.innerHTML = window.JLPT_DATA.kana.hiragana.map(k => {
         if (!k.char) return `<div class="kana-cell empty"></div>`;
         return `
           <div class="kana-cell card-glass" data-speak="${k.char}">
@@ -709,7 +984,7 @@
     }
 
     if (kContainer) {
-      kContainer.innerHTML = JLPT_DATA.kana.katakana.map(k => {
+      kContainer.innerHTML = window.JLPT_DATA.kana.katakana.map(k => {
         if (!k.char) return `<div class="kana-cell empty"></div>`;
         return `
           <div class="kana-cell card-glass" data-speak="${k.char}">
@@ -726,7 +1001,13 @@
     const container = document.getElementById('bookmarks-list');
     if (!container) return;
 
-    const allItems = [...JLPT_DATA.kanji, ...JLPT_DATA.vocabulary, ...JLPT_DATA.grammar];
+    const allItems = [
+      ...window.JLPT_DATA.kanji,
+      ...window.JLPT_DATA.vocabulary,
+      ...window.JLPT_DATA.grammar,
+      ...window.JLPT_DATA.reading,
+      ...window.JLPT_DATA.listening
+    ];
     const bookmarkedItems = allItems.filter(item => state.bookmarks.has(item.id));
     const countEl = document.getElementById('bookmark-count');
     if (countEl) countEl.textContent = `${bookmarkedItems.length} Saved Items`;
@@ -735,20 +1016,20 @@
       container.innerHTML = `
         <div class="empty-state">
           <p>You have no bookmarked items yet.</p>
-          <p class="sub-text">Click the bookmark icon on any Kanji, Word, or Grammar point to save it for quick review.</p>
+          <p class="sub-text">Click the bookmark icon on any Kanji, Word, Grammar point, Reading, or Listening dialogue to save it for quick review.</p>
         </div>
       `;
       return;
     }
 
     container.innerHTML = bookmarkedItems.map(item => {
-      const type = item.char ? 'Kanji' : item.word ? 'Vocabulary' : 'Grammar';
-      const mainText = item.char || item.word || item.pattern;
-      const subText = item.meaning;
+      const type = item.char ? 'Kanji' : item.word ? 'Vocabulary' : item.pattern ? 'Grammar' : item.genre ? 'Reading' : 'Listening';
+      const mainText = item.char || item.word || item.pattern || item.title;
+      const subText = item.meaning || item.situation || item.genre || '';
       return `
         <div class="bookmark-card card-glass">
           <div class="bm-left">
-            <span class="level-badge badge-${item.level.toLowerCase()}">${item.level}</span>
+            <div>${renderLevelPills(item.levels || item.level)}</div>
             <span class="bm-type-badge">${type}</span>
             <span class="bm-main-text">${mainText}</span>
             <span class="bm-sub-text">${subText}</span>
@@ -768,48 +1049,50 @@
     const cat = state.flashcards.category;
 
     if (cat === 'all' || cat === 'kanji') {
-      pool.push(...JLPT_DATA.kanji.filter(k => matchLevel(k.level)).map(k => ({
+      pool.push(...window.JLPT_DATA.kanji.filter(k => matchLevel(k)).map(k => ({
         type: 'Kanji',
         id: k.id,
-        level: k.level,
+        level: (k.levels || [k.level])[0],
         frontMain: k.char,
         frontSub: `Strokes: ${k.strokes} | Radical: ${k.radical}`,
         backMain: k.meaning,
         backDetails: `音: ${k.onyomi || '-'} | 訓: ${k.kunyomi || '-'}`,
-        examples: k.examples.map(ex => `${ex.word} (${ex.reading}): ${ex.meaning}`).join('<br>'),
+        sourcesHtml: renderSourcesHtml(k.sources),
+        examples: k.examples ? k.examples.map(ex => `${ex.word} (${ex.reading}): ${ex.meaning}`).join('<br>') : '',
         speakText: k.char
       })));
     }
 
     if (cat === 'all' || cat === 'vocab') {
-      pool.push(...JLPT_DATA.vocabulary.filter(v => matchLevel(v.level)).map(v => ({
+      pool.push(...window.JLPT_DATA.vocabulary.filter(v => matchLevel(v)).map(v => ({
         type: 'Vocabulary',
         id: v.id,
-        level: v.level,
+        level: (v.levels || [v.level])[0],
         frontMain: v.word,
         frontSub: `【${v.reading}】 • ${v.romaji}`,
         backMain: v.meaning,
         backDetails: `Part of Speech: ${v.pos}`,
+        sourcesHtml: renderSourcesHtml(v.sources),
         examples: `${parseFurigana(v.example.furigana)}<br><small>${v.example.en}</small>`,
         speakText: v.word
       })));
     }
 
     if (cat === 'all' || cat === 'grammar') {
-      pool.push(...JLPT_DATA.grammar.filter(g => matchLevel(g.level)).map(g => ({
+      pool.push(...window.JLPT_DATA.grammar.filter(g => matchLevel(g)).map(g => ({
         type: 'Grammar',
         id: g.id,
-        level: g.level,
+        level: (g.levels || [g.level])[0],
         frontMain: g.pattern,
         frontSub: g.formula,
         backMain: g.meaning,
         backDetails: g.explanation,
+        sourcesHtml: renderSourcesHtml(g.sources),
         examples: `${parseFurigana(g.examples[0].furigana)}<br><small>${g.examples[0].en}</small>`,
         speakText: g.pattern
       })));
     }
 
-    // Shuffle pool
     for (let i = pool.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [pool[i], pool[j]] = [pool[j], pool[i]];
@@ -846,7 +1129,6 @@
 
     cardEl.classList.toggle('flipped', state.flashcards.isFlipped);
 
-    // Front Content
     const frontEl = cardEl.querySelector('.fc-front');
     if (frontEl) {
       frontEl.innerHTML = `
@@ -861,7 +1143,6 @@
       `;
     }
 
-    // Back Content
     const backEl = cardEl.querySelector('.fc-back');
     if (backEl) {
       backEl.innerHTML = `
@@ -872,6 +1153,7 @@
         </div>
         <div class="fc-back-meaning">${currentCard.backMain}</div>
         <div class="fc-back-details">${currentCard.backDetails}</div>
+        ${currentCard.sourcesHtml || ''}
         <div class="fc-back-examples">
           <strong>Context & Examples:</strong>
           <div>${currentCard.examples}</div>
@@ -922,16 +1204,16 @@
     const levelSelect = document.getElementById('quiz-level-select');
     const selectedLevel = levelSelect ? levelSelect.value : 'ALL';
 
-    let questions = JLPT_DATA.quizzes.filter(q => {
+    let questions = window.JLPT_DATA.quizzes.filter(q => {
       if (selectedLevel === 'ALL') return true;
       if (state.cumulativeMode) {
-        return (LEVEL_ORDER[q.level] || 1) <= (LEVEL_ORDER[selectedLevel] || 4);
+        return (LEVEL_ORDER[(q.levels || [q.level])[0]] || 1) <= (LEVEL_ORDER[selectedLevel] || 4);
       }
-      return q.level === selectedLevel;
+      return (q.levels || [q.level]).includes(selectedLevel);
     });
 
     if (questions.length === 0) {
-      questions = JLPT_DATA.quizzes;
+      questions = window.JLPT_DATA.quizzes;
     }
 
     questions = [...questions].sort(() => Math.random() - 0.5);
@@ -964,10 +1246,11 @@
     const q = state.quiz.questions[state.quiz.currentIndex];
     const total = state.quiz.questions.length;
     const currNum = state.quiz.currentIndex + 1;
+    const qLevel = (q.levels || [q.level])[0];
 
     document.getElementById('quiz-q-num').textContent = `Question ${currNum} of ${total}`;
-    document.getElementById('quiz-q-level').textContent = q.level;
-    document.getElementById('quiz-q-level').className = `level-badge badge-${q.level.toLowerCase()}`;
+    document.getElementById('quiz-q-level').textContent = qLevel;
+    document.getElementById('quiz-q-level').className = `level-badge badge-${qLevel.toLowerCase()}`;
     document.getElementById('quiz-progress-bar').style.width = `${(currNum / total) * 100}%`;
 
     const qTextEl = document.getElementById('quiz-q-text');
@@ -1108,7 +1391,7 @@
 
   // --- KANJI MODAL ---
   function openKanjiModal(kanjiId) {
-    const k = JLPT_DATA.kanji.find(item => item.id === kanjiId);
+    const k = window.JLPT_DATA.kanji.find(item => item.id === kanjiId);
     if (!k) return;
 
     const modalBackdrop = document.getElementById('modal-backdrop');
@@ -1124,7 +1407,7 @@
         </div>
         <div class="modal-kanji-meta">
           <div class="modal-tag-row">
-            <span class="level-badge badge-${k.level.toLowerCase()}">${k.level}</span>
+            <div>${renderLevelPills(k.levels || k.level)}</div>
             <span class="modal-stroke-tag">${k.strokes} Strokes</span>
             <span class="modal-radical-tag">Radical: ${k.radical}</span>
           </div>
@@ -1139,12 +1422,13 @@
               <span class="m-read-val hiragana-text">${k.kunyomi || 'None'}</span>
             </div>
           </div>
+          ${renderSourcesHtml(k.sources)}
         </div>
       </div>
       
       <div class="modal-section-title">Common Compound Vocabulary (熟語)</div>
       <div class="modal-compounds-list">
-        ${k.examples.map(ex => `
+        ${k.examples && k.examples.length > 0 ? k.examples.map(ex => `
           <div class="modal-compound-row">
             <div class="compound-ja">
               <strong>${ex.word}</strong>
@@ -1153,7 +1437,7 @@
             </div>
             <div class="compound-en">${ex.meaning}</div>
           </div>
-        `).join('')}
+        `).join('') : '<p class="text-secondary">No compounds listed yet.</p>'}
       </div>
     `;
 
@@ -1167,7 +1451,7 @@
     state.activeModal = null;
   }
 
-  // --- ACTIONS (BOOKMARKS & MASTERY) ---
+  // --- ACTIONS (BOOKMARKS, MASTERY, EXERCISE ANSWERS) ---
   function toggleBookmark(id) {
     if (state.bookmarks.has(id)) {
       state.bookmarks.delete(id);
@@ -1186,6 +1470,16 @@
     }
     savePreferences();
     renderAll();
+  }
+
+  function handleReadingAnswer(readingId, qIdx, selectedOptionIdx) {
+    state.readingAnswers[`${readingId}_${qIdx}`] = selectedOptionIdx;
+    renderReading();
+  }
+
+  function handleListeningAnswer(listeningId, qIdx, selectedOptionIdx) {
+    state.listeningAnswers[`${listeningId}_${qIdx}`] = selectedOptionIdx;
+    renderListening();
   }
 
   function getActiveLevelLabel() {
@@ -1211,7 +1505,9 @@
     toggleBookmark: toggleBookmark,
     toggleMastered: toggleMastered,
     rateCard: rateFlashcard,
-    rateFlashcard: rateFlashcard
+    rateFlashcard: rateFlashcard,
+    handleReadingAnswer: handleReadingAnswer,
+    handleListeningAnswer: handleListeningAnswer
   };
 
 })();
