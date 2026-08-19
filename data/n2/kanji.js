@@ -1435,5 +1435,365 @@ window.N2_KANJI_DATA = [
       { word: '救急', reading: 'きゅうきゅう', meaning: 'First aid / Emergency', source: 'Sou Matome N2' },
       { word: '救う', reading: 'すくう', meaning: 'To save, rescue', source: 'Sou Matome N2' }
     ]
+  },
+  {
+    id: 'k-n2-sm-081',
+    char: '看',
+    meaning: 'Watch, See, Care for',
+    onyomi: 'カン',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 9,
+    radical: '目 (eye)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 1 Review', notes: '看板・立て札・表示 (Signs & Boards)' }
+    ],
+    examples: [
+      { word: '看板', reading: 'かんばん', meaning: 'A signboard / billboard', source: 'Sou Matome N2' },
+      { word: '看護師', reading: 'かんごし', meaning: 'A nurse', source: 'Sou Matome N2' },
+      { word: '看病', reading: 'かんびょう', meaning: 'Nursing a patient', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-082',
+    char: '板',
+    meaning: 'Board, Plank, Plate',
+    onyomi: 'ハン, バン',
+    kunyomi: 'いた',
+    levels: ['N2', 'N4'],
+    strokes: 8,
+    radical: '木 (tree)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 1 Review', notes: '看板・立て札・表示' }
+    ],
+    examples: [
+      { word: '黒板', reading: 'こくばん', meaning: 'A blackboard', source: 'Sou Matome N2' },
+      { word: '板', reading: 'いた', meaning: 'A board / plank', source: 'Sou Matome N2' },
+      { word: '案内板', reading: 'あんないばん', meaning: 'A notice board / guide sign', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-083',
+    char: '羽',
+    meaning: 'Feather, Counter for birds/rabbits, Wing',
+    onyomi: 'ウ',
+    kunyomi: 'は, はね',
+    levels: ['N2', 'N4'],
+    strokes: 6,
+    radical: '羽 (feather)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 1 Review', notes: '看板・立て札・表示' }
+    ],
+    examples: [
+      { word: '羽毛', reading: 'うもう', meaning: 'Feathering / Down', source: 'Sou Matome N2' },
+      { word: '羽', reading: 'はね', meaning: 'A feather / Wing', source: 'Sou Matome N2' },
+      { word: '羽根', reading: 'はね', meaning: 'A shuttlecock / Blade', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-084',
+    char: '成',
+    meaning: 'Turn into, Become, Attain',
+    onyomi: 'セイ, ジョウ',
+    kunyomi: 'な・る, な・す',
+    levels: ['N2', 'N4'],
+    strokes: 6,
+    radical: '戈 (spear)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 1 Review', notes: '看板・立て札・表示' }
+    ],
+    examples: [
+      { word: '成分', reading: 'せいぶん', meaning: 'An ingredient / Constituent', source: 'Sou Matome N2' },
+      { word: '成人式', reading: 'せいじんしき', meaning: 'A coming-of-age ceremony', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-085',
+    char: '第',
+    meaning: 'No., Ordinal number prefix, Residence',
+    onyomi: 'ダイ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 11,
+    radical: '竹 (bamboo)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 1 Review', notes: '看板・立て札・表示' }
+    ],
+    examples: [
+      { word: '第〜', reading: 'だい', meaning: 'Number ... / Prefix for ordinals', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-086',
+    char: '総',
+    meaning: 'General, Whole, Total, All',
+    onyomi: 'ソウ',
+    kunyomi: 'す・べて, ふさ',
+    levels: ['N2', 'N3'],
+    strokes: 14,
+    radical: '糸 (silk)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 1 Review', notes: '看板・立て札・表示' }
+    ],
+    examples: [
+      { word: '総合病院', reading: 'そうごうびょういん', meaning: 'A general hospital', source: 'Sou Matome N2' },
+      { word: '総計', reading: 'そうけい', meaning: 'The total', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-087',
+    char: '普',
+    meaning: 'General, Broad, Universal, Normal',
+    onyomi: 'フ',
+    kunyomi: 'あまね・く',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '日 (sun)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 2 Day 1', notes: '自動券売機 (Automatic Ticket Machines)' }
+    ],
+    examples: [
+      { word: '普通', reading: 'ふつう', meaning: 'Ordinary / Regular', source: 'Sou Matome N2' },
+      { word: '普段(の)', reading: 'ふだん', meaning: 'Usually / Ordinary', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-088',
+    char: '券',
+    meaning: 'Ticket, Coupon, Certificate',
+    onyomi: 'ケン',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '刀 (sword)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 2 Day 1', notes: '自動券売機' }
+    ],
+    examples: [
+      { word: '回数券', reading: 'かいすうけん', meaning: 'A book of commuter tickets', source: 'Sou Matome N2' },
+      { word: '乗車券', reading: 'じょうしゃけん', meaning: 'A boarding ticket', source: 'Sou Matome N2' },
+      { word: '旅券', reading: 'りょけん', meaning: 'A passport', source: 'Sou Matome N2' },
+      { word: '発券', reading: 'はっけん', meaning: 'The issue of a ticket', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-089',
+    char: '数',
+    meaning: 'Number, Strength, Fate, Count',
+    onyomi: 'スウ, ス',
+    kunyomi: 'かず, かぞ・える',
+    levels: ['N2', 'N4'],
+    strokes: 13,
+    radical: '攵 (strike)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 2 Day 1', notes: '自動券売機' }
+    ],
+    examples: [
+      { word: '数字', reading: 'すうじ', meaning: 'A number / Figure', source: 'Sou Matome N2' },
+      { word: '数学', reading: 'すうがく', meaning: 'Mathematics', source: 'Sou Matome N2' },
+      { word: '点数', reading: 'てんすう', meaning: 'Score / Points', source: 'Sou Matome N2' },
+      { word: '数を数える', reading: 'かずをかぞえる', meaning: 'To count numbers', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-090',
+    char: '機',
+    meaning: 'Mechanism, Opportunity, Machine, Airplane',
+    onyomi: 'キ',
+    kunyomi: 'はた',
+    levels: ['N2', 'N4'],
+    strokes: 16,
+    radical: '木 (tree)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 2 Day 1', notes: '自動券売機' }
+    ],
+    examples: [
+      { word: '飛行機', reading: 'ひこうき', meaning: 'An airplane', source: 'Sou Matome N2' },
+      { word: '交通機関', reading: 'こうつうきかん', meaning: 'A means of transportation', source: 'Sou Matome N2' },
+      { word: '自動券売機', reading: 'じどうけんばいき', meaning: 'An automatic ticket machine', source: 'Sou Matome N2' },
+      { word: '危機', reading: 'きき', meaning: 'A crisis', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-091',
+    char: '復',
+    meaning: 'Restore, Return to, Revert, Repeat',
+    onyomi: 'フク',
+    kunyomi: 'また',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '彳 (step)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 2 Day 1', notes: '自動券売機' }
+    ],
+    examples: [
+      { word: '復習', reading: 'ふくしゅう', meaning: 'A review / revision', source: 'Sou Matome N2' },
+      { word: '往復', reading: 'おうふく', meaning: 'A round trip', source: 'Sou Matome N2' },
+      { word: '回復', reading: 'かいふく', meaning: 'Recovery / Recuperation', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-092',
+    char: '片',
+    meaning: 'One-sided, Leaf, Fragment, Slice',
+    onyomi: 'ヘン',
+    kunyomi: 'かた, ひら',
+    levels: ['N2', 'N3'],
+    strokes: 4,
+    radical: '片 (split wood)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 2 Day 1', notes: '自動券売機' }
+    ],
+    examples: [
+      { word: '破片', reading: 'はへん', meaning: 'A fragment / Splinter', source: 'Sou Matome N2' },
+      { word: '片道切符', reading: 'かたみちきっぷ', meaning: 'An one-way ticket', source: 'Sou Matome N2' },
+      { word: '片付ける', reading: 'かたづける', meaning: 'To tidy up', source: 'Sou Matome N2' },
+      { word: '片〜', reading: 'かた', meaning: 'One side', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-093',
+    char: '枚',
+    meaning: 'Counter for flat thin objects / sheets',
+    onyomi: 'マイ, バイ',
+    kunyomi: '-',
+    levels: ['N2', 'N4'],
+    strokes: 8,
+    radical: '木 (tree)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 2 Day 1', notes: '自動券売機' }
+    ],
+    examples: [
+      { word: '〜枚', reading: 'まい', meaning: 'Counter for flat objects', source: 'Sou Matome N2' },
+      { word: '枚数', reading: 'まいすう', meaning: 'Number of flat objects / tickets', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-094',
+    char: '期',
+    meaning: 'Period, Time, Date, Term',
+    onyomi: 'キ, ゴ',
+    kunyomi: '-',
+    levels: ['N2', 'N4'],
+    strokes: 12,
+    radical: '月 (moon)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 2 Day 1', notes: '定期券・販売 (Passes & Sales)' }
+    ],
+    examples: [
+      { word: '期間', reading: 'きかん', meaning: 'A period of time', source: 'Sou Matome N2' },
+      { word: '定期', reading: 'ていき', meaning: 'A fixed period of time', source: 'Sou Matome N2' },
+      { word: '定期券', reading: 'ていきけん', meaning: 'A commuter pass', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-095',
+    char: '販',
+    meaning: 'Marketing, Sell, Trade',
+    onyomi: 'ハン',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 11,
+    radical: '貝 (shell)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 2 Day 1', notes: '定期券・販売' }
+    ],
+    examples: [
+      { word: '販売', reading: 'はんばい', meaning: 'Selling / Sales', source: 'Sou Matome N2' },
+      { word: '自動販売機', reading: 'じどうはんばいき', meaning: 'A vending machine', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-096',
+    char: '指',
+    meaning: 'Finger, Point to, Indicate',
+    onyomi: 'シ',
+    kunyomi: 'ゆび, さ・す',
+    levels: ['N2', 'N4'],
+    strokes: 9,
+    radical: '扌 (hand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 2 Day 1', notes: '定期券・販売' }
+    ],
+    examples: [
+      { word: '指定席', reading: 'していせき', meaning: 'A reserved seat', source: 'Sou Matome N2' },
+      { word: '指', reading: 'ゆび', meaning: 'A finger', source: 'Sou Matome N2' },
+      { word: '指す', reading: 'さす', meaning: 'To point / indicate', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-097',
+    char: '調',
+    meaning: 'Tune, Tone, Investigate, Prepare',
+    onyomi: 'チョウ',
+    kunyomi: 'しら・べる, ととの・う, ととの・える',
+    levels: ['N2', 'N4'],
+    strokes: 15,
+    radical: '言 (words)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 2 Day 1', notes: '定期券・販売' }
+    ],
+    examples: [
+      { word: '調整', reading: 'ちょうせい', meaning: 'An adjustment', source: 'Sou Matome N2' },
+      { word: '調子', reading: 'ちょうし', meaning: 'Condition / State', source: 'Sou Matome N2' },
+      { word: '調べる', reading: 'しらべる', meaning: 'To look up / investigate', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-098',
+    char: '整',
+    meaning: 'Organize, Arrange, Tune, Tone',
+    onyomi: 'セイ',
+    kunyomi: 'ととの・える, ととの・う',
+    levels: ['N2', 'N3'],
+    strokes: 16,
+    radical: '攵 (strike)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 2 Day 1', notes: '定期券・販売' }
+    ],
+    examples: [
+      { word: '整理券', reading: 'せいりけん', meaning: 'A numbered ticket', source: 'Sou Matome N2' },
+      { word: '整備', reading: 'せいび', meaning: 'Maintenance / Overhaul', source: 'Sou Matome N2' },
+      { word: '整う', reading: 'ととのう', meaning: 'To be tidy / in order', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-099',
+    char: '表',
+    meaning: 'Surface, Table, Chart, Express',
+    onyomi: 'ヒョウ',
+    kunyomi: 'おもて, あらわ・す, あらわ・れる',
+    levels: ['N2', 'N4'],
+    strokes: 8,
+    radical: '衣 (clothing)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 2 Day 1', notes: '定期券・販売' }
+    ],
+    examples: [
+      { word: '表', reading: 'ひょう', meaning: 'A table / Chart', source: 'Sou Matome N2' },
+      { word: '時刻表', reading: 'じこくひょう', meaning: 'A timetable', source: 'Sou Matome N2' },
+      { word: '発表', reading: 'はっぴょう', meaning: 'An announcement / Presentation', source: 'Sou Matome N2' },
+      { word: '表', reading: 'おもて', meaning: 'Surface / Front', source: 'Sou Matome N2' },
+      { word: '表す', reading: 'あらわす', meaning: 'To show / express', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-100',
+    char: '示',
+    meaning: 'Show, Indicate, Point out, Display',
+    onyomi: 'ジ, シ',
+    kunyomi: 'しめ・す',
+    levels: ['N2', 'N3'],
+    strokes: 5,
+    radical: '示 (altar)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 2 Day 1', notes: '定期券・販売' }
+    ],
+    examples: [
+      { word: '表示', reading: 'ひょうじ', meaning: 'Indication / Expression / Display', source: 'Sou Matome N2' },
+      { word: '指示', reading: 'しじ', meaning: 'An instruction / Direction', source: 'Sou Matome N2' },
+      { word: '掲示', reading: 'けいじ', meaning: 'A notice / Bulletin', source: 'Sou Matome N2' },
+      { word: '示す', reading: 'しめす', meaning: 'To show / Point out', source: 'Sou Matome N2' }
+    ]
   }
 ];
