@@ -4863,5 +4863,1857 @@ window.N2_KANJI_DATA = [
       { word: '笑う', reading: 'わらう', meaning: 'To laugh / smile', source: 'Sou Matome N2' },
       { word: '笑顔', reading: 'えがお', meaning: 'A smile / smiling face', source: 'Sou Matome N2' }
     ]
+  },
+  {
+    id: 'k-n2-sm-270',
+    char: '署',
+    meaning: 'Signature, Government office, Police station',
+    onyomi: 'ショ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 13,
+    radical: '罒 (net)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 1', notes: '伝票・申込書 (Checks & Application Forms)' }
+    ],
+    examples: [
+      { word: '署名', reading: 'しょめい', meaning: 'A signature', source: 'Sou Matome N2' },
+      { word: '部署', reading: 'ぶしょ', meaning: 'A post / station / department', source: 'Sou Matome N2' },
+      { word: '消防署', reading: 'しょうぼうしょ', meaning: 'A fire station', source: 'Sou Matome N2' },
+      { word: '税務署', reading: 'ぜいむしょ', meaning: 'A tax office', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-271',
+    char: '依',
+    meaning: 'Reliant, Depend on, Due to',
+    onyomi: 'イ, エ',
+    kunyomi: 'よ・る',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '亻 (person)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 1', notes: '伝票・申込書' }
+    ],
+    examples: [
+      { word: '依頼', reading: 'いらい', meaning: 'A request / commission / reliance', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-272',
+    char: '頼',
+    meaning: 'Trust, Request, Rely on',
+    onyomi: 'ライ',
+    kunyomi: 'たの・む, たの・もしい, たよ・る',
+    levels: ['N2', 'N3'],
+    strokes: 16,
+    radical: '頁 (leaf)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 1', notes: '伝票・申込書' }
+    ],
+    examples: [
+      { word: '信頼', reading: 'しんらい', meaning: 'Trust / reliance', source: 'Sou Matome N2' },
+      { word: '頼む', reading: 'たのむ', meaning: 'To request / ask', source: 'Sou Matome N2' },
+      { word: '頼る', reading: 'たよる', meaning: 'To depend upon / rely on', source: 'Sou Matome N2' },
+      { word: '頼もしい', reading: 'たのもしい', meaning: 'Reliable / dependable', source: 'Sou Matome N2' },
+      { word: '頼りない', reading: 'たよりない', meaning: 'Powerless / unreliable', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-273',
+    char: '府',
+    meaning: 'Borough, Urban prefecture, Govt office',
+    onyomi: 'フ',
+    kunyomi: '-',
+    levels: ['N2', 'N4'],
+    strokes: 8,
+    radical: '广 (dotted cliff)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 1', notes: '伝票・申込書' }
+    ],
+    examples: [
+      { word: '都道府県', reading: 'とどうふけん', meaning: 'Prefectures (of Japan)', source: 'Sou Matome N2' },
+      { word: '京都府', reading: 'きょうとふ', meaning: 'Kyoto Prefecture', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-274',
+    char: '到',
+    meaning: 'Arrival, Proceed, Reach, Result in',
+    onyomi: 'トウ',
+    kunyomi: 'いた・る',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '刂 (knife)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 1', notes: '伝票・申込書' }
+    ],
+    examples: [
+      { word: '到着', reading: 'とうちゃく', meaning: 'Arrival', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-275',
+    char: '希',
+    meaning: 'Hope, Beg, Request, Pray, Rare',
+    onyomi: 'キ, ケ',
+    kunyomi: 'こいねが・う, まれ',
+    levels: ['N2', 'N3'],
+    strokes: 7,
+    radical: '巾 (towel)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 1', notes: '伝票・申込書' }
+    ],
+    examples: [
+      { word: '希望', reading: 'きぼう', meaning: 'Hope / wish', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-276',
+    char: '望',
+    meaning: 'Ambition, Full moon, Hope, Desire, Aspire',
+    onyomi: 'ボウ, モウ',
+    kunyomi: 'のぞ・む, もち',
+    levels: ['N2', 'N4'],
+    strokes: 11,
+    radical: '月 (moon)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 1', notes: '伝票・申込書' }
+    ],
+    examples: [
+      { word: '失望', reading: 'しつぼう', meaning: 'Loss of hope / despair', source: 'Sou Matome N2' },
+      { word: '望む', reading: 'のぞむ', meaning: 'To want / hope for / look out on', source: 'Sou Matome N2' },
+      { word: '望遠鏡', reading: 'ぼうえんきょう', meaning: 'A telescope', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-277',
+    char: '申',
+    meaning: 'Have the honor to, Sign of the monkey, Speak humbly',
+    onyomi: 'シン',
+    kunyomi: 'もう・す, もう・し-, さる',
+    levels: ['N2', 'N4'],
+    strokes: 5,
+    radical: '田 (rice field)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 1', notes: '入会申込書 (Membership Applications)' }
+    ],
+    examples: [
+      { word: '申請', reading: 'しんせい', meaning: 'An application / claim', source: 'Sou Matome N2' },
+      { word: '申し込み', reading: 'もうしこみ', meaning: 'An application / proposal', source: 'Sou Matome N2' },
+      { word: '申す', reading: 'もうす', meaning: 'To say / tell (humble)', source: 'Sou Matome N2' },
+      { word: '申し上げる', reading: 'もうしあげる', meaning: 'To say / tell (very humble)', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-278',
+    char: '姓',
+    meaning: 'Surname',
+    onyomi: 'セイ, ショウ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '女 (woman)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 1', notes: '入会申込書' }
+    ],
+    examples: [
+      { word: '姓', reading: 'せい', meaning: 'Family name / surname', source: 'Sou Matome N2' },
+      { word: '姓名', reading: 'せいめい', meaning: 'Full name', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-279',
+    char: '齢',
+    meaning: 'Age',
+    onyomi: 'レイ',
+    kunyomi: 'よわい, とし',
+    levels: ['N2', 'N3'],
+    strokes: 17,
+    radical: '歯 (tooth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 1', notes: '入会申込書' }
+    ],
+    examples: [
+      { word: '年齢', reading: 'ねんれい', meaning: 'Age / years', source: 'Sou Matome N2' },
+      { word: '高齢', reading: 'こうれい', meaning: 'Old age', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-280',
+    char: '性',
+    meaning: 'Sex, Gender, Nature, Quality',
+    onyomi: 'セイ, ショウ',
+    kunyomi: 'さが',
+    levels: ['N2', 'N4'],
+    strokes: 8,
+    radical: '忄 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 1', notes: '入会申込書' }
+    ],
+    examples: [
+      { word: '男性', reading: 'だんせい', meaning: 'A man / male', source: 'Sou Matome N2' },
+      { word: '性別', reading: 'せいべつ', meaning: 'Sex / gender', source: 'Sou Matome N2' },
+      { word: '女性', reading: 'じょせい', meaning: 'A woman / female', source: 'Sou Matome N2' },
+      { word: '性質', reading: 'せいしつ', meaning: 'Nature / disposition / character', source: 'Sou Matome N2' },
+      { word: '安全性', reading: 'あんぜんせい', meaning: 'Safety', source: 'Sou Matome N2' },
+      { word: '可能性', reading: 'かのうせい', meaning: 'Possibility / potential', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-281',
+    char: '宅',
+    meaning: 'Home, House, Residence, Our house',
+    onyomi: 'タク',
+    kunyomi: '-',
+    levels: ['N2', 'N4'],
+    strokes: 6,
+    radical: '宀 (roof)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 1', notes: '入会申込書' }
+    ],
+    examples: [
+      { word: 'お宅', reading: 'おたく', meaning: 'A house / home (respectful form)', source: 'Sou Matome N2' },
+      { word: '住宅', reading: 'じゅうたく', meaning: 'Housing / residential', source: 'Sou Matome N2' },
+      { word: '自宅', reading: 'じたく', meaning: 'One\'s house / home', source: 'Sou Matome N2' },
+      { word: '帰宅', reading: 'きたく', meaning: 'Returning home', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-282',
+    char: '勤',
+    meaning: 'Diligence, Employ, Serve',
+    onyomi: 'キン, ゴン',
+    kunyomi: 'つと・める, -づと・め, つと・まる, いそ・しむ',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '力 (power)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 1', notes: '入会申込書' }
+    ],
+    examples: [
+      { word: '勤務', reading: 'きんむ', meaning: 'Service / duty / work', source: 'Sou Matome N2' },
+      { word: '通勤', reading: 'つうきん', meaning: 'Commuting to work', source: 'Sou Matome N2' },
+      { word: '出勤', reading: 'しゅっきん', meaning: 'Attendance at work', source: 'Sou Matome N2' },
+      { word: '勤める', reading: 'つとめる', meaning: 'To work / be employed', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-283',
+    char: '部',
+    meaning: 'Section, Bureau, Department, Class, Copy',
+    onyomi: 'ブ',
+    kunyomi: '-べ',
+    levels: ['N2', 'N4'],
+    strokes: 11,
+    radical: '阝 (town)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 1', notes: '入会申込書' }
+    ],
+    examples: [
+      { word: '全部', reading: 'ぜんぶ', meaning: 'All / whole', source: 'Sou Matome N2' },
+      { word: '部長', reading: 'ぶちょう', meaning: 'A department head / manager', source: 'Sou Matome N2' },
+      { word: '部屋', reading: 'へや', meaning: 'A room', source: 'Sou Matome N2' },
+      { word: '部分', reading: 'ぶぶん', meaning: 'A part / portion', source: 'Sou Matome N2' },
+      { word: '学部', reading: 'がくぶ', meaning: 'A faculty / university department', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-284',
+    char: '婚',
+    meaning: 'Marriage',
+    onyomi: 'コン',
+    kunyomi: '-',
+    levels: ['N2', 'N4'],
+    strokes: 11,
+    radical: '女 (woman)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 2', notes: '返事を書く・出欠 (Writing Replies & Attendance)' }
+    ],
+    examples: [
+      { word: '結婚', reading: 'けっこん', meaning: 'A marriage', source: 'Sou Matome N2' },
+      { word: '未婚', reading: 'みこん', meaning: 'Unmarried', source: 'Sou Matome N2' },
+      { word: '婚約', reading: 'こんやく', meaning: 'An engagement', source: 'Sou Matome N2' },
+      { word: '新婚', reading: 'しんこん', meaning: 'Newly wedded', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-285',
+    char: '招',
+    meaning: 'Beckon, Invite, Summon, Engage',
+    onyomi: 'ショウ',
+    kunyomi: 'まね・く',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '扌 (hand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 2', notes: '返事を書く・出欠' }
+    ],
+    examples: [
+      { word: '招待', reading: 'しょうたい', meaning: 'An invitation', source: 'Sou Matome N2' },
+      { word: '招く', reading: 'まねく', meaning: 'To invite / cause / beckon', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-286',
+    char: '状',
+    meaning: 'Status quo, Conditions, Form, Letter',
+    onyomi: 'ジョウ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 7,
+    radical: '犬 (dog)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 2', notes: '返事を書く・出欠' }
+    ],
+    examples: [
+      { word: '〜状', reading: 'じょう', meaning: 'A letter (e.g. of invitation) / form', source: 'Sou Matome N2' },
+      { word: '状態', reading: 'じょうたい', meaning: 'A situation / state / condition', source: 'Sou Matome N2' },
+      { word: '現状', reading: 'げんじょう', meaning: 'An existing situation / present state', source: 'Sou Matome N2' },
+      { word: '年賀状', reading: 'ねんがじょう', meaning: 'A New Year\'s card', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-287',
+    char: '欠',
+    meaning: 'Lack, Gap, Fail, Yawning radical',
+    onyomi: 'ケツ, ケン',
+    kunyomi: 'か・ける, か・く',
+    levels: ['N2', 'N4'],
+    strokes: 4,
+    radical: '欠 (lack)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 2', notes: '返事を書く・出欠' }
+    ],
+    examples: [
+      { word: '欠席', reading: 'けっせき', meaning: 'Absence', source: 'Sou Matome N2' },
+      { word: '欠点', reading: 'けってん', meaning: 'A shortcoming / defect', source: 'Sou Matome N2' },
+      { word: '出欠', reading: 'しゅっけつ', meaning: 'Attendance (or absence)', source: 'Sou Matome N2' },
+      { word: '欠けている', reading: 'かけている', meaning: 'To be lacking / chipped', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-288',
+    char: '喜',
+    meaning: 'Rejoice, Take pleasure in',
+    onyomi: 'キ',
+    kunyomi: 'よろこ・ぶ, よろこ・ばす',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '口 (mouth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 2', notes: '返事を書く・出欠' }
+    ],
+    examples: [
+      { word: '喜ぶ', reading: 'よろこぶ', meaning: 'To be pleased / rejoice', source: 'Sou Matome N2' },
+      { word: '喜んで', reading: 'よろこんで', meaning: 'Gladly / with pleasure', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-289',
+    char: '治',
+    meaning: 'Reign, Cure, Heal, Rule, Conserve',
+    onyomi: 'ジ, チ',
+    kunyomi: 'おさ・める, おさ・まる, なお・る, なお・す',
+    levels: ['N2', 'N4'],
+    strokes: 8,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 2', notes: '返事を書く・出欠' }
+    ],
+    examples: [
+      { word: '政治', reading: 'せいじ', meaning: 'Politics / government', source: 'Sou Matome N2' },
+      { word: '自治体', reading: 'じちたい', meaning: 'A self-governing body / municipality', source: 'Sou Matome N2' },
+      { word: '自治会', reading: 'じちかい', meaning: 'A self-governing association / residents association', source: 'Sou Matome N2' },
+      { word: '治す', reading: 'なおす', meaning: 'To cure / heal / fix', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-290',
+    char: '委',
+    meaning: 'Committee, Entrust to, Leave to, Devote',
+    onyomi: 'イ',
+    kunyomi: 'ゆだ・ねる',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '女 (woman)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 2', notes: '返事を書く・出欠' }
+    ],
+    examples: [
+      { word: '委員', reading: 'いいん', meaning: 'A committee member', source: 'Sou Matome N2' },
+      { word: '委任状', reading: 'いにんじょう', meaning: 'A power of attorney / proxy letter', source: 'Sou Matome N2' },
+      { word: '委員会', reading: 'いいんかい', meaning: 'A committee / board', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-291',
+    char: '祝',
+    meaning: 'Celebrate, Congratulate',
+    onyomi: 'シュク, シュウ',
+    kunyomi: 'いわ・う',
+    levels: ['N2', 'N4'],
+    strokes: 9,
+    radical: '礻 (altar)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 2', notes: '礼状 (Thank-You Letters)' }
+    ],
+    examples: [
+      { word: '祝日', reading: 'しゅくじつ', meaning: 'A holiday / festival day', source: 'Sou Matome N2' },
+      { word: '祝う', reading: 'いわう', meaning: 'To celebrate / congratulate', source: 'Sou Matome N2' },
+      { word: 'お祝い', reading: 'おいわい', meaning: 'A celebration / congratulation / gift', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-292',
+    char: '舞',
+    meaning: 'Dance, Flit, Circle, Wheel',
+    onyomi: 'ブ',
+    kunyomi: 'ま・う, まい',
+    levels: ['N2', 'N3'],
+    strokes: 15,
+    radical: '舛 (box)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 2', notes: '礼状' }
+    ],
+    examples: [
+      { word: '舞台', reading: 'ぶたい', meaning: 'A stage', source: 'Sou Matome N2' },
+      { word: '舞う', reading: 'まう', meaning: 'To dance / flutter', source: 'Sou Matome N2' },
+      { word: 'お見舞い', reading: 'おみまい', meaning: 'An inquiry / get-well visit or gift', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-293',
+    char: '礼',
+    meaning: 'Salute, Bow, Ceremony, Thanks, Remuneration',
+    onyomi: 'レイ, ライ',
+    kunyomi: '-',
+    levels: ['N2', 'N4'],
+    strokes: 5,
+    radical: '礻 (altar)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 2', notes: '礼状' }
+    ],
+    examples: [
+      { word: 'お礼', reading: 'おれい', meaning: 'Thanks / gratitude / reward', source: 'Sou Matome N2' },
+      { word: '礼儀', reading: 'れいぎ', meaning: 'Etiquette / manners', source: 'Sou Matome N2' },
+      { word: '失礼(な)', reading: 'しつれい', meaning: 'Rude / impolite', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-294',
+    char: '忙',
+    meaning: 'Busy, Occupied, Restless',
+    onyomi: 'ボウ, モウ',
+    kunyomi: 'いそが・しい, せわ・しい, おそ・る, うれ・えるさま',
+    levels: ['N2', 'N4'],
+    strokes: 6,
+    radical: '忄 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 2', notes: '礼状' }
+    ],
+    examples: [
+      { word: '多忙(な)', reading: 'たぼう', meaning: 'Extremely busy (with many things)', source: 'Sou Matome N2' },
+      { word: '忙しい', reading: 'いそがしい', meaning: 'Busy', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-295',
+    char: '妻',
+    meaning: 'Wife, Spouse',
+    onyomi: 'サイ',
+    kunyomi: 'つま',
+    levels: ['N2', 'N4'],
+    strokes: 8,
+    radical: '女 (woman)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 2', notes: '礼状' }
+    ],
+    examples: [
+      { word: '夫妻', reading: 'ふさい', meaning: 'Husband and wife / Mr. & Mrs.', source: 'Sou Matome N2' },
+      { word: '妻', reading: 'つま', meaning: 'Wife', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-296',
+    char: '張',
+    meaning: 'Lengthen, Counter for bows & stringed instruments, Stretch, Spread',
+    onyomi: 'チョウ',
+    kunyomi: 'は・る, -は・り, -ば・り',
+    levels: ['N2', 'N4'],
+    strokes: 11,
+    radical: '弓 (bow)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 2', notes: '礼状' }
+    ],
+    examples: [
+      { word: '主張', reading: 'しゅちょう', meaning: 'An assertion / claim / insistence', source: 'Sou Matome N2' },
+      { word: '頑張る', reading: 'がんばる', meaning: 'To try one\'s hardest / persist', source: 'Sou Matome N2' },
+      { word: '張る', reading: 'はる', meaning: 'To stretch / tighten', source: 'Sou Matome N2' },
+      { word: '出張', reading: 'しゅっちょう', meaning: 'A business trip', source: 'Sou Matome N2' },
+      { word: '引っ張る', reading: 'ひっぱる', meaning: 'To pull / draw', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-297',
+    char: '奥',
+    meaning: 'Heart, Interior, Depths, Inside',
+    onyomi: 'オウ',
+    kunyomi: 'おく, おく・まる, くま',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '大 (big)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 2', notes: '礼状' }
+    ],
+    examples: [
+      { word: '奥様', reading: 'おくさま', meaning: 'A wife (respectful form)', source: 'Sou Matome N2' },
+      { word: '奥', reading: 'おく', meaning: 'Inner recesses / interior', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-298',
+    char: '浅',
+    meaning: 'Shallow, Superficial, Wretched, Shameful',
+    onyomi: 'セン',
+    kunyomi: 'あさ・い',
+    levels: ['N2', 'N4'],
+    strokes: 9,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 3', notes: 'メール・はがき・友人へ (E-mails & Letters to Friends)' }
+    ],
+    examples: [
+      { word: '浅い', reading: 'あさい', meaning: 'Shallow', source: 'Sou Matome N2' },
+      { word: '浅ましい', reading: 'あさましい', meaning: 'Shameful / sordid / despicable', source: 'Sou Matome N2' },
+      { word: '浅草', reading: 'あさくさ', meaning: 'Asakusa (place in Tokyo)', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-299',
+    char: '君',
+    meaning: 'Mister, You, Male honorific suffix, Ruler',
+    onyomi: 'クン',
+    kunyomi: 'きみ, -ぎみ',
+    levels: ['N2', 'N4'],
+    strokes: 7,
+    radical: '口 (mouth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 3', notes: 'メール・はがき・友人へ' }
+    ],
+    examples: [
+      { word: '〜君', reading: 'くん', meaning: 'Honorific suffix appended to names of younger males', source: 'Sou Matome N2' },
+      { word: '君', reading: 'きみ', meaning: 'You (informal)', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-300',
+    char: '久',
+    meaning: 'Long time, Old story',
+    onyomi: 'キュウ, ク',
+    kunyomi: 'ひさ・しい',
+    levels: ['N2', 'N3'],
+    strokes: 3,
+    radical: '丿 (slash)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 3', notes: 'メール・はがき・友人へ' }
+    ],
+    examples: [
+      { word: '永久', reading: 'えいきゅう', meaning: 'Eternity / permanence', source: 'Sou Matome N2' },
+      { word: '久しぶり', reading: 'ひさしぶり', meaning: 'Long time no see / after a long time', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-301',
+    char: '互',
+    meaning: 'Mutually, Reciprocally, Together',
+    onyomi: 'ゴ',
+    kunyomi: 'たが・い, かたみ・に',
+    levels: ['N2', 'N3'],
+    strokes: 4,
+    radical: '二 (two)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 3', notes: 'メール・はがき・友人へ' }
+    ],
+    examples: [
+      { word: '相互', reading: 'そうご', meaning: 'Mutual / reciprocal', source: 'Sou Matome N2' },
+      { word: 'お互いに', reading: 'おたがいに', meaning: 'Mutually / each other', source: 'Sou Matome N2' },
+      { word: '交互', reading: 'こうご', meaning: 'Alternation / by turns', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-302',
+    char: '追',
+    meaning: 'Chase, Drive away, Follow, Pursue',
+    onyomi: 'ツイ',
+    kunyomi: 'お・う',
+    levels: ['N2', 'N4'],
+    strokes: 9,
+    radical: '辶 (road)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 3', notes: 'メール・はがき・友人へ' }
+    ],
+    examples: [
+      { word: '追加', reading: 'ついか', meaning: 'An addition / supplement', source: 'Sou Matome N2' },
+      { word: '追い越す', reading: 'おいこす', meaning: 'To overtake / pass', source: 'Sou Matome N2' },
+      { word: '追う', reading: 'おう', meaning: 'To pursue / chase', source: 'Sou Matome N2' },
+      { word: '追い付く', reading: 'おいつく', meaning: 'To catch up with', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-303',
+    char: '伸',
+    meaning: 'Expand, Stretch, Extend, Lengthen',
+    onyomi: 'シン',
+    kunyomi: 'の・びる, の・ばす, の・べる, の・す',
+    levels: ['N2', 'N3'],
+    strokes: 7,
+    radical: '亻 (person)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 3', notes: 'メール・はがき・友人へ' }
+    ],
+    examples: [
+      { word: '追伸', reading: 'ついしん', meaning: 'Postscript / P.S.', source: 'Sou Matome N2' },
+      { word: '伸ばす', reading: 'のばす', meaning: 'To extend / stretch / lengthen', source: 'Sou Matome N2' },
+      { word: '伸びる', reading: 'のびる', meaning: 'To grow / stretch', source: 'Sou Matome N2' },
+      { word: '伸びをする', reading: 'のびをする', meaning: 'To stretch oneself out', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-304',
+    char: '皆',
+    meaning: 'All, Everything',
+    onyomi: 'カイ',
+    kunyomi: 'みな, みんな',
+    levels: ['N2', 'N4'],
+    strokes: 9,
+    radical: '白 (white)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 3', notes: 'メール・はがき・友人へ' }
+    ],
+    examples: [
+      { word: '皆', reading: 'みな', meaning: 'All / everyone', source: 'Sou Matome N2' },
+      { word: '皆さん', reading: 'みなさん', meaning: 'Everyone / ladies and gentlemen', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-305',
+    char: '暮',
+    meaning: 'Evening, Livelihood, Make a living, Spend time',
+    onyomi: 'ボ',
+    kunyomi: 'く・れる, く・らす',
+    levels: ['N2', 'N3'],
+    strokes: 14,
+    radical: '日 (sun)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 3', notes: '先生へ (To a Teacher)' }
+    ],
+    examples: [
+      { word: 'お歳暮', reading: 'おせいぼ', meaning: 'A year-end gift', source: 'Sou Matome N2' },
+      { word: '暮れ', reading: 'くれ', meaning: 'End of the year / dusk', source: 'Sou Matome N2' },
+      { word: '暮らす', reading: 'くらす', meaning: 'To live / dwell', source: 'Sou Matome N2' },
+      { word: '夕暮れ', reading: 'ゆうぐれ', meaning: 'Dusk / nightfall / twilight', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-306',
+    char: '慣',
+    meaning: 'Accustomed, Get used to, Become experienced',
+    onyomi: 'カン',
+    kunyomi: 'な・れる, な・らす',
+    levels: ['N2', 'N3'],
+    strokes: 14,
+    radical: '忄 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 3', notes: '先生へ' }
+    ],
+    examples: [
+      { word: '習慣', reading: 'しゅうかん', meaning: 'A custom / habit', source: 'Sou Matome N2' },
+      { word: '慣れる', reading: 'なれる', meaning: 'To become accustomed to', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-307',
+    char: '活',
+    meaning: 'Living, Activity, Resuscitation',
+    onyomi: 'カツ',
+    kunyomi: 'い・きる, い・かす, い・ける',
+    levels: ['N2', 'N4'],
+    strokes: 9,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 3', notes: '先生へ' }
+    ],
+    examples: [
+      { word: '生活', reading: 'せいかつ', meaning: 'Life / livelihood', source: 'Sou Matome N2' },
+      { word: '活字', reading: 'かつじ', meaning: 'Printing type / font type', source: 'Sou Matome N2' },
+      { word: '活用', reading: 'かつよう', meaning: 'Practical use / application / conjugation', source: 'Sou Matome N2' },
+      { word: '活発(な)', reading: 'かっぱつ', meaning: 'Active / vivacious / lively', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-308',
+    char: '恋',
+    meaning: 'Romance, In love, Yearn for, Miss',
+    onyomi: 'レン',
+    kunyomi: 'こ・う, こい, こい・しい',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '心 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 3', notes: '先生へ' }
+    ],
+    examples: [
+      { word: '恋愛', reading: 'れんあい', meaning: 'Love / romance', source: 'Sou Matome N2' },
+      { word: '恋人', reading: 'こいびと', meaning: 'A lover / sweetheart', source: 'Sou Matome N2' },
+      { word: '恋', reading: 'こい', meaning: 'Romantic love', source: 'Sou Matome N2' },
+      { word: '恋しい', reading: 'こいしい', meaning: 'Homesick / lonely / deeply missed', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-309',
+    char: '健',
+    meaning: 'Healthy, Health, Strength, Persistence',
+    onyomi: 'ケン',
+    kunyomi: 'すこ・やか',
+    levels: ['N2', 'N4'],
+    strokes: 11,
+    radical: '亻 (person)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 3', notes: '先生へ' }
+    ],
+    examples: [
+      { word: '健在', reading: 'けんざい', meaning: 'Being in good health / doing well', source: 'Sou Matome N2' },
+      { word: '健やか(な)', reading: 'すこやか', meaning: 'Sound / healthy (body & mind)', source: 'Sou Matome N2' },
+      { word: '健全(な)', reading: 'けんぜん', meaning: 'Sound / wholesome', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-310',
+    char: '康',
+    meaning: 'Ease, Peace',
+    onyomi: 'コウ',
+    kunyomi: '-',
+    levels: ['N2', 'N4'],
+    strokes: 11,
+    radical: '广 (dotted cliff)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 3', notes: '先生へ' }
+    ],
+    examples: [
+      { word: '健康', reading: 'けんこう', meaning: 'Health', source: 'Sou Matome N2' },
+      { word: '健康保険証', reading: 'けんこうほけんしょう', meaning: 'A health insurance card', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-311',
+    char: '祈',
+    meaning: 'Pray, Wish',
+    onyomi: 'キ',
+    kunyomi: 'いの・る',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '礻 (altar)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 3', notes: '先生へ' }
+    ],
+    examples: [
+      { word: '祈願', reading: 'きがん', meaning: 'A prayer / supplication', source: 'Sou Matome N2' },
+      { word: '祈る', reading: 'いのる', meaning: 'To pray', source: 'Sou Matome N2' },
+      { word: '祈り', reading: 'いのり', meaning: 'A prayer / grace', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-312',
+    char: '福',
+    meaning: 'Blessing, Fortune, Luck, Wealth',
+    onyomi: 'フク',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 13,
+    radical: '礻 (altar)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 4', notes: 'ビジネスメール (Business E-Mails)' }
+    ],
+    examples: [
+      { word: '幸福', reading: 'こうふく', meaning: 'Happiness / blessing', source: 'Sou Matome N2' },
+      { word: '福祉', reading: 'ふくし', meaning: 'Welfare / well-being', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-313',
+    char: '拝',
+    meaning: 'Worship, Adore, Pray to',
+    onyomi: 'ハイ',
+    kunyomi: 'おが・む, おろが・む',
+    levels: ['N2', 'N4'],
+    strokes: 8,
+    radical: '扌 (hand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 4', notes: 'ビジネスメール' }
+    ],
+    examples: [
+      { word: '拝見', reading: 'はいけん', meaning: 'Looking / seeing (humble form)', source: 'Sou Matome N2' },
+      { word: '参拝者', reading: 'さんぱいしゃ', meaning: 'Visitor (to a shrine/temple)', source: 'Sou Matome N2' },
+      { word: '拝借', reading: 'はいしゃく', meaning: 'Borrowing (humble form)', source: 'Sou Matome N2' },
+      { word: '拝む', reading: 'おがむ', meaning: 'To worship / pray with hands joined', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-314',
+    char: '打',
+    meaning: 'Strike, Hit, Knock, Pound, Dozen',
+    onyomi: 'ダ, ダース',
+    kunyomi: 'う・つ, う・ち-, ぶ・つ',
+    levels: ['N2', 'N4'],
+    strokes: 5,
+    radical: '扌 (hand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 4', notes: 'ビジネスメール' }
+    ],
+    examples: [
+      { word: '打者', reading: 'だしゃ', meaning: 'A batter / hitter', source: 'Sou Matome N2' },
+      { word: '打つ', reading: 'うつ', meaning: 'To strike / hit', source: 'Sou Matome N2' },
+      { word: '打ち合わせ', reading: 'うちあわせ', meaning: 'An arrangement in advance / meeting', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-315',
+    char: '伺',
+    meaning: 'Pay respects, Visit, Ask, Inquire, Question',
+    onyomi: 'シ',
+    kunyomi: 'うかが・う',
+    levels: ['N2', 'N3'],
+    strokes: 7,
+    radical: '亻 (person)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 4', notes: 'ビジネスメール' }
+    ],
+    examples: [
+      { word: '伺う', reading: 'うかがう', meaning: 'To visit / ask / hear (humble form)', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-316',
+    char: '幸',
+    meaning: 'Happiness, Blessing, Fortune',
+    onyomi: 'コウ',
+    kunyomi: 'さいわ・い, さち, しあわ・せ',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '干 (dry)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 4', notes: 'ビジネスメール' }
+    ],
+    examples: [
+      { word: '幸運(な)', reading: 'こううん', meaning: 'Lucky / good fortune', source: 'Sou Matome N2' },
+      { word: '幸せ(な)', reading: 'しあわせ', meaning: 'Happy / good fortune', source: 'Sou Matome N2' },
+      { word: '不幸(な)', reading: 'ふこう', meaning: 'Unhappy / unfortunate', source: 'Sou Matome N2' },
+      { word: '幸い', reading: 'さいわい', meaning: 'Good fortune / fortunately', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-317',
+    char: '失',
+    meaning: 'Lose, Error, Fault, Disadvantage',
+    onyomi: 'シツ',
+    kunyomi: 'うしな・う, う・せる',
+    levels: ['N2', 'N4'],
+    strokes: 5,
+    radical: '大 (big)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 4', notes: 'ビジネスメール' }
+    ],
+    examples: [
+      { word: '失礼(な)', reading: 'しつれい', meaning: 'Rude / impolite', source: 'Sou Matome N2' },
+      { word: '失望', reading: 'しつぼう', meaning: 'Despair / disappointment', source: 'Sou Matome N2' },
+      { word: '失業', reading: 'しつぎょう', meaning: 'Unemployment', source: 'Sou Matome N2' },
+      { word: '失う', reading: 'うしなう', meaning: 'To lose', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-318',
+    char: '突',
+    meaning: 'Stab, Protruding, Thrusting, Sudden',
+    onyomi: 'トツ, カ',
+    kunyomi: 'つ・く',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '穴 (cave)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 4', notes: '退職の挨拶 (Retirement Greetings)' }
+    ],
+    examples: [
+      { word: '突然', reading: 'とつぜん', meaning: 'Sudden / abruptly', source: 'Sou Matome N2' },
+      { word: '突き当たり', reading: 'つきあたり', meaning: 'End of (e.g. the road/hallway)', source: 'Sou Matome N2' },
+      { word: '煙突', reading: 'えんとつ', meaning: 'A chimney', source: 'Sou Matome N2' },
+      { word: '突っ込む', reading: 'つっこむ', meaning: 'To thrust into / plunge', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-319',
+    char: '然',
+    meaning: 'Sort of thing, So, If so, In that case',
+    onyomi: 'ゼン, ネン',
+    kunyomi: 'しか, しか・り, しか・し, さ',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '灬 (fire)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 4', notes: '退職の挨拶' }
+    ],
+    examples: [
+      { word: '全然', reading: 'ぜんぜん', meaning: '(not) at all', source: 'Sou Matome N2' },
+      { word: '当然', reading: 'とうぜん', meaning: 'Of course / naturally', source: 'Sou Matome N2' },
+      { word: '自然', reading: 'しぜん', meaning: 'Nature / natural', source: 'Sou Matome N2' },
+      { word: '天然', reading: 'てんねん', meaning: 'Natural / unartificial', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-320',
+    char: '諸',
+    meaning: 'Various, Many, Several, Together',
+    onyomi: 'ショ',
+    kunyomi: 'もろ',
+    levels: ['N2', 'N3'],
+    strokes: 15,
+    radical: '言 (words)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 4', notes: '退職の挨拶' }
+    ],
+    examples: [
+      { word: '諸〜', reading: 'しょ', meaning: 'Various (prefix)', source: 'Sou Matome N2' },
+      { word: '諸般', reading: 'しょはん', meaning: 'Variety / all sorts', source: 'Sou Matome N2' },
+      { word: '諸問題', reading: 'しょもんだい', meaning: 'Various problems', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-321',
+    char: '情',
+    meaning: 'Feelings, Emotion, Passion, Sympathy, Circumstances',
+    onyomi: 'ジョウ, セイ',
+    kunyomi: 'なさ・け',
+    levels: ['N2', 'N4'],
+    strokes: 11,
+    radical: '忄 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 4', notes: '退職の挨拶' }
+    ],
+    examples: [
+      { word: '事情', reading: 'じじょう', meaning: 'Circumstances / condition', source: 'Sou Matome N2' },
+      { word: '表情', reading: 'ひょうじょう', meaning: 'A facial expression', source: 'Sou Matome N2' },
+      { word: '情け', reading: 'なさけ', meaning: 'Sympathy / mercy / compassion', source: 'Sou Matome N2' },
+      { word: '友情', reading: 'ゆうじょう', meaning: 'A friendship', source: 'Sou Matome N2' },
+      { word: '情けない', reading: 'なさけない', meaning: 'Woeful / disgraceful / pitiful', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-322',
+    char: '退',
+    meaning: 'Retreat, Withdraw, Retire, Resign',
+    onyomi: 'タイ',
+    kunyomi: 'しりぞ・く, しりぞ・ける, ひ・く, の・く, の・ける, ど・く',
+    levels: ['N2', 'N4'],
+    strokes: 9,
+    radical: '辶 (road)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 4', notes: '退職の挨拶' }
+    ],
+    examples: [
+      { word: '引退', reading: 'いんたい', meaning: 'Retirement (from sports/public life)', source: 'Sou Matome N2' },
+      { word: '退学', reading: 'たいがく', meaning: 'Withdrawal from school', source: 'Sou Matome N2' },
+      { word: '退院', reading: 'たいいん', meaning: 'Discharge from hospital', source: 'Sou Matome N2' },
+      { word: '退く', reading: 'しりぞく', meaning: 'To retreat / withdraw', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-323',
+    char: '職',
+    meaning: 'Post, Employment, Work',
+    onyomi: 'ショク, ソク',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 18,
+    radical: '耳 (ear)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 4', notes: '退職の挨拶' }
+    ],
+    examples: [
+      { word: '職業', reading: 'しょくぎょう', meaning: 'An occupation / profession', source: 'Sou Matome N2' },
+      { word: '退職', reading: 'たいしょく', meaning: 'Retirement / resigning', source: 'Sou Matome N2' },
+      { word: '職場', reading: 'しょくば', meaning: 'A workplace', source: 'Sou Matome N2' },
+      { word: '職人', reading: 'しょくにん', meaning: 'An artisan / craftsman', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-324',
+    char: '紹',
+    meaning: 'Introduce, Inherit, Help',
+    onyomi: 'ショウ',
+    kunyomi: '-',
+    levels: ['N2', 'N4'],
+    strokes: 11,
+    radical: '糸 (silk)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 4', notes: '退職の挨拶' }
+    ],
+    examples: [
+      { word: '紹介', reading: 'しょうかい', meaning: 'Introduction / referral', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-325',
+    char: '介',
+    meaning: 'Jammed in, Shellfish, Mediate, Concern oneself with',
+    onyomi: 'カイ',
+    kunyomi: '-',
+    levels: ['N2', 'N4'],
+    strokes: 4,
+    radical: '人 (person)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 4', notes: '退職の挨拶' }
+    ],
+    examples: [
+      { word: '介入', reading: 'かいにゅう', meaning: 'Intervention', source: 'Sou Matome N2' },
+      { word: '介護', reading: 'かいご', meaning: 'Nursing care / caregiving', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-326',
+    char: '次',
+    meaning: 'Next, Order, Sequence',
+    onyomi: 'ジ, シ',
+    kunyomi: 'つ・ぐ, つぎ',
+    levels: ['N2', 'N4'],
+    strokes: 6,
+    radical: '欠 (lack)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 5', notes: '答案用紙 (Answer Sheets & Test Papers)' }
+    ],
+    examples: [
+      { word: '一次試験', reading: 'いちじしけん', meaning: 'The first examination', source: 'Sou Matome N2' },
+      { word: '次第', reading: 'しだい', meaning: 'As soon as / depending on (the circumstances)', source: 'Sou Matome N2' },
+      { word: '次', reading: 'つぎ', meaning: 'The next / following', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-327',
+    char: '章',
+    meaning: 'Badge, Chapter, Composition, Poem, Design',
+    onyomi: 'ショウ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 11,
+    radical: '立 (stand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 5', notes: '答案用紙' }
+    ],
+    examples: [
+      { word: '文章', reading: 'ぶんしょう', meaning: 'A sentence / composition / writing', source: 'Sou Matome N2' },
+      { word: '章', reading: 'しょう', meaning: 'A chapter / badge', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-328',
+    char: '対',
+    meaning: 'Vis-a-vis, Opposite, Even, Equal, Versus',
+    onyomi: 'タイ, ツイ',
+    kunyomi: 'むか・う, こた・える, そ・ろい, つれあ・い, なら・ぶ',
+    levels: ['N2', 'N4'],
+    strokes: 7,
+    radical: '寸 (inch)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 5', notes: '答案用紙' }
+    ],
+    examples: [
+      { word: '対する', reading: 'たいする', meaning: 'Toward / against / regarding', source: 'Sou Matome N2' },
+      { word: '〜対〜', reading: 'たい', meaning: '... versus ...', source: 'Sou Matome N2' },
+      { word: '対', reading: 'つい', meaning: 'A pair / couple', source: 'Sou Matome N2' },
+      { word: '反対', reading: 'はんたい', meaning: 'Opposition / the reverse / contrary', source: 'Sou Matome N2' },
+      { word: '対照的(な)', reading: 'たいしょうてき', meaning: 'Contrasting', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-329',
+    char: '最',
+    meaning: 'Utmost, Most, Extreme',
+    onyomi: 'サイ, シュ',
+    kunyomi: 'もっと・も, つま',
+    levels: ['N2', 'N4'],
+    strokes: 12,
+    radical: '日 (sun)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 5', notes: '答案用紙' }
+    ],
+    examples: [
+      { word: '最初', reading: 'さいしょ', meaning: 'The first / beginning', source: 'Sou Matome N2' },
+      { word: '最近', reading: 'さいきん', meaning: 'Recently / lately', source: 'Sou Matome N2' },
+      { word: '最後', reading: 'さいご', meaning: 'The last / end', source: 'Sou Matome N2' },
+      { word: '最も', reading: 'もっとも', meaning: 'Most / extremely', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-330',
+    char: '適',
+    meaning: 'Suitable, Capable, Qualified, Well-timed',
+    onyomi: 'テキ',
+    kunyomi: 'かな・う',
+    levels: ['N2', 'N3'],
+    strokes: 14,
+    radical: '辶 (road)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 5', notes: '答案用紙' }
+    ],
+    examples: [
+      { word: '適当(な)', reading: 'てきとう', meaning: 'Appropriate / reasonable / suitable', source: 'Sou Matome N2' },
+      { word: '適する', reading: 'てきする', meaning: 'To suit / be fit for', source: 'Sou Matome N2' },
+      { word: '適切(な)', reading: 'てきせつ', meaning: 'Appropriate / proper', source: 'Sou Matome N2' },
+      { word: '適度(な)', reading: 'てきど', meaning: 'Moderate / proper amount', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-331',
+    char: '誤',
+    meaning: 'Mistake, Err, Do wrong, Mislead',
+    onyomi: 'ゴ',
+    kunyomi: 'あやま・る, -あやま・る',
+    levels: ['N2', 'N3'],
+    strokes: 14,
+    radical: '言 (words)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 5', notes: '答案用紙' }
+    ],
+    examples: [
+      { word: '誤解', reading: 'ごかい', meaning: 'A misunderstanding', source: 'Sou Matome N2' },
+      { word: '誤り', reading: 'あやまり', meaning: 'A mistake / error', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-332',
+    char: '直',
+    meaning: 'Straightaway, Honesty, Frankness, Repair',
+    onyomi: 'チョク, ジキ, ジカ',
+    kunyomi: 'ただ・ちに, なお・す, -なお・す, なお・る, なお・き, す・ぐ',
+    levels: ['N2', 'N4'],
+    strokes: 8,
+    radical: '目 (eye)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 5', notes: '答案用紙' }
+    ],
+    examples: [
+      { word: '直線', reading: 'ちょくせん', meaning: 'A straight line', source: 'Sou Matome N2' },
+      { word: '直す', reading: 'なおす', meaning: 'To fix / repair / alter', source: 'Sou Matome N2' },
+      { word: '直ちに', reading: 'ただちに', meaning: 'Immediately / at once', source: 'Sou Matome N2' },
+      { word: '正直(な)', reading: 'しょうじき', meaning: 'Honest / frank', source: 'Sou Matome N2' },
+      { word: '素直(な)', reading: 'すなお', meaning: 'Obedient / docile / submissive', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-333',
+    char: '例',
+    meaning: 'Example, Custom, Usage, Precedent',
+    onyomi: 'レイ',
+    kunyomi: 'たと・える, たと・えば',
+    levels: ['N2', 'N4'],
+    strokes: 8,
+    radical: '亻 (person)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 5', notes: '文法問題 (Grammar Questions)' }
+    ],
+    examples: [
+      { word: '例', reading: 'れい', meaning: 'An example', source: 'Sou Matome N2' },
+      { word: '実例', reading: 'じつれい', meaning: 'An example / instance', source: 'Sou Matome N2' },
+      { word: '例えば', reading: 'たとえば', meaning: 'For example', source: 'Sou Matome N2' },
+      { word: '例外', reading: 'れいがい', meaning: 'An exception', source: 'Sou Matome N2' },
+      { word: '例える', reading: 'たとえる', meaning: 'To compare / liken / illustrate', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-334',
+    char: '詞',
+    meaning: 'Part of speech, Words, Poetry',
+    onyomi: 'シ',
+    kunyomi: 'ことば',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '言 (words)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 5', notes: '文法問題' }
+    ],
+    examples: [
+      { word: '名詞', reading: 'めいし', meaning: 'A noun', source: 'Sou Matome N2' },
+      { word: '動詞', reading: 'どうし', meaning: 'A verb', source: 'Sou Matome N2' },
+      { word: '自動詞', reading: 'じどうし', meaning: 'An intransitive verb', source: 'Sou Matome N2' },
+      { word: '他動詞', reading: 'たどうし', meaning: 'A transitive verb', source: 'Sou Matome N2' },
+      { word: '形容詞', reading: 'けいようし', meaning: 'An adjective', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-335',
+    char: '形',
+    meaning: 'Shape, Form, Style',
+    onyomi: 'ケイ, ギョウ',
+    kunyomi: 'かた, -がた, かたち, なり',
+    levels: ['N2', 'N4'],
+    strokes: 7,
+    radical: '彡 (hair)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 5', notes: '文法問題' }
+    ],
+    examples: [
+      { word: '形式', reading: 'けいしき', meaning: 'Form / formality', source: 'Sou Matome N2' },
+      { word: '図形', reading: 'ずけい', meaning: 'A diagram / geometric figure', source: 'Sou Matome N2' },
+      { word: '形', reading: 'かたち', meaning: 'A shape / form', source: 'Sou Matome N2' },
+      { word: '人形', reading: 'にんぎょう', meaning: 'A doll / puppet', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-336',
+    char: '助',
+    meaning: 'Help, Rescue, Assist',
+    onyomi: 'ジョ',
+    kunyomi: 'たす・かる, たす・ける, すけ',
+    levels: ['N2', 'N3'],
+    strokes: 7,
+    radical: '力 (power)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 5', notes: '文法問題' }
+    ],
+    examples: [
+      { word: '救助', reading: 'きゅうじょ', meaning: 'Rescue / help / aid', source: 'Sou Matome N2' },
+      { word: '助手', reading: 'じょしゅ', meaning: 'An assistant / helper', source: 'Sou Matome N2' },
+      { word: '助かる', reading: 'たすかる', meaning: 'To be saved / be helped', source: 'Sou Matome N2' },
+      { word: '助詞', reading: 'じょし', meaning: 'A particle (preposition/postposition)', source: 'Sou Matome N2' },
+      { word: '助ける', reading: 'たすける', meaning: 'To help / rescue', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-337',
+    char: '副',
+    meaning: 'Vice-, Assistant, Aide, Duplicate',
+    onyomi: 'フク',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 11,
+    radical: '刂 (knife)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 5', notes: '文法問題' }
+    ],
+    examples: [
+      { word: '副詞', reading: 'ふくし', meaning: 'An adverb', source: 'Sou Matome N2' },
+      { word: '副〜', reading: 'ふく', meaning: 'Vice- / assistant (prefix)', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-338',
+    char: '囲',
+    meaning: 'Surround, Besiege, Enclosure',
+    onyomi: 'イ',
+    kunyomi: 'かこ・む, かこ・う, かこ・い',
+    levels: ['N2', 'N3'],
+    strokes: 7,
+    radical: '囗 (enclosure)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 5', notes: '文法問題' }
+    ],
+    examples: [
+      { word: '周囲', reading: 'しゅうい', meaning: 'Perimeter / neighborhood / surroundings', source: 'Sou Matome N2' },
+      { word: '囲む', reading: 'かこむ', meaning: 'To surround / encircle', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-339',
+    char: '夢',
+    meaning: 'Dream, Vision, Illusion',
+    onyomi: 'ム, ボウ',
+    kunyomi: 'ゆめ, ゆめ・みる, くら・い',
+    levels: ['N2', 'N3'],
+    strokes: 13,
+    radical: '夕 (evening)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・私の夢 (Composition & Dreams)' }
+    ],
+    examples: [
+      { word: '夢中', reading: 'むちゅう', meaning: 'Be engrossed / absorbed', source: 'Sou Matome N2' },
+      { word: '夢', reading: 'ゆめ', meaning: 'A dream', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-340',
+    char: '専',
+    meaning: 'Specialty, Exclusive, Mainly, Solely',
+    onyomi: 'セン',
+    kunyomi: 'もっぱ・ら',
+    levels: ['N2', 'N3'],
+    strokes: 9,
+    radical: '寸 (inch)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・私の夢' }
+    ],
+    examples: [
+      { word: '専門', reading: 'せんもん', meaning: 'A specialty / major', source: 'Sou Matome N2' },
+      { word: '専攻', reading: 'せんこう', meaning: 'A major / academic specialty', source: 'Sou Matome N2' },
+      { word: '専用', reading: 'せんよう', meaning: 'Exclusive use', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-341',
+    char: '史',
+    meaning: 'History, Chronicle',
+    onyomi: 'シ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 5,
+    radical: '口 (mouth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・私の夢' }
+    ],
+    examples: [
+      { word: '歴史', reading: 'れきし', meaning: 'History', source: 'Sou Matome N2' },
+      { word: '〜史', reading: 'し', meaning: '... history (suffix)', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-342',
+    char: '域',
+    meaning: 'Range, Region, Limits, Stage',
+    onyomi: 'イキ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 11,
+    radical: '土 (earth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・私の夢' }
+    ],
+    examples: [
+      { word: '区域', reading: 'くいき', meaning: 'An area / zone', source: 'Sou Matome N2' },
+      { word: '地域', reading: 'ちいき', meaning: 'An area / region', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-343',
+    char: '祭',
+    meaning: 'Ritual, Offer prayers, Celebrate, Festival',
+    onyomi: 'サイ',
+    kunyomi: 'まつ・る, まつ・り, まつり',
+    levels: ['N2', 'N3'],
+    strokes: 11,
+    radical: '示 (altar)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・私の夢' }
+    ],
+    examples: [
+      { word: '祭日', reading: 'さいじつ', meaning: 'A national holiday / festival day', source: 'Sou Matome N2' },
+      { word: '(お)祭り', reading: 'おまつり', meaning: 'A festival', source: 'Sou Matome N2' },
+      { word: '〜祭', reading: 'さい', meaning: '... festival (suffix)', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-344',
+    char: '査',
+    meaning: 'Investigate',
+    onyomi: 'サ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 9,
+    radical: '木 (tree)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・私の夢' }
+    ],
+    examples: [
+      { word: '検査', reading: 'けんさ', meaning: 'An inspection / test', source: 'Sou Matome N2' },
+      { word: '審査', reading: 'しんさ', meaning: 'Examination / judgement / screening', source: 'Sou Matome N2' },
+      { word: '調査', reading: 'ちょうさ', meaning: 'An investigation / inquiry / survey', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-345',
+    char: '戦',
+    meaning: 'War, Battle, Match',
+    onyomi: 'セン',
+    kunyomi: 'たたか・う, おのの・く, そよ・ぐ, わなな・く',
+    levels: ['N2', 'N4'],
+    strokes: 13,
+    radical: '戈 (spear)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・私の夢' }
+    ],
+    examples: [
+      { word: '〜戦', reading: 'せん', meaning: 'A fight / match / tournament', source: 'Sou Matome N2' },
+      { word: '戦争', reading: 'せんそう', meaning: 'A war', source: 'Sou Matome N2' },
+      { word: '大戦', reading: 'たいせん', meaning: 'A major war (e.g. World War)', source: 'Sou Matome N2' },
+      { word: '戦う', reading: 'たたかう', meaning: 'To fight', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-346',
+    char: '争',
+    meaning: 'Contend, Dispute, Argue',
+    onyomi: 'ソウ',
+    kunyomi: 'あらそ・う, いか・でか',
+    levels: ['N2', 'N4'],
+    strokes: 6,
+    radical: '亅 (hook)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・私の夢' }
+    ],
+    examples: [
+      { word: '競争', reading: 'きょうそう', meaning: 'Competition / race', source: 'Sou Matome N2' },
+      { word: '争う', reading: 'あらそう', meaning: 'To fight / dispute / compete', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-347',
+    char: '将',
+    meaning: 'Leader, Commander, General, Future',
+    onyomi: 'ショウ, ソウ',
+    kunyomi: 'まさ・に, はた, まさに, ひきい・る, もって',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '寸 (inch)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・私の夢' }
+    ],
+    examples: [
+      { word: '将来', reading: 'しょうらい', meaning: 'Future', source: 'Sou Matome N2' },
+      { word: '将棋', reading: 'しょうぎ', meaning: 'Shogi (Japanese chess)', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-348',
+    char: '橋',
+    meaning: 'Bridge',
+    onyomi: 'キョウ',
+    kunyomi: 'はし',
+    levels: ['N2', 'N4'],
+    strokes: 16,
+    radical: '木 (tree)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・私の夢' }
+    ],
+    examples: [
+      { word: '歩道橋', reading: 'ほどうきょう', meaning: 'A footbridge / pedestrian overpass', source: 'Sou Matome N2' },
+      { word: '橋', reading: 'はし', meaning: 'A bridge', source: 'Sou Matome N2' },
+      { word: '鉄橋', reading: 'てっきょう', meaning: 'A railroad bridge / iron bridge', source: 'Sou Matome N2' },
+      { word: '架け橋', reading: 'かけはし', meaning: 'A bridge / go-between / mediator', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-349',
+    char: '憎',
+    meaning: 'Hate, Detest',
+    onyomi: 'ゾウ',
+    kunyomi: 'にく・む, にく・い, にく・らしい, にく・しみ',
+    levels: ['N2', 'N3'],
+    strokes: 14,
+    radical: '忄 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・感情 (Feelings & Emotions)' }
+    ],
+    examples: [
+      { word: '憎い', reading: 'にくい', meaning: 'Detestable', source: 'Sou Matome N2' },
+      { word: '憎しみ', reading: 'にくしみ', meaning: 'Hatred / enmity', source: 'Sou Matome N2' },
+      { word: '憎む', reading: 'にくむ', meaning: 'To detest / hate', source: 'Sou Matome N2' },
+      { word: '憎らしい', reading: 'にくらしい', meaning: 'Detestable / irritating', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-350',
+    char: '殺',
+    meaning: 'Kill, Murder, Butcher',
+    onyomi: 'サツ, サイ, セツ',
+    kunyomi: 'ころ・す, -ごろ・し, そ・ぐ',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '殳 (strike)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・感情' }
+    ],
+    examples: [
+      { word: '自殺', reading: 'じさつ', meaning: 'A suicide', source: 'Sou Matome N2' },
+      { word: '殺す', reading: 'ころす', meaning: 'To kill / murder', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-351',
+    char: '悲',
+    meaning: 'Grieve, Sad, Deplore, Regret',
+    onyomi: 'ヒ',
+    kunyomi: 'かな・しい, かな・しむ',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '心 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・感情' }
+    ],
+    examples: [
+      { word: '悲観', reading: 'ひかん', meaning: 'Pessimism', source: 'Sou Matome N2' },
+      { word: '悲しい', reading: 'かなしい', meaning: 'Sad', source: 'Sou Matome N2' },
+      { word: '悲しむ', reading: 'かなしむ', meaning: 'To grieve / lament', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-352',
+    char: '恥',
+    meaning: 'Shame, Dishonor',
+    onyomi: 'チ',
+    kunyomi: 'は・じる, はじ, は・ずかしい, は・づかしい',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '心 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・感情' }
+    ],
+    examples: [
+      { word: '恥', reading: 'はじ', meaning: 'Shame / humiliation', source: 'Sou Matome N2' },
+      { word: '恥ずかしい', reading: 'はずかしい', meaning: 'To be ashamed / embarrassed', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-353',
+    char: '感',
+    meaning: 'Emotion, Feeling, Sensation',
+    onyomi: 'カン',
+    kunyomi: '-',
+    levels: ['N2', 'N4'],
+    strokes: 13,
+    radical: '心 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・感情' }
+    ],
+    examples: [
+      { word: '感じる', reading: 'かんじる', meaning: 'To feel', source: 'Sou Matome N2' },
+      { word: '感心(な)', reading: 'かんしん', meaning: 'Admirable / praise-worthy', source: 'Sou Matome N2' },
+      { word: '感情', reading: 'かんじょう', meaning: 'Emotion / feelings', source: 'Sou Matome N2' },
+      { word: '感動', reading: 'かんどう', meaning: 'Deep emotion / being deeply moved', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-354',
+    char: '球',
+    meaning: 'Sphere, Ball',
+    onyomi: 'キュウ',
+    kunyomi: 'たま',
+    levels: ['N2', 'N3'],
+    strokes: 11,
+    radical: '玉 (jade)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・感情' }
+    ],
+    examples: [
+      { word: '地球', reading: 'ちきゅう', meaning: 'The earth / globe', source: 'Sou Matome N2' },
+      { word: '野球', reading: 'やきゅう', meaning: 'A baseball', source: 'Sou Matome N2' },
+      { word: '電球', reading: 'でんきゅう', meaning: 'A light bulb', source: 'Sou Matome N2' },
+      { word: '球', reading: 'たま', meaning: 'A ball / sphere', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-355',
+    char: '和',
+    meaning: 'Harmony, Japanese style, Peace, Soften',
+    onyomi: 'ワ, オ, カ',
+    kunyomi: 'やわ・らぐ, やわ・らげる, なご・む, なご・やか',
+    levels: ['N2', 'N4'],
+    strokes: 8,
+    radical: '口 (mouth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・感情' }
+    ],
+    examples: [
+      { word: '平和', reading: 'へいわ', meaning: 'Peace / harmony', source: 'Sou Matome N2' },
+      { word: '和式', reading: 'わしき', meaning: 'Japanese style', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-356',
+    char: '愛',
+    meaning: 'Love, Affection, Favorite',
+    onyomi: 'アイ',
+    kunyomi: 'いと・しい, かな・しい, め・でる, お・しむ, まな',
+    levels: ['N2', 'N3'],
+    strokes: 13,
+    radical: '心 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・感情' }
+    ],
+    examples: [
+      { word: '愛', reading: 'あい', meaning: 'Love', source: 'Sou Matome N2' },
+      { word: '愛情', reading: 'あいじょう', meaning: 'Love / affection', source: 'Sou Matome N2' },
+      { word: '愛する', reading: 'あいする', meaning: 'To love', source: 'Sou Matome N2' },
+      { word: '恋愛', reading: 'れんあい', meaning: 'Love / romance', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-357',
+    char: '仲',
+    meaning: 'Go-between, Relationship',
+    onyomi: 'チュウ',
+    kunyomi: 'なか',
+    levels: ['N2', 'N3'],
+    strokes: 6,
+    radical: '亻 (person)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・感情' }
+    ],
+    examples: [
+      { word: '仲', reading: 'なか', meaning: 'Relations / terms', source: 'Sou Matome N2' },
+      { word: '仲間', reading: 'なかま', meaning: 'A friend / circle / comrade', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-358',
+    char: '良',
+    meaning: 'Good, Pleasing, Skilled',
+    onyomi: 'リョウ',
+    kunyomi: 'よ・い, -よ・い, い・い, -い・い',
+    levels: ['N2', 'N4'],
+    strokes: 7,
+    radical: '艮 (stopping)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Day 6', notes: '作文・感情' }
+    ],
+    examples: [
+      { word: '改良', reading: 'かいりょう', meaning: 'Improvement / reform', source: 'Sou Matome N2' },
+      { word: '良い', reading: 'よい', meaning: 'Good', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-359',
+    char: '腹',
+    meaning: 'Abdomen, Belly, Stomach',
+    onyomi: 'フク',
+    kunyomi: 'はら',
+    levels: ['N2', 'N3'],
+    strokes: 13,
+    radical: '月 (meat)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Review', notes: '問診票 (Medical Examination Sheet)' }
+    ],
+    examples: [
+      { word: '腹痛', reading: 'ふくつう', meaning: 'Stomachache', source: 'Sou Matome N2' },
+      { word: '腹', reading: 'はら', meaning: 'Abdomen / belly', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-360',
+    char: '背',
+    meaning: 'Back, Behind, Disobey, Defy',
+    onyomi: 'ハイ',
+    kunyomi: 'せ, せい, そむ・く, そむ・ける',
+    levels: ['N2', 'N3'],
+    strokes: 9,
+    radical: '月 (meat)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Review', notes: '問診票' }
+    ],
+    examples: [
+      { word: '背中', reading: 'せなか', meaning: 'A back (of the body)', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-361',
+    char: '息',
+    meaning: 'Breath, Respiration, Son, Interest (on money)',
+    onyomi: 'ソク',
+    kunyomi: 'いき',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '心 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Review', notes: '問診票' }
+    ],
+    examples: [
+      { word: '休息', reading: 'きゅうそく', meaning: 'Rest / relaxation', source: 'Sou Matome N2' },
+      { word: '息', reading: 'いき', meaning: 'A breath', source: 'Sou Matome N2' },
+      { word: '息子', reading: 'むすこ', meaning: 'A son', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-362',
+    char: '血',
+    meaning: 'Blood',
+    onyomi: 'ケツ',
+    kunyomi: 'ち',
+    levels: ['N2', 'N3'],
+    strokes: 6,
+    radical: '血 (blood)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Review', notes: '問診票' }
+    ],
+    examples: [
+      { word: '高血圧', reading: 'こうけつあつ', meaning: 'High blood pressure', source: 'Sou Matome N2' },
+      { word: '血', reading: 'ち', meaning: 'Blood', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-363',
+    char: '圧',
+    meaning: 'Pressure, Push, Overwhelm, Oppress',
+    onyomi: 'アツ, エン, オウ',
+    kunyomi: 'お・す, へ・す, おさ・える, おさ・まる',
+    levels: ['N2', 'N3'],
+    strokes: 5,
+    radical: '土 (earth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Review', notes: '問診票' }
+    ],
+    examples: [
+      { word: '圧力', reading: 'あつりょく', meaning: 'Pressure', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-364',
+    char: '臓',
+    meaning: 'Entrails, Viscera, Bowels',
+    onyomi: 'ゾウ',
+    kunyomi: 'はらわた',
+    levels: ['N2', 'N3'],
+    strokes: 19,
+    radical: '月 (meat)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Review', notes: '問診票' }
+    ],
+    examples: [
+      { word: '心臓', reading: 'しんぞう', meaning: 'A heart', source: 'Sou Matome N2' },
+      { word: '内臓', reading: 'ないぞう', meaning: 'Internal organs / viscera', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-365',
+    char: '液',
+    meaning: 'Fluid, Liquid, Juice, Sap',
+    onyomi: 'エキ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 11,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Review', notes: '問診票' }
+    ],
+    examples: [
+      { word: '血液', reading: 'けつえき', meaning: 'Blood', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-366',
+    char: '鼻',
+    meaning: 'Nose, Snout',
+    onyomi: 'ビ',
+    kunyomi: 'はな',
+    levels: ['N2', 'N3'],
+    strokes: 14,
+    radical: '鼻 (nose)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Review', notes: '問診票' }
+    ],
+    examples: [
+      { word: '耳鼻科', reading: 'じびか', meaning: 'Otorhinolaryngology / ENT clinic', source: 'Sou Matome N2' },
+      { word: '鼻', reading: 'はな', meaning: 'A nose', source: 'Sou Matome N2' },
+      { word: '鼻水', reading: 'はなみず', meaning: 'Nasal mucus / runny nose', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-367',
+    char: '吸',
+    meaning: 'Suck, Imbibe, Inhale, Sip',
+    onyomi: 'キュウ',
+    kunyomi: 'す・う',
+    levels: ['N2', 'N3'],
+    strokes: 6,
+    radical: '口 (mouth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Review', notes: '問診票' }
+    ],
+    examples: [
+      { word: '呼吸', reading: 'こきゅう', meaning: 'Respiration / breathing', source: 'Sou Matome N2' },
+      { word: '吸収', reading: 'きゅうしゅう', meaning: 'Absorption', source: 'Sou Matome N2' },
+      { word: '吸う', reading: 'すう', meaning: 'To breathe / inhale / smoke', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-368',
+    char: '眠',
+    meaning: 'Sleep, Die, Sleepy',
+    onyomi: 'ミン',
+    kunyomi: 'ねむ・る, ねむ・い',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '目 (eye)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Review', notes: '問診票' }
+    ],
+    examples: [
+      { word: '睡眠', reading: 'すいみん', meaning: 'A sleep', source: 'Sou Matome N2' },
+      { word: '眠い', reading: 'ねむい', meaning: 'Sleepy', source: 'Sou Matome N2' },
+      { word: '眠る', reading: 'ねむる', meaning: 'To sleep', source: 'Sou Matome N2' },
+      { word: '居眠り', reading: 'いねむり', meaning: 'Doze / nodding off', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-369',
+    char: '欲',
+    meaning: 'Longing, Covetousness, Greed, Passion',
+    onyomi: 'ヨク',
+    kunyomi: 'ほっ・する, ほ・しい',
+    levels: ['N2', 'N3'],
+    strokes: 11,
+    radical: '欠 (lack)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Review', notes: '問診票' }
+    ],
+    examples: [
+      { word: '食欲', reading: 'しょくよく', meaning: 'Appetite', source: 'Sou Matome N2' },
+      { word: '欲張り', reading: 'よくばり', meaning: 'Greed / greedy person', source: 'Sou Matome N2' },
+      { word: '欲しい', reading: 'ほしい', meaning: 'Want / desire', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-370',
+    char: '疲',
+    meaning: 'Exhausted, Tire, Weary',
+    onyomi: 'ヒ',
+    kunyomi: 'つか・れる, -づか・れ, つか・らす',
+    levels: ['N2', 'N4'],
+    strokes: 10,
+    radical: '疒 (sickness)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Review', notes: '問診票' }
+    ],
+    examples: [
+      { word: '疲れる', reading: 'つかれる', meaning: 'To get tired / exhausted', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-371',
+    char: '胃',
+    meaning: 'Stomach, Paunch, Crop',
+    onyomi: 'イ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 9,
+    radical: '田 (rice field)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Review', notes: '問診票' }
+    ],
+    examples: [
+      { word: '胃', reading: 'い', meaning: 'A stomach', source: 'Sou Matome N2' },
+      { word: '胃腸', reading: 'いちょう', meaning: 'Stomach and intestines / digestive organs', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-372',
+    char: '胸',
+    meaning: 'Bosom, Breast, Chest, Heart, Feelings',
+    onyomi: 'キョウ',
+    kunyomi: 'むね, むな-',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '月 (meat)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 4 Review', notes: '問診票' }
+    ],
+    examples: [
+      { word: '胸', reading: 'むね', meaning: 'A chest / breast', source: 'Sou Matome N2' }
+    ]
   }
 ];
