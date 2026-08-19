@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NihonHub | All-in-One JLPT N5 to N2 Japanese Learning Hub</title>
+  
+  <!-- SEO & Open Graph Meta Tags -->
+  <meta name="description" content="A comprehensive, cumulative Japanese learning portal for JLPT N5, N4, N3, and N2. Features Kanji, Vocabulary, Grammar, interactive Flashcards, Quizzes, Furigana toggles, and native speech audio.">
+  <meta name="keywords" content="Japanese, JLPT, N5, N4, N3, N2, Kanji, Grammar, Vocabulary, Learn Japanese, Flashcards, Quiz">
+  <meta name="author" content="NihonHub">
+  <meta property="og:title" content="NihonHub - JLPT N5 to N2 Learning Platform">
+  <meta property="og:description" content="Master Japanese from N5 foundation through N2 upper-intermediate with cumulative study paths, interactive SRS flashcards, and native audio.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛩️</text></svg>">
+
+  <!-- Google Fonts & Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- Logo -->
+      <div class="brand-logo" onclick="window.NihonHub.switchTab('dashboard')" style="cursor: pointer;">
+        <div class="logo-torii">⛩️</div>
+        <div class="logo-text">Nihon<span>Hub</span></div>
+      </div>
+
+      <!-- Global Live Search -->
+      <div class="header-center-search">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="global-search-input" 
+            class="search-input" 
+            placeholder="Search Kanji, Vocab, Grammar (e.g., 行く, taberu, eat)..."
+            autocomplete="off"
+          />
+          <kbd class="search-kbd">/</kbd>
+        </div>
+      </div>
+
+      <!-- Right Controls & Badges -->
+      <div class="header-right-controls">
+        <div class="header-badge-stat" title="Daily Study Streak">
+          <span>🔥</span>
+          <span id="streak-count-badge">1 🔥</span>
+        </div>
+        <div class="header-badge-stat" title="Mastered Items">
+          <span>✨</span>
+          <span id="mastered-count-badge">0 ✨</span>
+        </div>
+        <button id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle Light/Dark Theme">
+          ☀️ Light
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-container">
+    
+    <!-- Top Control Bar (Level Filters & Global Toggles) -->
+    <div class="control-bar card-glass">
+      <!-- JLPT Level Selector -->
+      <div class="level-selector-group">
+        <span class="level-group-label">Level:</span>
+        <button class="level-pill active" data-level="ALL">All (N5-N2)</button>
+        <button class="level-pill" data-level="N5">N5</button>
+        <button class="level-pill" data-level="N4">N4</button>
+        <button class="level-pill" data-level="N3">N3</button>
+        <button class="level-pill" data-level="N2">N2</button>
+      </div>
+
+      <!-- Feature Toggles -->
+      <div class="toggles-group">
+        <label class="toggle-switch-label" title="When active, higher levels include all previous levels below them">
+          <input type="checkbox" id="cumulative-toggle" checked>
+          <span>Cumulative Mode (All-in-One)</span>
+        </label>
+        <label class="toggle-switch-label" title="Show or hide reading annotations above Kanji">
+          <input type="checkbox" id="furigana-toggle" checked>
+          <span>Furigana (ふりがな)</span>
+        </label>
+        <label class="toggle-switch-label" title="Show or hide Latin alphabet pronunciation guide">
+          <input type="checkbox" id="romaji-toggle" checked>
+          <span>Romaji</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Main Navigation Tabs -->
+    <nav class="main-nav-tabs" aria-label="Main Navigation">
+      <button class="nav-tab-btn active" data-tab="dashboard">
+        <span>📊</span> Dashboard
+      </button>
+      <button class="nav-tab-btn" data-tab="kanji">
+        <span>漢字</span> Kanji Matrix
+      </button>
+      <button class="nav-tab-btn" data-tab="vocab">
+        <span>語彙</span> Vocabulary Vault
+      </button>
+      <button class="nav-tab-btn" data-tab="grammar">
+        <span>文法</span> Grammar Guide
+      </button>
+      <button class="nav-tab-btn" data-tab="flashcards">
+        <span>🗂️</span> Flashcards (SRS)
+      </button>
+      <button class="nav-tab-btn" data-tab="quiz">
+        <span>📝</span> Mock Exams & Quiz
+      </button>
+      <button class="nav-tab-btn" data-tab="kana">
+        <span>あ/ア</span> Kana Tables
+      </button>
+      <button class="nav-tab-btn" data-tab="bookmarks">
+        <span>⭐</span> Bookmarks
+      </button>
+    </nav>
+
+    <!-- TAB 1: DASHBOARD -->
+    <section id="tab-dashboard" class="tab-pane active">
+      <div class="dash-hero-grid">
+        <!-- Overall Progress Overview -->
+        <div class="dash-summary-card card-glass">
+          <div>
+            <div class="dash-progress-meta">
+              <h2 class="dash-progress-title">Mastery Progress (N5 → N2)</h2>
+              <span id="dash-overall-progress" class="dash-progress-pct">0%</span>
+            </div>
+            <p class="stat-level-desc" style="margin-bottom: 16px;">
+              Your all-in-one cumulative progress across JLPT N5, N4, N3, and N2 content.
+            </p>
+            <div class="progress-bar-container">
+              <div id="dash-overall-bar" class="progress-bar-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; margin-top: 20px;">
+            <button class="btn-primary" onclick="window.NihonHub.switchTab('flashcards')">🚀 Start Daily Review</button>
+            <button class="fc-ctrl-btn" onclick="window.NihonHub.switchTab('quiz')">📝 Take a Quiz</button>
+          </div>
+        </div>
+
+        <!-- Word of the Day -->
+        <div id="dash-featured-word"></div>
+      </div>
+
+      <!-- Level Breakdown Cards Grid -->
+      <div class="section-header-row">
+        <h2 class="section-title"><span>📚</span> Cumulative Level Breakdown</h2>
+        <span class="section-count-tag">N5 Foundation to N2 Upper-Intermediate</span>
+      </div>
+      <div id="dash-level-stats" class="level-stats-grid"></div>
+
+      <!-- Featured Grammar Point -->
+      <div class="featured-grid">
+        <div id="dash-featured-grammar"></div>
+        <div class="card-glass" style="padding: 24px;">
+          <div class="featured-tag">💡 Study Tip & Cumulative Strategy</div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Why Cumulative Learning?</h3>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 12px;">
+            Higher JLPT exams like <strong>N2</strong> test foundational vocabulary, particles, and grammar from <strong>N5, N4, and N3</strong> in complex contexts.
+          </p>
+          <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 20px; line-height: 1.8;">
+            <li>Keep <strong>Cumulative Mode</strong> ON to review lower levels automatically.</li>
+            <li>Use the <strong>Furigana Toggle</strong> when preparing for reading speed tests.</li>
+            <li>Press <strong>🔊</strong> on any word or sentence to train your listening pitch and intonation.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: KANJI MATRIX -->
+    <section id="tab-kanji" class="tab-pane">
+      <div class="section-header-row">
+        <h2 class="section-title"><span>漢字</span> Kanji Matrix</h2>
+        <span id="kanji-count" class="section-count-tag">Loading Kanji...</span>
+      </div>
+      <div id="kanji-grid" class="kanji-grid"></div>
+    </section>
+
+    <!-- TAB 3: VOCABULARY VAULT -->
+    <section id="tab-vocab" class="tab-pane">
+      <div class="section-header-row">
+        <h2 class="section-title"><span>語彙</span> Vocabulary Vault</h2>
+        <span id="vocab-count" class="section-count-tag">Loading Vocabulary...</span>
+      </div>
+      <div id="vocab-list" class="vocab-list"></div>
+    </section>
+
+    <!-- TAB 4: GRAMMAR GUIDE -->
+    <section id="tab-grammar" class="tab-pane">
+      <div class="section-header-row">
+        <h2 class="section-title"><span>文法</span> Grammar Guide</h2>
+        <span id="grammar-count" class="section-count-tag">Loading Grammar...</span>
+      </div>
+      <div id="grammar-list" class="grammar-list"></div>
+    </section>
+
+    <!-- TAB 5: FLASHCARDS (SRS) -->
+    <section id="tab-flashcards" class="tab-pane">
+      <div class="flashcards-container">
+        <!-- Category Filter -->
+        <div class="fc-filter-bar">
+          <button class="fc-category-pill active" data-category="all">All Items</button>
+          <button class="fc-category-pill" data-category="kanji">Kanji</button>
+          <button class="fc-category-pill" data-category="vocab">Vocabulary</button>
+          <button class="fc-category-pill" data-category="grammar">Grammar</button>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div style="width: 100%; display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted);">
+          <span>Card <strong id="fc-index-display">0</strong> of <strong id="fc-total-display">0</strong></span>
+          <span>Keyboard: Space = Flip | &larr; &rarr; = Next | 1-4 = Rate</span>
+        </div>
+        <div class="progress-bar-container">
+          <div id="fc-progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+
+        <!-- Interactive 3D Flip Card -->
+        <div class="flashcard-wrapper">
+          <div id="flashcard-element" class="flashcard-card card-glass">
+            <div class="fc-face fc-front"></div>
+            <div class="fc-face fc-back"></div>
+          </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="fc-controls-row">
+          <button id="fc-prev-btn" class="fc-ctrl-btn">&larr; Previous</button>
+          <button id="fc-flip-btn" class="fc-ctrl-btn">🔄 Flip Card (Space)</button>
+          <button id="fc-next-btn" class="fc-ctrl-btn">Next &rarr;</button>
+          <button id="fc-shuffle-btn" class="fc-ctrl-btn" title="Shuffle Deck">🔀 Shuffle</button>
+        </div>
+
+        <!-- SRS Rating Buttons -->
+        <div class="fc-rating-buttons">
+          <button class="fc-rate-btn again" onclick="window.NihonHub.rateCard(1)">1: Again (Reset)</button>
+          <button class="fc-rate-btn hard" onclick="window.NihonHub.rateCard(2)">2: Hard</button>
+          <button class="fc-rate-btn good" onclick="window.NihonHub.rateCard(3)">3: Good</button>
+          <button class="fc-rate-btn easy" onclick="window.NihonHub.rateCard(4)">4: Easy (Mastered)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 6: MOCK EXAMS & QUIZ -->
+    <section id="tab-quiz" class="tab-pane">
+      <div class="quiz-container">
+        <div class="quiz-card-box card-glass">
+          <!-- Quiz Intro Screen -->
+          <div id="quiz-intro-screen" class="quiz-intro-content">
+            <div class="quiz-intro-icon">📝</div>
+            <h2>JLPT Cumulative Mock Exam</h2>
+            <p style="color: var(--text-secondary); max-width: 500px;">
+              Challenge yourself with randomized JLPT questions covering Kanji readings, vocabulary meanings, and sentence structure particles.
+            </p>
+            <div class="quiz-select-row">
+              <label for="quiz-level-select" style="font-weight: 700;">Target Level:</label>
+              <select id="quiz-level-select" class="quiz-level-select">
+                <option value="ALL">All Cumulative (N5 to N2)</option>
+                <option value="N5">JLPT N5 (Basic)</option>
+                <option value="N4">JLPT N4 (Elementary)</option>
+                <option value="N3">JLPT N3 (Intermediate)</option>
+                <option value="N2">JLPT N2 (Upper-Intermediate)</option>
+              </select>
+            </div>
+            <button id="start-quiz-btn" class="btn-primary" style="margin-top: 12px;">Start Quiz (10 Questions)</button>
+          </div>
+
+          <!-- Active Quiz Screen -->
+          <div id="quiz-active-screen" class="hidden">
+            <div class="quiz-header-bar">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span id="quiz-q-num" style="font-weight: 700;">Question 1 of 10</span>
+                <span id="quiz-q-level" class="level-badge badge-n5">N5</span>
+              </div>
+              <div class="quiz-timer-chip">⏱️ <span id="quiz-timer-display">30</span>s</div>
+            </div>
+
+            <div class="progress-bar-container" style="margin-bottom: 24px;">
+              <div id="quiz-progress-bar" class="progress-bar-fill" style="width: 10%;"></div>
+            </div>
+
+            <div id="quiz-q-text" class="quiz-question-text">Loading question...</div>
+            <div id="quiz-options-grid" class="quiz-options-grid"></div>
+
+            <div id="quiz-explanation-box" class="quiz-explanation-box hidden"></div>
+
+            <div style="display: flex; justify-content: flex-end;">
+              <button id="quiz-next-q-btn" class="btn-primary hidden">Next Question &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Quiz Results Screen -->
+          <div id="quiz-results-screen" class="quiz-results-content hidden">
+            <div style="font-size: 3rem;">🏆</div>
+            <h2>Exam Completed!</h2>
+            <div id="quiz-score-pct" class="score-huge">80%</div>
+            <div id="quiz-score-fraction" style="font-size: 1.2rem; font-weight: 700; color: var(--text-secondary);">8 / 10 Correct</div>
+            <div id="quiz-verdict-msg" class="quiz-verdict pass">Excellent work!</div>
+            
+            <div id="quiz-review-breakdown" class="quiz-review-list"></div>
+
+            <button id="quiz-restart-btn" class="btn-primary">Try Another Quiz</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 7: KANA TABLES -->
+    <section id="tab-kana" class="tab-pane">
+      <div class="kana-section-block">
+        <div class="section-header-row">
+          <h2 class="section-title"><span>あ</span> Hiragana Chart (平仮名)</h2>
+          <span class="section-count-tag">46 Standard Characters • Click any cell for audio</span>
+        </div>
+        <div id="hiragana-grid" class="kana-grid"></div>
+      </div>
+
+      <div class="kana-section-block" style="margin-top: 40px;">
+        <div class="section-header-row">
+          <h2 class="section-title"><span>ア</span> Katakana Chart (片仮名)</h2>
+          <span class="section-count-tag">46 Standard Characters • Click any cell for audio</span>
+        </div>
+        <div id="katakana-grid" class="kana-grid"></div>
+      </div>
+    </section>
+
+    <!-- TAB 8: BOOKMARKS -->
+    <section id="tab-bookmarks" class="tab-pane">
+      <div class="section-header-row">
+        <h2 class="section-title"><span>⭐</span> Saved Bookmarks</h2>
+        <span id="bookmark-count" class="section-count-tag">0 Saved Items</span>
+      </div>
+      <div id="bookmarks-list" class="bookmarks-list"></div>
+    </section>
+
+  </main>
+
+  <!-- Kanji Detail Modal -->
+  <div id="modal-backdrop" class="modal-backdrop hidden">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" title="Close">✕</button>
+      <div id="kanji-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <p><strong>NihonHub</strong> &mdash; Comprehensive JLPT N5 to N2 Cumulative Learning Hub</p>
+    <div class="footer-links">
+      <span>Built with Modern HTML5, CSS3, & Vanilla JS</span>
+      <span>•</span>
+      <span>Zero-Build GitHub Pages Ready 🚀</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
