@@ -137,6 +137,27 @@ a:hover {
   color: var(--brand-primary-hover);
 }
 
+/* --- UI Icons & Utility Classes --- */
+.ui-icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.tab-jp-badge {
+  font-family: var(--font-jp);
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.text-accent { color: var(--brand-primary) !important; }
+.text-success { color: #10b981 !important; }
+.text-warning { color: #f59e0b !important; }
+.text-danger { color: #ef4444 !important; }
+
 /* --- Glassmorphism & Reusable Components --- */
 .card-glass {
   background: var(--bg-surface);

@@ -6,6 +6,17 @@
 (function () {
   'use strict';
 
+  // --- SVG ICON REPOSITORY ---
+  const UI_ICONS = {
+    volume: `<svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`,
+    starOutline: `<svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+    starFilled: `<svg class="ui-icon text-warning" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+    check: `<svg class="ui-icon text-success" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
+    circle: `<svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/></svg>`,
+    sun: `<svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`,
+    moon: `<svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`
+  };
+
   // --- APPLICATION STATE ---
   const state = {
     currentTab: 'dashboard',
@@ -127,9 +138,13 @@
   // --- THEME MANAGEMENT ---
   function initTheme() {
     document.documentElement.setAttribute('data-theme', state.theme);
-    const themeBtn = document.getElementById('theme-toggle-btn');
-    if (themeBtn) {
-      themeBtn.innerHTML = state.theme === 'dark' ? '☀️ Light' : '🌙 Dark';
+    const themeIcon = document.getElementById('theme-icon-container');
+    const themeText = document.getElementById('theme-text-container');
+    if (themeIcon) {
+      themeIcon.innerHTML = state.theme === 'dark' ? UI_ICONS.sun : UI_ICONS.moon;
+    }
+    if (themeText) {
+      themeText.textContent = state.theme === 'dark' ? 'Light Mode' : 'Dark Mode';
     }
   }
 
@@ -145,15 +160,14 @@
       alert('Speech synthesis is not supported in this browser.');
       return;
     }
-    window.speechSynthesis.cancel(); // Stop any pending speech
+    window.speechSynthesis.cancel();
     const cleanText = text.replace(/\[.*?\]/g, '').replace(/[\/〜～]/g, '').trim();
     if (!cleanText) return;
 
     const utterance = new SpeechSynthesisUtterance(cleanText);
     utterance.lang = 'ja-JP';
-    utterance.rate = 0.88; // slightly slower for clear comprehension
+    utterance.rate = 0.88;
 
-    // Try to choose a high quality Japanese voice if available
     const voices = window.speechSynthesis.getVoices();
     const jaVoice = voices.find(v => v.lang.startsWith('ja') || v.lang.includes('JP'));
     if (jaVoice) utterance.voice = jaVoice;
@@ -162,7 +176,6 @@
   }
 
   // --- FURIGANA PARSER ---
-  // Converts "私[わたし]は 学生[がくせい]です。" to HTML ruby tags
   function parseFurigana(text) {
     if (!text) return '';
     return text.replace(/([一-龯々]+)\[(.*?)\]/g, (match, kanji, kana) => {
@@ -178,7 +191,6 @@
     }
     const currentThreshold = LEVEL_ORDER[state.selectedLevel] || 4;
     const itemRank = LEVEL_ORDER[itemLevel] || 1;
-    // Cumulative: when user selects N2 with cumulative mode, they see N5, N4, N3, N2
     return itemRank <= currentThreshold;
   }
 
@@ -322,7 +334,6 @@
 
     // Keyboard Shortcuts
     document.addEventListener('keydown', (e) => {
-      // Don't trigger if user is typing in an input
       if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) {
         if (e.key === 'Escape') e.target.blur();
         return;
@@ -348,7 +359,7 @@
       }
     });
 
-    // Delegated actions (Audio speak, Bookmark toggle, Master toggle, Kanji details)
+    // Delegated actions
     document.addEventListener('click', (e) => {
       const audioBtn = e.target.closest('[data-speak]');
       if (audioBtn) {
@@ -419,15 +430,14 @@
 
   function updateHeaderBadges() {
     const streakEl = document.getElementById('streak-count-badge');
-    if (streakEl) streakEl.textContent = `${state.studyStreak} 🔥`;
+    if (streakEl) streakEl.textContent = `${state.studyStreak} Day Streak`;
 
     const masteredEl = document.getElementById('mastered-count-badge');
-    if (masteredEl) masteredEl.textContent = `${state.mastered.size} ✨`;
+    if (masteredEl) masteredEl.textContent = `${state.mastered.size} Mastered`;
   }
 
   // --- DASHBOARD RENDERER ---
   function renderDashboard() {
-    // Calculate stats
     const totalKanji = JLPT_DATA.kanji.length;
     const totalVocab = JLPT_DATA.vocabulary.length;
     const totalGrammar = JLPT_DATA.grammar.length;
@@ -442,7 +452,6 @@
     const overallProgressBar = document.getElementById('dash-overall-bar');
     if (overallProgressBar) overallProgressBar.style.width = `${overallProgress}%`;
 
-    // Render level breakdown cards
     const levelStatsGrid = document.getElementById('dash-level-stats');
     if (levelStatsGrid) {
       levelStatsGrid.innerHTML = JLPT_DATA.levels.map(lvl => {
@@ -488,11 +497,11 @@
     if (featWordContainer && featWord) {
       featWordContainer.innerHTML = `
         <div class="featured-card card-glass">
-          <div class="featured-tag">🌟 Word of the Day (${featWord.level})</div>
+          <div class="featured-tag">Word of the Day (${featWord.level})</div>
           <div class="featured-main">
             <span class="japanese-heading lg">${featWord.word}</span>
             <span class="kana-sub">【${featWord.reading}】</span>
-            <button class="audio-btn" data-speak="${featWord.word}" title="Listen pronunciation">🔊</button>
+            <button class="audio-btn" data-speak="${featWord.word}" title="Listen pronunciation">${UI_ICONS.volume}</button>
           </div>
           <p class="featured-romaji">${featWord.romaji}</p>
           <p class="featured-meaning">${featWord.meaning}</p>
@@ -508,10 +517,10 @@
     if (featGrammarContainer && featGrammar) {
       featGrammarContainer.innerHTML = `
         <div class="featured-card card-glass">
-          <div class="featured-tag">📖 Grammar of the Day (${featGrammar.level})</div>
+          <div class="featured-tag">Grammar of the Day (${featGrammar.level})</div>
           <div class="featured-main">
             <span class="japanese-heading md">${featGrammar.pattern}</span>
-            <button class="audio-btn" data-speak="${featGrammar.pattern}" title="Listen pronunciation">🔊</button>
+            <button class="audio-btn" data-speak="${featGrammar.pattern}" title="Listen pronunciation">${UI_ICONS.volume}</button>
           </div>
           <p class="featured-meaning">${featGrammar.meaning}</p>
           <div class="grammar-formula-chip">${featGrammar.formula}</div>
@@ -547,10 +556,10 @@
             <span class="level-badge badge-${k.level.toLowerCase()}">${k.level}</span>
             <div class="card-action-icons">
               <button class="icon-btn ${isBookmarked ? 'active' : ''}" data-bookmark-id="${k.id}" title="Bookmark">
-                ${isBookmarked ? '★' : '☆'}
+                ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
               </button>
               <button class="icon-btn ${isMastered ? 'active' : ''}" data-master-id="${k.id}" title="Mark as Mastered">
-                ${isMastered ? '✓' : '○'}
+                ${isMastered ? UI_ICONS.check : UI_ICONS.circle}
               </button>
             </div>
           </div>
@@ -568,7 +577,7 @@
           </div>
           <div class="kanji-card-footer">
             <span>${k.strokes} strokes</span>
-            <button class="audio-btn sm" data-speak="${k.char}" title="Pronounce">🔊</button>
+            <button class="audio-btn sm" data-speak="${k.char}" title="Pronounce">${UI_ICONS.volume}</button>
           </div>
         </div>
       `;
@@ -602,7 +611,7 @@
             <div class="vocab-word-row">
               <span class="vocab-word">${v.word}</span>
               <span class="vocab-reading">【${v.reading}】</span>
-              <button class="audio-btn" data-speak="${v.word}" title="Listen">🔊</button>
+              <button class="audio-btn" data-speak="${v.word}" title="Listen">${UI_ICONS.volume}</button>
             </div>
             <div class="vocab-romaji">${v.romaji}</div>
             <div class="vocab-meaning">${v.meaning}</div>
@@ -613,10 +622,10 @@
           </div>
           <div class="card-side-actions">
             <button class="icon-btn ${isBookmarked ? 'active' : ''}" data-bookmark-id="${v.id}" title="Bookmark">
-              ${isBookmarked ? '★' : '☆'}
+              ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
             </button>
             <button class="icon-btn ${isMastered ? 'active' : ''}" data-master-id="${v.id}" title="Mark Mastered">
-              ${isMastered ? '✓' : '○'}
+              ${isMastered ? UI_ICONS.check : UI_ICONS.circle}
             </button>
           </div>
         </div>
@@ -647,14 +656,14 @@
             <div class="grammar-title-row">
               <span class="level-badge badge-${g.level.toLowerCase()}">${g.level}</span>
               <span class="grammar-pattern">${g.pattern}</span>
-              <button class="audio-btn" data-speak="${g.pattern}" title="Listen">🔊</button>
+              <button class="audio-btn" data-speak="${g.pattern}" title="Listen">${UI_ICONS.volume}</button>
             </div>
             <div class="card-action-icons">
               <button class="icon-btn ${isBookmarked ? 'active' : ''}" data-bookmark-id="${g.id}" title="Bookmark">
-                ${isBookmarked ? '★' : '☆'}
+                ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
               </button>
               <button class="icon-btn ${isMastered ? 'active' : ''}" data-master-id="${g.id}" title="Mark Mastered">
-                ${isMastered ? '✓' : '○'}
+                ${isMastered ? UI_ICONS.check : UI_ICONS.circle}
               </button>
             </div>
           </div>
@@ -671,7 +680,7 @@
               <div class="example-item">
                 <div class="example-ja-row">
                   <span class="ja-example">${parseFurigana(ex.furigana)}</span>
-                  <button class="audio-btn sm" data-speak="${ex.ja}" title="Listen sentence">🔊</button>
+                  <button class="audio-btn sm" data-speak="${ex.ja}" title="Listen sentence">${UI_ICONS.volume}</button>
                 </div>
                 <div class="en-example">${ex.en}</div>
               </div>
@@ -726,7 +735,7 @@
       container.innerHTML = `
         <div class="empty-state">
           <p>You have no bookmarked items yet.</p>
-          <p class="sub-text">Click the ★ star on any Kanji, Word, or Grammar point to save it for quick review.</p>
+          <p class="sub-text">Click the bookmark icon on any Kanji, Word, or Grammar point to save it for quick review.</p>
         </div>
       `;
       return;
@@ -745,8 +754,8 @@
             <span class="bm-sub-text">${subText}</span>
           </div>
           <div class="bm-right">
-            <button class="audio-btn" data-speak="${mainText}" title="Listen">🔊</button>
-            <button class="icon-btn active" data-bookmark-id="${item.id}" title="Remove Bookmark">★</button>
+            <button class="audio-btn" data-speak="${mainText}" title="Listen">${UI_ICONS.volume}</button>
+            <button class="icon-btn active" data-bookmark-id="${item.id}" title="Remove Bookmark">${UI_ICONS.starFilled}</button>
           </div>
         </div>
       `;
@@ -844,11 +853,11 @@
         <div class="fc-card-top">
           <span class="level-badge badge-${currentCard.level.toLowerCase()}">${currentCard.level}</span>
           <span class="fc-type-tag">${currentCard.type}</span>
-          <button class="audio-btn" data-speak="${currentCard.speakText}" title="Pronounce">🔊</button>
+          <button class="audio-btn" data-speak="${currentCard.speakText}" title="Pronounce">${UI_ICONS.volume}</button>
         </div>
         <div class="fc-front-main">${currentCard.frontMain}</div>
         <div class="fc-front-sub">${currentCard.frontSub}</div>
-        <div class="fc-hint-tap">Click or press Space to reveal answer 🔄</div>
+        <div class="fc-hint-tap">Click or press Space to reveal answer</div>
       `;
     }
 
@@ -859,7 +868,7 @@
         <div class="fc-card-top">
           <span class="level-badge badge-${currentCard.level.toLowerCase()}">${currentCard.level}</span>
           <span class="fc-type-tag">${currentCard.type}</span>
-          <button class="audio-btn" data-speak="${currentCard.speakText}" title="Pronounce">🔊</button>
+          <button class="audio-btn" data-speak="${currentCard.speakText}" title="Pronounce">${UI_ICONS.volume}</button>
         </div>
         <div class="fc-back-meaning">${currentCard.backMain}</div>
         <div class="fc-back-details">${currentCard.backDetails}</div>
@@ -899,7 +908,6 @@
   }
 
   function rateFlashcard(rating) {
-    // 1: Again, 2: Hard, 3: Good, 4: Easy
     const currentCard = state.flashcards.deck[state.flashcards.currentIndex];
     if (rating >= 3 && currentCard) {
       state.mastered.add(currentCard.id);
@@ -923,10 +931,9 @@
     });
 
     if (questions.length === 0) {
-      questions = JLPT_DATA.quizzes; // fallback to all
+      questions = JLPT_DATA.quizzes;
     }
 
-    // Shuffle questions
     questions = [...questions].sort(() => Math.random() - 0.5);
 
     state.quiz = {
@@ -964,7 +971,6 @@
     document.getElementById('quiz-progress-bar').style.width = `${(currNum / total) * 100}%`;
 
     const qTextEl = document.getElementById('quiz-q-text');
-    // Format bold markdown in questions
     qTextEl.innerHTML = q.question.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
     const optionsContainer = document.getElementById('quiz-options-grid');
@@ -982,7 +988,6 @@
     const nextBtn = document.getElementById('quiz-next-q-btn');
     nextBtn.classList.add('hidden');
 
-    // Attach option clicks
     document.querySelectorAll('.quiz-option-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const idx = parseInt(e.currentTarget.getAttribute('data-option-idx'), 10);
@@ -990,7 +995,6 @@
       });
     });
 
-    // Start Timer
     const timerDisplay = document.getElementById('quiz-timer-display');
     timerDisplay.textContent = state.quiz.timer;
     timerDisplay.classList.remove('urgent');
@@ -1027,7 +1031,6 @@
       explanation: q.explanation
     });
 
-    // Update UI options
     document.querySelectorAll('.quiz-option-btn').forEach((btn, idx) => {
       btn.disabled = true;
       if (idx === q.answerIndex) {
@@ -1037,17 +1040,15 @@
       }
     });
 
-    // Show Explanation
     const explanationBox = document.getElementById('quiz-explanation-box');
     explanationBox.classList.remove('hidden');
     explanationBox.innerHTML = `
       <div class="exp-badge ${isCorrect ? 'exp-correct' : 'exp-wrong'}">
-        ${isCorrect ? '✓ Correct! 正解' : '✗ Incorrect! 不正解'}
+        ${isCorrect ? 'Correct (正解)' : 'Incorrect (不正解)'}
       </div>
       <p class="exp-text">${q.explanation}</p>
     `;
 
-    // Next Button
     const nextBtn = document.getElementById('quiz-next-q-btn');
     nextBtn.classList.remove('hidden');
     nextBtn.onclick = () => {
@@ -1080,17 +1081,16 @@
 
     const verdictEl = document.getElementById('quiz-verdict-msg');
     if (percentage >= 80) {
-      verdictEl.textContent = '🎉 Excellent! You have strong mastery of this level!';
+      verdictEl.textContent = 'Excellent! You have strong mastery of this level.';
       verdictEl.className = 'quiz-verdict pass';
     } else if (percentage >= 60) {
-      verdictEl.textContent = '👍 Good job! Keep practicing to solidify these concepts.';
+      verdictEl.textContent = 'Good job! Keep practicing to solidify these concepts.';
       verdictEl.className = 'quiz-verdict warning';
     } else {
-      verdictEl.textContent = '📚 Keep studying! Review flashcards and try again.';
+      verdictEl.textContent = 'Keep studying! Review flashcards and try again.';
       verdictEl.className = 'quiz-verdict need-work';
     }
 
-    // Render review breakdown
     const reviewList = document.getElementById('quiz-review-breakdown');
     if (reviewList) {
       reviewList.innerHTML = state.quiz.results.map((res, i) => `
@@ -1120,7 +1120,7 @@
       <div class="modal-kanji-header">
         <div class="modal-kanji-char-box">
           <div class="modal-kanji-char">${k.char}</div>
-          <button class="audio-btn" data-speak="${k.char}" title="Listen Kanji">🔊</button>
+          <button class="audio-btn" data-speak="${k.char}" title="Listen Kanji">${UI_ICONS.volume}</button>
         </div>
         <div class="modal-kanji-meta">
           <div class="modal-tag-row">
@@ -1132,11 +1132,11 @@
           <div class="modal-readings-grid">
             <div class="m-read-box">
               <span class="m-read-label">音読み (On'yomi)</span>
-              <span class="m-read-val katakana-text">${k.onyomi || 'なし'}</span>
+              <span class="m-read-val katakana-text">${k.onyomi || 'None'}</span>
             </div>
             <div class="m-read-box">
               <span class="m-read-label">訓読み (Kun'yomi)</span>
-              <span class="m-read-val hiragana-text">${k.kunyomi || 'なし'}</span>
+              <span class="m-read-val hiragana-text">${k.kunyomi || 'None'}</span>
             </div>
           </div>
         </div>
@@ -1149,7 +1149,7 @@
             <div class="compound-ja">
               <strong>${ex.word}</strong>
               <span class="compound-reading">【${ex.reading}】</span>
-              <button class="audio-btn sm" data-speak="${ex.word}" title="Listen">🔊</button>
+              <button class="audio-btn sm" data-speak="${ex.word}" title="Listen">${UI_ICONS.volume}</button>
             </div>
             <div class="compound-en">${ex.meaning}</div>
           </div>

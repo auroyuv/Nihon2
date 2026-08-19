@@ -14,7 +14,7 @@
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛩️</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23ff4757%22 stroke-width=%222%22><path d=%22M4 6h16M2 3h20M6 3v18M18 3v18M6 10h12%22/></svg>">
 
   <!-- Google Fonts & Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
@@ -26,14 +26,22 @@
     <div class="header-inner">
       <!-- Logo -->
       <div class="brand-logo" onclick="window.NihonHub.switchTab('dashboard')" style="cursor: pointer;">
-        <div class="logo-torii">⛩️</div>
+        <div class="logo-torii">
+          <svg class="ui-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16"/><path d="M2 3h20"/><path d="M6 3v18"/><path d="M18 3v18"/><path d="M6 10h12"/>
+          </svg>
+        </div>
         <div class="logo-text">Nihon<span>Hub</span></div>
       </div>
 
       <!-- Global Live Search -->
       <div class="header-center-search">
         <div class="search-input-wrapper">
-          <span class="search-icon">🔍</span>
+          <span class="search-icon">
+            <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+            </svg>
+          </span>
           <input 
             type="text" 
             id="global-search-input" 
@@ -48,15 +56,24 @@
       <!-- Right Controls & Badges -->
       <div class="header-right-controls">
         <div class="header-badge-stat" title="Daily Study Streak">
-          <span>🔥</span>
-          <span id="streak-count-badge">1 🔥</span>
+          <svg class="ui-icon text-accent" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+          </svg>
+          <span id="streak-count-badge">1 Day Streak</span>
         </div>
         <div class="header-badge-stat" title="Mastered Items">
-          <span>✨</span>
-          <span id="mastered-count-badge">0 ✨</span>
+          <svg class="ui-icon text-success" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span id="mastered-count-badge">0 Mastered</span>
         </div>
-        <button id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle Light/Dark Theme">
-          ☀️ Light
+        <button id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle Theme">
+          <span id="theme-icon-container">
+            <svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+          </span>
+          <span id="theme-text-container">Light Mode</span>
         </button>
       </div>
     </div>
@@ -80,7 +97,7 @@
       <div class="toggles-group">
         <label class="toggle-switch-label" title="When active, higher levels include all previous levels below them">
           <input type="checkbox" id="cumulative-toggle" checked>
-          <span>Cumulative Mode (All-in-One)</span>
+          <span>Cumulative Mode</span>
         </label>
         <label class="toggle-switch-label" title="Show or hide reading annotations above Kanji">
           <input type="checkbox" id="furigana-toggle" checked>
@@ -96,28 +113,40 @@
     <!-- Main Navigation Tabs -->
     <nav class="main-nav-tabs" aria-label="Main Navigation">
       <button class="nav-tab-btn active" data-tab="dashboard">
-        <span>📊</span> Dashboard
+        <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/>
+        </svg>
+        Dashboard
       </button>
       <button class="nav-tab-btn" data-tab="kanji">
-        <span>漢字</span> Kanji Matrix
+        <span class="tab-jp-badge">漢字</span> Kanji Matrix
       </button>
       <button class="nav-tab-btn" data-tab="vocab">
-        <span>語彙</span> Vocabulary Vault
+        <span class="tab-jp-badge">語彙</span> Vocabulary Vault
       </button>
       <button class="nav-tab-btn" data-tab="grammar">
-        <span>文法</span> Grammar Guide
+        <span class="tab-jp-badge">文法</span> Grammar Guide
       </button>
       <button class="nav-tab-btn" data-tab="flashcards">
-        <span>🗂️</span> Flashcards (SRS)
+        <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="18" height="13" x="3" y="3" rx="2"/><path d="m21 8-9 6-9-6"/><path d="M3 17h18"/>
+        </svg>
+        Flashcards (SRS)
       </button>
       <button class="nav-tab-btn" data-tab="quiz">
-        <span>📝</span> Mock Exams & Quiz
+        <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1Z"/><path d="M9 12h6"/><path d="M9 16h6"/>
+        </svg>
+        Mock Exams & Quiz
       </button>
       <button class="nav-tab-btn" data-tab="kana">
-        <span>あ/ア</span> Kana Tables
+        <span class="tab-jp-badge">あ/ア</span> Kana Tables
       </button>
       <button class="nav-tab-btn" data-tab="bookmarks">
-        <span>⭐</span> Bookmarks
+        <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+        </svg>
+        Bookmarks
       </button>
     </nav>
 
@@ -139,8 +168,8 @@
             </div>
           </div>
           <div style="display: flex; gap: 12px; margin-top: 20px;">
-            <button class="btn-primary" onclick="window.NihonHub.switchTab('flashcards')">🚀 Start Daily Review</button>
-            <button class="fc-ctrl-btn" onclick="window.NihonHub.switchTab('quiz')">📝 Take a Quiz</button>
+            <button class="btn-primary" onclick="window.NihonHub.switchTab('flashcards')">Start Daily Review</button>
+            <button class="fc-ctrl-btn" onclick="window.NihonHub.switchTab('quiz')">Take a Quiz</button>
           </div>
         </div>
 
@@ -150,7 +179,7 @@
 
       <!-- Level Breakdown Cards Grid -->
       <div class="section-header-row">
-        <h2 class="section-title"><span>📚</span> Cumulative Level Breakdown</h2>
+        <h2 class="section-title">Cumulative Level Breakdown</h2>
         <span class="section-count-tag">N5 Foundation to N2 Upper-Intermediate</span>
       </div>
       <div id="dash-level-stats" class="level-stats-grid"></div>
@@ -159,7 +188,7 @@
       <div class="featured-grid">
         <div id="dash-featured-grammar"></div>
         <div class="card-glass" style="padding: 24px;">
-          <div class="featured-tag">💡 Study Tip & Cumulative Strategy</div>
+          <div class="featured-tag">Study Strategy</div>
           <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Why Cumulative Learning?</h3>
           <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 12px;">
             Higher JLPT exams like <strong>N2</strong> test foundational vocabulary, particles, and grammar from <strong>N5, N4, and N3</strong> in complex contexts.
@@ -167,7 +196,7 @@
           <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 20px; line-height: 1.8;">
             <li>Keep <strong>Cumulative Mode</strong> ON to review lower levels automatically.</li>
             <li>Use the <strong>Furigana Toggle</strong> when preparing for reading speed tests.</li>
-            <li>Press <strong>🔊</strong> on any word or sentence to train your listening pitch and intonation.</li>
+            <li>Use the sound button on any word or sentence to train pitch and intonation.</li>
           </ul>
         </div>
       </div>
@@ -176,7 +205,7 @@
     <!-- TAB 2: KANJI MATRIX -->
     <section id="tab-kanji" class="tab-pane">
       <div class="section-header-row">
-        <h2 class="section-title"><span>漢字</span> Kanji Matrix</h2>
+        <h2 class="section-title">Kanji Matrix</h2>
         <span id="kanji-count" class="section-count-tag">Loading Kanji...</span>
       </div>
       <div id="kanji-grid" class="kanji-grid"></div>
@@ -185,7 +214,7 @@
     <!-- TAB 3: VOCABULARY VAULT -->
     <section id="tab-vocab" class="tab-pane">
       <div class="section-header-row">
-        <h2 class="section-title"><span>語彙</span> Vocabulary Vault</h2>
+        <h2 class="section-title">Vocabulary Vault</h2>
         <span id="vocab-count" class="section-count-tag">Loading Vocabulary...</span>
       </div>
       <div id="vocab-list" class="vocab-list"></div>
@@ -194,7 +223,7 @@
     <!-- TAB 4: GRAMMAR GUIDE -->
     <section id="tab-grammar" class="tab-pane">
       <div class="section-header-row">
-        <h2 class="section-title"><span>文法</span> Grammar Guide</h2>
+        <h2 class="section-title">Grammar Guide</h2>
         <span id="grammar-count" class="section-count-tag">Loading Grammar...</span>
       </div>
       <div id="grammar-list" class="grammar-list"></div>
@@ -230,10 +259,30 @@
 
         <!-- Navigation Controls -->
         <div class="fc-controls-row">
-          <button id="fc-prev-btn" class="fc-ctrl-btn">&larr; Previous</button>
-          <button id="fc-flip-btn" class="fc-ctrl-btn">🔄 Flip Card (Space)</button>
-          <button id="fc-next-btn" class="fc-ctrl-btn">Next &rarr;</button>
-          <button id="fc-shuffle-btn" class="fc-ctrl-btn" title="Shuffle Deck">🔀 Shuffle</button>
+          <button id="fc-prev-btn" class="fc-ctrl-btn">
+            <svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
+            </svg>
+            Previous
+          </button>
+          <button id="fc-flip-btn" class="fc-ctrl-btn">
+            <svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>
+            </svg>
+            Flip Card (Space)
+          </button>
+          <button id="fc-next-btn" class="fc-ctrl-btn">
+            Next
+            <svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </button>
+          <button id="fc-shuffle-btn" class="fc-ctrl-btn" title="Shuffle Deck">
+            <svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.8-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.4c1.3 0 2.5.6 3.3 1.7l6.1 8.6c.8 1.1 2 1.7 3.3 1.7H22"/><path d="m18 20 4-4-4-4"/>
+            </svg>
+            Shuffle
+          </button>
         </div>
 
         <!-- SRS Rating Buttons -->
@@ -252,7 +301,11 @@
         <div class="quiz-card-box card-glass">
           <!-- Quiz Intro Screen -->
           <div id="quiz-intro-screen" class="quiz-intro-content">
-            <div class="quiz-intro-icon">📝</div>
+            <div class="quiz-intro-icon">
+              <svg class="ui-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1Z"/><path d="M9 12h6"/><path d="M9 16h6"/>
+              </svg>
+            </div>
             <h2>JLPT Cumulative Mock Exam</h2>
             <p style="color: var(--text-secondary); max-width: 500px;">
               Challenge yourself with randomized JLPT questions covering Kanji readings, vocabulary meanings, and sentence structure particles.
@@ -277,7 +330,12 @@
                 <span id="quiz-q-num" style="font-weight: 700;">Question 1 of 10</span>
                 <span id="quiz-q-level" class="level-badge badge-n5">N5</span>
               </div>
-              <div class="quiz-timer-chip">⏱️ <span id="quiz-timer-display">30</span>s</div>
+              <div class="quiz-timer-chip">
+                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <span id="quiz-timer-display">30</span>s
+              </div>
             </div>
 
             <div class="progress-bar-container" style="margin-bottom: 24px;">
@@ -290,14 +348,23 @@
             <div id="quiz-explanation-box" class="quiz-explanation-box hidden"></div>
 
             <div style="display: flex; justify-content: flex-end;">
-              <button id="quiz-next-q-btn" class="btn-primary hidden">Next Question &rarr;</button>
+              <button id="quiz-next-q-btn" class="btn-primary hidden">
+                Next Question
+                <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                </svg>
+              </button>
             </div>
           </div>
 
           <!-- Quiz Results Screen -->
           <div id="quiz-results-screen" class="quiz-results-content hidden">
-            <div style="font-size: 3rem;">🏆</div>
-            <h2>Exam Completed!</h2>
+            <div style="color: var(--brand-primary);">
+              <svg class="ui-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+              </svg>
+            </div>
+            <h2>Exam Completed</h2>
             <div id="quiz-score-pct" class="score-huge">80%</div>
             <div id="quiz-score-fraction" style="font-size: 1.2rem; font-weight: 700; color: var(--text-secondary);">8 / 10 Correct</div>
             <div id="quiz-verdict-msg" class="quiz-verdict pass">Excellent work!</div>
@@ -314,7 +381,7 @@
     <section id="tab-kana" class="tab-pane">
       <div class="kana-section-block">
         <div class="section-header-row">
-          <h2 class="section-title"><span>あ</span> Hiragana Chart (平仮名)</h2>
+          <h2 class="section-title">Hiragana Chart (平仮名)</h2>
           <span class="section-count-tag">46 Standard Characters • Click any cell for audio</span>
         </div>
         <div id="hiragana-grid" class="kana-grid"></div>
@@ -322,7 +389,7 @@
 
       <div class="kana-section-block" style="margin-top: 40px;">
         <div class="section-header-row">
-          <h2 class="section-title"><span>ア</span> Katakana Chart (片仮名)</h2>
+          <h2 class="section-title">Katakana Chart (片仮名)</h2>
           <span class="section-count-tag">46 Standard Characters • Click any cell for audio</span>
         </div>
         <div id="katakana-grid" class="kana-grid"></div>
@@ -332,7 +399,7 @@
     <!-- TAB 8: BOOKMARKS -->
     <section id="tab-bookmarks" class="tab-pane">
       <div class="section-header-row">
-        <h2 class="section-title"><span>⭐</span> Saved Bookmarks</h2>
+        <h2 class="section-title">Saved Bookmarks</h2>
         <span id="bookmark-count" class="section-count-tag">0 Saved Items</span>
       </div>
       <div id="bookmarks-list" class="bookmarks-list"></div>
@@ -354,7 +421,7 @@
     <div class="footer-links">
       <span>Built with Modern HTML5, CSS3, & Vanilla JS</span>
       <span>•</span>
-      <span>Zero-Build GitHub Pages Ready 🚀</span>
+      <span>Zero-Build GitHub Pages Ready</span>
     </div>
   </footer>
 

@@ -1,15 +1,15 @@
-# ⛩️ NihonHub (日本ハブ) — All-in-One JLPT N5 to N2 Learning Hub
+# NihonHub (日本ハブ) — All-in-One JLPT N5 to N2 Learning Hub
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![JLPT Levels](https://img.shields.io/badge/JLPT-N5%20%7C%20N4%20%7C%20N3%20%7C%20N2-crimson.svg)](#-jlpt-cumulative-levels)
-[![GitHub Pages](https://img.shields.io/badge/Deployment-GitHub%20Pages%20Ready-brightgreen.svg)](#-github-pages-deployment-guide)
-[![Zero Build Step](https://img.shields.io/badge/Stack-Vanilla%20HTML5%20%2F%20CSS3%20%2F%20ES6+-blue.svg)](#-technology-stack)
+[![JLPT Levels](https://img.shields.io/badge/JLPT-N5%20%7C%20N4%20%7C%20N3%20%7C%20N2-crimson.svg)](#jlpt-cumulative-levels)
+[![GitHub Pages](https://img.shields.io/badge/Deployment-GitHub%20Pages%20Ready-brightgreen.svg)](#github-pages-deployment-guide)
+[![Zero Build Step](https://img.shields.io/badge/Stack-Vanilla%20HTML5%20%2F%20CSS3%20%2F%20ES6+-blue.svg)](#technology-stack)
 
 > **NihonHub** is a modern, interactive, and comprehensive single-page web application (SPA) designed to take learners from **JLPT N5 beginner** all the way to **JLPT N2 upper-intermediate fluency**. Built with a **cumulative learning architecture**, higher levels incorporate all foundational material beneath them.
 
 ---
 
-## 🌟 Key Highlights & Philosophy
+## Key Highlights & Philosophy
 
 Unlike isolated study tools that treat JLPT levels as disconnected silos, **NihonHub** uses a **cumulative learning system**:
 - **Studying for N2?** You get immediate access to all N5, N4, N3, and N2 content together.
@@ -18,35 +18,35 @@ Unlike isolated study tools that treat JLPT levels as disconnected silos, **Niho
 
 ---
 
-## 🚀 Interactive Features
+## Interactive Features
 
-- 漢字 **Kanji Matrix**:
+- **Kanji Matrix**:
   - Detailed character cards with stroke counts, radicals, On'yomi (音読み), Kun'yomi (訓読み), and contextual compound vocabulary (熟語).
   - Modal inspector with high-visibility stroke preview and native pronunciation.
-- 語彙 **Vocabulary Vault**:
+- **Vocabulary Vault**:
   - Core vocabulary organized by JLPT level and part of speech (Noun, Godan, Ichidan, Suru, Adjectives).
   - Pitch accents, Kana readings, Romaji, and natural contextual example sentences.
-- 文法 **Grammar Guide**:
+- **Grammar Guide**:
   - Comprehensive grammar points with structural formulas, nuances, and natural Japanese example sentences.
-- 🗂️ **Interactive SRS Flashcards**:
+- **Interactive SRS Flashcards**:
   - 3D flip card animations with spaced repetition grading (*Again, Hard, Good, Easy*).
   - Filter deck by category (*Kanji, Vocab, Grammar, or All*).
   - Full keyboard shortcut support (*Space to flip, 1–4 to rate, Arrow keys to navigate*).
-- 📝 **Mock Exams & Quizzes**:
+- **Mock Exams & Quizzes**:
   - Multi-choice exam questions testing Kanji readings, vocabulary definitions, and grammar particles.
   - Real-time 30-second timer, instant explanations, and detailed score breakdown with review lists.
-- 🔊 **Native Japanese Speech Synthesis**:
+- **Native Japanese Speech Synthesis**:
   - Built-in Web Speech API (`ja-JP`) audio player for every Kanji, vocabulary item, and example sentence without external server latency.
-- 🔤 **Furigana & Romaji Toggles**:
+- **Furigana & Romaji Toggles**:
   - Global toggle buttons to show or hide `<ruby>` furigana annotations and Romaji for authentic reading practice.
-- 📊 **Progress Tracker & Bookmarks**:
-  - Tracks mastery percentages per level, saved favorites (★), and daily study streaks stored directly in `localStorage`.
-- 🌓 **Tokyo-Night & Wabi-Sabi Aesthetics**:
+- **Progress Tracker & Bookmarks**:
+  - Tracks mastery percentages per level, saved favorites, and daily study streaks stored directly in `localStorage`.
+- **Tokyo-Night & Wabi-Sabi Aesthetics**:
   - Glassmorphism design system, responsive mobile layout, custom Japanese typography (`Zen Maru Gothic`, `Noto Sans JP`), and Dark/Light mode switcher.
 
 ---
 
-## 📊 JLPT Cumulative Levels
+## JLPT Cumulative Levels
 
 | Level | Rank | Target Scope | Core Content in NihonHub |
 | :--- | :--- | :--- | :--- |
@@ -57,7 +57,7 @@ Unlike isolated study tools that treat JLPT levels as disconnected silos, **Niho
 
 ---
 
-## ⌨️ Keyboard Shortcuts
+## Keyboard Shortcuts
 
 | Shortcut | Action |
 | :--- | :--- |
@@ -73,14 +73,14 @@ Unlike isolated study tools that treat JLPT levels as disconnected silos, **Niho
 
 ---
 
-## 🌐 GitHub Pages Deployment Guide
+## GitHub Pages Deployment Guide
 
 This project is built with **zero external build steps** and can be deployed directly to GitHub Pages in under 60 seconds:
 
 1. **Push this repository to GitHub**:
    ```bash
    git add .
-   git commit -m "feat: initial release of NihonHub JLPT N5-N2 platform"
+   git commit -m "feat: use clean SVG vector icons"
    git branch -M main
    git push -u origin main
    ```
@@ -96,7 +96,7 @@ This project is built with **zero external build steps** and can be deployed dir
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Structure**: Semantic HTML5 with Ruby Furigana annotations (`<ruby>`, `<rt>`).
 - **Styling**: Modern CSS3 (CSS Variables, Flexbox, Grid, Glassmorphism `backdrop-filter`, 3D CSS Transforms, Dark/Light mode).
@@ -105,7 +105,7 @@ This project is built with **zero external build steps** and can be deployed dir
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 Nihon2/
@@ -122,6 +122,6 @@ Nihon2/
 
 ---
 
-## 📄 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
