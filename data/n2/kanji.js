@@ -11768,5 +11768,1573 @@ window.N2_KANJI_DATA = [
     examples: [
       { word: '零下', reading: 'れいか', meaning: 'Being sub-zero / below zero', source: 'Sou Matome N2' }
     ]
+  },
+  {
+    id: 'k-n2-sm-652',
+    char: '州',
+    meaning: 'State, Province',
+    onyomi: 'シュウ, ス',
+    kunyomi: 'す',
+    levels: ['N2', 'N3'],
+    strokes: 6,
+    radical: '川 (river)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 1', notes: '速報 (News Flash)' }
+    ],
+    examples: [
+      { word: '本州', reading: 'ほんしゅう', meaning: 'Honshu (main island of Japan)', source: 'Sou Matome N2' },
+      { word: '〜州', reading: 'しゅう', meaning: 'A state (e.g. the state of Texas)', source: 'Sou Matome N2' },
+      { word: '九州', reading: 'きゅうしゅう', meaning: 'Kyushu', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-653',
+    char: '波',
+    meaning: 'Wave',
+    onyomi: 'ハ',
+    kunyomi: 'なみ',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 1', notes: '速報' }
+    ],
+    examples: [
+      { word: '電波', reading: 'でんぱ', meaning: 'Radio waves', source: 'Sou Matome N2' },
+      { word: '波', reading: 'なみ', meaning: 'A wave', source: 'Sou Matome N2' },
+      { word: '津波', reading: 'つなみ', meaning: 'A tsunami / tidal wave', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-654',
+    char: '盗',
+    meaning: 'Steal, Rob, Thief',
+    onyomi: 'トウ',
+    kunyomi: 'ぬす・む, ぬす・びと',
+    levels: ['N2', 'N3'],
+    strokes: 11,
+    radical: '皿 (dish)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 1', notes: '速報' }
+    ],
+    examples: [
+      { word: '強盗', reading: 'ごうとう', meaning: 'A robbery / burglar', source: 'Sou Matome N2' },
+      { word: '盗む', reading: 'ぬすむ', meaning: 'To steal', source: 'Sou Matome N2' },
+      { word: '盗難', reading: 'とうなん', meaning: 'Theft / calamity of robbery', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-655',
+    char: '逃',
+    meaning: 'Escape, Flee, Shirk',
+    onyomi: 'トウ',
+    kunyomi: 'に・げる, に・がす, のが・す, のが・れる',
+    levels: ['N2', 'N3'],
+    strokes: 9,
+    radical: '辶 (road)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 1', notes: '速報' }
+    ],
+    examples: [
+      { word: '逃走', reading: 'とうそう', meaning: 'An escape / flight', source: 'Sou Matome N2' },
+      { word: '逃がす', reading: 'にがす', meaning: 'To release / let go', source: 'Sou Matome N2' },
+      { word: '逃げる', reading: 'にげる', meaning: 'To escape / run away', source: 'Sou Matome N2' },
+      { word: '逃す', reading: 'のがす', meaning: 'To let slip / miss', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-656',
+    char: '疑',
+    meaning: 'Doubt, Distrust, Be suspicious, Question',
+    onyomi: 'ギ',
+    kunyomi: 'うたが・う',
+    levels: ['N2', 'N3'],
+    strokes: 14,
+    radical: '疋 (bolt of cloth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 1', notes: '速報' }
+    ],
+    examples: [
+      { word: '疑問', reading: 'ぎもん', meaning: 'A question / doubt', source: 'Sou Matome N2' },
+      { word: '疑う', reading: 'うたがう', meaning: 'To doubt / suspect', source: 'Sou Matome N2' },
+      { word: '容疑', reading: 'ようぎ', meaning: 'Suspicion / charge', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-657',
+    char: '捕',
+    meaning: 'Catch, Capture',
+    onyomi: 'ホ',
+    kunyomi: 'と・らえる, と・らわれる, と・る, つか・まえる, つか・まる',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '扌 (hand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 1', notes: '速報' }
+    ],
+    examples: [
+      { word: '逮捕', reading: 'たいほ', meaning: 'Arrest / capture', source: 'Sou Matome N2' },
+      { word: '捕まる', reading: 'つかまる', meaning: 'Be arrested / caught', source: 'Sou Matome N2' },
+      { word: '捕る', reading: 'とる', meaning: 'To take / catch (fish, etc.)', source: 'Sou Matome N2' },
+      { word: '捕まえる', reading: 'つかまえる', meaning: 'To arrest / catch', source: 'Sou Matome N2' },
+      { word: '捕らえる', reading: 'とらえる', meaning: 'To seize / grasp / arrest', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-658',
+    char: '絶',
+    meaning: 'Discontinue, Sever, Cut off, Incomparable',
+    onyomi: 'ゼツ',
+    kunyomi: 'た・える, た・やす, た・つ',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '糸 (silk)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 1', notes: '速報' }
+    ],
+    examples: [
+      { word: '絶対(に)', reading: 'ぜったい', meaning: 'Absolutely / definitely', source: 'Sou Matome N2' },
+      { word: '絶つ', reading: 'たつ', meaning: 'To sever / cut off / suppress', source: 'Sou Matome N2' },
+      { word: '絶えず', reading: 'たえず', meaning: 'Constantly / continuously', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-659',
+    char: '党',
+    meaning: 'Party, Faction, Clique',
+    onyomi: 'トウ',
+    kunyomi: 'なかま, むら',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '儿 (legs)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 1', notes: '選挙・報道' }
+    ],
+    examples: [
+      { word: '政党', reading: 'せいとう', meaning: 'A political party', source: 'Sou Matome N2' },
+      { word: '与党', reading: 'よとう', meaning: 'The ruling party', source: 'Sou Matome N2' },
+      { word: '〜党', reading: 'とう', meaning: 'A party (political suffix)', source: 'Sou Matome N2' },
+      { word: '野党', reading: 'やとう', meaning: 'The opposition party', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-660',
+    char: '補',
+    meaning: 'Supplement, Supply, Make good, Offset',
+    onyomi: 'ホ',
+    kunyomi: 'おぎな・う',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '衤 (clothing)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 1', notes: '選挙・報道' }
+    ],
+    examples: [
+      { word: '候補(者)', reading: 'こうほしゃ', meaning: 'A candidate', source: 'Sou Matome N2' },
+      { word: '補助', reading: 'ほじょ', meaning: 'Assistance / support / subsidy', source: 'Sou Matome N2' },
+      { word: '補足', reading: 'ほそく', meaning: 'Supplement / complement', source: 'Sou Matome N2' },
+      { word: '補う', reading: 'おぎなう', meaning: 'To compensate for / supplement', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-661',
+    char: '童',
+    meaning: 'Child, Juvenile',
+    onyomi: 'ドウ',
+    kunyomi: 'わらべ',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '立 (stand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 1', notes: '選挙・報道' }
+    ],
+    examples: [
+      { word: '児童', reading: 'じどう', meaning: 'Children / juvenile', source: 'Sou Matome N2' },
+      { word: '童話', reading: 'どうわ', meaning: 'A fairy tale', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-662',
+    char: '爆',
+    meaning: 'Bomb, Burst open, Pop, Split',
+    onyomi: 'バク',
+    kunyomi: 'は・ぜる',
+    levels: ['N2', 'N3'],
+    strokes: 19,
+    radical: '火 (fire)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 1', notes: '選挙・報道' }
+    ],
+    examples: [
+      { word: '爆発', reading: 'ばくはつ', meaning: 'An explosion', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-663',
+    char: '暴',
+    meaning: 'Outburst, Raving, Run wild, Violence',
+    onyomi: 'ボウ, バク',
+    kunyomi: 'あば・れる, あば・く',
+    levels: ['N2', 'N3'],
+    strokes: 15,
+    radical: '日 (sun)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 1', notes: '選挙・報道' }
+    ],
+    examples: [
+      { word: '暴走', reading: 'ぼうそう', meaning: 'Running wildly / out of control', source: 'Sou Matome N2' },
+      { word: '暴れる', reading: 'あばれる', meaning: 'To behave violently / rampage', source: 'Sou Matome N2' },
+      { word: '乱暴(な)', reading: 'らんぼう', meaning: 'Rude / violent / rough', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-664',
+    char: '亡',
+    meaning: 'Deceased, The late, Dying, Perish',
+    onyomi: 'ボウ, モウ',
+    kunyomi: 'な・くなる, な・き, ほろ・びる, ほろ・ぶ, ほろ・ぼす',
+    levels: ['N2', 'N3'],
+    strokes: 3,
+    radical: '亠 (lid)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 1', notes: '選挙・報道' }
+    ],
+    examples: [
+      { word: '死亡', reading: 'しぼう', meaning: 'Death / mortality', source: 'Sou Matome N2' },
+      { word: '亡くなる', reading: 'なくなる', meaning: 'To die / pass away', source: 'Sou Matome N2' },
+      { word: '亡くす', reading: 'なくす', meaning: 'To lose someone (by death)', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-665',
+    char: '罪',
+    meaning: 'Guilt, Sin, Crime, Fault, Blame',
+    onyomi: 'ザイ',
+    kunyomi: 'つみ',
+    levels: ['N2', 'N3'],
+    strokes: 13,
+    radical: '罒 (net)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 1', notes: '選挙・報道' }
+    ],
+    examples: [
+      { word: '〜罪', reading: 'ざい', meaning: 'Crime of ... (suffix)', source: 'Sou Matome N2' },
+      { word: '有罪', reading: 'ゆうざい', meaning: 'Guilty', source: 'Sou Matome N2' },
+      { word: '無罪', reading: 'むざい', meaning: 'Innocent / not guilty', source: 'Sou Matome N2' },
+      { word: '罪', reading: 'つみ', meaning: 'A crime / sin', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-666',
+    char: '型',
+    meaning: 'Mould, Type, Model',
+    onyomi: 'ケイ',
+    kunyomi: 'かた, -がた',
+    levels: ['N2', 'N3'],
+    strokes: 9,
+    radical: '土 (earth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 2', notes: '見出し① (Headlines 1)' }
+    ],
+    examples: [
+      { word: '典型的(な)', reading: 'てんけいてき', meaning: 'Typical / model / ideal', source: 'Sou Matome N2' },
+      { word: '大型', reading: 'おおがた', meaning: 'A large / jumbo size', source: 'Sou Matome N2' },
+      { word: '〜型', reading: 'がた', meaning: 'Model / style / shape', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-667',
+    char: '欧',
+    meaning: 'Europe',
+    onyomi: 'オウ',
+    kunyomi: 'うた・う, は・く',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '欠 (lack)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 2', notes: '見出し①' }
+    ],
+    examples: [
+      { word: '欧米', reading: 'おうべい', meaning: 'Europe and America / the West', source: 'Sou Matome N2' },
+      { word: '欧州', reading: 'おうしゅう', meaning: 'Europe', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-668',
+    char: '労',
+    meaning: 'Labor, Thank for, Toil, Trouble',
+    onyomi: 'ロウ',
+    kunyomi: 'ねぎら・う, つか・れる, いたわ・る',
+    levels: ['N2', 'N3'],
+    strokes: 7,
+    radical: '力 (power)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 2', notes: '見出し①' }
+    ],
+    examples: [
+      { word: '苦労', reading: 'くろう', meaning: 'Troubles / hardships', source: 'Sou Matome N2' },
+      { word: 'ご苦労様', reading: 'ごくろうさま', meaning: 'Thank you very much for your hard work', source: 'Sou Matome N2' },
+      { word: '厚生労働省', reading: 'こうせいろうどうしょう', meaning: 'Ministry of Health, Labour and Welfare', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-669',
+    char: '兆',
+    meaning: 'Portent, 10**12, Trillion, Sign, Omen',
+    onyomi: 'チョウ',
+    kunyomi: 'きざ・す, きざ・し',
+    levels: ['N2', 'N3'],
+    strokes: 6,
+    radical: '儿 (legs)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 2', notes: '見出し①' }
+    ],
+    examples: [
+      { word: '兆', reading: 'ちょう', meaning: 'Sign / omen / trillion (10^12)', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-670',
+    char: '貿',
+    meaning: 'Trade, Exchange',
+    onyomi: 'ボウ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '貝 (shell)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 2', notes: '見出し①' }
+    ],
+    examples: [
+      { word: '貿易', reading: 'ぼうえき', meaning: '(Foreign) trade', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-671',
+    char: '易',
+    meaning: 'Easy, Ready to, Simple, Fortune-telling',
+    onyomi: 'エキ, イ',
+    kunyomi: 'やさ・しい, やす・い',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '日 (sun)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 2', notes: '見出し①' }
+    ],
+    examples: [
+      { word: '容易', reading: 'ようい', meaning: 'Easy / plain / simple', source: 'Sou Matome N2' },
+      { word: '貿易', reading: 'ぼうえき', meaning: 'Trade', source: 'Sou Matome N2' },
+      { word: '安易(な)', reading: 'あんい', meaning: 'Easy-going / lighthearted', source: 'Sou Matome N2' },
+      { word: '易しい', reading: 'やさしい', meaning: 'Easy / plain / simple', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-672',
+    char: '農',
+    meaning: 'Agriculture, Farmers',
+    onyomi: 'ノウ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 13,
+    radical: '辰 (dragon)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 2', notes: '見出し①' }
+    ],
+    examples: [
+      { word: '農業', reading: 'のうぎょう', meaning: 'Agriculture', source: 'Sou Matome N2' },
+      { word: '農産物', reading: 'のうさんぶつ', meaning: 'Agricultural produce', source: 'Sou Matome N2' },
+      { word: '農家', reading: 'のうか', meaning: 'A farmer / farm family', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-673',
+    char: '命',
+    meaning: 'Fate, Command, Decree, Life, Destiny',
+    onyomi: 'メイ, ミョウ',
+    kunyomi: 'いのち',
+    levels: ['N2', 'N4'],
+    strokes: 8,
+    radical: '口 (mouth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 2', notes: '振り込め詐欺・宝くじ' }
+    ],
+    examples: [
+      { word: '命じる', reading: 'めいじる', meaning: 'To order / command', source: 'Sou Matome N2' },
+      { word: '生命', reading: 'せいめい', meaning: 'Life / existence', source: 'Sou Matome N2' },
+      { word: '一生懸命', reading: 'いっしょうけんめい', meaning: 'Very hard / with utmost effort', source: 'Sou Matome N2' },
+      { word: '命', reading: 'いのち', meaning: 'Life', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-674',
+    char: '令',
+    meaning: 'Orders, Ancient scroll, Laws, Command',
+    onyomi: 'レイ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 5,
+    radical: '人 (person)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 2', notes: '振り込め詐欺・宝くじ' }
+    ],
+    examples: [
+      { word: '命令', reading: 'めいれい', meaning: 'An order / command', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-675',
+    char: '被',
+    meaning: 'Incur, Cover, Veil, Brood over, Suffer',
+    onyomi: 'ヒ',
+    kunyomi: 'こうむ・る, おお・う, かぶ・る, かぶ・せる',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '衤 (clothing)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 2', notes: '振り込め詐欺・宝くじ' }
+    ],
+    examples: [
+      { word: '被害', reading: 'ひがい', meaning: 'Damage / harm', source: 'Sou Matome N2' },
+      { word: '被害者', reading: 'ひがいしゃ', meaning: 'A victim / sufferer', source: 'Sou Matome N2' },
+      { word: '被告', reading: 'ひこく', meaning: 'A defendant / accused', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-676',
+    char: '害',
+    meaning: 'Harm, Damage, Injury',
+    onyomi: 'ガイ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '宀 (roof)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 2', notes: '振り込め詐欺・宝くじ' }
+    ],
+    examples: [
+      { word: '害', reading: 'がい', meaning: 'Injury / harm / damage', source: 'Sou Matome N2' },
+      { word: '公害', reading: 'こうがい', meaning: 'Public nuisance / pollution', source: 'Sou Matome N2' },
+      { word: '水害', reading: 'すいがい', meaning: 'Water damage / flood disaster', source: 'Sou Matome N2' },
+      { word: '殺害', reading: 'さつがい', meaning: 'A murder / killing', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-677',
+    char: '権',
+    meaning: 'Authority, Power, Rights',
+    onyomi: 'ケン, ゴン',
+    kunyomi: 'おもり, かり, はか・る',
+    levels: ['N2', 'N3'],
+    strokes: 15,
+    radical: '木 (tree)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 2', notes: '振り込め詐欺・宝くじ' }
+    ],
+    examples: [
+      { word: '権利', reading: 'けんり', meaning: 'Right / privilege', source: 'Sou Matome N2' },
+      { word: '人権', reading: 'じんけん', meaning: 'Human rights / civil liberties', source: 'Sou Matome N2' },
+      { word: '〜権', reading: 'けん', meaning: 'Authority / right (suffix)', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-678',
+    char: '億',
+    meaning: 'Hundred million, 10**8',
+    onyomi: 'オク',
+    kunyomi: '-',
+    levels: ['N2', 'N4'],
+    strokes: 15,
+    radical: '亻 (person)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 2', notes: '振り込め詐欺・宝くじ' }
+    ],
+    examples: [
+      { word: '億', reading: 'おく', meaning: 'A hundred million (10^8)', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-679',
+    char: '星',
+    meaning: 'Star, Spot, Dot',
+    onyomi: 'セイ, ショウ',
+    kunyomi: 'ほし, -ぼし',
+    levels: ['N2', 'N4'],
+    strokes: 9,
+    radical: '日 (sun)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 2', notes: '振り込め詐欺・宝くじ' }
+    ],
+    examples: [
+      { word: '星座', reading: 'せいざ', meaning: 'A constellation', source: 'Sou Matome N2' },
+      { word: '星', reading: 'ほし', meaning: 'A star', source: 'Sou Matome N2' },
+      { word: '星印', reading: 'ほしじるし', meaning: 'A star / asterisk', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-680',
+    char: '武',
+    meaning: 'Warrior, Military, Chivalry, Arms',
+    onyomi: 'ブ, ム',
+    kunyomi: 'たけ・し',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '止 (stop)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 3', notes: '見出し② (Headlines 2)' }
+    ],
+    examples: [
+      { word: '武器', reading: 'ぶき', meaning: 'Weapon / arms', source: 'Sou Matome N2' },
+      { word: '武士', reading: 'ぶし', meaning: 'A warrior / samurai', source: 'Sou Matome N2' },
+      { word: '武力', reading: 'ぶりょく', meaning: 'Military power', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-681',
+    char: '巨',
+    meaning: 'Gigantic, Big, Large, Great',
+    onyomi: 'キョ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 5,
+    radical: '匚 (box)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 3', notes: '見出し②' }
+    ],
+    examples: [
+      { word: '巨大(な)', reading: 'きょだい', meaning: 'Huge / gigantic', source: 'Sou Matome N2' },
+      { word: '巨額', reading: 'きょがく', meaning: 'A great sum / huge sum', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-682',
+    char: '競',
+    meaning: 'Emulate, Compete with, Bid, Contest',
+    onyomi: 'キョウ, ケイ',
+    kunyomi: 'きそ・う, せ・る, くら・べる',
+    levels: ['N2', 'N3'],
+    strokes: 20,
+    radical: '立 (stand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 3', notes: '見出し②' }
+    ],
+    examples: [
+      { word: '競争', reading: 'きょうそう', meaning: 'A competition / contest', source: 'Sou Matome N2' },
+      { word: '競う', reading: 'きそう', meaning: 'Emulate / compete with', source: 'Sou Matome N2' },
+      { word: '競馬', reading: 'けいば', meaning: 'Horse racing', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-683',
+    char: '敗',
+    meaning: 'Failure, Defeat, Reversal',
+    onyomi: 'ハイ',
+    kunyomi: 'やぶ・れる',
+    levels: ['N2', 'N3'],
+    strokes: 11,
+    radical: '攴 (rap)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 3', notes: '見出し②' }
+    ],
+    examples: [
+      { word: '失敗', reading: 'しっぱい', meaning: 'A failure / mistake', source: 'Sou Matome N2' },
+      { word: '敗れる', reading: 'やぶれる', meaning: 'Be defeated', source: 'Sou Matome N2' },
+      { word: '連敗', reading: 'れんぱい', meaning: 'A series of defeats / consecutive losses', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-684',
+    char: '逆',
+    meaning: 'Inverted, Reverse, Opposite, Wicked',
+    onyomi: 'ギャク, ゲキ',
+    kunyomi: 'さか, さか・さ, さか・らう',
+    levels: ['N2', 'N3'],
+    strokes: 9,
+    radical: '辶 (road)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 3', notes: '見出し②' }
+    ],
+    examples: [
+      { word: '逆', reading: 'ぎゃく', meaning: 'The reverse / opposite', source: 'Sou Matome N2' },
+      { word: '逆さ', reading: 'さかさ', meaning: 'Upside down / inversion', source: 'Sou Matome N2' },
+      { word: '逆転', reading: 'ぎゃくてん', meaning: 'A (sudden) change / reversal', source: 'Sou Matome N2' },
+      { word: '逆らう', reading: 'さからう', meaning: 'Oppose / defy', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-685',
+    char: '勝',
+    meaning: 'Victory, Win, Prevail, Excel',
+    onyomi: 'ショウ',
+    kunyomi: 'か・つ, -が・ち, まさ・る, すぐ・れる',
+    levels: ['N2', 'N4'],
+    strokes: 12,
+    radical: '力 (power)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 3', notes: '見出し②' }
+    ],
+    examples: [
+      { word: '優勝', reading: 'ゆうしょう', meaning: 'A victory / championship', source: 'Sou Matome N2' },
+      { word: '勝敗', reading: 'しょうはい', meaning: 'Victory or defeat', source: 'Sou Matome N2' },
+      { word: '勝負', reading: 'しょうぶ', meaning: 'A match / contest / game', source: 'Sou Matome N2' },
+      { word: '勝つ', reading: 'かつ', meaning: 'To win', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-686',
+    char: '投',
+    meaning: 'Throw, Discard, Abandon, Launch into',
+    onyomi: 'トウ',
+    kunyomi: 'な・げる, -な・げ',
+    levels: ['N2', 'N4'],
+    strokes: 7,
+    radical: '扌 (hand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 3', notes: '見出し②' }
+    ],
+    examples: [
+      { word: '投手', reading: 'とうしゅ', meaning: 'A (baseball) pitcher', source: 'Sou Matome N2' },
+      { word: '投資', reading: 'とうし', meaning: 'An investment', source: 'Sou Matome N2' },
+      { word: '投書', reading: 'とうしょ', meaning: 'A letter to the editor', source: 'Sou Matome N2' },
+      { word: '投げる', reading: 'なげる', meaning: 'To throw', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-687',
+    char: '軍',
+    meaning: 'Army, Force, Military, War',
+    onyomi: 'グン',
+    kunyomi: 'いくさ',
+    levels: ['N2', 'N3'],
+    strokes: 9,
+    radical: '車 (cart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 3', notes: '事故・火災・捜査' }
+    ],
+    examples: [
+      { word: '軍', reading: 'ぐん', meaning: 'Army / troops / military authorities', source: 'Sou Matome N2' },
+      { word: '軍隊', reading: 'ぐんたい', meaning: 'Army / troops', source: 'Sou Matome N2' },
+      { word: '〜軍', reading: 'ぐん', meaning: 'Suffix for military force', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-688',
+    char: '兵',
+    meaning: 'Soldier, Private, Troops, Army',
+    onyomi: 'ヘイ, ヒョウ',
+    kunyomi: 'つわもの',
+    levels: ['N2', 'N3'],
+    strokes: 7,
+    radical: '八 (eight)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 3', notes: '事故・火災・捜査' }
+    ],
+    examples: [
+      { word: '兵士', reading: 'へいし', meaning: 'A soldier', source: 'Sou Matome N2' },
+      { word: '兵隊', reading: 'へいたい', meaning: 'A soldier / an army', source: 'Sou Matome N2' },
+      { word: '〜兵', reading: 'へい', meaning: 'Suffix for soldier', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-689',
+    char: '捜',
+    meaning: 'Search, Seek, Investigate',
+    onyomi: 'ソウ, シュ, シュウ',
+    kunyomi: 'さが・す',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '扌 (hand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 3', notes: '事故・火災・捜査' }
+    ],
+    examples: [
+      { word: '捜査', reading: 'そうさ', meaning: 'A search / investigation', source: 'Sou Matome N2' },
+      { word: '捜す', reading: 'さがす', meaning: 'Search / seek', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-690',
+    char: '倒',
+    meaning: 'Fall, Collapse, Drop, Overturn',
+    onyomi: 'トウ',
+    kunyomi: 'たお・れる, -だお・れ, たお・す',
+    levels: ['N2', 'N4'],
+    strokes: 10,
+    radical: '亻 (person)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 3', notes: '事故・火災・捜査' }
+    ],
+    examples: [
+      { word: '転倒', reading: 'てんとう', meaning: 'Falling down / upset / turnover', source: 'Sou Matome N2' },
+      { word: '倒れる', reading: 'たおれる', meaning: 'Collapse / break down / fall', source: 'Sou Matome N2' },
+      { word: '面倒', reading: 'めんどう', meaning: 'Trouble / difficulty / care', source: 'Sou Matome N2' },
+      { word: '倒す', reading: 'たおす', meaning: 'Throw down / beat', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-691',
+    char: '骨',
+    meaning: 'Skeleton, Bone, Remains, Frame',
+    onyomi: 'コツ',
+    kunyomi: 'ほね',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '骨 (bone)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 3', notes: '事故・火災・捜査' }
+    ],
+    examples: [
+      { word: '骨折', reading: 'こっせつ', meaning: 'A bone fracture', source: 'Sou Matome N2' },
+      { word: '骨', reading: 'ほね', meaning: 'A bone', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-692',
+    char: '針',
+    meaning: 'Needle, Pin, Staple, Stitch, Pointer',
+    onyomi: 'シン',
+    kunyomi: 'はり',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '金 (metal)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 3', notes: '事故・火災・捜査' }
+    ],
+    examples: [
+      { word: '方針', reading: 'ほうしん', meaning: 'A principle / policy', source: 'Sou Matome N2' },
+      { word: '針', reading: 'はり', meaning: 'A needle / pin / pointer', source: 'Sou Matome N2' },
+      { word: '針路', reading: 'しんろ', meaning: 'A course / direction', source: 'Sou Matome N2' },
+      { word: '針金', reading: 'はりがね', meaning: 'A wire', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-693',
+    char: '叫',
+    meaning: 'Shout, Exclaim, Yell',
+    onyomi: 'キョウ',
+    kunyomi: 'さけ・ぶ',
+    levels: ['N2', 'N3'],
+    strokes: 6,
+    radical: '口 (mouth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 3', notes: '事故・火災・捜査' }
+    ],
+    examples: [
+      { word: '叫び', reading: 'さけび', meaning: 'A shout / scream', source: 'Sou Matome N2' },
+      { word: '叫ぶ', reading: 'さけぶ', meaning: 'Shout / cry out', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-694',
+    char: '脳',
+    meaning: 'Brain, Memory',
+    onyomi: 'ノウ, ドウ',
+    kunyomi: 'のうずる',
+    levels: ['N2', 'N3'],
+    strokes: 11,
+    radical: '月 (meat)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 4', notes: '記事① (Articles 1)' }
+    ],
+    examples: [
+      { word: '頭脳', reading: 'ずのう', meaning: 'A brain / intellect', source: 'Sou Matome N2' },
+      { word: '首脳', reading: 'しゅのう', meaning: 'Head / brains / leaders', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-695',
+    char: '抱',
+    meaning: 'Embrace, Hug, Hold in arms',
+    onyomi: 'ホウ',
+    kunyomi: 'だ・く, いだ・く, かか・える',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '扌 (hand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 4', notes: '記事①' }
+    ],
+    examples: [
+      { word: '抱く', reading: 'だく', meaning: 'Embrace / hold', source: 'Sou Matome N2' },
+      { word: '抱える', reading: 'かかえる', meaning: 'Hold / have (a responsibility / problem)', source: 'Sou Matome N2' },
+      { word: '抱く', reading: 'いだく', meaning: 'Embrace / hold / entertain (a hope / doubt)', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-696',
+    char: '双',
+    meaning: 'Pair, Set, Comparison, Counter for pairs',
+    onyomi: 'ソウ',
+    kunyomi: 'ふた, たぐい, ならぶ, ふたつ',
+    levels: ['N2', 'N3'],
+    strokes: 4,
+    radical: '又 (again)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 4', notes: '記事①' }
+    ],
+    examples: [
+      { word: '双方', reading: 'そうほう', meaning: 'Both parties', source: 'Sou Matome N2' },
+      { word: '双子', reading: 'ふたご', meaning: 'Twins', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-697',
+    char: '尊',
+    meaning: 'Revered, Valuable, Precious, Noble',
+    onyomi: 'ソン',
+    kunyomi: 'とうと・い, たっと・い, とうと・ぶ, たっと・ぶ',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '寸 (inch)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 4', notes: '記事①' }
+    ],
+    examples: [
+      { word: '尊重', reading: 'そんちょう', meaning: 'Respect / esteem', source: 'Sou Matome N2' },
+      { word: '尊敬', reading: 'そんけい', meaning: 'Respect / esteem / reverence', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-698',
+    char: '雇',
+    meaning: 'Employ, Hire',
+    onyomi: 'コ',
+    kunyomi: 'やと・う',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '隹 (short-tailed bird)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 4', notes: '記事①' }
+    ],
+    examples: [
+      { word: '雇用', reading: 'こよう', meaning: 'Employment (long term) / hire', source: 'Sou Matome N2' },
+      { word: '雇う', reading: 'やとう', meaning: 'Employ / hire', source: 'Sou Matome N2' },
+      { word: '解雇', reading: 'かいこ', meaning: 'A dismissal / layoff', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-699',
+    char: '条',
+    meaning: 'Article, Clause, Item, Stripe, Streak',
+    onyomi: 'ジョウ, チョウ, デキ',
+    kunyomi: 'えだ, すじ',
+    levels: ['N2', 'N3'],
+    strokes: 7,
+    radical: '木 (tree)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 4', notes: '記事①' }
+    ],
+    examples: [
+      { word: '条件', reading: 'じょうけん', meaning: 'Conditions / terms', source: 'Sou Matome N2' },
+      { word: '条約', reading: 'じょうやく', meaning: 'A treaty / agreement', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-700',
+    char: '善',
+    meaning: 'Virtuous, Good, Goodness',
+    onyomi: 'ゼン',
+    kunyomi: 'よ・い, い・い, よく, よし・とする',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '口 (mouth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 4', notes: '記事①' }
+    ],
+    examples: [
+      { word: '改善', reading: 'かいぜん', meaning: 'An improvement', source: 'Sou Matome N2' },
+      { word: '親善', reading: 'しんぜん', meaning: 'Friendship / goodwill', source: 'Sou Matome N2' },
+      { word: '善悪', reading: 'ぜんあく', meaning: 'Good and evil / right and wrong', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-701',
+    char: '律',
+    meaning: 'Rhythm, Law, Regulation, Control',
+    onyomi: 'リツ, リチ, レツ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 9,
+    radical: '彳 (step)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 4', notes: '情勢・耕地' }
+    ],
+    examples: [
+      { word: '法律', reading: 'ほうりつ', meaning: 'Law / legislation', source: 'Sou Matome N2' },
+      { word: '規律', reading: 'きりつ', meaning: 'Order / discipline / rule', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-702',
+    char: '勢',
+    meaning: 'Forces, Energy, Military strength',
+    onyomi: 'セイ, ゼイ',
+    kunyomi: 'いきお・い, はずみ',
+    levels: ['N2', 'N3'],
+    strokes: 13,
+    radical: '力 (power)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 4', notes: '情勢・耕地' }
+    ],
+    examples: [
+      { word: '情勢', reading: 'じょうせい', meaning: 'Condition / situation / state of affairs', source: 'Sou Matome N2' },
+      { word: '姿勢', reading: 'しせい', meaning: 'Posture / attitude', source: 'Sou Matome N2' },
+      { word: '大勢', reading: 'おおぜい', meaning: 'A crowd / a great number of people', source: 'Sou Matome N2' },
+      { word: '勢い', reading: 'いきおい', meaning: 'Momentum / force / might', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-703',
+    char: '怖',
+    meaning: 'Dreadful, Be frightened, Fearful',
+    onyomi: 'フ, ホ',
+    kunyomi: 'こわ・い, こわ・がる, お・じる, おそ・る',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '忄 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 4', notes: '情勢・耕地' }
+    ],
+    examples: [
+      { word: '恐怖', reading: 'きょうふ', meaning: 'A fear / terror', source: 'Sou Matome N2' },
+      { word: '怖い', reading: 'こわい', meaning: 'Scary / frightened', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-704',
+    char: '荒',
+    meaning: 'Laid waste, Rough, Rude, Wild',
+    onyomi: 'コウ',
+    kunyomi: 'あら・い, あら・す, -あらし, あ・れる, あ・らす, すさ・む',
+    levels: ['N2', 'N3'],
+    strokes: 9,
+    radical: '艹 (grass)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 4', notes: '情勢・耕地' }
+    ],
+    examples: [
+      { word: '荒い', reading: 'あらい', meaning: 'Rough / rude / wild', source: 'Sou Matome N2' },
+      { word: '荒らす', reading: 'あらす', meaning: 'Devastate / damage / ruin', source: 'Sou Matome N2' },
+      { word: '荒れる', reading: 'あれる', meaning: 'Be stormy / be rough / fall into ruin', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-705',
+    char: '耕',
+    meaning: 'Till, Plow, Cultivate',
+    onyomi: 'コウ',
+    kunyomi: 'たがや・す',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '耒 (plow)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 4', notes: '情勢・耕地' }
+    ],
+    examples: [
+      { word: '耕地', reading: 'こうち', meaning: 'Arable land / cultivated land', source: 'Sou Matome N2' },
+      { word: '耕す', reading: 'たがやす', meaning: 'Farm / till / cultivate', source: 'Sou Matome N2' },
+      { word: '休耕地', reading: 'きゅうこうち', meaning: 'Land out of cultivation / fallow land', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-706',
+    char: '景',
+    meaning: 'Scenery, View',
+    onyomi: 'ケイ',
+    kunyomi: '-',
+    levels: ['N2', 'N4'],
+    strokes: 12,
+    radical: '日 (sun)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 4', notes: '情勢・耕地' }
+    ],
+    examples: [
+      { word: '風景', reading: 'ふうけい', meaning: 'Scenery / landscape', source: 'Sou Matome N2' },
+      { word: '景気', reading: 'けいき', meaning: 'Business climate / economic condition', source: 'Sou Matome N2' },
+      { word: '光景', reading: 'こうけい', meaning: 'A scene / spectacle', source: 'Sou Matome N2' },
+      { word: '景色', reading: 'けしき', meaning: 'A scene / landscape / view', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-707',
+    char: '掘',
+    meaning: 'Dig, Delve, Excavate',
+    onyomi: 'クツ',
+    kunyomi: 'ほ・る',
+    levels: ['N2', 'N3'],
+    strokes: 11,
+    radical: '扌 (hand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 4', notes: '情勢・耕地' }
+    ],
+    examples: [
+      { word: '掘る', reading: 'ほる', meaning: 'Dig / excavate', source: 'Sou Matome N2' },
+      { word: '掘り返す', reading: 'ほりかえす', meaning: 'Dig up', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-708',
+    char: '批',
+    meaning: 'Criticism, Strike',
+    onyomi: 'ヒ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 7,
+    radical: '扌 (hand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 5', notes: '記事② (Articles 2)' }
+    ],
+    examples: [
+      { word: '批判', reading: 'ひはん', meaning: 'A criticism / judgment', source: 'Sou Matome N2' },
+      { word: '批評', reading: 'ひひょう', meaning: 'A criticism / review / commentary', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-709',
+    char: '判',
+    meaning: 'Judgement, Signature, Stamp, Seal',
+    onyomi: 'ハン, バン',
+    kunyomi: 'わか・る',
+    levels: ['N2', 'N3'],
+    strokes: 7,
+    radical: '刂 (knife)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 5', notes: '記事②' }
+    ],
+    examples: [
+      { word: '判断', reading: 'はんだん', meaning: 'Judgment / decision', source: 'Sou Matome N2' },
+      { word: '裁判', reading: 'さいばん', meaning: 'Trial / judgment', source: 'Sou Matome N2' },
+      { word: '評判', reading: 'ひょうばん', meaning: 'Fame / reputation', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-710',
+    char: '臣',
+    meaning: 'Retainer, Minister, Subject',
+    onyomi: 'シン, ジン',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 7,
+    radical: '臣 (minister)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 5', notes: '記事②' }
+    ],
+    examples: [
+      { word: '大臣', reading: 'だいじん', meaning: 'A cabinet minister', source: 'Sou Matome N2' },
+      { word: '外務大臣', reading: 'がいむだいじん', meaning: 'Minister of Foreign Affairs', source: 'Sou Matome N2' },
+      { word: '総理大臣', reading: 'そうりだいじん', meaning: 'Prime Minister', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-711',
+    char: '賢',
+    meaning: 'Intelligent, Wise, Wisdom, Cleverness',
+    onyomi: 'ケン',
+    kunyomi: 'かしこ・い',
+    levels: ['N2', 'N3'],
+    strokes: 16,
+    radical: '貝 (shell)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 5', notes: '記事②' }
+    ],
+    examples: [
+      { word: '賢明(な)', reading: 'けんめい', meaning: 'Wise / prudent / sensible', source: 'Sou Matome N2' },
+      { word: '賢い', reading: 'かしこい', meaning: 'Wise / clever / smart', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-712',
+    char: '勇',
+    meaning: 'Courage, Cheer up, Bravery, Heroism',
+    onyomi: 'ユウ',
+    kunyomi: 'いさ・む',
+    levels: ['N2', 'N3'],
+    strokes: 9,
+    radical: '力 (power)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 5', notes: '記事②' }
+    ],
+    examples: [
+      { word: '勇気', reading: 'ゆうき', meaning: 'Courage / bravery', source: 'Sou Matome N2' },
+      { word: '勇ましい', reading: 'いさましい', meaning: 'Brave / valiant', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-713',
+    char: '敬',
+    meaning: 'Awe, Respect, Honor, Revere',
+    onyomi: 'ケイ, キョウ',
+    kunyomi: 'うやま・う',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '攵 (rap)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 5', notes: '記事②' }
+    ],
+    examples: [
+      { word: '敬意', reading: 'けいい', meaning: 'Respect / honor', source: 'Sou Matome N2' },
+      { word: '敬う', reading: 'うやまう', meaning: 'Show respect / honor', source: 'Sou Matome N2' },
+      { word: '敬語', reading: 'けいご', meaning: 'Honorific style of speech', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-714',
+    char: '評',
+    meaning: 'Evaluate, Criticize, Comment',
+    onyomi: 'ヒョウ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '言 (words)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 5', notes: '記事②' }
+    ],
+    examples: [
+      { word: '評価', reading: 'ひょうか', meaning: 'Valuation / estimation / evaluation', source: 'Sou Matome N2' },
+      { word: '評論', reading: 'ひょうろん', meaning: 'A criticism / critique / review', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-715',
+    char: '似',
+    meaning: 'Becoming, Resemble, Counterfeit, Suitable',
+    onyomi: 'ジ',
+    kunyomi: 'に・る, ひ・る',
+    levels: ['N2', 'N3'],
+    strokes: 7,
+    radical: '亻 (person)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 5', notes: '似顔絵・ひったくり' }
+    ],
+    examples: [
+      { word: '似る', reading: 'にる', meaning: 'Resemble / look like', source: 'Sou Matome N2' },
+      { word: '似顔絵', reading: 'にがおえ', meaning: 'A portrait / sketch', source: 'Sou Matome N2' },
+      { word: '似合う', reading: 'にあう', meaning: 'Suit / match / become', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-716',
+    char: '犯',
+    meaning: 'Crime, Sin, Offense',
+    onyomi: 'ハン, ボン',
+    kunyomi: 'おか・す',
+    levels: ['N2', 'N3'],
+    strokes: 5,
+    radical: '犭 (dog)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 5', notes: '似顔絵・ひったくり' }
+    ],
+    examples: [
+      { word: '犯人', reading: 'はんにん', meaning: 'An offender / a criminal', source: 'Sou Matome N2' },
+      { word: '犯す', reading: 'おかす', meaning: 'Commit / perpetrate / violate', source: 'Sou Matome N2' },
+      { word: '犯罪', reading: 'はんざい', meaning: 'A crime', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-717',
+    char: '孫',
+    meaning: 'Grandchild, Descendants',
+    onyomi: 'ソン',
+    kunyomi: 'まご',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '子 (child)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 5', notes: '似顔絵・ひったくり' }
+    ],
+    examples: [
+      { word: '子孫', reading: 'しそん', meaning: 'Descendants / posterity', source: 'Sou Matome N2' },
+      { word: '孫', reading: 'まご', meaning: 'A grandchild', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-718',
+    char: '娘',
+    meaning: 'Daughter, Girl',
+    onyomi: 'ジョウ',
+    kunyomi: 'むすめ, こ',
+    levels: ['N2', 'N3'],
+    strokes: 10,
+    radical: '女 (woman)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 5', notes: '似顔絵・ひったくり' }
+    ],
+    examples: [
+      { word: '娘', reading: 'むすめ', meaning: 'A daughter / girl', source: 'Sou Matome N2' },
+      { word: '孫娘', reading: 'まごむすめ', meaning: 'A granddaughter', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-719',
+    char: '覚',
+    meaning: 'Memorize, Learn, Remember, Awake',
+    onyomi: 'カク',
+    kunyomi: 'おぼ・える, さ・ます, さ・める, さと・る',
+    levels: ['N2', 'N4'],
+    strokes: 12,
+    radical: '見 (see)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 5', notes: '似顔絵・ひったくり' }
+    ],
+    examples: [
+      { word: '感覚', reading: 'かんかく', meaning: 'A sense / sensation', source: 'Sou Matome N2' },
+      { word: '覚ます', reading: 'さます', meaning: 'To awaken / sober up', source: 'Sou Matome N2' },
+      { word: '覚める', reading: 'さめる', meaning: 'To wake up / come to one\'s senses', source: 'Sou Matome N2' },
+      { word: '覚える', reading: 'おぼえる', meaning: 'To remember / learn', source: 'Sou Matome N2' },
+      { word: '目覚まし時計', reading: 'めざましどけい', meaning: 'An alarm clock', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-720',
+    char: '帽',
+    meaning: 'Cap, Headgear',
+    onyomi: 'ボウ, モウ',
+    kunyomi: 'ずきん, おお・う',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '巾 (cloth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 5', notes: '似顔絵・ひったくり' }
+    ],
+    examples: [
+      { word: '帽子', reading: 'ぼうし', meaning: 'A hat / cap', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-721',
+    char: '環',
+    meaning: 'Ring, Circle, Link',
+    onyomi: 'カン',
+    kunyomi: 'わ',
+    levels: ['N2', 'N3'],
+    strokes: 17,
+    radical: '玉 (jade)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 6', notes: '記事③ (Articles 3)' }
+    ],
+    examples: [
+      { word: '環境', reading: 'かんきょう', meaning: 'Environment / circumstance', source: 'Sou Matome N2' },
+      { word: '環状線', reading: 'かんじょうせん', meaning: 'A belt line / loop line', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-722',
+    char: '境',
+    meaning: 'Boundary, Border, Region',
+    onyomi: 'キョウ, ケイ',
+    kunyomi: 'さかい',
+    levels: ['N2', 'N3'],
+    strokes: 14,
+    radical: '土 (earth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 6', notes: '記事③' }
+    ],
+    examples: [
+      { word: '境界', reading: 'きょうかい', meaning: 'A boundary / limit', source: 'Sou Matome N2' },
+      { word: '境', reading: 'さかい', meaning: 'A border / boundary', source: 'Sou Matome N2' },
+      { word: '国境', reading: 'こっきょう', meaning: 'A national or state border', source: 'Sou Matome N2' },
+      { word: '県境', reading: 'けんざかい', meaning: 'A prefectural border', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-723',
+    char: '減',
+    meaning: 'Dwindle, Decrease, Subside, Decline',
+    onyomi: 'ゲン',
+    kunyomi: 'へ・る, へ・らす',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 6', notes: '記事③' }
+    ],
+    examples: [
+      { word: '削減', reading: 'さくげん', meaning: 'A cut / reduction', source: 'Sou Matome N2' },
+      { word: '加減', reading: 'かげん', meaning: 'An adjustment / modification / extent', source: 'Sou Matome N2' },
+      { word: '減る', reading: 'へる', meaning: 'To decrease', source: 'Sou Matome N2' },
+      { word: '減らす', reading: 'へらす', meaning: 'To decrease / reduce', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-724',
+    char: '努',
+    meaning: 'Toil, Diligent, Exert oneself',
+    onyomi: 'ド',
+    kunyomi: 'つと・める',
+    levels: ['N2', 'N3'],
+    strokes: 7,
+    radical: '力 (power)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 6', notes: '記事③' }
+    ],
+    examples: [
+      { word: '努力', reading: 'どりょく', meaning: 'Effort / exertion', source: 'Sou Matome N2' },
+      { word: '努める', reading: 'つとめる', meaning: 'Try hard / make efforts / strive', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-725',
+    char: '庁',
+    meaning: 'Government office',
+    onyomi: 'チョウ, テイ',
+    kunyomi: 'やくしょ',
+    levels: ['N2', 'N3'],
+    strokes: 5,
+    radical: '广 (broad roof)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 6', notes: '記事③' }
+    ],
+    examples: [
+      { word: '〜庁', reading: 'ちょう', meaning: 'Suffix for government office / agency', source: 'Sou Matome N2' },
+      { word: '社会保険庁', reading: 'しゃかいほけんちょう', meaning: 'Social Insurance Agency', source: 'Sou Matome N2' },
+      { word: '県庁', reading: 'けんちょう', meaning: 'A prefectural office', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-726',
+    char: '官',
+    meaning: 'Bureaucrat, The government, Organ',
+    onyomi: 'カン',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '宀 (roof)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 6', notes: '記事③' }
+    ],
+    examples: [
+      { word: '長官', reading: 'ちょうかん', meaning: 'A director / chief / minister', source: 'Sou Matome N2' },
+      { word: '警官', reading: 'けいかん', meaning: 'A police officer', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-727',
+    char: '宙',
+    meaning: 'Mid-air, Air, Space, Sky, Memorization',
+    onyomi: 'チュウ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '宀 (roof)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 6', notes: 'ロボットと宇宙' }
+    ],
+    examples: [
+      { word: '宇宙', reading: 'うちゅう', meaning: 'The universe / outer space', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-728',
+    char: '独',
+    meaning: 'Single, Alone, Spontaneously, Germany',
+    onyomi: 'ドク, トク',
+    kunyomi: 'ひと・り',
+    levels: ['N2', 'N3'],
+    strokes: 9,
+    radical: '犭 (dog)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 6', notes: 'ロボットと宇宙' }
+    ],
+    examples: [
+      { word: '独自', reading: 'どくじ', meaning: 'Original / peculiar / unique', source: 'Sou Matome N2' },
+      { word: '日独', reading: 'にちどく', meaning: 'Japan and Germany', source: 'Sou Matome N2' },
+      { word: '独身', reading: 'どくしん', meaning: 'Single / unmarried', source: 'Sou Matome N2' },
+      { word: '独り言', reading: 'ひとりごと', meaning: 'Speaking to oneself / a monologue', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-729',
+    char: '技',
+    meaning: 'Skill, Art, Craft, Ability, Feat',
+    onyomi: 'ギ',
+    kunyomi: 'わざ',
+    levels: ['N2', 'N3'],
+    strokes: 7,
+    radical: '扌 (hand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 6', notes: 'ロボットと宇宙' }
+    ],
+    examples: [
+      { word: '技術', reading: 'ぎじゅつ', meaning: 'Technique / technology / skill', source: 'Sou Matome N2' },
+      { word: '競技', reading: 'きょうぎ', meaning: 'A game / match / athletic contest', source: 'Sou Matome N2' },
+      { word: '技', reading: 'わざ', meaning: 'An art / technique', source: 'Sou Matome N2' },
+      { word: '技師', reading: 'ぎし', meaning: 'An engineer / technician', source: 'Sou Matome N2' },
+      { word: '演技', reading: 'えんぎ', meaning: 'Acting / performance', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-730',
+    char: '政',
+    meaning: 'Politics, Government',
+    onyomi: 'セイ, ショウ',
+    kunyomi: 'まつりごと',
+    levels: ['N2', 'N4'],
+    strokes: 9,
+    radical: '攵 (rap)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 6', notes: 'ロボットと宇宙' }
+    ],
+    examples: [
+      { word: '財政', reading: 'ざいせい', meaning: 'Fiscal and financial affairs', source: 'Sou Matome N2' },
+      { word: '政党', reading: 'せいとう', meaning: 'A political party', source: 'Sou Matome N2' },
+      { word: '政治', reading: 'せいじ', meaning: 'Politics / government', source: 'Sou Matome N2' },
+      { word: '政府', reading: 'せいふ', meaning: 'Government / administration', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-731',
+    char: '況',
+    meaning: 'Condition, Situation',
+    onyomi: 'キョウ',
+    kunyomi: 'まし・て, いわ・んや',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 6', notes: 'ロボットと宇宙' }
+    ],
+    examples: [
+      { word: '状況', reading: 'じょうきょう', meaning: 'A situation / circumstances', source: 'Sou Matome N2' },
+      { word: '不況', reading: 'ふきょう', meaning: 'Recession / depression', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-732',
+    char: '腕',
+    meaning: 'Arm, Ability, Talent',
+    onyomi: 'ワン',
+    kunyomi: 'うで',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '月 (meat)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Day 6', notes: 'ロボットと宇宙' }
+    ],
+    examples: [
+      { word: '腕力', reading: 'わんりょく', meaning: 'Physical strength / brute force', source: 'Sou Matome N2' },
+      { word: '腕', reading: 'うで', meaning: 'An arm', source: 'Sou Matome N2' },
+      { word: '腕前', reading: 'うでまえ', meaning: 'Ability / skill', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-733',
+    char: '昇',
+    meaning: 'Rise up, Ascend',
+    onyomi: 'ショウ',
+    kunyomi: 'のぼ・る',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '日 (sun)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Review', notes: '上回る・下回る' }
+    ],
+    examples: [
+      { word: '上昇', reading: 'じょうしょう', meaning: 'Rising / ascending', source: 'Sou Matome N2' },
+      { word: '昇る', reading: 'のぼる', meaning: 'To rise / ascend', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-734',
+    char: '幅',
+    meaning: 'Hanging scroll, Width',
+    onyomi: 'フク',
+    kunyomi: 'はば',
+    levels: ['N2', 'N3'],
+    strokes: 12,
+    radical: '巾 (cloth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Review', notes: '上回る・下回る' }
+    ],
+    examples: [
+      { word: '幅', reading: 'はば', meaning: 'Width / breadth', source: 'Sou Matome N2' },
+      { word: '大幅(な)', reading: 'おおはば', meaning: 'Substantial / large-scale', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-735',
+    char: '著',
+    meaning: 'Renowned, Publish, Write, Remarkable, Phenomenal',
+    onyomi: 'チョ, チャク',
+    kunyomi: 'あらわ・す, いちじる・しい',
+    levels: ['N2', 'N3'],
+    strokes: 11,
+    radical: '艹 (grass)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Review', notes: '上回る・下回る' }
+    ],
+    examples: [
+      { word: '著者', reading: 'ちょしゃ', meaning: 'An author / writer', source: 'Sou Matome N2' },
+      { word: '著す', reading: 'あらわす', meaning: 'To write / publish', source: 'Sou Matome N2' },
+      { word: '著しい', reading: 'いちじるしい', meaning: 'Remarkable / considerable', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-736',
+    char: '占',
+    meaning: 'Fortune-telling, Divining, Forecasting, Occupy, Hold',
+    onyomi: 'セン',
+    kunyomi: 'し・める, うらな・う',
+    levels: ['N2', 'N3'],
+    strokes: 5,
+    radical: '卜 (divination)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Review', notes: '上回る・下回る' }
+    ],
+    examples: [
+      { word: '占める', reading: 'しめる', meaning: 'To occupy / hold / account for', source: 'Sou Matome N2' },
+      { word: '占う', reading: 'うらなう', meaning: 'Tell a person\'s fortune / forecast', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-737',
+    char: '比',
+    meaning: 'Compare, Race, Ratio, Compare with',
+    onyomi: 'ヒ',
+    kunyomi: 'くら・べる',
+    levels: ['N2', 'N4'],
+    strokes: 4,
+    radical: '比 (compare)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Review', notes: '上回る・下回る' }
+    ],
+    examples: [
+      { word: '比較', reading: 'ひかく', meaning: 'A comparison', source: 'Sou Matome N2' },
+      { word: '比べる', reading: 'くらべる', meaning: 'To compare', source: 'Sou Matome N2' },
+      { word: '比較的', reading: 'ひかくてき', meaning: 'Comparative / relatively', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-738',
+    char: '較',
+    meaning: 'Contrast, Compare',
+    onyomi: 'カク, コウ',
+    kunyomi: '-',
+    levels: ['N2', 'N3'],
+    strokes: 13,
+    radical: '車 (cart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Review', notes: '上回る・下回る' }
+    ],
+    examples: [
+      { word: '比較', reading: 'ひかく', meaning: 'A comparison', source: 'Sou Matome N2' },
+      { word: '比較的', reading: 'ひかくてき', meaning: 'Comparative / relatively', source: 'Sou Matome N2' }
+    ]
+  },
+  {
+    id: 'k-n2-sm-739',
+    char: '並',
+    meaning: 'Row, And, Besides, As well as, Line up, Rank with',
+    onyomi: 'ヘイ, ホウ',
+    kunyomi: 'なみ, なら・べる, なら・ぶ, なら・びに',
+    levels: ['N2', 'N3'],
+    strokes: 8,
+    radical: '一 (one)',
+    sources: [
+      { book: 'Nihongo Sou Matome N2 Kanji', chapter: 'Week 8 Review', notes: '上回る・下回る' }
+    ],
+    examples: [
+      { word: '平年並み', reading: 'へいねんなみ', meaning: 'An average year / normal level', source: 'Sou Matome N2' },
+      { word: '並ぶ', reading: 'ならぶ', meaning: 'Stand in a line', source: 'Sou Matome N2' },
+      { word: '並木', reading: 'なみき', meaning: 'A row of trees', source: 'Sou Matome N2' },
+      { word: '並べる', reading: 'ならべる', meaning: 'Line up / set out', source: 'Sou Matome N2' }
+    ]
   }
 ];
