@@ -779,38 +779,80 @@ body.hide-romaji .kana-romaji {
   gap: 12px;
   flex-wrap: wrap;
   margin-bottom: 12px;
-  padding-bottom: 8px;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .book-select-wrapper {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .book-select-label {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text-secondary);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-primary);
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .book-select-dropdown {
-  padding: 6px 12px;
+  padding: 8px 36px 8px 14px;
   border-radius: 8px;
-  font-size: 0.84rem;
+  font-size: 0.86rem;
   font-weight: 600;
-  background: var(--bg-card);
-  color: var(--text-primary);
-  border: 1px solid var(--border-subtle);
+  background-color: #1e293b;
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   outline: none;
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
   transition: all var(--trans-fast);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.book-select-dropdown:hover {
+  border-color: var(--brand-primary);
+  background-color: #273549;
 }
 
 .book-select-dropdown:focus {
   border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.25);
+}
+
+.book-select-dropdown option {
+  background-color: #1e293b;
+  color: #f8fafc;
+  padding: 10px;
+  font-weight: 500;
+}
+
+[data-theme="light"] .book-select-dropdown {
+  background-color: #ffffff;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .book-select-dropdown:hover {
+  background-color: #f8fafc;
+  border-color: var(--brand-primary);
+}
+
+[data-theme="light"] .book-select-dropdown option {
+  background-color: #ffffff;
+  color: #0f172a;
 }
 
 .week-pills-row {
