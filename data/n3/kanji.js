@@ -1984,5 +1984,1013 @@ window.N3_KANJI_DATA = [
     examples: [
       { word: '昔', reading: 'むかし', meaning: 'Long ago, past, antiquity', source: 'Sou Matome N3' }
     ]
+  },
+  {
+    id: 'k-n3-sm-114',
+    char: '要',
+    meaning: 'Need, Main point, Essential',
+    onyomi: 'ヨウ',
+    kunyomi: 'い・る, かなめ',
+    levels: ['N3'],
+    strokes: 9,
+    radical: '覀 (cover)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 1', notes: '要冷蔵 (Keep Refrigerated)' }
+    ],
+    examples: [
+      { word: '必要(な)', reading: 'ひつよう', meaning: 'Necessary', source: 'Sou Matome N3' },
+      { word: '要る', reading: 'いる', meaning: 'To need', source: 'Sou Matome N3' },
+      { word: '重要(な)', reading: 'じゅうよう', meaning: 'Important', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-115',
+    char: '冷',
+    meaning: 'Cool, Cold, Chill',
+    onyomi: 'レイ',
+    kunyomi: 'つめ・たい, ひ・やす, ひ・える, さ・める, さ・ます',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '冫 (ice)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 1', notes: '要冷蔵 (Keep Refrigerated)' }
+    ],
+    examples: [
+      { word: '冷房', reading: 'れいぼう', meaning: 'Air-conditioning (cooling)', source: 'Sou Matome N3' },
+      { word: '冷やす', reading: 'ひやす', meaning: 'To cool, chill (transitive)', source: 'Sou Matome N3' },
+      { word: '冷める', reading: 'さめる', meaning: 'To cool down (intransitive)', source: 'Sou Matome N3' },
+      { word: '冷たい', reading: 'つめたい', meaning: 'Cold (to the touch)', source: 'Sou Matome N3' },
+      { word: '冷える', reading: 'ひえる', meaning: 'To become cold (intransitive)', source: 'Sou Matome N3' },
+      { word: '冷ます', reading: 'さます', meaning: 'To cool something down (transitive)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-116',
+    char: '蔵',
+    meaning: 'Storehouse, Hide, Own, Have',
+    onyomi: 'ゾウ',
+    kunyomi: 'くら, おさ・める, かく・れる',
+    levels: ['N3'],
+    strokes: 15,
+    radical: '艹 (grass)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 1', notes: '要冷蔵 (Keep Refrigerated)' }
+    ],
+    examples: [
+      { word: '冷蔵庫', reading: 'れいぞうこ', meaning: 'A refrigerator', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-117',
+    char: '凍',
+    meaning: 'Frozen, Congeal, Freeze',
+    onyomi: 'トウ',
+    kunyomi: 'こお・る, こご・える',
+    levels: ['N3'],
+    strokes: 10,
+    radical: '冫 (ice)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 1', notes: '要冷蔵 (Keep Refrigerated)' }
+    ],
+    examples: [
+      { word: '冷凍庫', reading: 'れいとうこ', meaning: 'A freezer', source: 'Sou Matome N3' },
+      { word: '凍る', reading: 'こおる', meaning: 'To freeze', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-118',
+    char: '庫',
+    meaning: 'Warehouse, Storehouse',
+    onyomi: 'コ, ク',
+    kunyomi: 'くら',
+    levels: ['N3'],
+    strokes: 10,
+    radical: '广 (dotted cliff)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 1', notes: '要冷蔵 (Keep Refrigerated)' }
+    ],
+    examples: [
+      { word: '金庫', reading: 'きんこ', meaning: 'A safe, vault', source: 'Sou Matome N3' },
+      { word: '車庫', reading: 'しゃこ', meaning: 'A garage', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-119',
+    char: '召',
+    meaning: 'Seduce, Call, Send for, Wear, Put on, Eat',
+    onyomi: 'ショウ',
+    kunyomi: 'め・す',
+    levels: ['N3'],
+    strokes: 5,
+    radical: '口 (mouth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 1', notes: '要冷蔵 (Keep Refrigerated)' }
+    ],
+    examples: [
+      { word: '召し上がる', reading: 'めしあがる', meaning: 'To eat, drink (honorific)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-120',
+    char: '保',
+    meaning: 'Protect, Guarantee, Keep, Preserve',
+    onyomi: 'ホ, ホウ',
+    kunyomi: 'たも・つ',
+    levels: ['N3'],
+    strokes: 9,
+    radical: '亻 (person)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 1', notes: '要冷蔵 (Keep Refrigerated)' }
+    ],
+    examples: [
+      { word: '保存する', reading: 'ほぞんする', meaning: 'To preserve, save, store', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-121',
+    char: '存',
+    meaning: 'Exist, Suppose, Be aware of, Believe',
+    onyomi: 'ゾン, ソン',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 6,
+    radical: '子 (child)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 1', notes: '要冷蔵 (Keep Refrigerated)' }
+    ],
+    examples: [
+      { word: 'ご存じです', reading: 'ごぞんじです', meaning: 'To know (honorific)', source: 'Sou Matome N3' },
+      { word: '存じません', reading: 'ぞんじません', meaning: 'I do not know (humble)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-122',
+    char: '必',
+    meaning: 'Invariably, Certain, Inevitable',
+    onyomi: 'ヒツ',
+    kunyomi: 'かなら・ず',
+    levels: ['N3'],
+    strokes: 5,
+    radical: '心 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 1', notes: '要冷蔵 (Keep Refrigerated)' }
+    ],
+    examples: [
+      { word: '必要(な)', reading: 'ひつよう', meaning: 'Necessary', source: 'Sou Matome N3' },
+      { word: '必ず', reading: 'かならず', meaning: 'Always, without fail, certainly', source: 'Sou Matome N3' },
+      { word: '必死(に)', reading: 'ひっし', meaning: 'Desperately, frantic', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-123',
+    char: '費',
+    meaning: 'Expense, Cost, Spend, Consume',
+    onyomi: 'ヒ',
+    kunyomi: 'つい・やす, つい・える',
+    levels: ['N3'],
+    strokes: 12,
+    radical: '貝 (shell)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 2', notes: '消費期限 (Expiration Date)' }
+    ],
+    examples: [
+      { word: '費用', reading: 'ひよう', meaning: 'An expense, cost', source: 'Sou Matome N3' },
+      { word: '旅費', reading: 'りょひ', meaning: 'Travelling expenses', source: 'Sou Matome N3' },
+      { word: '消費者', reading: 'しょうひしゃ', meaning: 'Consumers', source: 'Sou Matome N3' },
+      { word: '会費', reading: 'かいひ', meaning: 'A membership fee', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-124',
+    char: '期',
+    meaning: 'Period, Time, Date, Term',
+    onyomi: 'キ, ゴ',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 12,
+    radical: '月 (moon)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 2', notes: '消費期限 (Expiration Date)' }
+    ],
+    examples: [
+      { word: '期間', reading: 'きかん', meaning: 'A period of time', source: 'Sou Matome N3' },
+      { word: '長期', reading: 'ちょうき', meaning: 'A long period', source: 'Sou Matome N3' },
+      { word: '定期券', reading: 'ていきけん', meaning: 'A commuter pass', source: 'Sou Matome N3' },
+      { word: '短期', reading: 'たんき', meaning: 'A short period', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-125',
+    char: '限',
+    meaning: 'Limit, Restrict, To best of ability',
+    onyomi: 'ゲン',
+    kunyomi: 'かぎ・る, かぎ・り',
+    levels: ['N3'],
+    strokes: 9,
+    radical: '阝 (hill)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 2', notes: '消費期限 (Expiration Date)' }
+    ],
+    examples: [
+      { word: '期限', reading: 'きげん', meaning: 'A time limit, deadline', source: 'Sou Matome N3' },
+      { word: '限る', reading: 'かぎる', meaning: 'To limit, restrict', source: 'Sou Matome N3' },
+      { word: '限度', reading: 'げんど', meaning: 'A limit, bounds', source: 'Sou Matome N3' },
+      { word: '限定', reading: 'げんてい', meaning: 'Limitation, restriction', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-126',
+    char: '製',
+    meaning: 'Made in..., Manufacture',
+    onyomi: 'セイ',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 14,
+    radical: '衣 (clothing)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 2', notes: '消費期限 (Expiration Date)' }
+    ],
+    examples: [
+      { word: '〜製', reading: '〜せい', meaning: 'Made in/of ~', source: 'Sou Matome N3' },
+      { word: '製品', reading: 'せいひん', meaning: 'A product, manufactured goods', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-127',
+    char: '造',
+    meaning: 'Create, Make, Structure, Physique',
+    onyomi: 'ゾウ',
+    kunyomi: 'つく・る',
+    levels: ['N3'],
+    strokes: 10,
+    radical: '辶 (road)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 2', notes: '消費期限 (Expiration Date)' }
+    ],
+    examples: [
+      { word: '製造', reading: 'せいぞう', meaning: 'Manufacture, production', source: 'Sou Matome N3' },
+      { word: '造る', reading: 'つくる', meaning: 'To make, brew, build', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-128',
+    char: '賞',
+    meaning: 'Prize, Reward, Praise',
+    onyomi: 'ショウ',
+    kunyomi: 'ほ・める',
+    levels: ['N3'],
+    strokes: 15,
+    radical: '貝 (shell)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 2', notes: '消費期限 (Expiration Date)' }
+    ],
+    examples: [
+      { word: '賞', reading: 'しょう', meaning: 'A prize, award', source: 'Sou Matome N3' },
+      { word: '賞金', reading: 'しょうきん', meaning: 'Prize money', source: 'Sou Matome N3' },
+      { word: '賞味期限', reading: 'しょうみきげん', meaning: 'Best before date', source: 'Sou Matome N3' },
+      { word: '賞品', reading: 'しょうひん', meaning: 'A prize (goods)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-129',
+    char: '法',
+    meaning: 'Method, Law, Rule, Principle',
+    onyomi: 'ホウ, ハッ, ホッ',
+    kunyomi: 'のり',
+    levels: ['N3'],
+    strokes: 8,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 2', notes: '消費期限 (Expiration Date)' }
+    ],
+    examples: [
+      { word: '方法', reading: 'ほうほう', meaning: 'A method, way', source: 'Sou Matome N3' },
+      { word: '文法', reading: 'ぶんぽう', meaning: 'Grammar', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-130',
+    char: '温',
+    meaning: 'Warm, Temperature',
+    onyomi: 'オン',
+    kunyomi: 'あたた・か, あたた・かい, あたた・まる, あたた・める',
+    levels: ['N3'],
+    strokes: 12,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 2', notes: '消費期限 (Expiration Date)' }
+    ],
+    examples: [
+      { word: '温度', reading: 'おんど', meaning: 'Temperature', source: 'Sou Matome N3' },
+      { word: '温かい', reading: 'あたたかい', meaning: 'Warm', source: 'Sou Matome N3' },
+      { word: '気温', reading: 'きおん', meaning: '(Air) temperature', source: 'Sou Matome N3' },
+      { word: '常温', reading: 'じょうおん', meaning: 'Normal / room temperature', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-131',
+    char: '販',
+    meaning: 'Marketing, Sell, Trade',
+    onyomi: 'ハン',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 11,
+    radical: '貝 (shell)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 3', notes: '自動販売機 (Vending Machines)' }
+    ],
+    examples: [
+      { word: '販売', reading: 'はんばい', meaning: 'Sale, selling', source: 'Sou Matome N3' },
+      { word: '自動販売機', reading: 'じどうはんばいき', meaning: 'A vending machine', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-132',
+    char: '機',
+    meaning: 'Mechanism, Opportunity, Machine, Airplane',
+    onyomi: 'キ',
+    kunyomi: 'はた',
+    levels: ['N3'],
+    strokes: 16,
+    radical: '木 (tree)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 3', notes: '自動販売機 (Vending Machines)' }
+    ],
+    examples: [
+      { word: '飛行機', reading: 'ひこうき', meaning: 'An airplane', source: 'Sou Matome N3' },
+      { word: '機会', reading: 'きかい', meaning: 'An opportunity, chance', source: 'Sou Matome N3' },
+      { word: '機械', reading: 'きかい', meaning: 'A machine, mechanism', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-133',
+    char: '増',
+    meaning: 'Increase, Add, Augment, Gain',
+    onyomi: 'ゾウ',
+    kunyomi: 'ま・す, ふ・える, ふ・やす',
+    levels: ['N3'],
+    strokes: 14,
+    radical: '土 (earth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 3', notes: '自動販売機 (Vending Machines)' }
+    ],
+    examples: [
+      { word: '増加', reading: 'ぞうか', meaning: 'An increase, rise', source: 'Sou Matome N3' },
+      { word: '増える', reading: 'ふえる', meaning: 'To increase (intransitive)', source: 'Sou Matome N3' },
+      { word: '増やす', reading: 'ふやす', meaning: 'To increase, add (transitive)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-134',
+    char: '減',
+    meaning: 'Dwindle, Decrease, Reduce, Decline',
+    onyomi: 'ゲン',
+    kunyomi: 'へ・る, へ・らす',
+    levels: ['N3'],
+    strokes: 12,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 3', notes: '自動販売機 (Vending Machines)' }
+    ],
+    examples: [
+      { word: '減少', reading: 'げんしょう', meaning: 'A decrease, reduction', source: 'Sou Matome N3' },
+      { word: '減る', reading: 'へる', meaning: 'To decrease (intransitive)', source: 'Sou Matome N3' },
+      { word: '減らす', reading: 'へらす', meaning: 'To decrease, reduce (transitive)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-135',
+    char: '量',
+    meaning: 'Quantity, Measure, Weight, Amount',
+    onyomi: 'リョウ',
+    kunyomi: 'はか・る',
+    levels: ['N3'],
+    strokes: 12,
+    radical: '里 (village)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 3', notes: '自動販売機 (Vending Machines)' }
+    ],
+    examples: [
+      { word: '量', reading: 'りょう', meaning: 'Quantity, amount', source: 'Sou Matome N3' },
+      { word: '増量', reading: 'ぞうりょう', meaning: 'Increase in quantity', source: 'Sou Matome N3' },
+      { word: '数量', reading: 'すうりょう', meaning: 'Amount, volume', source: 'Sou Matome N3' },
+      { word: '減量', reading: 'げんりょう', meaning: 'Loss in quantity / weight', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-136',
+    char: '氷',
+    meaning: 'Ice, Hail, Freeze, Congeal',
+    onyomi: 'ヒョウ',
+    kunyomi: 'こおり, ひ',
+    levels: ['N3'],
+    strokes: 5,
+    radical: '水 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 3', notes: '自動販売機 (Vending Machines)' }
+    ],
+    examples: [
+      { word: '氷', reading: 'こおり', meaning: 'Ice', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-137',
+    char: '返',
+    meaning: 'Return, Answer, Fade, Repay',
+    onyomi: 'ヘン',
+    kunyomi: 'かえ・す, かえ・る',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '辶 (road)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 3', notes: '自動販売機 (Vending Machines)' }
+    ],
+    examples: [
+      { word: '返事', reading: 'へんじ', meaning: 'A reply, answer', source: 'Sou Matome N3' },
+      { word: '返す', reading: 'かえす', meaning: 'To return (something)', source: 'Sou Matome N3' },
+      { word: '返却', reading: 'へんきゃく', meaning: 'Return, giving back', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-138',
+    char: '湯',
+    meaning: 'Hot Water, Bath, Hot Spring',
+    onyomi: 'トウ',
+    kunyomi: 'ゆ',
+    levels: ['N3'],
+    strokes: 12,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 3', notes: '自動販売機 (Vending Machines)' }
+    ],
+    examples: [
+      { word: 'お湯', reading: 'おゆ', meaning: 'Hot water', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-139',
+    char: '材',
+    meaning: 'Lumber, Material, Talent, Ability',
+    onyomi: 'ザイ',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '木 (tree)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 4', notes: 'レシピ (Recipes)' }
+    ],
+    examples: [
+      { word: '材料', reading: 'ざいりょう', meaning: 'Ingredients, materials', source: 'Sou Matome N3' },
+      { word: '教材', reading: 'きょうざい', meaning: 'Teaching material', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-140',
+    char: '卵',
+    meaning: 'Egg, Ovum, Spawn, Roe',
+    onyomi: 'ラン',
+    kunyomi: 'たまご',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '卩 (seal)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 4', notes: 'レシピ (Recipes)' }
+    ],
+    examples: [
+      { word: '卵', reading: 'たまご', meaning: 'An egg', source: 'Sou Matome N3' },
+      { word: '卵焼き', reading: 'たまごやき', meaning: 'A Japanese omelet', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-141',
+    char: '乳',
+    meaning: 'Milk, Breasts',
+    onyomi: 'ニュウ',
+    kunyomi: 'ちち, ち',
+    levels: ['N3'],
+    strokes: 8,
+    radical: '乙 (second)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 4', notes: 'レシピ (Recipes)' }
+    ],
+    examples: [
+      { word: '牛乳', reading: 'ぎゅうにゅう', meaning: 'Milk', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-142',
+    char: '粉',
+    meaning: 'Flour, Powder, Dust',
+    onyomi: 'フン',
+    kunyomi: 'こ, こな',
+    levels: ['N3'],
+    strokes: 10,
+    radical: '米 (rice)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 4', notes: 'レシピ (Recipes)' }
+    ],
+    examples: [
+      { word: '粉', reading: 'こな', meaning: 'Powder, flour', source: 'Sou Matome N3' },
+      { word: '小麦粉', reading: 'こむぎこ', meaning: 'Wheat flour', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-143',
+    char: '袋',
+    meaning: 'Sack, Bag, Pouch',
+    onyomi: 'タイ',
+    kunyomi: 'ふくろ',
+    levels: ['N3'],
+    strokes: 11,
+    radical: '衣 (clothing)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 4', notes: 'レシピ (Recipes)' }
+    ],
+    examples: [
+      { word: '袋', reading: 'ふくろ', meaning: 'A bag, sack', source: 'Sou Matome N3' },
+      { word: '紙袋', reading: 'かみぶくろ', meaning: 'A paper bag', source: 'Sou Matome N3' },
+      { word: 'ごみ袋', reading: 'ごみぶくろ', meaning: 'A garbage bag', source: 'Sou Matome N3' },
+      { word: '手袋', reading: 'てぶくろ', meaning: 'Gloves', source: 'Sou Matome N3' },
+      { word: '足袋', reading: 'たび', meaning: 'Tabi (traditional Japanese socks)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-144',
+    char: '混',
+    meaning: 'Mix, Blend, Confuse',
+    onyomi: 'コン',
+    kunyomi: 'ま・じる, ま・ざる, ま・ぜる, こ・む',
+    levels: ['N3'],
+    strokes: 11,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 4', notes: 'レシピ (Recipes)' }
+    ],
+    examples: [
+      { word: '混雑', reading: 'こんざつ', meaning: 'Congestion, crowding', source: 'Sou Matome N3' },
+      { word: '混ぜる', reading: 'まぜる', meaning: 'To mix, blend (transitive)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-145',
+    char: '焼',
+    meaning: 'Bake, Burning, Roast, Grill',
+    onyomi: 'ショウ',
+    kunyomi: 'や・く, や・ける',
+    levels: ['N3'],
+    strokes: 12,
+    radical: '火 (fire)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 4', notes: 'レシピ (Recipes)' }
+    ],
+    examples: [
+      { word: '焼く', reading: 'やく', meaning: 'To roast, grill, bake (transitive)', source: 'Sou Matome N3' },
+      { word: '焼ける', reading: 'やける', meaning: 'To be burnt, baked (intransitive)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-146',
+    char: '表',
+    meaning: 'Surface, Table, Chart, Diagram, Express',
+    onyomi: 'ヒョウ',
+    kunyomi: 'おもて, あらわ・す, あらわ・れる',
+    levels: ['N3'],
+    strokes: 8,
+    radical: '衣 (clothing)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 4', notes: 'レシピ (Recipes)' }
+    ],
+    examples: [
+      { word: '表', reading: 'ひょう', meaning: 'A table, chart', source: 'Sou Matome N3' },
+      { word: '表面', reading: 'ひょうめん', meaning: 'A surface', source: 'Sou Matome N3' },
+      { word: '発表', reading: 'はっぴょう', meaning: 'An announcement, presentation', source: 'Sou Matome N3' },
+      { word: '代表', reading: 'だいひょう', meaning: 'A representative', source: 'Sou Matome N3' },
+      { word: '表', reading: 'おもて', meaning: 'A surface, front side', source: 'Sou Matome N3' },
+      { word: '表す', reading: 'あらわす', meaning: 'To show, express', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-147',
+    char: '裏',
+    meaning: 'Back, Amidst, In, Reverse, Inside, Palms',
+    onyomi: 'リ',
+    kunyomi: 'うら',
+    levels: ['N3'],
+    strokes: 13,
+    radical: '衣 (clothing)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 4', notes: 'レシピ (Recipes)' }
+    ],
+    examples: [
+      { word: '裏', reading: 'うら', meaning: 'Reverse, back side', source: 'Sou Matome N3' },
+      { word: '裏返す', reading: 'うらがえす', meaning: 'To turn over', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-148',
+    char: '留',
+    meaning: 'Detain, Fasten, Stop, Halt',
+    onyomi: 'リュウ, ル',
+    kunyomi: 'と・める, と・まる',
+    levels: ['N3'],
+    strokes: 10,
+    radical: '田 (rice field)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 5', notes: 'コピー機・留守番電話 (Copy Machine & Answering Machine)' }
+    ],
+    examples: [
+      { word: '留学', reading: 'りゅうがく', meaning: 'Studying abroad', source: 'Sou Matome N3' },
+      { word: '留守番', reading: 'るすばん', meaning: 'House-sitting, stay at home', source: 'Sou Matome N3' },
+      { word: '保留', reading: 'ほりゅう', meaning: 'Reservation, suspension, holding', source: 'Sou Matome N3' },
+      { word: '書留', reading: 'かきとめ', meaning: 'Registered mail', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-149',
+    char: '守',
+    meaning: 'Guard, Protect, Defend, Obey',
+    onyomi: 'シュ, ス',
+    kunyomi: 'まも・る, まも・り, もり',
+    levels: ['N3'],
+    strokes: 6,
+    radical: '宀 (roof)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 5', notes: 'コピー機・留守番電話 (Copy Machine & Answering Machine)' }
+    ],
+    examples: [
+      { word: '守備', reading: 'しゅび', meaning: 'Defence', source: 'Sou Matome N3' },
+      { word: '留守', reading: 'るす', meaning: 'Absence from home', source: 'Sou Matome N3' },
+      { word: '守る', reading: 'まもる', meaning: 'To protect, obey', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-150',
+    char: '濃',
+    meaning: 'Concentrated, Thick, Dark, Undiluted',
+    onyomi: 'ノウ',
+    kunyomi: 'こ・い',
+    levels: ['N3'],
+    strokes: 16,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 5', notes: 'コピー機・留守番電話 (Copy Machine & Answering Machine)' }
+    ],
+    examples: [
+      { word: '濃い', reading: 'こい', meaning: 'Concentrate, dark (color), strong (flavor)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-151',
+    char: '薄',
+    meaning: 'Dilute, Thin, Weak (tea), Pale',
+    onyomi: 'ハク',
+    kunyomi: 'うす・い, うす・める, うす・まる, うす・らぐ',
+    levels: ['N3'],
+    strokes: 16,
+    radical: '艹 (grass)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 5', notes: 'コピー機・留守番電話 (Copy Machine & Answering Machine)' }
+    ],
+    examples: [
+      { word: '薄い', reading: 'うすい', meaning: 'Thin (material), light (color), weak (drink)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-152',
+    char: '部',
+    meaning: 'Section, Bureau, Dept, Class, Copy, Part',
+    onyomi: 'ブ',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 11,
+    radical: '阝 (city)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 5', notes: 'コピー機・留守番電話 (Copy Machine & Answering Machine)' }
+    ],
+    examples: [
+      { word: '部分', reading: 'ぶぶん', meaning: 'A part, section', source: 'Sou Matome N3' },
+      { word: '部長', reading: 'ぶちょう', meaning: 'A department manager', source: 'Sou Matome N3' },
+      { word: '学部', reading: 'がくぶ', meaning: 'A faculty, department (college)', source: 'Sou Matome N3' },
+      { word: '部屋', reading: 'へや', meaning: 'A room', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-153',
+    char: '数',
+    meaning: 'Number, Strength, Fate, Law, Figures',
+    onyomi: 'スウ, ス',
+    kunyomi: 'かず, かぞ・える',
+    levels: ['N3'],
+    strokes: 13,
+    radical: '攵 (strike)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 5', notes: 'コピー機・留守番電話 (Copy Machine & Answering Machine)' }
+    ],
+    examples: [
+      { word: '数字', reading: 'すうじ', meaning: 'Numbers, figures', source: 'Sou Matome N3' },
+      { word: '数', reading: 'かず', meaning: 'A number, amount', source: 'Sou Matome N3' },
+      { word: '数学', reading: 'すうがく', meaning: 'Mathematics', source: 'Sou Matome N3' },
+      { word: '数える', reading: 'かぞえる', meaning: 'To count', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-154',
+    char: '件',
+    meaning: 'Affair, Case, Matter, Item',
+    onyomi: 'ケン',
+    kunyomi: 'くだん',
+    levels: ['N3'],
+    strokes: 6,
+    radical: '亻 (person)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 5', notes: 'コピー機・留守番電話 (Copy Machine & Answering Machine)' }
+    ],
+    examples: [
+      { word: '件名', reading: 'けんめい', meaning: 'Subject (of an email)', source: 'Sou Matome N3' },
+      { word: '用件', reading: 'ようけん', meaning: 'A business matter', source: 'Sou Matome N3' },
+      { word: '事件', reading: 'じけん', meaning: 'An incident, affair, case', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-155',
+    char: '再',
+    meaning: 'Again, Twice, Second Time',
+    onyomi: 'サイ, サ',
+    kunyomi: 'ふたた・び',
+    levels: ['N3'],
+    strokes: 6,
+    radical: '冂 (upside-down box)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 5', notes: 'コピー機・留守番電話 (Copy Machine & Answering Machine)' }
+    ],
+    examples: [
+      { word: '再入国', reading: 'さいにゅうこく', meaning: 'Re-enter a country', source: 'Sou Matome N3' },
+      { word: '再生', reading: 'さいせい', meaning: 'Regenerate, recycle, playback', source: 'Sou Matome N3' },
+      { word: '再ダイヤル', reading: 'さいダイヤル', meaning: 'Redial', source: 'Sou Matome N3' },
+      { word: '再来週', reading: 'さらいしゅう', meaning: 'The week after next', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-156',
+    char: '接',
+    meaning: 'Touch, Contact, Adjoin, Piece together',
+    onyomi: 'セツ, ショウ',
+    kunyomi: 'つ・ぐ',
+    levels: ['N3'],
+    strokes: 11,
+    radical: '扌 (hand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 6', notes: '携帯電話 (Cell Phones)' }
+    ],
+    examples: [
+      { word: '接続', reading: 'せつぞく', meaning: 'Connection, joining', source: 'Sou Matome N3' },
+      { word: '面接', reading: 'めんせつ', meaning: 'An interview', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-157',
+    char: '続',
+    meaning: 'Continue, Series, Sequel',
+    onyomi: 'ゾク, ショク',
+    kunyomi: 'つづ・く, つづ・ける, つぐ・なう',
+    levels: ['N3'],
+    strokes: 13,
+    radical: '糸 (silk)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 6', notes: '携帯電話 (Cell Phones)' }
+    ],
+    examples: [
+      { word: '接続', reading: 'せつぞく', meaning: 'Connection, joining', source: 'Sou Matome N3' },
+      { word: '続く', reading: 'つづく', meaning: 'To continue (intransitive)', source: 'Sou Matome N3' },
+      { word: '続ける', reading: 'つづける', meaning: 'To continue (transitive)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-158',
+    char: '示',
+    meaning: 'Delicious, Point out, Show, Indicate',
+    onyomi: 'ジ, シ',
+    kunyomi: 'しめ・す',
+    levels: ['N3'],
+    strokes: 5,
+    radical: '示 (altar)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 6', notes: '携帯電話 (Cell Phones)' }
+    ],
+    examples: [
+      { word: '表示', reading: 'ひょうじ', meaning: 'Indication, display, expression', source: 'Sou Matome N3' },
+      { word: '示す', reading: 'しめす', meaning: 'To show, point out', source: 'Sou Matome N3' },
+      { word: '指示', reading: 'しじ', meaning: 'A direction, instruction', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-159',
+    char: '戻',
+    meaning: 'Re-, Return, Revert, Resume, Go Back',
+    onyomi: 'レイ',
+    kunyomi: 'もど・す, もど・る',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '戸 (door)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 6', notes: '携帯電話 (Cell Phones)' }
+    ],
+    examples: [
+      { word: '戻る', reading: 'もどる', meaning: 'To return (intransitive)', source: 'Sou Matome N3' },
+      { word: '戻す', reading: 'もどす', meaning: 'To return, put back (transitive)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-160',
+    char: '完',
+    meaning: 'Perfect, Completion, End',
+    onyomi: 'カン',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '宀 (roof)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 6', notes: '携帯電話 (Cell Phones)' }
+    ],
+    examples: [
+      { word: '完了', reading: 'かんりょう', meaning: 'Completion', source: 'Sou Matome N3' },
+      { word: '完全(な)', reading: 'かんぜん', meaning: 'Perfect, complete', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-161',
+    char: '了',
+    meaning: 'Complete, Finish',
+    onyomi: 'リョウ',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 2,
+    radical: '亅 (hook)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 6', notes: '携帯電話 (Cell Phones)' }
+    ],
+    examples: [
+      { word: '了解', reading: 'りょうかい', meaning: 'Understand, consent, roger', source: 'Sou Matome N3' },
+      { word: '終了', reading: 'しゅうりょう', meaning: 'End, expiration', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-162',
+    char: '登',
+    meaning: 'Ascend, Climb Up',
+    onyomi: 'トウ, ト',
+    kunyomi: 'のぼ・る, あ・がる',
+    levels: ['N3'],
+    strokes: 12,
+    radical: '癶 (footsteps)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 6', notes: '携帯電話 (Cell Phones)' }
+    ],
+    examples: [
+      { word: '登録', reading: 'とうろく', meaning: 'Registration', source: 'Sou Matome N3' },
+      { word: '登る', reading: 'のぼる', meaning: 'To climb', source: 'Sou Matome N3' },
+      { word: '登山', reading: 'とざん', meaning: 'Mountain climbing', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-163',
+    char: '録',
+    meaning: 'Record',
+    onyomi: 'ロク',
+    kunyomi: 'しる・す, と・る',
+    levels: ['N3'],
+    strokes: 16,
+    radical: '金 (gold)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 6', notes: '携帯電話 (Cell Phones)' }
+    ],
+    examples: [
+      { word: '記録', reading: 'きろく', meaning: 'A record, document', source: 'Sou Matome N3' },
+      { word: '録音', reading: 'ろくおん', meaning: 'Audio recording', source: 'Sou Matome N3' },
+      { word: '録画', reading: 'ろくが', meaning: 'Video recording', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-164',
+    char: '育',
+    meaning: 'Bring up, Grow up, Raise, Rear',
+    onyomi: 'イク',
+    kunyomi: 'そだ・つ, そだ・ち, そだ・てる, はぐく・む',
+    levels: ['N3'],
+    strokes: 8,
+    radical: '月 (meat)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 7', notes: 'クイズ③ どれが入る？ (Quiz 3)' }
+    ],
+    examples: [
+      { word: '教育', reading: 'きょういく', meaning: 'Education', source: 'Sou Matome N3' },
+      { word: '育てる', reading: 'そだてる', meaning: 'To raise, bring up', source: 'Sou Matome N3' },
+      { word: '育つ', reading: 'そだつ', meaning: 'To grow (up)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-165',
+    char: '種',
+    meaning: 'Species, Kind, Class, Variety, Seed',
+    onyomi: 'シュ',
+    kunyomi: 'たね, -ぐさ',
+    levels: ['N3'],
+    strokes: 14,
+    radical: '禾 (two-branch tree)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 7', notes: 'クイズ③ どれが入る？ (Quiz 3)' }
+    ],
+    examples: [
+      { word: '種類', reading: 'しゅるい', meaning: 'A type, kind, species', source: 'Sou Matome N3' },
+      { word: '種', reading: 'たね', meaning: 'A seed', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-166',
+    char: '類',
+    meaning: 'Sort, Kind, Variety, Class, Genus',
+    onyomi: 'ルイ',
+    kunyomi: 'たぐ・い',
+    levels: ['N3'],
+    strokes: 18,
+    radical: '頁 (leaf/page)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 7', notes: 'クイズ③ どれが入る？ (Quiz 3)' }
+    ],
+    examples: [
+      { word: '書類', reading: 'しょるい', meaning: 'A document, paperwork', source: 'Sou Matome N3' },
+      { word: '分類', reading: 'ぶんるい', meaning: 'Classification', source: 'Sou Matome N3' },
+      { word: '人類', reading: 'じんるい', meaning: 'The human race, mankind', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-167',
+    char: '師',
+    meaning: 'Expert, Teacher, Master, Model',
+    onyomi: 'シ',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 10,
+    radical: '巾 (cloth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 7', notes: 'クイズ③ どれが入る？ (Quiz 3)' }
+    ],
+    examples: [
+      { word: '教師', reading: 'きょうし', meaning: 'A teacher', source: 'Sou Matome N3' },
+      { word: '医師', reading: 'いし', meaning: 'A doctor, physician', source: 'Sou Matome N3' },
+      { word: '看護師', reading: 'かんごし', meaning: 'A nurse', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-168',
+    char: '妻',
+    meaning: 'Wife, Spouse',
+    onyomi: 'サイ',
+    kunyomi: 'つま',
+    levels: ['N3'],
+    strokes: 8,
+    radical: '女 (woman)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 7', notes: 'クイズ③ どれが入る？ (Quiz 3)' }
+    ],
+    examples: [
+      { word: '夫妻', reading: 'ふさい', meaning: 'Husband and wife, married couple', source: 'Sou Matome N3' },
+      { word: '妻', reading: 'つま', meaning: 'Wife', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-169',
+    char: '馬',
+    meaning: 'Horse',
+    onyomi: 'バ',
+    kunyomi: 'うま, ま',
+    levels: ['N3'],
+    strokes: 10,
+    radical: '馬 (horse)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 7', notes: 'クイズ③ どれが入る？ (Quiz 3)' }
+    ],
+    examples: [
+      { word: '馬', reading: 'うま', meaning: 'A horse', source: 'Sou Matome N3' },
+      { word: '乗馬', reading: 'じょうば', meaning: 'Horse riding', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-170',
+    char: '石',
+    meaning: 'Stone',
+    onyomi: 'セキ, シャク, コク',
+    kunyomi: 'いし',
+    levels: ['N3'],
+    strokes: 5,
+    radical: '石 (stone)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 3 Day 7', notes: 'クイズ③ どれが入る？ (Quiz 3)' }
+    ],
+    examples: [
+      { word: '石けん', reading: 'せっけん', meaning: 'Soap', source: 'Sou Matome N3' },
+      { word: '石油', reading: 'せきゆ', meaning: 'Oil, petroleum', source: 'Sou Matome N3' },
+      { word: '石', reading: 'いし', meaning: 'A stone', source: 'Sou Matome N3' }
+    ]
   }
 ];
