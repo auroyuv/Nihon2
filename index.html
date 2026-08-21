@@ -154,7 +154,7 @@
               <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
               <path d="M6 6h10"/><path d="M6 10h10"/>
             </svg>
-            <span>Sou Matome N2 Chapter Filter</span>
+            <span id="kanji-chapter-filter-title">Sou Matome Chapter Filter</span>
           </div>
           <div class="header-stats-badges">
             <span id="kanji-count" class="section-count-tag">Loading Kanji...</span>
@@ -162,16 +162,8 @@
           </div>
         </div>
         
-        <div class="week-pills-row">
-          <button class="week-pill active" data-week="ALL">All Kanji (739)</button>
-          <button class="week-pill" data-week="Week 1">Week 1: Signs & Notices (標識)</button>
-          <button class="week-pill" data-week="Week 2">Week 2: Ads & Guidance (広告)</button>
-          <button class="week-pill" data-week="Week 3">Week 3: Mail & Delivery (郵便)</button>
-          <button class="week-pill" data-week="Week 4">Week 4: Forms & Letters (手紙)</button>
-          <button class="week-pill" data-week="Week 5">Week 5: Household (家庭)</button>
-          <button class="week-pill" data-week="Week 6">Week 6: Daily Life (生活)</button>
-          <button class="week-pill" data-week="Week 7">Week 7: School & Work (学校)</button>
-          <button class="week-pill" data-week="Week 8">Week 8: News & Media (報道)</button>
+        <div id="week-pills-container" class="week-pills-row">
+          <!-- Dynamically populated based on active JLPT level -->
         </div>
       </div>
 
@@ -312,7 +304,7 @@
   <footer class="site-footer">
     <p><strong>NihonHub</strong> &mdash; All-in-One JLPT N5 to N2 Learning Hub</p>
     <div class="footer-links">
-      <span>739 Sou Matome N2 Kanji</span>
+      <span id="footer-stats">336 N3 &bull; 739 N2 Kanji</span>
       <span>•</span>
       <span>Cross-Level Overlap & Origin Tracking</span>
       <span>•</span>
@@ -321,30 +313,30 @@
   </footer>
 
   <!-- Modular Datasets -->
-  <script src="data/kana.js"></script>
+  <script src="data/kana.js?v=2.2"></script>
 
   <!-- N5 Data -->
-  <script src="data/n5/kanji.js"></script>
-  <script src="data/n5/vocabulary.js"></script>
-  <script src="data/n5/grammar.js"></script>
+  <script src="data/n5/kanji.js?v=2.2"></script>
+  <script src="data/n5/vocabulary.js?v=2.2"></script>
+  <script src="data/n5/grammar.js?v=2.2"></script>
 
   <!-- N4 Data -->
-  <script src="data/n4/kanji.js"></script>
-  <script src="data/n4/vocabulary.js"></script>
-  <script src="data/n4/grammar.js"></script>
+  <script src="data/n4/kanji.js?v=2.2"></script>
+  <script src="data/n4/vocabulary.js?v=2.2"></script>
+  <script src="data/n4/grammar.js?v=2.2"></script>
 
   <!-- N3 Data -->
-  <script src="data/n3/kanji.js"></script>
-  <script src="data/n3/vocabulary.js"></script>
-  <script src="data/n3/grammar.js"></script>
+  <script src="data/n3/kanji.js?v=2.2"></script>
+  <script src="data/n3/vocabulary.js?v=2.2"></script>
+  <script src="data/n3/grammar.js?v=2.2"></script>
 
   <!-- N2 Data -->
-  <script src="data/n2/kanji.js"></script>
-  <script src="data/n2/vocabulary.js"></script>
-  <script src="data/n2/grammar.js"></script>
+  <script src="data/n2/kanji.js?v=2.2"></script>
+  <script src="data/n2/vocabulary.js?v=2.2"></script>
+  <script src="data/n2/grammar.js?v=2.2"></script>
 
   <!-- Master Data Loader & Application Engine -->
-  <script src="data/data-loader.js"></script>
-  <script src="js/app.js"></script>
+  <script src="data/data-loader.js?v=2.2"></script>
+  <script src="js/app.js?v=2.2"></script>
 </body>
 </html>

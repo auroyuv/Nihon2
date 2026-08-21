@@ -41,6 +41,46 @@
     }
   };
 
+  // --- KANJI CHAPTER CONFIGURATIONS PER LEVEL ---
+  const KANJI_CHAPTER_CONFIGS = {
+    'N3': {
+      title: 'Sou Matome N3 Chapter Filter',
+      weeks: [
+        { id: 'Week 1', label: 'Week 1: でかける① (Out & About 1)' },
+        { id: 'Week 2', label: 'Week 2: でかける② (Out & About 2)' },
+        { id: 'Week 3', label: 'Week 3: つかう (Daily Living 1)' },
+        { id: 'Week 4', label: 'Week 4: かう (Shopping & Daily Living)' },
+        { id: 'Week 5', label: 'Week 5: かく (Writing & Communication)' },
+        { id: 'Week 6', label: 'Week 6: よむ (Reading & Society)' }
+      ]
+    },
+    'N2': {
+      title: 'Sou Matome N2 Chapter Filter',
+      weeks: [
+        { id: 'Week 1', label: 'Week 1: Signs & Notices (標識)' },
+        { id: 'Week 2', label: 'Week 2: Ads & Guidance (広告)' },
+        { id: 'Week 3', label: 'Week 3: Mail & Delivery (郵便)' },
+        { id: 'Week 4', label: 'Week 4: Forms & Letters (手紙)' },
+        { id: 'Week 5', label: 'Week 5: Household (家庭)' },
+        { id: 'Week 6', label: 'Week 6: Daily Life (生活)' },
+        { id: 'Week 7', label: 'Week 7: School & Work (学校)' },
+        { id: 'Week 8', label: 'Week 8: News & Media (報道)' }
+      ]
+    },
+    'N5': {
+      title: 'JLPT N5 Kanji Collection',
+      weeks: []
+    },
+    'N4': {
+      title: 'JLPT N4 Kanji Collection',
+      weeks: []
+    },
+    'ALL': {
+      title: 'All Levels Kanji Matrix (N5 to N2)',
+      weeks: []
+    }
+  };
+
   // --- INITIALIZATION ---
   document.addEventListener('DOMContentLoaded', () => {
     loadPreferences();
@@ -323,6 +363,14 @@
         document.querySelectorAll('.level-pill').forEach(p => p.classList.remove('active'));
         e.currentTarget.classList.add('active');
         state.selectedLevel = e.currentTarget.getAttribute('data-level');
+        
+        // Reset week filter if not valid for the new level
+        const config = KANJI_CHAPTER_CONFIGS[state.selectedLevel];
+        const validWeeks = config && config.weeks ? config.weeks.map(w => w.id) : [];
+        if (state.selectedWeek !== 'ALL' && !validWeeks.includes(state.selectedWeek)) {
+          state.selectedWeek = 'ALL';
+        }
+
         buildFlashcardDeck();
         renderAll();
       });
@@ -335,16 +383,6 @@
         e.currentTarget.classList.add('active');
         state.originFilter = e.currentTarget.getAttribute('data-origin');
         renderActiveTab();
-      });
-    });
-
-    // Kanji Chapter / Week filter pills
-    document.querySelectorAll('.week-pill').forEach(pill => {
-      pill.addEventListener('click', (e) => {
-        document.querySelectorAll('.week-pill').forEach(p => p.classList.remove('active'));
-        e.currentTarget.classList.add('active');
-        state.selectedWeek = e.currentTarget.getAttribute('data-week');
-        renderKanji();
       });
     });
 
@@ -480,6 +518,60 @@
     });
   }
 
+  // --- KANJI CHAPTER FILTER RENDERER ---
+  function renderKanjiChapterFilter() {
+    const titleEl = document.getElementById('kanji-chapter-filter-title');
+    const container = document.getElementById('week-pills-container');
+    if (!container) return;
+
+    const currentLevel = state.selectedLevel;
+    const config = KANJI_CHAPTER_CONFIGS[currentLevel] || KANJI_CHAPTER_CONFIGS['ALL'];
+
+    if (titleEl) {
+      titleEl.textContent = config.title;
+    }
+
+    const stats = window.JLPT_DATA ? window.JLPT_DATA.getLevelStats('kanji', currentLevel) : { total: 0 };
+    const levelKanji = (window.JLPT_DATA && window.JLPT_DATA.kanji) ? 
+      (currentLevel === 'ALL' ? window.JLPT_DATA.kanji : window.JLPT_DATA.kanji.filter(k => k.levels && k.levels.includes(currentLevel))) : [];
+
+    let pillsHtml = `
+      <button class="week-pill ${state.selectedWeek === 'ALL' ? 'active' : ''}" data-week="ALL">
+        All Kanji (${stats.total})
+      </button>
+    `;
+
+    if (config.weeks && config.weeks.length > 0) {
+      config.weeks.forEach(w => {
+        const count = levelKanji.filter(k => {
+          if (!Array.isArray(k.sources)) return false;
+          return k.sources.some(s => {
+            const bookMatch = currentLevel === 'ALL' || (s.book && s.book.includes(currentLevel));
+            return bookMatch && s.chapter && s.chapter.startsWith(w.id);
+          });
+        }).length;
+
+        pillsHtml += `
+          <button class="week-pill ${state.selectedWeek === w.id ? 'active' : ''}" data-week="${w.id}">
+            ${w.label}${count > 0 ? ` (${count})` : ''}
+          </button>
+        `;
+      });
+    }
+
+    container.innerHTML = pillsHtml;
+
+    // Attach click events to dynamic week pills
+    container.querySelectorAll('.week-pill').forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        container.querySelectorAll('.week-pill').forEach(p => p.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        state.selectedWeek = e.currentTarget.getAttribute('data-week');
+        renderKanji();
+      });
+    });
+  }
+
   // --- TAB SWITCHING ---
   function switchTab(tabId) {
     state.currentTab = tabId;
@@ -495,6 +587,7 @@
 
   function renderAll() {
     updateLevelProgressionBanner();
+    renderKanjiChapterFilter();
     renderKanji();
     renderVocabulary();
     renderGrammar();
@@ -506,7 +599,10 @@
   function renderActiveTab() {
     updateLevelProgressionBanner();
     switch (state.currentTab) {
-      case 'kanji': renderKanji(); break;
+      case 'kanji':
+        renderKanjiChapterFilter();
+        renderKanji();
+        break;
       case 'vocab': renderVocabulary(); break;
       case 'grammar': renderGrammar(); break;
       case 'flashcards': renderFlashcard(); break;
@@ -528,7 +624,10 @@
     if (state.selectedWeek !== 'ALL') {
       items = items.filter(k => {
         if (!Array.isArray(k.sources)) return false;
-        return k.sources.some(s => s.chapter && s.chapter.startsWith(state.selectedWeek));
+        return k.sources.some(s => {
+          const bookMatch = state.selectedLevel === 'ALL' || (s.book && s.book.includes(state.selectedLevel));
+          return bookMatch && s.chapter && s.chapter.startsWith(state.selectedWeek);
+        });
       });
     }
 
@@ -1170,6 +1269,11 @@
       document.querySelectorAll('.level-pill').forEach(p => {
         p.classList.toggle('active', p.getAttribute('data-level') === lvl);
       });
+      const config = KANJI_CHAPTER_CONFIGS[state.selectedLevel];
+      const validWeeks = config && config.weeks ? config.weeks.map(w => w.id) : [];
+      if (state.selectedWeek !== 'ALL' && !validWeeks.includes(state.selectedWeek)) {
+        state.selectedWeek = 'ALL';
+      }
       buildFlashcardDeck();
       renderAll();
     },
@@ -1181,7 +1285,6 @@
       const s = document.getElementById('global-search-input');
       if (s) s.value = '';
       document.querySelectorAll('.level-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-level') === 'ALL'));
-      document.querySelectorAll('.week-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-week') === 'ALL'));
       document.querySelectorAll('.origin-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-origin') === 'ALL'));
       renderAll();
     },
