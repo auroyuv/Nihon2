@@ -146,7 +146,7 @@
     <!-- TAB 1: KANJI MATRIX (Flagship Feature)     -->
     <!-- ========================================== -->
     <section id="tab-kanji" class="tab-pane active">
-      <!-- Kanji Sub-Filter & Week Selector -->
+      <!-- Kanji Sub-Filter & Dynamic Book / Chapter Selector -->
       <div class="sub-filter-card card-glass">
         <div class="sub-filter-header">
           <div class="sub-filter-title">
@@ -154,16 +154,27 @@
               <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
               <path d="M6 6h10"/><path d="M6 10h10"/>
             </svg>
-            <span id="kanji-chapter-filter-title">Sou Matome Chapter Filter</span>
+            <span id="kanji-chapter-filter-title">Textbook & Chapter Filter</span>
           </div>
           <div class="header-stats-badges">
             <span id="kanji-count" class="section-count-tag">Loading Kanji...</span>
             <span id="kanji-origin-breakdown" class="origin-breakdown-tag"></span>
           </div>
         </div>
+
+        <!-- Dynamic Textbook Dropdown -->
+        <div class="source-filter-controls">
+          <div class="book-select-wrapper">
+            <label for="kanji-book-select" class="book-select-label">📖 Textbook:</label>
+            <select id="kanji-book-select" class="book-select-dropdown">
+              <option value="ALL">All Textbooks</option>
+            </select>
+          </div>
+        </div>
         
+        <!-- Dynamic Chapter / Week Pills -->
         <div id="week-pills-container" class="week-pills-row">
-          <!-- Dynamically populated based on active JLPT level -->
+          <!-- Dynamically populated based on active JLPT level & selected book -->
         </div>
       </div>
 
@@ -175,11 +186,34 @@
     <!-- TAB 2: VOCABULARY VAULT                    -->
     <!-- ========================================== -->
     <section id="tab-vocab" class="tab-pane">
-      <div class="section-header-row">
-        <h2 class="section-title">Vocabulary</h2>
-        <div class="header-stats-badges">
-          <span id="vocab-count" class="section-count-tag">Loading Vocabulary...</span>
-          <span id="vocab-origin-breakdown" class="origin-breakdown-tag"></span>
+      <div class="sub-filter-card card-glass">
+        <div class="sub-filter-header">
+          <div class="sub-filter-title">
+            <svg class="ui-icon text-accent" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+              <path d="M6 6h10"/><path d="M6 10h10"/>
+            </svg>
+            <span>Vocabulary Textbook & Lesson Filter</span>
+          </div>
+          <div class="header-stats-badges">
+            <span id="vocab-count" class="section-count-tag">Loading Vocabulary...</span>
+            <span id="vocab-origin-breakdown" class="origin-breakdown-tag"></span>
+          </div>
+        </div>
+
+        <!-- Dynamic Textbook Dropdown -->
+        <div class="source-filter-controls">
+          <div class="book-select-wrapper">
+            <label for="vocab-book-select" class="book-select-label">📖 Textbook:</label>
+            <select id="vocab-book-select" class="book-select-dropdown">
+              <option value="ALL">All Textbooks</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Dynamic Chapter / Lesson Pills -->
+        <div id="vocab-chapter-pills-container" class="week-pills-row">
+          <!-- Dynamically populated based on active JLPT level & selected book -->
         </div>
       </div>
       <div id="vocab-list" class="vocab-list"></div>
@@ -189,11 +223,34 @@
     <!-- TAB 3: GRAMMAR GUIDE                       -->
     <!-- ========================================== -->
     <section id="tab-grammar" class="tab-pane">
-      <div class="section-header-row">
-        <h2 class="section-title">Grammar Points</h2>
-        <div class="header-stats-badges">
-          <span id="grammar-count" class="section-count-tag">Loading Grammar...</span>
-          <span id="grammar-origin-breakdown" class="origin-breakdown-tag"></span>
+      <div class="sub-filter-card card-glass">
+        <div class="sub-filter-header">
+          <div class="sub-filter-title">
+            <svg class="ui-icon text-accent" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+              <path d="M6 6h10"/><path d="M6 10h10"/>
+            </svg>
+            <span>Grammar Textbook & Lesson Filter</span>
+          </div>
+          <div class="header-stats-badges">
+            <span id="grammar-count" class="section-count-tag">Loading Grammar...</span>
+            <span id="grammar-origin-breakdown" class="origin-breakdown-tag"></span>
+          </div>
+        </div>
+
+        <!-- Dynamic Textbook Dropdown -->
+        <div class="source-filter-controls">
+          <div class="book-select-wrapper">
+            <label for="grammar-book-select" class="book-select-label">📖 Textbook:</label>
+            <select id="grammar-book-select" class="book-select-dropdown">
+              <option value="ALL">All Textbooks</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Dynamic Chapter / Lesson Pills -->
+        <div id="grammar-chapter-pills-container" class="week-pills-row">
+          <!-- Dynamically populated based on active JLPT level & selected book -->
         </div>
       </div>
       <div id="grammar-list" class="grammar-list"></div>
@@ -304,7 +361,7 @@
   <footer class="site-footer">
     <p><strong>NihonHub</strong> &mdash; All-in-One JLPT N5 to N2 Learning Hub</p>
     <div class="footer-links">
-      <span id="footer-stats">336 N3 &bull; 739 N2 Kanji</span>
+      <span id="footer-stats">Loading database statistics...</span>
       <span>•</span>
       <span>Cross-Level Overlap & Origin Tracking</span>
       <span>•</span>
@@ -313,30 +370,30 @@
   </footer>
 
   <!-- Modular Datasets -->
-  <script src="data/kana.js?v=2.2"></script>
+  <script src="data/kana.js?v=3.0"></script>
 
   <!-- N5 Data -->
-  <script src="data/n5/kanji.js?v=2.2"></script>
-  <script src="data/n5/vocabulary.js?v=2.2"></script>
-  <script src="data/n5/grammar.js?v=2.2"></script>
+  <script src="data/n5/kanji.js?v=3.0"></script>
+  <script src="data/n5/vocabulary.js?v=3.0"></script>
+  <script src="data/n5/grammar.js?v=3.0"></script>
 
   <!-- N4 Data -->
-  <script src="data/n4/kanji.js?v=2.2"></script>
-  <script src="data/n4/vocabulary.js?v=2.2"></script>
-  <script src="data/n4/grammar.js?v=2.2"></script>
+  <script src="data/n4/kanji.js?v=3.0"></script>
+  <script src="data/n4/vocabulary.js?v=3.0"></script>
+  <script src="data/n4/grammar.js?v=3.0"></script>
 
   <!-- N3 Data -->
-  <script src="data/n3/kanji.js?v=2.2"></script>
-  <script src="data/n3/vocabulary.js?v=2.2"></script>
-  <script src="data/n3/grammar.js?v=2.2"></script>
+  <script src="data/n3/kanji.js?v=3.0"></script>
+  <script src="data/n3/vocabulary.js?v=3.0"></script>
+  <script src="data/n3/grammar.js?v=3.0"></script>
 
   <!-- N2 Data -->
-  <script src="data/n2/kanji.js?v=2.2"></script>
-  <script src="data/n2/vocabulary.js?v=2.2"></script>
-  <script src="data/n2/grammar.js?v=2.2"></script>
+  <script src="data/n2/kanji.js?v=3.0"></script>
+  <script src="data/n2/vocabulary.js?v=3.0"></script>
+  <script src="data/n2/grammar.js?v=3.0"></script>
 
   <!-- Master Data Loader & Application Engine -->
-  <script src="data/data-loader.js?v=2.2"></script>
-  <script src="js/app.js?v=2.2"></script>
+  <script src="data/data-loader.js?v=3.0"></script>
+  <script src="js/app.js?v=3.0"></script>
 </body>
 </html>

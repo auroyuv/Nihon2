@@ -773,6 +773,46 @@ body.hide-romaji .kana-romaji {
   color: var(--text-primary);
 }
 
+.source-filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.book-select-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.book-select-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.book-select-dropdown {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  outline: none;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.book-select-dropdown:focus {
+  border-color: var(--brand-primary);
+}
+
 .week-pills-row {
   display: flex;
   gap: 8px;

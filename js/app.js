@@ -1,8 +1,8 @@
 /**
  * NihonHub - Interactive Application Engine
  * Clean, User-Friendly JLPT N5 to N2 Learning Platform
- * Supports 739+ Kanji from Sou Matome, Cross-Level Progression Tracking (New vs Review),
- * Dynamic Count Breakdowns, Vocabulary, Grammar, Kana, Flashcards, and Bookmarks.
+ * Fully dynamic: Real-time calculation of all counts, dynamic textbook & chapter extractions,
+ * cross-level origin tracking (New vs Review), vocabulary, grammar, kana charts, flashcards, and bookmarks.
  */
 
 (function () {
@@ -24,7 +24,6 @@
   const state = {
     currentTab: 'kanji',
     selectedLevel: 'ALL',
-    selectedWeek: 'ALL',
     originFilter: 'ALL', // 'ALL', 'NEW', 'REVIEW'
     searchQuery: '',
     showFurigana: true,
@@ -32,52 +31,19 @@
     theme: 'dark',
     bookmarks: new Set(),
 
+    // Dynamic textbook & chapter filters per category
+    filters: {
+      kanji: { book: 'ALL', chapter: 'ALL' },
+      vocabulary: { book: 'ALL', chapter: 'ALL' },
+      grammar: { book: 'ALL', chapter: 'ALL' }
+    },
+
     // Flashcard state
     flashcards: {
       deck: [],
       currentIndex: 0,
       isFlipped: false,
       category: 'kanji'
-    }
-  };
-
-  // --- KANJI CHAPTER CONFIGURATIONS PER LEVEL ---
-  const KANJI_CHAPTER_CONFIGS = {
-    'N3': {
-      title: 'Sou Matome N3 Chapter Filter',
-      weeks: [
-        { id: 'Week 1', label: 'Week 1: でかける① (Out & About 1)' },
-        { id: 'Week 2', label: 'Week 2: でかける② (Out & About 2)' },
-        { id: 'Week 3', label: 'Week 3: つかう (Daily Living 1)' },
-        { id: 'Week 4', label: 'Week 4: かう (Shopping & Daily Living)' },
-        { id: 'Week 5', label: 'Week 5: かく (Writing & Communication)' },
-        { id: 'Week 6', label: 'Week 6: よむ (Reading & Society)' }
-      ]
-    },
-    'N2': {
-      title: 'Sou Matome N2 Chapter Filter',
-      weeks: [
-        { id: 'Week 1', label: 'Week 1: Signs & Notices (標識)' },
-        { id: 'Week 2', label: 'Week 2: Ads & Guidance (広告)' },
-        { id: 'Week 3', label: 'Week 3: Mail & Delivery (郵便)' },
-        { id: 'Week 4', label: 'Week 4: Forms & Letters (手紙)' },
-        { id: 'Week 5', label: 'Week 5: Household (家庭)' },
-        { id: 'Week 6', label: 'Week 6: Daily Life (生活)' },
-        { id: 'Week 7', label: 'Week 7: School & Work (学校)' },
-        { id: 'Week 8', label: 'Week 8: News & Media (報道)' }
-      ]
-    },
-    'N5': {
-      title: 'JLPT N5 Kanji Collection',
-      weeks: []
-    },
-    'N4': {
-      title: 'JLPT N4 Kanji Collection',
-      weeks: []
-    },
-    'ALL': {
-      title: 'All Levels Kanji Matrix (N5 to N2)',
-      weeks: []
     }
   };
 
@@ -200,12 +166,173 @@
     return `<span class="origin-tag review" title="First learned in JLPT ${firstLevel} &bull; Practicing advanced ${state.selectedLevel} compound words">🔄 From ${firstLevel}</span>`;
   }
 
+  // --- DYNAMIC SOURCE / BOOK / CHAPTER QUERY HELPERS ---
+  function getAvailableBooks(category, level) {
+    const masterList = (window.JLPT_DATA && window.JLPT_DATA[category]) ? window.JLPT_DATA[category] : [];
+    const levelItems = masterList.filter(item => level === 'ALL' || (item.levels && item.levels.includes(level)));
+    const bookMap = new Map();
+
+    levelItems.forEach(item => {
+      (item.sources || []).forEach(s => {
+        if (s.book) {
+          bookMap.set(s.book, (bookMap.get(s.book) || 0) + 1);
+        }
+      });
+    });
+
+    return Array.from(bookMap.entries())
+      .map(([book, count]) => ({ book, count }))
+      .sort((a, b) => b.count - a.count);
+  }
+
+  function getAvailableChapters(category, level, selectedBook) {
+    const masterList = (window.JLPT_DATA && window.JLPT_DATA[category]) ? window.JLPT_DATA[category] : [];
+    const levelItems = masterList.filter(item => level === 'ALL' || (item.levels && item.levels.includes(level)));
+    const chapterMap = new Map();
+
+    levelItems.forEach(item => {
+      (item.sources || []).forEach(s => {
+        if (selectedBook !== 'ALL' && s.book !== selectedBook) return;
+        const rawChap = s.chapter || s.lesson;
+        if (!rawChap) return;
+
+        let groupKey = rawChap;
+        const weekMatch = rawChap.match(/^(Week\s+\d+)/i);
+        const lessonMatch = rawChap.match(/^(Lesson\s+\d+)/i);
+        const chapterMatch = rawChap.match(/^(Chapter\s+\d+)/i);
+        if (weekMatch) {
+          groupKey = weekMatch[1];
+        } else if (lessonMatch) {
+          groupKey = lessonMatch[1];
+        } else if (chapterMatch) {
+          groupKey = chapterMatch[1];
+        }
+
+        if (!chapterMap.has(groupKey)) {
+          let label = groupKey;
+          chapterMap.set(groupKey, {
+            id: groupKey,
+            label: label,
+            items: new Set()
+          });
+        }
+        chapterMap.get(groupKey).items.add(item.id || item.char || item.word || item.pattern);
+      });
+    });
+
+    return Array.from(chapterMap.values()).map(c => ({
+      id: c.id,
+      label: c.label,
+      count: c.items.size
+    })).sort((a, b) => {
+      return a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' });
+    });
+  }
+
+  // --- DYNAMIC SOURCE FILTER COMPONENT RENDERER ---
+  function renderSourceFilter(category) {
+    let selectId, pillsContainerId, titleId;
+    if (category === 'kanji') {
+      selectId = 'kanji-book-select';
+      pillsContainerId = 'week-pills-container';
+      titleId = 'kanji-chapter-filter-title';
+    } else if (category === 'vocabulary') {
+      selectId = 'vocab-book-select';
+      pillsContainerId = 'vocab-chapter-pills-container';
+    } else if (category === 'grammar') {
+      selectId = 'grammar-book-select';
+      pillsContainerId = 'grammar-chapter-pills-container';
+    }
+
+    const selectEl = document.getElementById(selectId);
+    const pillsEl = document.getElementById(pillsContainerId);
+    const titleEl = titleId ? document.getElementById(titleId) : null;
+    if (!selectEl || !pillsEl) return;
+
+    const currentFilter = state.filters[category] || { book: 'ALL', chapter: 'ALL' };
+    const availableBooks = getAvailableBooks(category, state.selectedLevel);
+    const stats = window.JLPT_DATA ? window.JLPT_DATA.getLevelStats(category, state.selectedLevel) : { total: 0 };
+
+    // Validate selected book
+    if (currentFilter.book !== 'ALL' && !availableBooks.some(b => b.book === currentFilter.book)) {
+      currentFilter.book = 'ALL';
+    }
+
+    // Populate Book Select Dropdown
+    let selectOptions = `<option value="ALL">All Textbooks (${stats.total})</option>`;
+    availableBooks.forEach(b => {
+      const isSelected = currentFilter.book === b.book ? 'selected' : '';
+      selectOptions += `<option value="${b.book}" ${isSelected}>${b.book} (${b.count})</option>`;
+    });
+    selectEl.innerHTML = selectOptions;
+
+    // Update Title if Kanji
+    if (titleEl) {
+      if (currentFilter.book !== 'ALL') {
+        titleEl.textContent = `${currentFilter.book} Chapter Filter`;
+      } else if (state.selectedLevel !== 'ALL') {
+        titleEl.textContent = `JLPT ${state.selectedLevel} Kanji Curriculum`;
+      } else {
+        titleEl.textContent = `All Levels Kanji Curriculum`;
+      }
+    }
+
+    // Populate Chapter Pills
+    const availableChapters = getAvailableChapters(category, state.selectedLevel, currentFilter.book);
+    if (currentFilter.chapter !== 'ALL' && !availableChapters.some(c => c.id === currentFilter.chapter)) {
+      currentFilter.chapter = 'ALL';
+    }
+
+    let selectedBookTotal = stats.total;
+    if (currentFilter.book !== 'ALL') {
+      const bObj = availableBooks.find(b => b.book === currentFilter.book);
+      if (bObj) selectedBookTotal = bObj.count;
+    }
+
+    let pillsHtml = `
+      <button class="week-pill ${currentFilter.chapter === 'ALL' ? 'active' : ''}" data-chap="ALL">
+        All Chapters (${selectedBookTotal})
+      </button>
+    `;
+
+    availableChapters.forEach(c => {
+      const isAct = currentFilter.chapter === c.id ? 'active' : '';
+      pillsHtml += `
+        <button class="week-pill ${isAct}" data-chap="${c.id}">
+          ${c.label} (${c.count})
+        </button>
+      `;
+    });
+
+    pillsEl.innerHTML = pillsHtml;
+
+    // Attach Event Listeners
+    selectEl.onchange = function () {
+      currentFilter.book = this.value;
+      currentFilter.chapter = 'ALL';
+      renderSourceFilter(category);
+      if (category === 'kanji') renderKanji();
+      else if (category === 'vocabulary') renderVocabulary();
+      else if (category === 'grammar') renderGrammar();
+    };
+
+    pillsEl.querySelectorAll('.week-pill').forEach(pill => {
+      pill.addEventListener('click', function () {
+        pillsEl.querySelectorAll('.week-pill').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        currentFilter.chapter = this.getAttribute('data-chap');
+        if (category === 'kanji') renderKanji();
+        else if (category === 'vocabulary') renderVocabulary();
+        else if (category === 'grammar') renderGrammar();
+      });
+    });
+  }
+
   // --- DYNAMIC LEVEL PROGRESSION & OVERLAP BANNER ---
   function updateLevelProgressionBanner() {
     const banner = document.getElementById('level-progression-banner');
     if (!banner || !window.JLPT_DATA) return;
 
-    // Get stats for active category (kanji, vocabulary, grammar)
     let category = 'kanji';
     let catTitle = 'Kanji';
     if (state.currentTab === 'vocab') {
@@ -234,7 +361,6 @@
     const reviewPct = stats.total > 0 ? 100 - newPct : 0;
 
     if (state.selectedLevel === 'ALL') {
-      // Breakdown counts across each individual level
       const n5Count = masterList.filter(i => i.firstLevel === 'N5').length;
       const n4Count = masterList.filter(i => i.firstLevel === 'N4').length;
       const n3Count = masterList.filter(i => i.firstLevel === 'N3').length;
@@ -292,6 +418,16 @@
     }
   }
 
+  // --- DYNAMIC FOOTER STATS ---
+  function updateFooterStats() {
+    const el = document.getElementById('footer-stats');
+    if (!el || !window.JLPT_DATA) return;
+    const kCount = window.JLPT_DATA.kanji ? window.JLPT_DATA.kanji.length : 0;
+    const vCount = window.JLPT_DATA.vocabulary ? window.JLPT_DATA.vocabulary.length : 0;
+    const gCount = window.JLPT_DATA.grammar ? window.JLPT_DATA.grammar.length : 0;
+    el.innerHTML = `<strong>${kCount}</strong> Kanji &bull; <strong>${vCount}</strong> Vocabulary &bull; <strong>${gCount}</strong> Grammar Points`;
+  }
+
   // --- FILTERING ENGINE ---
   function matchLevel(item) {
     if (state.selectedLevel === 'ALL') return true;
@@ -311,11 +447,30 @@
     return true;
   }
 
-  function filterItems(items, searchFields = []) {
+  function filterItems(items, searchFields = [], category = 'kanji') {
     const q = state.searchQuery.trim().toLowerCase();
+    const catFilter = state.filters[category] || { book: 'ALL', chapter: 'ALL' };
+
     return items.filter(item => {
       if (!matchLevel(item)) return false;
       if (!matchOrigin(item)) return false;
+
+      // Filter by selected Book
+      if (catFilter.book !== 'ALL') {
+        const hasBook = Array.isArray(item.sources) && item.sources.some(s => s.book === catFilter.book);
+        if (!hasBook) return false;
+      }
+
+      // Filter by selected Chapter / Week
+      if (catFilter.chapter !== 'ALL') {
+        const hasChapter = Array.isArray(item.sources) && item.sources.some(s => {
+          if (catFilter.book !== 'ALL' && s.book !== catFilter.book) return false;
+          const rawChap = s.chapter || s.lesson;
+          return rawChap && (rawChap === catFilter.chapter || rawChap.startsWith(catFilter.chapter));
+        });
+        if (!hasChapter) return false;
+      }
+
       if (!q) return true;
       
       // Search in specified fields
@@ -364,12 +519,10 @@
         e.currentTarget.classList.add('active');
         state.selectedLevel = e.currentTarget.getAttribute('data-level');
         
-        // Reset week filter if not valid for the new level
-        const config = KANJI_CHAPTER_CONFIGS[state.selectedLevel];
-        const validWeeks = config && config.weeks ? config.weeks.map(w => w.id) : [];
-        if (state.selectedWeek !== 'ALL' && !validWeeks.includes(state.selectedWeek)) {
-          state.selectedWeek = 'ALL';
-        }
+        // Reset category chapter filters to ALL on level switch
+        state.filters.kanji.chapter = 'ALL';
+        state.filters.vocabulary.chapter = 'ALL';
+        state.filters.grammar.chapter = 'ALL';
 
         buildFlashcardDeck();
         renderAll();
@@ -480,7 +633,7 @@
 
     // Keyboard Shortcuts
     document.addEventListener('keydown', (e) => {
-      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
       if (state.currentTab === 'flashcards') {
         if (e.code === 'Space') {
           e.preventDefault();
@@ -518,60 +671,6 @@
     });
   }
 
-  // --- KANJI CHAPTER FILTER RENDERER ---
-  function renderKanjiChapterFilter() {
-    const titleEl = document.getElementById('kanji-chapter-filter-title');
-    const container = document.getElementById('week-pills-container');
-    if (!container) return;
-
-    const currentLevel = state.selectedLevel;
-    const config = KANJI_CHAPTER_CONFIGS[currentLevel] || KANJI_CHAPTER_CONFIGS['ALL'];
-
-    if (titleEl) {
-      titleEl.textContent = config.title;
-    }
-
-    const stats = window.JLPT_DATA ? window.JLPT_DATA.getLevelStats('kanji', currentLevel) : { total: 0 };
-    const levelKanji = (window.JLPT_DATA && window.JLPT_DATA.kanji) ? 
-      (currentLevel === 'ALL' ? window.JLPT_DATA.kanji : window.JLPT_DATA.kanji.filter(k => k.levels && k.levels.includes(currentLevel))) : [];
-
-    let pillsHtml = `
-      <button class="week-pill ${state.selectedWeek === 'ALL' ? 'active' : ''}" data-week="ALL">
-        All Kanji (${stats.total})
-      </button>
-    `;
-
-    if (config.weeks && config.weeks.length > 0) {
-      config.weeks.forEach(w => {
-        const count = levelKanji.filter(k => {
-          if (!Array.isArray(k.sources)) return false;
-          return k.sources.some(s => {
-            const bookMatch = currentLevel === 'ALL' || (s.book && s.book.includes(currentLevel));
-            return bookMatch && s.chapter && s.chapter.startsWith(w.id);
-          });
-        }).length;
-
-        pillsHtml += `
-          <button class="week-pill ${state.selectedWeek === w.id ? 'active' : ''}" data-week="${w.id}">
-            ${w.label}${count > 0 ? ` (${count})` : ''}
-          </button>
-        `;
-      });
-    }
-
-    container.innerHTML = pillsHtml;
-
-    // Attach click events to dynamic week pills
-    container.querySelectorAll('.week-pill').forEach(pill => {
-      pill.addEventListener('click', (e) => {
-        container.querySelectorAll('.week-pill').forEach(p => p.classList.remove('active'));
-        e.currentTarget.classList.add('active');
-        state.selectedWeek = e.currentTarget.getAttribute('data-week');
-        renderKanji();
-      });
-    });
-  }
-
   // --- TAB SWITCHING ---
   function switchTab(tabId) {
     state.currentTab = tabId;
@@ -587,9 +686,12 @@
 
   function renderAll() {
     updateLevelProgressionBanner();
-    renderKanjiChapterFilter();
+    updateFooterStats();
+    renderSourceFilter('kanji');
     renderKanji();
+    renderSourceFilter('vocabulary');
     renderVocabulary();
+    renderSourceFilter('grammar');
     renderGrammar();
     renderKana();
     renderBookmarks();
@@ -598,13 +700,20 @@
 
   function renderActiveTab() {
     updateLevelProgressionBanner();
+    updateFooterStats();
     switch (state.currentTab) {
       case 'kanji':
-        renderKanjiChapterFilter();
+        renderSourceFilter('kanji');
         renderKanji();
         break;
-      case 'vocab': renderVocabulary(); break;
-      case 'grammar': renderGrammar(); break;
+      case 'vocab':
+        renderSourceFilter('vocabulary');
+        renderVocabulary();
+        break;
+      case 'grammar':
+        renderSourceFilter('grammar');
+        renderGrammar();
+        break;
       case 'flashcards': renderFlashcard(); break;
       case 'kana': renderKana(); break;
       case 'bookmarks': renderBookmarks(); break;
@@ -618,18 +727,7 @@
     const breakdownTag = document.getElementById('kanji-origin-breakdown');
     if (!grid) return;
 
-    let items = filterItems(window.JLPT_DATA.kanji, ['char', 'meaning', 'onyomi', 'kunyomi', 'radical']);
-
-    // Filter by Week if selected
-    if (state.selectedWeek !== 'ALL') {
-      items = items.filter(k => {
-        if (!Array.isArray(k.sources)) return false;
-        return k.sources.some(s => {
-          const bookMatch = state.selectedLevel === 'ALL' || (s.book && s.book.includes(state.selectedLevel));
-          return bookMatch && s.chapter && s.chapter.startsWith(state.selectedWeek);
-        });
-      });
-    }
+    const items = filterItems(window.JLPT_DATA.kanji, ['char', 'meaning', 'onyomi', 'kunyomi', 'radical'], 'kanji');
 
     if (countTag) {
       countTag.textContent = `${items.length} Kanji displayed`;
@@ -647,7 +745,7 @@
     if (items.length === 0) {
       grid.innerHTML = `
         <div class="empty-state card-glass" style="grid-column: 1 / -1;">
-          <p>No Kanji found matching the current Level (${state.selectedLevel}) & Scope (${state.originFilter}) filters.</p>
+          <p>No Kanji found matching the current Level (${state.selectedLevel}), Textbook, and Scope filters.</p>
           <button class="btn-primary" onclick="window.NihonHub.resetFilters()">Reset All Filters</button>
         </div>
       `;
@@ -749,52 +847,44 @@
     const kanji = window.JLPT_DATA.kanji.find(k => k.id === kanjiId);
     if (!kanji) return;
 
-    const modalBody = document.getElementById('kanji-modal-body');
     const modalBackdrop = document.getElementById('modal-backdrop');
-    if (!modalBody || !modalBackdrop) return;
-
-    modalCompoundFilter = 'ALL';
+    const modalBody = document.getElementById('kanji-modal-body');
+    if (!modalBackdrop || !modalBody) return;
 
     const isBookmarked = state.bookmarks.has(kanji.id);
-    const firstLevel = kanji.firstLevel || (kanji.levels ? kanji.levels[0] : 'N5');
-    const isNew = firstLevel === state.selectedLevel || state.selectedLevel === 'ALL';
     const examples = kanji.examples || [];
 
-    // Calculate level counts for compounds (a word in multiple levels counts towards each)
+    // Calculate level breakdown of compound words
     const levelCounts = {};
     examples.forEach(ex => {
       const lvls = ex.levels || [ex.level || 'N2'];
-      lvls.forEach(lvl => {
-        levelCounts[lvl] = (levelCounts[lvl] || 0) + 1;
+      lvls.forEach(l => {
+        levelCounts[l] = (levelCounts[l] || 0) + 1;
       });
     });
 
-    const distinctLevels = Object.keys(levelCounts).sort((a, b) => {
-      const order = { 'N5': 1, 'N4': 2, 'N3': 3, 'N2': 4, 'N1': 5 };
-      return (order[a] || 99) - (order[b] || 99);
-    });
+    const distinctLevels = Object.keys(levelCounts).sort();
+    const breakdownText = distinctLevels.map(lvl => `${lvl}: ${levelCounts[lvl]}`).join(' • ');
 
-    const breakdownText = distinctLevels.map(lvl => `<strong>${levelCounts[lvl]}</strong> in ${lvl}`).join(' • ');
+    modalCompoundFilter = 'ALL';
 
     modalBody.innerHTML = `
       <div class="modal-kanji-header">
-        <div class="modal-kanji-char-box">
-          <span class="modal-kanji-char">${kanji.char}</span>
-          <button class="audio-btn-large" data-speak="${kanji.char}" title="Listen Kanji">${UI_ICONS.volume} Listen</button>
-        </div>
+        <div class="modal-kanji-big">${kanji.char}</div>
         <div class="modal-kanji-info">
           <div class="modal-badges-row">
             ${renderLevelPills(kanji.levels)}
             ${renderOriginBadge(kanji)}
-            ${kanji.strokes ? `<span class="stroke-badge">${kanji.strokes} strokes</span>` : ''}
-            ${kanji.radical ? `<span class="radical-badge">Radical: ${kanji.radical}</span>` : ''}
           </div>
-          <h2 class="modal-kanji-meaning">${kanji.meaning}</h2>
-          
-          <div class="modal-progression-box">
-            <div class="prog-info-line">
-              <strong>Level Origin:</strong> First introduced in <strong>JLPT ${firstLevel}</strong>
-              ${!isNew ? ` &bull; Reintroduced in <strong>JLPT ${state.selectedLevel}</strong> with new vocabulary` : ''}
+          <h2 class="modal-meaning-title">${kanji.meaning}</h2>
+          <div class="modal-details-grid">
+            <div class="modal-detail-item">
+              <span class="detail-label">Strokes:</span>
+              <span class="detail-val">${kanji.strokes || '—'}</span>
+            </div>
+            <div class="modal-detail-item">
+              <span class="detail-label">Radical:</span>
+              <span class="detail-val">${kanji.radical || '—'}</span>
             </div>
             ${kanji.sources && kanji.sources.length > 0 ? `
               <div class="modal-sources-list">
@@ -868,8 +958,6 @@
   }
 
   function closeModal() {
-
-
     const modalBackdrop = document.getElementById('modal-backdrop');
     if (modalBackdrop) modalBackdrop.classList.add('hidden');
     document.body.style.overflow = '';
@@ -882,7 +970,7 @@
     const breakdownTag = document.getElementById('vocab-origin-breakdown');
     if (!list) return;
 
-    const items = filterItems(window.JLPT_DATA.vocabulary, ['word', 'reading', 'romaji', 'meaning']);
+    const items = filterItems(window.JLPT_DATA.vocabulary, ['word', 'reading', 'romaji', 'meaning'], 'vocabulary');
 
     if (countTag) countTag.textContent = `${items.length} Words displayed`;
 
@@ -922,8 +1010,8 @@
             <span class="vocab-reading">【${v.reading}】</span>
           </div>
 
-          <div class="vocab-romaji">${v.romaji}</div>
-          <div class="vocab-meaning">${v.meaning}</div>
+          <div class="vocab-romaji">${v.romaji || ''}</div>
+          <div class="vocab-meaning">${v.meaning || ''}</div>
 
           ${v.example ? `
             <div class="vocab-example-box">
@@ -945,7 +1033,7 @@
     const breakdownTag = document.getElementById('grammar-origin-breakdown');
     if (!list) return;
 
-    const items = filterItems(window.JLPT_DATA.grammar, ['pattern', 'meaning', 'explanation', 'structure']);
+    const items = filterItems(window.JLPT_DATA.grammar, ['pattern', 'meaning', 'explanation', 'structure'], 'grammar');
 
     if (countTag) countTag.textContent = `${items.length} Grammar Points displayed`;
 
@@ -967,7 +1055,7 @@
       const isBookmarked = state.bookmarks.has(g.id);
       return `
         <div class="grammar-card card-glass">
-          <div class="grammar-header">
+          <div class="grammar-top">
             <div class="grammar-badges">
               ${renderLevelPills(g.levels || [g.level])}
               ${renderOriginBadge(g)}
@@ -980,24 +1068,25 @@
             </div>
           </div>
 
-          <div class="grammar-pattern-row">
-            <h3 class="grammar-pattern">${g.pattern}</h3>
-            <span class="grammar-meaning">${g.meaning}</span>
-          </div>
+          <div class="grammar-pattern">${g.pattern}</div>
+          <div class="grammar-meaning">${g.meaning}</div>
 
-          ${g.structure ? `<div class="grammar-structure"><strong>Formation:</strong> ${g.structure}</div>` : ''}
-          <div class="grammar-explanation">${g.explanation}</div>
+          ${g.structure ? `
+            <div class="grammar-structure-box">
+              <span class="struct-label">Structure:</span>
+              <code>${g.structure}</code>
+            </div>
+          ` : ''}
+
+          <div class="grammar-explanation">${g.explanation || ''}</div>
 
           ${Array.isArray(g.examples) && g.examples.length > 0 ? `
-            <div class="grammar-examples-box">
-              <div class="ex-title">Example Sentences:</div>
+            <div class="grammar-examples-list">
+              <div class="ex-label">Example Sentences:</div>
               ${g.examples.map(ex => `
                 <div class="grammar-ex-item">
-                  <div class="ex-ja-row">
-                    <span class="ex-ja">${parseFurigana(ex.furigana)}</span>
-                    <button class="mini-audio-btn" data-speak="${ex.ja}" title="Listen">${UI_ICONS.volume}</button>
-                  </div>
-                  <div class="ex-en">${ex.en}</div>
+                  <p class="g-ja">${parseFurigana(ex.furigana || ex.ja)} <button class="mini-audio-btn" data-speak="${ex.ja}" title="Listen">${UI_ICONS.volume}</button></p>
+                  <p class="g-en">${ex.en}</p>
                 </div>
               `).join('')}
             </div>
@@ -1009,136 +1098,92 @@
     }).join('');
   }
 
-  // --- 4. FLASHCARDS DECK ---
+  // --- 4. FLASHCARDS ENGINE ---
   function buildFlashcardDeck() {
-    let pool = [];
+    let items = [];
     const cat = state.flashcards.category;
 
     if (cat === 'kanji') {
-      pool = window.JLPT_DATA.kanji;
+      items = window.JLPT_DATA.kanji.filter(matchLevel);
     } else if (cat === 'vocab') {
-      pool = window.JLPT_DATA.vocabulary;
+      items = window.JLPT_DATA.vocabulary.filter(matchLevel);
     } else if (cat === 'grammar') {
-      pool = window.JLPT_DATA.grammar;
+      items = window.JLPT_DATA.grammar.filter(matchLevel);
     }
 
-    if (state.selectedLevel !== 'ALL') {
-      pool = pool.filter(item => {
-        const itemLevels = item.levels || (item.level ? [item.level] : ['N5']);
-        return itemLevels.includes(state.selectedLevel);
-      });
-    }
-
-    if (state.originFilter === 'NEW' && state.selectedLevel !== 'ALL') {
-      pool = pool.filter(item => item.firstLevel === state.selectedLevel);
-    } else if (state.originFilter === 'REVIEW' && state.selectedLevel !== 'ALL') {
-      pool = pool.filter(item => item.firstLevel !== state.selectedLevel);
-    }
-
-    state.flashcards.deck = [...pool];
+    state.flashcards.deck = items;
     state.flashcards.currentIndex = 0;
     state.flashcards.isFlipped = false;
   }
 
   function renderFlashcard() {
     const cardEl = document.getElementById('flashcard-element');
-    const indexEl = document.getElementById('fc-index-display');
-    const totalEl = document.getElementById('fc-total-display');
+    const indexDisplay = document.getElementById('fc-index-display');
+    const totalDisplay = document.getElementById('fc-total-display');
     const progressFill = document.getElementById('fc-progress-fill');
     if (!cardEl) return;
 
     const deck = state.flashcards.deck;
-    const count = deck.length;
+    const total = deck.length;
+    const idx = state.flashcards.currentIndex;
 
-    if (count === 0) {
-      if (indexEl) indexEl.textContent = '0';
-      if (totalEl) totalEl.textContent = '0';
-      if (progressFill) progressFill.style.width = '0%';
-      cardEl.classList.remove('flipped');
-      cardEl.querySelector('.fc-front').innerHTML = `
-        <div style="padding: 40px; text-align: center;">
-          <p>No cards in this deck for the selected level/scope.</p>
-        </div>
-      `;
+    if (indexDisplay) indexDisplay.textContent = total > 0 ? idx + 1 : 0;
+    if (totalDisplay) totalDisplay.textContent = total;
+    if (progressFill) {
+      const pct = total > 0 ? ((idx + 1) / total) * 100 : 0;
+      progressFill.style.width = `${pct}%`;
+    }
+
+    if (total === 0) {
+      cardEl.querySelector('.fc-front').innerHTML = `<div class="fc-empty"><p>No cards available for ${state.selectedLevel}.</p></div>`;
+      cardEl.querySelector('.fc-back').innerHTML = `<div class="fc-empty"><p>Select another level.</p></div>`;
       return;
     }
 
-    const current = deck[state.flashcards.currentIndex];
-    if (!current) return;
-
-    if (indexEl) indexEl.textContent = state.flashcards.currentIndex + 1;
-    if (totalEl) totalEl.textContent = count;
-    if (progressFill) progressFill.style.width = `${((state.flashcards.currentIndex + 1) / count) * 100}%`;
+    const item = deck[idx];
+    const cat = state.flashcards.category;
 
     cardEl.classList.toggle('flipped', state.flashcards.isFlipped);
 
-    const frontEl = cardEl.querySelector('.fc-front');
-    const backEl = cardEl.querySelector('.fc-back');
-
-    if (state.flashcards.category === 'kanji') {
-      frontEl.innerHTML = `
-        <div class="fc-badge-top">
-          ${renderLevelPills(current.levels)}
-          ${renderOriginBadge(current)}
-        </div>
-        <div class="fc-big-text">${current.char}</div>
-        <div class="fc-prompt">Click or press Space to reveal readings & meaning</div>
+    if (cat === 'kanji') {
+      cardEl.querySelector('.fc-front').innerHTML = `
+        <div class="fc-badges-top">${renderLevelPills(item.levels)}</div>
+        <div class="fc-kanji-char">${item.char}</div>
+        <div class="fc-hint">Click card to reveal readings & meaning</div>
       `;
-      backEl.innerHTML = `
-        <div class="fc-badge-top">
-          ${renderLevelPills(current.levels)}
-          ${renderOriginBadge(current)}
+      cardEl.querySelector('.fc-back').innerHTML = `
+        <div class="fc-meaning">${item.meaning}</div>
+        <div class="fc-readings">
+          ${item.onyomi ? `<div><span class="fc-r-label">ON:</span> ${item.onyomi}</div>` : ''}
+          ${item.kunyomi ? `<div><span class="fc-r-label">KUN:</span> ${item.kunyomi}</div>` : ''}
         </div>
-        <div class="fc-back-title">${current.char}</div>
-        <div class="fc-back-meaning">${current.meaning}</div>
-        <div class="fc-back-readings">
-          ${current.onyomi ? `<div><span class="fc-lbl">ON:</span> ${current.onyomi}</div>` : ''}
-          ${current.kunyomi ? `<div><span class="fc-lbl">KUN:</span> ${current.kunyomi}</div>` : ''}
-        </div>
-        ${current.examples && current.examples[0] ? `
-          <div class="fc-back-sample">
-            <strong>Sample Word:</strong> ${current.examples[0].word} (${current.examples[0].reading}) &mdash; ${current.examples[0].meaning}
+        ${item.examples && item.examples.length > 0 ? `
+          <div class="fc-example-preview">
+            <span>Example: <strong>${item.examples[0].word}</strong> 【${item.examples[0].reading}】 (${item.examples[0].meaning})</span>
           </div>
         ` : ''}
       `;
-    } else if (state.flashcards.category === 'vocab') {
-      frontEl.innerHTML = `
-        <div class="fc-badge-top">
-          ${renderLevelPills(current.levels || [current.level])}
-          ${renderOriginBadge(current)}
-        </div>
-        <div class="fc-big-text">${current.word}</div>
-        <div class="fc-prompt">Click to reveal reading & English definition</div>
+    } else if (cat === 'vocab') {
+      cardEl.querySelector('.fc-front').innerHTML = `
+        <div class="fc-badges-top">${renderLevelPills(item.levels || [item.level])}</div>
+        <div class="fc-vocab-word">${item.word}</div>
+        <div class="fc-hint">Click to reveal reading & English</div>
       `;
-      backEl.innerHTML = `
-        <div class="fc-badge-top">
-          ${renderLevelPills(current.levels || [current.level])}
-          ${renderOriginBadge(current)}
-        </div>
-        <div class="fc-back-title">${current.word}</div>
-        <div class="fc-back-reading">【${current.reading}】</div>
-        <div class="fc-back-meaning">${current.meaning}</div>
-        ${current.example ? `
-          <div class="fc-back-sample">${parseFurigana(current.example.furigana)}<br><small>${current.example.en}</small></div>
-        ` : ''}
+      cardEl.querySelector('.fc-back').innerHTML = `
+        <div class="fc-vocab-reading">【${item.reading}】</div>
+        <div class="fc-meaning">${item.meaning}</div>
+        ${item.romaji ? `<div class="fc-romaji">${item.romaji}</div>` : ''}
       `;
-    } else {
-      frontEl.innerHTML = `
-        <div class="fc-badge-top">
-          ${renderLevelPills(current.levels || [current.level])}
-          ${renderOriginBadge(current)}
-        </div>
-        <div class="fc-big-text sm">${current.pattern}</div>
-        <div class="fc-prompt">Click to reveal meaning & explanation</div>
+    } else if (cat === 'grammar') {
+      cardEl.querySelector('.fc-front').innerHTML = `
+        <div class="fc-badges-top">${renderLevelPills(item.levels || [item.level])}</div>
+        <div class="fc-grammar-pattern">${item.pattern}</div>
+        <div class="fc-hint">Click to reveal meaning & structure</div>
       `;
-      backEl.innerHTML = `
-        <div class="fc-badge-top">
-          ${renderLevelPills(current.levels || [current.level])}
-          ${renderOriginBadge(current)}
-        </div>
-        <div class="fc-back-title sm">${current.pattern}</div>
-        <div class="fc-back-meaning">${current.meaning}</div>
-        <div class="fc-back-explanation">${current.explanation}</div>
+      cardEl.querySelector('.fc-back').innerHTML = `
+        <div class="fc-meaning">${item.meaning}</div>
+        ${item.structure ? `<div class="fc-structure"><code>${item.structure}</code></div>` : ''}
+        <div class="fc-explanation">${item.explanation || ''}</div>
       `;
     }
   }
@@ -1164,37 +1209,30 @@
   }
 
   function shuffleFlashcards() {
-    const deck = state.flashcards.deck;
-    for (let i = deck.length - 1; i > 0; i--) {
+    for (let i = state.flashcards.deck.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [deck[i], deck[j]] = [deck[j], deck[i]];
+      [state.flashcards.deck[i], state.flashcards.deck[j]] = [state.flashcards.deck[j], state.flashcards.deck[i]];
     }
     state.flashcards.currentIndex = 0;
     state.flashcards.isFlipped = false;
     renderFlashcard();
   }
 
-  // --- 5. KANA TABLES ---
+  // --- 5. KANA CHARTS RENDERER ---
   function renderKana() {
     const hGrid = document.getElementById('hiragana-grid');
     const kGrid = document.getElementById('katakana-grid');
-    if (!hGrid || !kGrid || !window.KANA_DATA) return;
+    if (!hGrid || !kGrid || !window.JLPT_DATA.kana) return;
 
-    hGrid.innerHTML = window.KANA_DATA.hiragana.map(k => `
-      <div class="kana-cell ${k.empty ? 'empty' : ''}" ${k.char ? `data-speak="${k.char}" title="Click to hear ${k.romaji}"` : ''}>
-        ${k.char ? `
-          <div class="kana-char">${k.char}</div>
-          <div class="kana-romaji">${k.romaji}</div>
-        ` : ''}
+    hGrid.innerHTML = (window.JLPT_DATA.kana.hiragana || []).map(k => `
+      <div class="kana-card card-glass ${!k.char ? 'empty' : ''}" ${k.char ? `data-speak="${k.char}"` : ''}>
+        ${k.char ? `<div class="kana-char">${k.char}</div><div class="kana-romaji">${k.romaji}</div>` : ''}
       </div>
     `).join('');
 
-    kGrid.innerHTML = window.KANA_DATA.katakana.map(k => `
-      <div class="kana-cell ${k.empty ? 'empty' : ''}" ${k.char ? `data-speak="${k.char}" title="Click to hear ${k.romaji}"` : ''}>
-        ${k.char ? `
-          <div class="kana-char">${k.char}</div>
-          <div class="kana-romaji">${k.romaji}</div>
-        ` : ''}
+    kGrid.innerHTML = (window.JLPT_DATA.kana.katakana || []).map(k => `
+      <div class="kana-card card-glass ${!k.char ? 'empty' : ''}" ${k.char ? `data-speak="${k.char}"` : ''}>
+        ${k.char ? `<div class="kana-char">${k.char}</div><div class="kana-romaji">${k.romaji}</div>` : ''}
       </div>
     `).join('');
   }
@@ -1207,7 +1245,10 @@
       state.bookmarks.add(id);
     }
     savePreferences();
-    renderAll();
+    renderBookmarks();
+    if (state.currentTab === 'kanji') renderKanji();
+    else if (state.currentTab === 'vocab') renderVocabulary();
+    else if (state.currentTab === 'grammar') renderGrammar();
   }
 
   function renderBookmarks() {
@@ -1216,17 +1257,18 @@
     if (!list) return;
 
     const allItems = [
-      ...window.JLPT_DATA.kanji,
-      ...window.JLPT_DATA.vocabulary,
-      ...window.JLPT_DATA.grammar
+      ...(window.JLPT_DATA.kanji || []),
+      ...(window.JLPT_DATA.vocabulary || []),
+      ...(window.JLPT_DATA.grammar || [])
     ];
 
     const saved = allItems.filter(item => state.bookmarks.has(item.id));
-    if (countTag) countTag.textContent = `${saved.length} Saved Items`;
+
+    if (countTag) countTag.textContent = `${saved.length} Items Saved`;
 
     if (saved.length === 0) {
       list.innerHTML = `
-        <div class="empty-state card-glass">
+        <div class="empty-state card-glass" style="grid-column: 1 / -1;">
           <p>No bookmarked items yet. Click the star icon on any Kanji, word, or grammar rule to save it here!</p>
         </div>
       `;
@@ -1236,7 +1278,6 @@
     list.innerHTML = saved.map(item => {
       const isKanji = !!item.char;
       const isVocab = !!item.word;
-      const isGrammar = !!item.pattern;
 
       return `
         <div class="bookmark-card card-glass">
@@ -1269,19 +1310,19 @@
       document.querySelectorAll('.level-pill').forEach(p => {
         p.classList.toggle('active', p.getAttribute('data-level') === lvl);
       });
-      const config = KANJI_CHAPTER_CONFIGS[state.selectedLevel];
-      const validWeeks = config && config.weeks ? config.weeks.map(w => w.id) : [];
-      if (state.selectedWeek !== 'ALL' && !validWeeks.includes(state.selectedWeek)) {
-        state.selectedWeek = 'ALL';
-      }
+      state.filters.kanji.chapter = 'ALL';
+      state.filters.vocabulary.chapter = 'ALL';
+      state.filters.grammar.chapter = 'ALL';
       buildFlashcardDeck();
       renderAll();
     },
     resetFilters: () => {
       state.selectedLevel = 'ALL';
-      state.selectedWeek = 'ALL';
       state.originFilter = 'ALL';
       state.searchQuery = '';
+      state.filters.kanji = { book: 'ALL', chapter: 'ALL' };
+      state.filters.vocabulary = { book: 'ALL', chapter: 'ALL' };
+      state.filters.grammar = { book: 'ALL', chapter: 'ALL' };
       const s = document.getElementById('global-search-input');
       if (s) s.value = '';
       document.querySelectorAll('.level-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-level') === 'ALL'));
