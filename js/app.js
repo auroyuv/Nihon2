@@ -609,13 +609,19 @@
 
     let filtered = examples;
     if (modalCompoundFilter !== 'ALL') {
-      filtered = examples.filter(ex => ex.level === modalCompoundFilter);
+      filtered = examples.filter(ex => {
+        const lvls = ex.levels || [ex.level || 'N2'];
+        return lvls.includes(modalCompoundFilter);
+      });
     }
 
     list.innerHTML = filtered.map(ex => {
-      const exLevel = ex.level || 'N2';
-      const isNewInCurrent = selectedLevel !== 'ALL' && exLevel === selectedLevel;
-      const isPriorReview = selectedLevel !== 'ALL' && exLevel !== selectedLevel;
+      const exLevels = ex.levels || [ex.level || 'N2'];
+      const firstLvl = ex.firstLevel || exLevels[0] || 'N2';
+      const isMultiLevel = exLevels.length > 1;
+      const isNewInCurrent = selectedLevel !== 'ALL' && firstLvl === selectedLevel && !isMultiLevel;
+      const isPriorReview = selectedLevel !== 'ALL' && firstLvl !== selectedLevel;
+      const sourcesList = ex.sources || (ex.source ? [ex.source] : []);
 
       return `
         <div class="modal-example-row">
@@ -627,10 +633,11 @@
             </div>
             
             <div class="ex-meta-badges">
-              <span class="level-badge badge-${exLevel.toLowerCase()}">${exLevel}</span>
-              ${ex.source ? `<span class="ex-source-chip" title="Textbook Source">${UI_ICONS.book} ${ex.source}</span>` : ''}
-              ${isNewInCurrent ? `<span class="ex-novelty-chip new">✨ New ${exLevel} Vocab</span>` : ''}
-              ${isPriorReview ? `<span class="ex-novelty-chip review">🔄 Studied in ${exLevel}</span>` : ''}
+              ${exLevels.map(lvl => `<span class="level-badge badge-${lvl.toLowerCase()}">${lvl}</span>`).join(' ')}
+              ${sourcesList.map(s => `<span class="ex-source-chip" title="Textbook Source">${UI_ICONS.book} ${s}</span>`).join(' ')}
+              ${isMultiLevel ? `<span class="ex-novelty-chip review">🔄 In ${exLevels.join(' & ')}</span>` : ''}
+              ${isNewInCurrent ? `<span class="ex-novelty-chip new">✨ New in ${firstLvl}</span>` : ''}
+              ${isPriorReview && !isMultiLevel ? `<span class="ex-novelty-chip review">🔄 Studied in ${firstLvl}</span>` : ''}
             </div>
           </div>
           <div class="example-en-col">${ex.meaning}</div>
@@ -650,16 +657,17 @@
     modalCompoundFilter = 'ALL';
 
     const isBookmarked = state.bookmarks.has(kanji.id);
-    const sourceInfo = kanji.sources && kanji.sources[0] ? kanji.sources[0] : null;
     const firstLevel = kanji.firstLevel || (kanji.levels ? kanji.levels[0] : 'N5');
     const isNew = firstLevel === state.selectedLevel || state.selectedLevel === 'ALL';
     const examples = kanji.examples || [];
 
-    // Calculate level counts for compounds
+    // Calculate level counts for compounds (a word in multiple levels counts towards each)
     const levelCounts = {};
     examples.forEach(ex => {
-      const lvl = ex.level || 'N2';
-      levelCounts[lvl] = (levelCounts[lvl] || 0) + 1;
+      const lvls = ex.levels || [ex.level || 'N2'];
+      lvls.forEach(lvl => {
+        levelCounts[lvl] = (levelCounts[lvl] || 0) + 1;
+      });
     });
 
     const distinctLevels = Object.keys(levelCounts).sort((a, b) => {
@@ -667,7 +675,7 @@
       return (order[a] || 99) - (order[b] || 99);
     });
 
-    const breakdownText = distinctLevels.map(lvl => `<strong>${levelCounts[lvl]}</strong> from ${lvl}`).join(' • ');
+    const breakdownText = distinctLevels.map(lvl => `<strong>${levelCounts[lvl]}</strong> in ${lvl}`).join(' • ');
 
     modalBody.innerHTML = `
       <div class="modal-kanji-header">
@@ -717,7 +725,7 @@
         <div class="modal-section-title">
           <div class="ex-title-left">
             <span>Target Vocabulary & Compounds (熟語)</span>
-            <span class="count-chip">${examples.length} Total Words</span>
+            <span class="count-chip">${examples.length} Unique Words</span>
           </div>
           ${breakdownText ? `<div class="modal-vocab-breakdown">(${breakdownText})</div>` : ''}
         </div>
@@ -761,6 +769,7 @@
   }
 
   function closeModal() {
+
 
     const modalBackdrop = document.getElementById('modal-backdrop');
     if (modalBackdrop) modalBackdrop.classList.add('hidden');

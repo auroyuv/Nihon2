@@ -1,7 +1,7 @@
 /**
  * NihonHub - Master Data Loader & Cross-Level Origin Indexer
  * Aggregates all modular level datasets (N5 to N2), handles cross-book deduplication,
- * detects first-introduced levels (Origin Level), tracks compound vocabulary origin/levels,
+ * detects first-introduced levels (Origin Level), unifies compound vocabulary across levels,
  * and normalizes multi-level source citations into `window.JLPT_DATA`.
  */
 
@@ -45,18 +45,35 @@
             }
           });
 
-          // Merge vocabulary compound examples with level and source tagging
+          // Merge vocabulary compound examples with unified multi-level tracking
           if (Array.isArray(item.examples)) {
             if (!Array.isArray(existing.examples)) existing.examples = [];
             item.examples.forEach(ex => {
-              const isDup = existing.examples.some(eex => 
+              const existingEx = existing.examples.find(eex => 
                 (eex.word && ex.word && eex.word === ex.word) || 
                 (eex.ja && ex.ja && eex.ja === ex.ja)
               );
-              if (!isDup) {
+
+              if (existingEx) {
+                // Same word appears in this higher level as well!
+                if (!Array.isArray(existingEx.levels)) existingEx.levels = [existingEx.level || existingEx.firstLevel || 'N5'];
+                if (!existingEx.levels.includes(level)) {
+                  existingEx.levels.push(level);
+                  existingEx.levels.sort((a, b) => (LEVEL_ORDER[a] || 99) - (LEVEL_ORDER[b] || 99));
+                }
+                const newSource = ex.source || defaultSource;
+                if (!Array.isArray(existingEx.sources)) existingEx.sources = existingEx.source ? [existingEx.source] : [];
+                if (newSource && !existingEx.sources.includes(newSource)) {
+                  existingEx.sources.push(newSource);
+                }
+              } else {
+                // New word under this Kanji
                 const exClone = JSON.parse(JSON.stringify(ex));
-                exClone.level = exClone.level || level;
-                exClone.source = exClone.source || defaultSource;
+                exClone.firstLevel = level;
+                exClone.levels = [level];
+                exClone.sources = [ex.source || defaultSource];
+                exClone.level = level;
+                exClone.source = ex.source || defaultSource;
                 existing.examples.push(exClone);
               }
             });
@@ -83,12 +100,15 @@
             cloned.sources = [];
           }
           
-          // Tag examples with level and source
+          // Tag examples with firstLevel, levels, and sources
           if (Array.isArray(cloned.examples)) {
             cloned.examples = cloned.examples.map(ex => {
               const exClone = JSON.parse(JSON.stringify(ex));
-              exClone.level = exClone.level || level;
-              exClone.source = exClone.source || defaultSource;
+              exClone.firstLevel = level;
+              exClone.levels = [level];
+              exClone.sources = [ex.source || defaultSource];
+              exClone.level = level;
+              exClone.source = ex.source || defaultSource;
               return exClone;
             });
           } else {
