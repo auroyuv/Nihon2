@@ -884,5 +884,144 @@ window.N3_KANJI_DATA = [
       { word: '以降', reading: 'いこう', meaning: 'On and after, hereafter', source: 'Sou Matome N3' },
       { word: '降る', reading: 'ふる', meaning: 'To fall (rain/snow)', source: 'Sou Matome N3' }
     ]
+  },
+  {
+    id: 'k-n3-sm-051',
+    char: '未',
+    meaning: 'Un-, Not yet, Hitherto, Even now',
+    onyomi: 'ミ',
+    kunyomi: 'いま・だ, ひつじ',
+    levels: ['N3'],
+    strokes: 5,
+    radical: '木 (tree)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 1 Day 7', notes: '実戦問題 (Practice Exercise)' }
+    ],
+    examples: [
+      { word: '未定', reading: 'みてい', meaning: 'Undecided / indefinite', source: 'Sou Matome N3' },
+      { word: '未来', reading: 'みらい', meaning: 'Future', source: 'Sou Matome N3' },
+      { word: '〜未満', reading: '〜みまん', meaning: 'Less than ~', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-052',
+    char: '末',
+    meaning: 'End, Close, Tip, Powder',
+    onyomi: 'マツ, バツ',
+    kunyomi: 'すえ',
+    levels: ['N3'],
+    strokes: 5,
+    radical: '木 (tree)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 1 Day 7', notes: '実戦問題 (Practice Exercise)' }
+    ],
+    examples: [
+      { word: '週末', reading: 'しゅうまつ', meaning: 'The weekend', source: 'Sou Matome N3' },
+      { word: '月末', reading: 'げつまつ', meaning: 'The end of the month', source: 'Sou Matome N3' },
+      { word: '年末', reading: 'ねんまつ', meaning: 'The end of the year', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-053',
+    char: '若',
+    meaning: 'Young, If, In this way, Low rank',
+    onyomi: 'ジャク, ニャク',
+    kunyomi: 'わか・い, も・しく',
+    levels: ['N3'],
+    strokes: 8,
+    radical: '艹 (grass)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 1 Day 7', notes: '実戦問題 (Practice Exercise)' }
+    ],
+    examples: [
+      { word: '若い', reading: 'わかい', meaning: 'Young', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-054',
+    char: '晩',
+    meaning: 'Night, Evening, Late',
+    onyomi: 'バン',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 12,
+    radical: '日 (sun)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 1 Day 7', notes: '実戦問題 (Practice Exercise)' }
+    ],
+    examples: [
+      { word: '晩', reading: 'ばん', meaning: 'Night, evening', source: 'Sou Matome N3' },
+      { word: '今晩', reading: 'こんばん', meaning: 'Tonight', source: 'Sou Matome N3' },
+      { word: '晩ご飯', reading: 'ばんごはん', meaning: 'Dinner / supper', source: 'Sou Matome N3' },
+      { word: '毎晩', reading: 'まいばん', meaning: 'Every night', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-055',
+    char: '島',
+    meaning: 'Island',
+    onyomi: 'トウ',
+    kunyomi: 'しま',
+    levels: ['N3'],
+    strokes: 10,
+    radical: '山 (mountain)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 1 Day 7', notes: '実戦問題 (Practice Exercise)' }
+    ],
+    examples: [
+      { word: '〇〇島', reading: '〇〇とう', meaning: '... Island', source: 'Sou Matome N3' },
+      { word: '島', reading: 'しま', meaning: 'An island', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-056',
+    char: '皿',
+    meaning: 'Dish, Plate, Helping',
+    onyomi: 'ベイ',
+    kunyomi: 'さら',
+    levels: ['N3'],
+    strokes: 5,
+    radical: '皿 (dish)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 1 Day 7', notes: '実戦問題 (Practice Exercise)' }
+    ],
+    examples: [
+      { word: '皿', reading: 'さら', meaning: 'A plate / dish', source: 'Sou Matome N3' },
+      { word: '灰皿', reading: 'はいざら', meaning: 'An ashtray', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-057',
+    char: '血',
+    meaning: 'Blood',
+    onyomi: 'ケツ',
+    kunyomi: 'ち',
+    levels: ['N3'],
+    strokes: 6,
+    radical: '血 (blood)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 1 Day 7', notes: '実戦問題 (Practice Exercise)' }
+    ],
+    examples: [
+      { word: '出血', reading: 'しゅっけつ', meaning: 'Bleed, hemorrhage', source: 'Sou Matome N3' },
+      { word: '血', reading: 'ち', meaning: 'Blood', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-058',
+    char: '助',
+    meaning: 'Help, Rescue, Assist',
+    onyomi: 'ジョ',
+    kunyomi: 'たす・ける, たす・かる, すけ',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '力 (power)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 1 Day 7', notes: '実戦問題 (Practice Exercise)' }
+    ],
+    examples: [
+      { word: '救助', reading: 'きゅうじょ', meaning: 'Rescue / help', source: 'Sou Matome N3' },
+      { word: '助ける', reading: 'たすける', meaning: 'To help, rescue, assist', source: 'Sou Matome N3' }
+    ]
   }
 ];
