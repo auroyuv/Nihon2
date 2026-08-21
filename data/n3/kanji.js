@@ -1,6 +1,7 @@
 /**
  * JLPT N3 Kanji Dataset
  * Nihongo Sou Matome N3 Kanji (日本語総まとめ N3 漢字)
+ * Complete Textbook Collection (Weeks 1 to 6, 336 Kanji)
  * Fully Indexed with On/Kun Readings, Stroke Counts, Radicals, Textbook Chapters,
  * and Target Compound Vocabulary (熟語).
  */
@@ -4932,6 +4933,975 @@ window.N3_KANJI_DATA = [
       { word: '紅葉', reading: 'こうよう / もみじ', meaning: 'Autumn foliage / leaves', source: 'Sou Matome N3' },
       { word: '葉', reading: 'は', meaning: 'A leaf', source: 'Sou Matome N3' },
       { word: '言葉', reading: 'ことば', meaning: 'A word, phrase, language', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-281',
+    char: '報',
+    meaning: 'Report, News, Reward, Retribution',
+    onyomi: 'ホウ',
+    kunyomi: 'むく・いる',
+    levels: ['N3'],
+    strokes: 12,
+    radical: '土 (earth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 1', notes: '天気予報 (The Weather Forecast)' }
+    ],
+    examples: [
+      { word: '予報', reading: 'よほう', meaning: 'A forecast, prediction', source: 'Sou Matome N3' },
+      { word: '報告', reading: 'ほうこく', meaning: 'A report, briefing', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-282',
+    char: '晴',
+    meaning: 'Clear weather, Fair, Clear up',
+    onyomi: 'セイ',
+    kunyomi: 'は・れる, は・れ, は・らす',
+    levels: ['N3'],
+    strokes: 12,
+    radical: '日 (sun)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 1', notes: '天気予報 (The Weather Forecast)' }
+    ],
+    examples: [
+      { word: '晴れる', reading: 'はれる', meaning: 'To clear up, be sunny (verb)', source: 'Sou Matome N3' },
+      { word: '晴れ', reading: 'はれ', meaning: 'Fine weather, clear skies (noun)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-283',
+    char: '雲',
+    meaning: 'Cloud',
+    onyomi: 'ウン',
+    kunyomi: 'くも, -ぐも',
+    levels: ['N3'],
+    strokes: 12,
+    radical: '雨 (rain)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 1', notes: '天気予報 (The Weather Forecast)' }
+    ],
+    examples: [
+      { word: '雲', reading: 'くも', meaning: 'A cloud, clouds', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-284',
+    char: '吹',
+    meaning: 'Blow, Breathe, Puff, Emit, Smelt',
+    onyomi: 'スイ',
+    kunyomi: 'ふ・く',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '口 (mouth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 1', notes: '天気予報 (The Weather Forecast)' }
+    ],
+    examples: [
+      { word: '吹く', reading: 'ふく', meaning: 'To blow (wind)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-285',
+    char: '暖',
+    meaning: 'Warmth',
+    onyomi: 'ダン, ノン',
+    kunyomi: 'あたた・か, あたた・かい, あたた・まる, あたた・める',
+    levels: ['N3'],
+    strokes: 13,
+    radical: '日 (sun)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 1', notes: '天気予報 (The Weather Forecast)' }
+    ],
+    examples: [
+      { word: '暖房', reading: 'だんぼう', meaning: 'Heating, indoor heater', source: 'Sou Matome N3' },
+      { word: '暖かい', reading: 'あたたかい', meaning: 'Warm (weather/climate)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-286',
+    char: '雪',
+    meaning: 'Snow',
+    onyomi: 'セツ',
+    kunyomi: 'ゆき',
+    levels: ['N3'],
+    strokes: 11,
+    radical: '雨 (rain)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 1', notes: '天気予報 (The Weather Forecast)' }
+    ],
+    examples: [
+      { word: '雪', reading: 'ゆき', meaning: 'Snow', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-287',
+    char: '震',
+    meaning: 'Earthquake, Quake, Shiver, Tremble',
+    onyomi: 'シン',
+    kunyomi: 'ふる・う, ふる・える',
+    levels: ['N3'],
+    strokes: 15,
+    radical: '雨 (rain)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 1', notes: '天気予報 (The Weather Forecast)' }
+    ],
+    examples: [
+      { word: '地震', reading: 'じしん', meaning: 'An earthquake', source: 'Sou Matome N3' },
+      { word: '震度', reading: 'しんど', meaning: 'Seismic intensity', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-288',
+    char: '波',
+    meaning: 'Waves, Billows, Breakers',
+    onyomi: 'ハ',
+    kunyomi: 'なみ',
+    levels: ['N3'],
+    strokes: 8,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 1', notes: '天気予報 (The Weather Forecast)' }
+    ],
+    examples: [
+      { word: '電波', reading: 'でんぱ', meaning: 'Electromagnetic wave / radio reception', source: 'Sou Matome N3' },
+      { word: '波', reading: 'なみ', meaning: 'A wave', source: 'Sou Matome N3' },
+      { word: '津波', reading: 'つなみ', meaning: 'A tsunami / tidal wave', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-289',
+    char: '求',
+    meaning: 'Request, Want, Wish for, Require, Demand',
+    onyomi: 'キュウ, グ',
+    kunyomi: 'もと・める',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '水 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 2', notes: '求人広告 (A Help-Wanted Ad)' }
+    ],
+    examples: [
+      { word: '要求', reading: 'ようきゅう', meaning: 'A demand, request', source: 'Sou Matome N3' },
+      { word: '求人', reading: 'きゅうじん', meaning: 'Job offer, "Help Wanted"', source: 'Sou Matome N3' },
+      { word: '請求書', reading: 'せいきゅうしょ', meaning: 'A bill, invoice', source: 'Sou Matome N3' },
+      { word: '求める', reading: 'もとめる', meaning: 'To seek, demand, request', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-290',
+    char: '募',
+    meaning: 'Recruit, Campaign, Gather (contributions)',
+    onyomi: 'ボ',
+    kunyomi: 'つの・る',
+    levels: ['N3'],
+    strokes: 12,
+    radical: '力 (power)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 2', notes: '求人広告 (A Help-Wanted Ad)' }
+    ],
+    examples: [
+      { word: '募集', reading: 'ぼしゅう', meaning: 'Recruitment, taking applications', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-291',
+    char: '職',
+    meaning: 'Post, Employment, Work',
+    onyomi: 'ショク, ソク',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 18,
+    radical: '耳 (ear)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 2', notes: '求人広告 (A Help-Wanted Ad)' }
+    ],
+    examples: [
+      { word: '職場', reading: 'しょくば', meaning: 'A workplace', source: 'Sou Matome N3' },
+      { word: '職業', reading: 'しょくぎょう', meaning: 'An occupation, profession', source: 'Sou Matome N3' },
+      { word: '転職', reading: 'てんしょく', meaning: 'Change of job', source: 'Sou Matome N3' },
+      { word: '職員', reading: 'しょくいん', meaning: 'Employees, staff', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-292',
+    char: '容',
+    meaning: 'Contain, Form, Looks',
+    onyomi: 'ヨウ',
+    kunyomi: 'い・れる',
+    levels: ['N3'],
+    strokes: 10,
+    radical: '宀 (roof)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 2', notes: '求人広告 (A Help-Wanted Ad)' }
+    ],
+    examples: [
+      { word: '美容院', reading: 'びよういん', meaning: 'A beauty salon / hairdresser', source: 'Sou Matome N3' },
+      { word: '内容', reading: 'ないよう', meaning: 'Content, substance', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-293',
+    char: '技',
+    meaning: 'Skill, Art, Craft, Ability',
+    onyomi: 'ギ',
+    kunyomi: 'わざ',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '扌 (hand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 2', notes: '求人広告 (A Help-Wanted Ad)' }
+    ],
+    examples: [
+      { word: '技術', reading: 'ぎじゅつ', meaning: 'Technology, technique, skill', source: 'Sou Matome N3' },
+      { word: '技術者', reading: 'ぎじゅつしゃ', meaning: 'A technician, engineer', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-294',
+    char: '般',
+    meaning: 'Carrier, Kind, Counter for boats',
+    onyomi: 'ハン',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 10,
+    radical: '舟 (boat)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 2', notes: '求人広告 (A Help-Wanted Ad)' }
+    ],
+    examples: [
+      { word: '一般', reading: 'いっぱん', meaning: 'General, universal', source: 'Sou Matome N3' },
+      { word: '一般に', reading: 'いっぱんに', meaning: 'In general, generally', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-295',
+    char: '務',
+    meaning: 'Task, Duties',
+    onyomi: 'ム',
+    kunyomi: 'つと・める',
+    levels: ['N3'],
+    strokes: 11,
+    radical: '力 (power)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 2', notes: '求人広告 (A Help-Wanted Ad)' }
+    ],
+    examples: [
+      { word: '事務', reading: 'じむ', meaning: 'Office work, clerical work', source: 'Sou Matome N3' },
+      { word: '公務員', reading: 'こうむいん', meaning: 'A civil servant, government employee', source: 'Sou Matome N3' },
+      { word: '事務所', reading: 'じむしょ', meaning: 'An office', source: 'Sou Matome N3' },
+      { word: '税務署', reading: 'ぜいむしょ', meaning: 'A tax office', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-296',
+    char: '課',
+    meaning: 'Chapter, Lesson, Section',
+    onyomi: 'カ',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 15,
+    radical: '言 (word)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 2', notes: '求人広告 (A Help-Wanted Ad)' }
+    ],
+    examples: [
+      { word: '第1課', reading: 'だいいっか', meaning: 'Lesson 1', source: 'Sou Matome N3' },
+      { word: '課長', reading: 'かちょう', meaning: 'A section manager / chief', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-297',
+    char: '球',
+    meaning: 'Sphere, Ball',
+    onyomi: 'キュウ',
+    kunyomi: 'たま',
+    levels: ['N3'],
+    strokes: 11,
+    radical: '玉 (king/jewel)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 3', notes: 'スポーツ記事 (A Sports Article)' }
+    ],
+    examples: [
+      { word: '地球', reading: 'ちきゅう', meaning: 'The earth, the globe', source: 'Sou Matome N3' },
+      { word: '野球', reading: 'やきゅう', meaning: 'Baseball', source: 'Sou Matome N3' },
+      { word: '電球', reading: 'でんきゅう', meaning: 'A light bulb', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-298',
+    char: '決',
+    meaning: 'Decide, Fix, Agree upon, Appoint',
+    onyomi: 'ケツ',
+    kunyomi: 'き・める, -ぎ・め, き・まる, さ・く',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 3', notes: 'スポーツ記事 (A Sports Article)' }
+    ],
+    examples: [
+      { word: '決して', reading: 'けっして', meaning: 'Never, by no means', source: 'Sou Matome N3' },
+      { word: '決定', reading: 'けってい', meaning: 'A decision, determination', source: 'Sou Matome N3' },
+      { word: '決める', reading: 'きめる', meaning: 'To decide (transitive)', source: 'Sou Matome N3' },
+      { word: '決まる', reading: 'きまる', meaning: 'To be decided (intransitive)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-299',
+    char: '勝',
+    meaning: 'Victory, Win, Prevail, Excel',
+    onyomi: 'ショウ',
+    kunyomi: 'か・つ, -が・ち, まさ・る, すぐ・れる, かつ',
+    levels: ['N3'],
+    strokes: 12,
+    radical: '力 (power)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 3', notes: 'スポーツ記事 (A Sports Article)' }
+    ],
+    examples: [
+      { word: '優勝', reading: 'ゆうしょう', meaning: 'Victory, championship', source: 'Sou Matome N3' },
+      { word: '決勝', reading: 'けっしょう', meaning: 'The finals (sports)', source: 'Sou Matome N3' },
+      { word: '勝つ', reading: 'かつ', meaning: 'To win', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-300',
+    char: '対',
+    meaning: 'Vis-a-vis, Opposite, Even, Equal, Versus',
+    onyomi: 'タイ, ツイ',
+    kunyomi: 'あいて, こた・える, そろ・い, つれあ・い, なら・ぶ, むか・う',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '寸 (inch)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 3', notes: 'スポーツ記事 (A Sports Article)' }
+    ],
+    examples: [
+      { word: '1対2', reading: 'いちたいに', meaning: '(A score of) 1 to 2', source: 'Sou Matome N3' },
+      { word: '反対', reading: 'はんたい', meaning: 'Opposite, opposition', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-301',
+    char: '流',
+    meaning: 'Current, Sink, Flow, Forfeit',
+    onyomi: 'リュウ, ル',
+    kunyomi: 'なが・れる, なが・れ, なが・す, -なが・す',
+    levels: ['N3'],
+    strokes: 10,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 3', notes: 'スポーツ記事 (A Sports Article)' }
+    ],
+    examples: [
+      { word: '流れる', reading: 'ながれる', meaning: 'To flow (intransitive)', source: 'Sou Matome N3' },
+      { word: '流す', reading: 'ながす', meaning: 'To let flow, shed, flush (transitive)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-302',
+    char: '負',
+    meaning: 'Defeat, Bear, Owe, Assume',
+    onyomi: 'フ',
+    kunyomi: 'ま・ける, ま・かす, お・う',
+    levels: ['N3'],
+    strokes: 9,
+    radical: '貝 (shell)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 3', notes: 'スポーツ記事 (A Sports Article)' }
+    ],
+    examples: [
+      { word: '勝負', reading: 'しょうぶ', meaning: 'A match, contest, game', source: 'Sou Matome N3' },
+      { word: '負ける', reading: 'まける', meaning: 'To lose, be defeated', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-303',
+    char: '投',
+    meaning: 'Throw, Discard, Abandon, Launch',
+    onyomi: 'トウ',
+    kunyomi: 'な・げる, -な・げ',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '扌 (hand)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 3', notes: 'スポーツ記事 (A Sports Article)' }
+    ],
+    examples: [
+      { word: '投手', reading: 'とうしゅ', meaning: '(Baseball) pitcher', source: 'Sou Matome N3' },
+      { word: '投げる', reading: 'なげる', meaning: 'To throw, pitch', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-304',
+    char: '果',
+    meaning: 'Fruit, Reward, Carry out, Achieve',
+    onyomi: 'カ',
+    kunyomi: 'は・たす, はた・す, -は・たす, は・てる, -は・てる, は・て',
+    levels: ['N3'],
+    strokes: 8,
+    radical: '木 (tree)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 3', notes: 'スポーツ記事 (A Sports Article)' }
+    ],
+    examples: [
+      { word: '結果', reading: 'けっか', meaning: 'A result, outcome', source: 'Sou Matome N3' },
+      { word: '果物', reading: 'くだもの', meaning: 'Fruit', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-305',
+    char: '戦',
+    meaning: 'War, Battle, Match',
+    onyomi: 'セン',
+    kunyomi: 'いくさ, たたか・う, おのの・く, そよ・ぐ, わなな・く',
+    levels: ['N3'],
+    strokes: 13,
+    radical: '戈 (halberd)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 4', notes: '経済 (The Economy)' }
+    ],
+    examples: [
+      { word: '戦後', reading: 'せんご', meaning: 'Postwar period, after the war', source: 'Sou Matome N3' },
+      { word: '戦争', reading: 'せんそう', meaning: 'War', source: 'Sou Matome N3' },
+      { word: '戦う', reading: 'たたかう', meaning: 'To fight, battle', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-306',
+    char: '経',
+    meaning: 'Sutra, Pass through, Expire, Warp',
+    onyomi: 'ケイ, キョウ',
+    kunyomi: 'へ・る, た・つ, たていと, はか・る',
+    levels: ['N3'],
+    strokes: 11,
+    radical: '糸 (silk)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 4', notes: '経済 (The Economy)' }
+    ],
+    examples: [
+      { word: '経験', reading: 'けいけん', meaning: 'Experience', source: 'Sou Matome N3' },
+      { word: '経営', reading: 'けいえい', meaning: 'Management, administration', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-307',
+    char: '済',
+    meaning: 'Finish, Settle (debt), Relieve',
+    onyomi: 'サイ, セイ',
+    kunyomi: 'す・む, -ず・み, -ずみ, す・ます, -す・ます, すく・う, な・す, わた・る',
+    levels: ['N3'],
+    strokes: 11,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 4', notes: '経済 (The Economy)' }
+    ],
+    examples: [
+      { word: '経済', reading: 'けいざい', meaning: 'Economy, economics', source: 'Sou Matome N3' },
+      { word: '済む', reading: 'すむ', meaning: 'To finish, end, settle', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-308',
+    char: '成',
+    meaning: 'Turn into, Become, Get, Grow, Elapse',
+    onyomi: 'セイ, ジョウ',
+    kunyomi: 'な・る, な・す, -な・す',
+    levels: ['N3'],
+    strokes: 6,
+    radical: '戈 (halberd)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 4', notes: '経済 (The Economy)' }
+    ],
+    examples: [
+      { word: '成長', reading: 'せいちょう', meaning: 'Growth', source: 'Sou Matome N3' },
+      { word: '完成', reading: 'かんせい', meaning: 'Completion', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-309',
+    char: '貿',
+    meaning: 'Trade, Exchange',
+    onyomi: 'ボウ',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 12,
+    radical: '貝 (shell)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 4', notes: '経済 (The Economy)' }
+    ],
+    examples: [
+      { word: '貿易', reading: 'ぼうえき', meaning: 'Trade, international commerce', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-310',
+    char: '易',
+    meaning: 'Easy, Ready to, Simple, Fortune-telling',
+    onyomi: 'エキ, イ',
+    kunyomi: 'やさ・しい, やす・い',
+    levels: ['N3'],
+    strokes: 8,
+    radical: '日 (sun)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 4', notes: '経済 (The Economy)' }
+    ],
+    examples: [
+      { word: '貿易', reading: 'ぼうえき', meaning: 'Trade, commerce', source: 'Sou Matome N3' },
+      { word: '易しい', reading: 'やさしい', meaning: 'Easy, simple, plain', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-311',
+    char: '輸',
+    meaning: 'Transport, Send, Be inferior',
+    onyomi: 'ユ, シュ',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 16,
+    radical: '車 (cart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 4', notes: '経済 (The Economy)' }
+    ],
+    examples: [
+      { word: '輸出', reading: 'ゆしゅつ', meaning: 'Export', source: 'Sou Matome N3' },
+      { word: '輸入', reading: 'ゆにゅう', meaning: 'Import', source: 'Sou Matome N3' },
+      { word: '輸送', reading: 'ゆそう', meaning: 'Transport, transportation', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-312',
+    char: '相',
+    meaning: 'Inter-, Mutual, Together, Minister of state, Aspect',
+    onyomi: 'ソウ, ショウ',
+    kunyomi: 'あい-',
+    levels: ['N3'],
+    strokes: 9,
+    radical: '目 (eye)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 4', notes: '経済 (The Economy)' }
+    ],
+    examples: [
+      { word: '相談', reading: 'そうだん', meaning: 'Consultation, discussion', source: 'Sou Matome N3' },
+      { word: '首相', reading: 'しゅしょう', meaning: 'Prime Minister', source: 'Sou Matome N3' },
+      { word: '相手', reading: 'あいて', meaning: 'Partner, opponent, the other party', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-313',
+    char: '化',
+    meaning: 'Change, Take the form of, Influence, Enchant, -ization',
+    onyomi: 'カ, ケ',
+    kunyomi: 'ば・ける, ば・かす, ふ・ける, け・する',
+    levels: ['N3'],
+    strokes: 4,
+    radical: '匕 (spoon)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 5', notes: '地球温暖化 (Global Warming)' }
+    ],
+    examples: [
+      { word: '文化', reading: 'ぶんか', meaning: 'Culture', source: 'Sou Matome N3' },
+      { word: '化学', reading: 'かがく', meaning: 'Chemistry', source: 'Sou Matome N3' },
+      { word: '〜化', reading: '〜か', meaning: '-ization (change into)', source: 'Sou Matome N3' },
+      { word: '化粧', reading: 'けしょう', meaning: 'Makeup, cosmetics', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-314',
+    char: '比',
+    meaning: 'Compare, Race, Ratio',
+    onyomi: 'ヒ',
+    kunyomi: 'くら・べる',
+    levels: ['N3'],
+    strokes: 4,
+    radical: '比 (compare)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 5', notes: '地球温暖化 (Global Warming)' }
+    ],
+    examples: [
+      { word: '比べる', reading: 'くらべる', meaning: 'To compare', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-315',
+    char: '原',
+    meaning: 'Meadow, Original, Primitive, Field',
+    onyomi: 'ゲン',
+    kunyomi: 'はら',
+    levels: ['N3'],
+    strokes: 10,
+    radical: '厂 (cliff)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 5', notes: '地球温暖化 (Global Warming)' }
+    ],
+    examples: [
+      { word: '原料', reading: 'げんりょう', meaning: 'Raw materials', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-316',
+    char: '因',
+    meaning: 'Cause, Factor, Depend on, Be associated with',
+    onyomi: 'イン',
+    kunyomi: 'よ・る, ちな・む',
+    levels: ['N3'],
+    strokes: 6,
+    radical: '囗 (enclosure)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 5', notes: '地球温暖化 (Global Warming)' }
+    ],
+    examples: [
+      { word: '原因', reading: 'げんいん', meaning: 'A cause, factor', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-317',
+    char: '際',
+    meaning: 'Occasion, Side, Edge, Dangerous, When',
+    onyomi: 'サイ',
+    kunyomi: 'きわ, -ぎわ',
+    levels: ['N3'],
+    strokes: 14,
+    radical: '阝 (hill)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 5', notes: '地球温暖化 (Global Warming)' }
+    ],
+    examples: [
+      { word: '国際(の)', reading: 'こくさい', meaning: 'International', source: 'Sou Matome N3' },
+      { word: '交際', reading: 'こうさい', meaning: 'Association, fellowship', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-318',
+    char: '議',
+    meaning: 'Deliberation, Consultation, Debate',
+    onyomi: 'ギ',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 20,
+    radical: '言 (word)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 5', notes: '地球温暖化 (Global Warming)' }
+    ],
+    examples: [
+      { word: '会議', reading: 'かいぎ', meaning: 'A meeting, conference', source: 'Sou Matome N3' },
+      { word: '議員', reading: 'ぎいん', meaning: 'An assembly / parliament member', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-319',
+    char: '活',
+    meaning: 'Lively, Resuscitation, Living',
+    onyomi: 'カツ',
+    kunyomi: 'い・きる, い・かす, い・ける',
+    levels: ['N3'],
+    strokes: 9,
+    radical: '氵 (water)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 5', notes: '地球温暖化 (Global Warming)' }
+    ],
+    examples: [
+      { word: '生活', reading: 'せいかつ', meaning: 'Life, daily livelihood', source: 'Sou Matome N3' },
+      { word: '活動', reading: 'かつどう', meaning: 'Activity, action', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-320',
+    char: '変',
+    meaning: 'Unusual, Change, Strange',
+    onyomi: 'ヘン',
+    kunyomi: 'か・わる, か・わり, か・える',
+    levels: ['N3'],
+    strokes: 9,
+    radical: '夂 (late)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 5', notes: '地球温暖化 (Global Warming)' }
+    ],
+    examples: [
+      { word: '大変(な)', reading: 'たいへん', meaning: 'Very, tough, serious', source: 'Sou Matome N3' },
+      { word: '変化', reading: 'へんか', meaning: 'A change, transformation', source: 'Sou Matome N3' },
+      { word: '変わる', reading: 'かわる', meaning: 'To change (intransitive)', source: 'Sou Matome N3' },
+      { word: '変える', reading: 'かえる', meaning: 'To change (transitive)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-321',
+    char: '政',
+    meaning: 'Politics, Government',
+    onyomi: 'セイ, ショウ',
+    kunyomi: 'まつりごと, まん',
+    levels: ['N3'],
+    strokes: 9,
+    radical: '攵 (strike)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 6', notes: '政治 (Politics)' }
+    ],
+    examples: [
+      { word: '政治', reading: 'せいじ', meaning: 'Politics', source: 'Sou Matome N3' },
+      { word: '政治家', reading: 'せいじか', meaning: 'A politician', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-322',
+    char: '府',
+    meaning: 'Borough, Urban prefecture, Govt office',
+    onyomi: 'フ',
+    kunyomi: '',
+    levels: ['N3'],
+    strokes: 8,
+    radical: '广 (dotted cliff)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 6', notes: '政治 (Politics)' }
+    ],
+    examples: [
+      { word: '政府', reading: 'せいふ', meaning: 'The government, administration', source: 'Sou Matome N3' },
+      { word: '都道府県', reading: 'とどうふけん', meaning: 'Prefectures of Japan', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-323',
+    char: '改',
+    meaning: 'Reformation, Change, Modify, Mend, Examine',
+    onyomi: 'カイ',
+    kunyomi: 'あらた・める, あらた・まる',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '攵 (strike)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 6', notes: '政治 (Politics)' }
+    ],
+    examples: [
+      { word: '改正', reading: 'かいせい', meaning: 'An amendment, revision', source: 'Sou Matome N3' },
+      { word: '改める', reading: 'あらためる', meaning: 'To change, check, reform', source: 'Sou Matome N3' },
+      { word: '改札口', reading: 'かいさつぐち', meaning: 'A ticket gate', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-324',
+    char: '否',
+    meaning: 'Negate, No, Refuse, Decline, Negation',
+    onyomi: 'ヒ',
+    kunyomi: 'いな, いや',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '口 (mouth)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 6', notes: '政治 (Politics)' }
+    ],
+    examples: [
+      { word: '否定', reading: 'ひてい', meaning: 'Negation, denial', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-325',
+    char: '的',
+    meaning: 'Bull\'s eye, Mark, Target, Object, -like',
+    onyomi: 'テキ',
+    kunyomi: 'まと',
+    levels: ['N3'],
+    strokes: 8,
+    radical: '白 (white)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 6', notes: '政治 (Politics)' }
+    ],
+    examples: [
+      { word: '否定的(な)', reading: 'ひていてき', meaning: 'Negative', source: 'Sou Matome N3' },
+      { word: '目的', reading: 'もくてき', meaning: 'An aim, purpose', source: 'Sou Matome N3' },
+      { word: '国際的(な)', reading: 'こくさいてき', meaning: 'International', source: 'Sou Matome N3' },
+      { word: '個人的(な)', reading: 'こじんてき', meaning: 'Personal, individual', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-326',
+    char: '実',
+    meaning: 'Reality, Truth, Fruit, Seed, Nut',
+    onyomi: 'ジツ, シツ',
+    kunyomi: 'み, みの・る, まこと, みの, まことに',
+    levels: ['N3'],
+    strokes: 8,
+    radical: '宀 (roof)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 6', notes: '政治 (Politics)' }
+    ],
+    examples: [
+      { word: '実際に', reading: 'じっさいに', meaning: 'Actually, in practice', source: 'Sou Matome N3' },
+      { word: '実は', reading: 'じつは', meaning: 'To tell the truth, actually', source: 'Sou Matome N3' },
+      { word: '実験', reading: 'じっけん', meaning: 'An experiment', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-327',
+    char: '欠',
+    meaning: 'Lack, Gap, Fail, Yawning radical',
+    onyomi: 'ケツ, ケン',
+    kunyomi: 'か・ける, か・く',
+    levels: ['N3'],
+    strokes: 4,
+    radical: '欠 (lack)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 6', notes: '政治 (Politics)' }
+    ],
+    examples: [
+      { word: '欠点', reading: 'けってん', meaning: 'A shortcoming, defect, flaw', source: 'Sou Matome N3' },
+      { word: '欠席', reading: 'けっせき', meaning: 'Absence', source: 'Sou Matome N3' },
+      { word: '欠ける', reading: 'かける', meaning: 'To lack, be chipped', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-328',
+    char: '専',
+    meaning: 'Specialty, Exclusive, Mainly, Solely',
+    onyomi: 'セン',
+    kunyomi: 'もっぱ・ら',
+    levels: ['N3'],
+    strokes: 9,
+    radical: '寸 (inch)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 6', notes: '政治 (Politics)' }
+    ],
+    examples: [
+      { word: '専門', reading: 'せんもん', meaning: 'Specialty, major field', source: 'Sou Matome N3' },
+      { word: '専門家', reading: 'せんもんか', meaning: 'A specialist, expert', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-329',
+    char: '亡',
+    meaning: 'Deceased, The late, Dying, Perish',
+    onyomi: 'ボウ, モウ',
+    kunyomi: 'な・い, な・き-, ほろ・びる, ほろ・ぼす',
+    levels: ['N3'],
+    strokes: 3,
+    radical: '亠 (lid)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 7', notes: 'クイズ⑥ 口に入る部分は？ (Quiz 6)' }
+    ],
+    examples: [
+      { word: '死亡', reading: 'しぼう', meaning: 'Death, mortality', source: 'Sou Matome N3' },
+      { word: '亡くなる', reading: 'なくなる', meaning: 'To die, pass away', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-330',
+    char: '忙',
+    meaning: 'Busy, Occupied, Restless',
+    onyomi: 'ボウ, モウ',
+    kunyomi: 'いそが・しい, せわ・しい, おそ・れる, うれ・える',
+    levels: ['N3'],
+    strokes: 6,
+    radical: '忄 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 7', notes: 'クイズ⑥ 口に入る部分は？ (Quiz 6)' }
+    ],
+    examples: [
+      { word: '多忙(な)', reading: 'たぼう', meaning: 'Very busy', source: 'Sou Matome N3' },
+      { word: '忙しい', reading: 'いそがしい', meaning: 'Busy', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-331',
+    char: '忘',
+    meaning: 'Forget',
+    onyomi: 'ボウ',
+    kunyomi: 'わす・れる',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '心 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 7', notes: 'クイズ⑥ 口に入る部分は？ (Quiz 6)' }
+    ],
+    examples: [
+      { word: '忘年会', reading: 'ぼうねんかい', meaning: 'End-of-the-year party', source: 'Sou Matome N3' },
+      { word: '忘れる', reading: 'わすれる', meaning: 'To forget', source: 'Sou Matome N3' },
+      { word: '忘れ物', reading: 'わすれもの', meaning: 'Something left behind / lost property', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-332',
+    char: '祭',
+    meaning: 'Ritual, Offer prayers, Celebrate, Festival',
+    onyomi: 'サイ',
+    kunyomi: 'まつ・る, まつ・り, まつり',
+    levels: ['N3'],
+    strokes: 11,
+    radical: '示 (altar)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 7', notes: 'クイズ⑥ 口に入る部分は？ (Quiz 6)' }
+    ],
+    examples: [
+      { word: '文化祭', reading: 'ぶんかさい', meaning: 'A school festival', source: 'Sou Matome N3' },
+      { word: 'お祭り', reading: 'おまつり', meaning: 'A festival', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-333',
+    char: '労',
+    meaning: 'Labor, Thank for, Reward for, Toil, Trouble',
+    onyomi: 'ロウ',
+    kunyomi: 'ろう・する, いたわ・る, いたずき, ねぎら・う, つか・れる',
+    levels: ['N3'],
+    strokes: 7,
+    radical: '力 (power)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 7', notes: 'クイズ⑥ 口に入る部分は？ (Quiz 6)' }
+    ],
+    examples: [
+      { word: '苦労', reading: 'くろう', meaning: 'Troubles, hardships', source: 'Sou Matome N3' },
+      { word: '労働者', reading: 'ろうどうしゃ', meaning: 'A laborer, worker', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-334',
+    char: '加',
+    meaning: 'Add, Addition, Increase, Join, Canada',
+    onyomi: 'カ',
+    kunyomi: 'くわ・える, くわ・わる',
+    levels: ['N3'],
+    strokes: 5,
+    radical: '力 (power)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 7', notes: 'クイズ⑥ 口に入る部分は？ (Quiz 6)' }
+    ],
+    examples: [
+      { word: '参加', reading: 'さんか', meaning: 'Participation', source: 'Sou Matome N3' },
+      { word: '増加', reading: 'ぞうか', meaning: 'An increase, rise', source: 'Sou Matome N3' },
+      { word: '加える', reading: 'くわえる', meaning: 'To add to (transitive)', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-335',
+    char: '情',
+    meaning: 'Feelings, Emotion, Passion, Sympathy, Circumstances',
+    onyomi: 'ジョウ, セイ',
+    kunyomi: 'なさ・け',
+    levels: ['N3'],
+    strokes: 11,
+    radical: '忄 (heart)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 7', notes: 'クイズ⑥ 口に入る部分は？ (Quiz 6)' }
+    ],
+    examples: [
+      { word: '情報', reading: 'じょうほう', meaning: 'Information', source: 'Sou Matome N3' },
+      { word: '表情', reading: 'ひょうじょう', meaning: 'A facial expression', source: 'Sou Matome N3' },
+      { word: '事情', reading: 'じじょう', meaning: 'Circumstances, conditions', source: 'Sou Matome N3' },
+      { word: '感情', reading: 'かんじょう', meaning: 'Emotion, feelings', source: 'Sou Matome N3' }
+    ]
+  },
+  {
+    id: 'k-n3-sm-336',
+    char: '反',
+    meaning: 'Anti-, Counter-, Opposite',
+    onyomi: 'ハン, ホン, タン, ホ',
+    kunyomi: 'そ・る, そ・らす, かえ・す, かえ・る',
+    levels: ['N3'],
+    strokes: 4,
+    radical: '又 (again)',
+    sources: [
+      { book: 'Nihongo Sou Matome N3 Kanji', chapter: 'Week 6 Day 7', notes: 'クイズ⑥ 口に入る部分は？ (Quiz 6)' }
+    ],
+    examples: [
+      { word: '反対', reading: 'はんたい', meaning: 'Opposite, opposition', source: 'Sou Matome N3' }
     ]
   }
 ];
