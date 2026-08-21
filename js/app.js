@@ -601,6 +601,44 @@
   }
 
   // --- KANJI DETAIL MODAL ---
+  let modalCompoundFilter = 'ALL';
+
+  function renderModalExamples(examples, selectedLevel) {
+    const list = document.getElementById('modal-examples-container');
+    if (!list) return;
+
+    let filtered = examples;
+    if (modalCompoundFilter !== 'ALL') {
+      filtered = examples.filter(ex => ex.level === modalCompoundFilter);
+    }
+
+    list.innerHTML = filtered.map(ex => {
+      const exLevel = ex.level || 'N2';
+      const isNewInCurrent = selectedLevel !== 'ALL' && exLevel === selectedLevel;
+      const isPriorReview = selectedLevel !== 'ALL' && exLevel !== selectedLevel;
+
+      return `
+        <div class="modal-example-row">
+          <div class="example-jp-col">
+            <div class="example-main-text">
+              <span class="example-word">${ex.word}</span>
+              <span class="example-reading">【${ex.reading}】</span>
+              <button class="mini-audio-btn" data-speak="${ex.word}" title="Listen">${UI_ICONS.volume}</button>
+            </div>
+            
+            <div class="ex-meta-badges">
+              <span class="level-badge badge-${exLevel.toLowerCase()}">${exLevel}</span>
+              ${ex.source ? `<span class="ex-source-chip" title="Textbook Source">${UI_ICONS.book} ${ex.source}</span>` : ''}
+              ${isNewInCurrent ? `<span class="ex-novelty-chip new">✨ New ${exLevel} Vocab</span>` : ''}
+              ${isPriorReview ? `<span class="ex-novelty-chip review">🔄 Studied in ${exLevel}</span>` : ''}
+            </div>
+          </div>
+          <div class="example-en-col">${ex.meaning}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
   function openKanjiModal(kanjiId) {
     const kanji = window.JLPT_DATA.kanji.find(k => k.id === kanjiId);
     if (!kanji) return;
@@ -609,10 +647,27 @@
     const modalBackdrop = document.getElementById('modal-backdrop');
     if (!modalBody || !modalBackdrop) return;
 
+    modalCompoundFilter = 'ALL';
+
     const isBookmarked = state.bookmarks.has(kanji.id);
     const sourceInfo = kanji.sources && kanji.sources[0] ? kanji.sources[0] : null;
     const firstLevel = kanji.firstLevel || (kanji.levels ? kanji.levels[0] : 'N5');
     const isNew = firstLevel === state.selectedLevel || state.selectedLevel === 'ALL';
+    const examples = kanji.examples || [];
+
+    // Calculate level counts for compounds
+    const levelCounts = {};
+    examples.forEach(ex => {
+      const lvl = ex.level || 'N2';
+      levelCounts[lvl] = (levelCounts[lvl] || 0) + 1;
+    });
+
+    const distinctLevels = Object.keys(levelCounts).sort((a, b) => {
+      const order = { 'N5': 1, 'N4': 2, 'N3': 3, 'N2': 4, 'N1': 5 };
+      return (order[a] || 99) - (order[b] || 99);
+    });
+
+    const breakdownText = distinctLevels.map(lvl => `<strong>${levelCounts[lvl]}</strong> from ${lvl}`).join(' • ');
 
     modalBody.innerHTML = `
       <div class="modal-kanji-header">
@@ -634,9 +689,13 @@
               <strong>Level Origin:</strong> First introduced in <strong>JLPT ${firstLevel}</strong>
               ${!isNew ? ` &bull; Reintroduced in <strong>JLPT ${state.selectedLevel}</strong> with new vocabulary` : ''}
             </div>
-            ${sourceInfo ? `
-              <div class="modal-source-info">
-                ${UI_ICONS.book} <strong>${sourceInfo.book}</strong> &mdash; ${sourceInfo.chapter || ''} ${sourceInfo.notes ? `(${sourceInfo.notes})` : ''}
+            ${kanji.sources && kanji.sources.length > 0 ? `
+              <div class="modal-sources-list">
+                ${kanji.sources.map(s => `
+                  <div class="modal-source-pill">
+                    ${UI_ICONS.book} <strong>${s.book}</strong> &mdash; ${s.chapter || s.lesson || ''} ${s.notes ? `(${s.notes})` : ''}
+                  </div>
+                `).join('')}
               </div>
             ` : ''}
           </div>
@@ -656,22 +715,26 @@
 
       <div class="modal-examples-section">
         <div class="modal-section-title">
-          <span>Target Vocabulary & Compounds (熟語)</span>
-          <span class="count-chip">${kanji.examples ? kanji.examples.length : 0} Words</span>
+          <div class="ex-title-left">
+            <span>Target Vocabulary & Compounds (熟語)</span>
+            <span class="count-chip">${examples.length} Total Words</span>
+          </div>
+          ${breakdownText ? `<div class="modal-vocab-breakdown">(${breakdownText})</div>` : ''}
         </div>
+
+        ${distinctLevels.length > 1 ? `
+          <div class="modal-compound-filter-bar">
+            <span class="filter-mini-label">Filter Vocab:</span>
+            <button class="modal-filter-btn active" data-modal-filter="ALL">All (${examples.length})</button>
+            ${distinctLevels.map(lvl => `
+              <button class="modal-filter-btn" data-modal-filter="${lvl}">
+                <span class="level-badge badge-${lvl.toLowerCase()}">${lvl}</span> (${levelCounts[lvl]})
+              </button>
+            `).join('')}
+          </div>
+        ` : ''}
         
-        <div class="modal-examples-list">
-          ${(kanji.examples || []).map(ex => `
-            <div class="modal-example-row">
-              <div class="example-jp-col">
-                <span class="example-word">${ex.word}</span>
-                <span class="example-reading">【${ex.reading}】</span>
-                <button class="mini-audio-btn" data-speak="${ex.word}" title="Listen">${UI_ICONS.volume}</button>
-              </div>
-              <div class="example-en-col">${ex.meaning}</div>
-            </div>
-          `).join('')}
-        </div>
+        <div id="modal-examples-container" class="modal-examples-list"></div>
       </div>
 
       <div class="modal-footer-actions">
@@ -681,11 +744,24 @@
       </div>
     `;
 
+    renderModalExamples(examples, state.selectedLevel);
+
+    // Setup modal compound filter listeners
+    modalBody.querySelectorAll('[data-modal-filter]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        modalBody.querySelectorAll('[data-modal-filter]').forEach(b => b.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        modalCompoundFilter = e.currentTarget.getAttribute('data-modal-filter');
+        renderModalExamples(examples, state.selectedLevel);
+      });
+    });
+
     modalBackdrop.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
+
     const modalBackdrop = document.getElementById('modal-backdrop');
     if (modalBackdrop) modalBackdrop.classList.add('hidden');
     document.body.style.overflow = '';

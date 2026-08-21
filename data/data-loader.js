@@ -1,7 +1,7 @@
 /**
  * NihonHub - Master Data Loader & Cross-Level Origin Indexer
  * Aggregates all modular level datasets (N5 to N2), handles cross-book deduplication,
- * detects first-introduced levels (Origin Level), categorizes new vs review items,
+ * detects first-introduced levels (Origin Level), tracks compound vocabulary origin/levels,
  * and normalizes multi-level source citations into `window.JLPT_DATA`.
  */
 
@@ -23,6 +23,8 @@
         const key = item[keyField];
         if (!key) return;
 
+        const defaultSource = (item.sources && item.sources[0] && item.sources[0].book) ? item.sources[0].book : (level + ' Course');
+
         if (map.has(key)) {
           const existing = map.get(key);
 
@@ -43,7 +45,7 @@
             }
           });
 
-          // Merge vocabulary compound examples without duplication
+          // Merge vocabulary compound examples with level and source tagging
           if (Array.isArray(item.examples)) {
             if (!Array.isArray(existing.examples)) existing.examples = [];
             item.examples.forEach(ex => {
@@ -52,7 +54,10 @@
                 (eex.ja && ex.ja && eex.ja === ex.ja)
               );
               if (!isDup) {
-                existing.examples.push(ex);
+                const exClone = JSON.parse(JSON.stringify(ex));
+                exClone.level = exClone.level || level;
+                exClone.source = exClone.source || defaultSource;
+                existing.examples.push(exClone);
               }
             });
           }
@@ -77,7 +82,16 @@
           if (!Array.isArray(cloned.sources)) {
             cloned.sources = [];
           }
-          if (!Array.isArray(cloned.examples)) {
+          
+          // Tag examples with level and source
+          if (Array.isArray(cloned.examples)) {
+            cloned.examples = cloned.examples.map(ex => {
+              const exClone = JSON.parse(JSON.stringify(ex));
+              exClone.level = exClone.level || level;
+              exClone.source = exClone.source || defaultSource;
+              return exClone;
+            });
+          } else {
             cloned.examples = [];
           }
 
