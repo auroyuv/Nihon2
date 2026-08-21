@@ -6,11 +6,11 @@
   <title>NihonHub | JLPT N5 to N2 Japanese Learning Hub</title>
   
   <!-- SEO & Open Graph Meta Tags -->
-  <meta name="description" content="Simple, clean, and comprehensive Japanese learning platform for JLPT N5, N4, N3, and N2. Master 739+ Kanji from Sou Matome, vocabulary, grammar, flashcards, and kana.">
-  <meta name="keywords" content="Japanese, JLPT, N5, N4, N3, N2, Kanji, Sou Matome, Vocabulary, Grammar, Kana, Flashcards">
+  <meta name="description" content="Simple, clean, and comprehensive Japanese learning platform for JLPT N5, N4, N3, and N2. Master 739+ Kanji from Sou Matome, track new vs review kanji across levels, vocabulary, grammar, flashcards, and kana.">
+  <meta name="keywords" content="Japanese, JLPT, N5, N4, N3, N2, Kanji, Sou Matome, Vocabulary, Grammar, Kana, Flashcards, Progression">
   <meta name="author" content="NihonHub">
   <meta property="og:title" content="NihonHub - JLPT N5 to N2 Japanese Learning Platform">
-  <meta property="og:description" content="Master Japanese from N5 foundation through N2 with textbook tracking, audio pronunciation, and clean study tools.">
+  <meta property="og:description" content="Master Japanese from N5 foundation through N2 with textbook tracking, cross-level overlap detection, audio pronunciation, and clean study tools.">
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
@@ -73,7 +73,7 @@
     <div class="control-bar card-glass">
       <!-- JLPT Level Selector -->
       <div class="level-selector-group">
-        <span class="level-group-label">Level:</span>
+        <span class="level-group-label">JLPT Level:</span>
         <button class="level-pill active" data-level="ALL">All (N5-N2)</button>
         <button class="level-pill" data-level="N5">N5</button>
         <button class="level-pill" data-level="N4">N4</button>
@@ -83,10 +83,19 @@
 
       <!-- Progression / Overlap Filter (New vs Review) -->
       <div class="origin-selector-group" id="origin-filter-container">
-        <span class="level-group-label">Scope:</span>
-        <button class="origin-pill active" data-origin="ALL">All Items</button>
-        <button class="origin-pill" data-origin="NEW">✨ New Only</button>
-        <button class="origin-pill" data-origin="REVIEW">🔄 Review / Repeated</button>
+        <span class="level-group-label">Filter Items:</span>
+        <button class="origin-pill active" data-origin="ALL">
+          <span>All Items</span>
+          <span id="scope-count-all" class="pill-chip">0</span>
+        </button>
+        <button class="origin-pill" data-origin="NEW">
+          <span>✨ New Only</span>
+          <span id="scope-count-new" class="pill-chip">0</span>
+        </button>
+        <button class="origin-pill" data-origin="REVIEW">
+          <span>🔄 Review / Repeated</span>
+          <span id="scope-count-review" class="pill-chip">0</span>
+        </button>
       </div>
 
       <!-- Feature Toggles -->
@@ -101,6 +110,9 @@
         </label>
       </div>
     </div>
+
+    <!-- Dynamic Level Overview & Repetition Banner -->
+    <div id="level-progression-banner" class="progression-banner card-glass"></div>
 
     <!-- Main Navigation Tabs -->
     <nav class="main-nav-tabs" aria-label="Main Navigation">
@@ -302,9 +314,9 @@
     <div class="footer-links">
       <span>739 Sou Matome N2 Kanji</span>
       <span>•</span>
-      <span>2,248+ Compound Vocabularies</span>
+      <span>Cross-Level Overlap & Origin Tracking</span>
       <span>•</span>
-      <span>Cross-Level Progression Tracking</span>
+      <span>Audio Speech Enabled</span>
     </div>
   </footer>
 

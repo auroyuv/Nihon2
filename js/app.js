@@ -2,7 +2,7 @@
  * NihonHub - Interactive Application Engine
  * Clean, User-Friendly JLPT N5 to N2 Learning Platform
  * Supports 739+ Kanji from Sou Matome, Cross-Level Progression Tracking (New vs Review),
- * Vocabulary, Grammar, Kana, Flashcards, and Bookmarks.
+ * Dynamic Count Breakdowns, Vocabulary, Grammar, Kana, Flashcards, and Bookmarks.
  */
 
 (function () {
@@ -15,7 +15,9 @@
     starFilled: `<svg class="ui-icon text-warning" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
     sun: `<svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`,
     moon: `<svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`,
-    book: `<svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>`
+    book: `<svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>`,
+    sparkles: `<svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>`,
+    repeat: `<svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>`
   };
 
   // --- APPLICATION STATE ---
@@ -146,7 +148,7 @@
     return arr.map(lvl => `<span class="level-badge badge-${lvl.toLowerCase()}">${lvl}</span>`).join(' ');
   }
 
-  // Helper: Render origin/progression badge
+  // Helper: Render origin tag for items (✨ New vs 🔄 Review)
   function renderOriginBadge(item) {
     const firstLevel = item.firstLevel || (item.levels ? item.levels[0] : 'N5');
     if (state.selectedLevel === 'ALL') {
@@ -155,7 +157,99 @@
     if (firstLevel === state.selectedLevel) {
       return `<span class="origin-tag new" title="Introduced for the first time in JLPT ${state.selectedLevel}">✨ New in ${state.selectedLevel}</span>`;
     }
-    return `<span class="origin-tag review" title="First introduced in JLPT ${firstLevel}, reintroduced in ${state.selectedLevel} with new vocabulary">🔄 From ${firstLevel}</span>`;
+    return `<span class="origin-tag review" title="First learned in JLPT ${firstLevel} &bull; Practicing advanced ${state.selectedLevel} compound words">🔄 From ${firstLevel}</span>`;
+  }
+
+  // --- DYNAMIC LEVEL PROGRESSION & OVERLAP BANNER ---
+  function updateLevelProgressionBanner() {
+    const banner = document.getElementById('level-progression-banner');
+    if (!banner || !window.JLPT_DATA) return;
+
+    // Get stats for active category (kanji, vocabulary, grammar)
+    let category = 'kanji';
+    let catTitle = 'Kanji';
+    if (state.currentTab === 'vocab') {
+      category = 'vocabulary';
+      catTitle = 'Vocabulary';
+    } else if (state.currentTab === 'grammar') {
+      category = 'grammar';
+      catTitle = 'Grammar';
+    }
+
+    const masterList = window.JLPT_DATA[category] || [];
+    const totalMasterCount = masterList.length;
+    const stats = window.JLPT_DATA.getLevelStats(category, state.selectedLevel);
+
+    // Update filter pill chip numbers
+    const pillAll = document.getElementById('scope-count-all');
+    const pillNew = document.getElementById('scope-count-new');
+    const pillReview = document.getElementById('scope-count-review');
+
+    if (pillAll) pillAll.textContent = stats.total;
+    if (pillNew) pillNew.textContent = stats.newCount;
+    if (pillReview) pillReview.textContent = stats.reviewCount;
+
+    // Calculate percentage of New vs Review
+    const newPct = stats.total > 0 ? Math.round((stats.newCount / stats.total) * 100) : 100;
+    const reviewPct = stats.total > 0 ? 100 - newPct : 0;
+
+    if (state.selectedLevel === 'ALL') {
+      // Breakdown counts across each individual level
+      const n5Count = masterList.filter(i => i.firstLevel === 'N5').length;
+      const n4Count = masterList.filter(i => i.firstLevel === 'N4').length;
+      const n3Count = masterList.filter(i => i.firstLevel === 'N3').length;
+      const n2Count = masterList.filter(i => i.firstLevel === 'N2').length;
+
+      banner.innerHTML = `
+        <div class="progression-banner-inner">
+          <div class="prog-stat-box">
+            <span class="prog-label">Total Unique ${catTitle} (N5 to N2):</span>
+            <span class="prog-huge-val">${totalMasterCount}</span>
+          </div>
+          <div class="prog-levels-breakdown">
+            <div class="prog-level-chip badge-n5"><strong>N5 Origin:</strong> ${n5Count}</div>
+            <div class="prog-level-chip badge-n4"><strong>N4 Origin:</strong> ${n4Count}</div>
+            <div class="prog-level-chip badge-n3"><strong>N3 Origin:</strong> ${n3Count}</div>
+            <div class="prog-level-chip badge-n2"><strong>N2 Origin:</strong> ${n2Count}</div>
+          </div>
+          <div class="prog-desc">
+            Cumulative view showing all unique ${catTitle.toLowerCase()} across all 4 JLPT levels combined.
+          </div>
+        </div>
+      `;
+    } else {
+      banner.innerHTML = `
+        <div class="progression-banner-inner">
+          <div class="prog-stat-box">
+            <span class="prog-label">JLPT ${state.selectedLevel} ${catTitle} Syllabus:</span>
+            <span class="prog-huge-val">${stats.total} <small>Total</small></span>
+          </div>
+          <div class="prog-split-row">
+            <div class="prog-split-card new-card">
+              <div class="split-top">
+                <span class="split-icon">✨</span>
+                <span class="split-title">Brand New in ${state.selectedLevel}:</span>
+              </div>
+              <div class="split-val"><strong>${stats.newCount}</strong> ${catTitle} (${newPct}%)</div>
+              <div class="split-hint">Introduced for the first time in JLPT ${state.selectedLevel}</div>
+            </div>
+            
+            <div class="prog-split-card review-card">
+              <div class="split-top">
+                <span class="split-icon">🔄</span>
+                <span class="split-title">Repeated from Lower Levels:</span>
+              </div>
+              <div class="split-val"><strong>${stats.reviewCount}</strong> ${catTitle} (${reviewPct}%)</div>
+              <div class="split-hint">Learned in earlier levels, reappearing in ${state.selectedLevel} with advanced compound words</div>
+            </div>
+          </div>
+          <div class="prog-split-bar">
+            <div class="split-fill-new" style="width: ${newPct}%;" title="${stats.newCount} New (${newPct}%)"></div>
+            <div class="split-fill-review" style="width: ${reviewPct}%;" title="${stats.reviewCount} Review (${reviewPct}%)"></div>
+          </div>
+        </div>
+      `;
+    }
   }
 
   // --- FILTERING ENGINE ---
@@ -400,6 +494,7 @@
   }
 
   function renderAll() {
+    updateLevelProgressionBanner();
     renderKanji();
     renderVocabulary();
     renderGrammar();
@@ -409,6 +504,7 @@
   }
 
   function renderActiveTab() {
+    updateLevelProgressionBanner();
     switch (state.currentTab) {
       case 'kanji': renderKanji(); break;
       case 'vocab': renderVocabulary(); break;
@@ -452,8 +548,8 @@
     if (items.length === 0) {
       grid.innerHTML = `
         <div class="empty-state card-glass" style="grid-column: 1 / -1;">
-          <p>No Kanji found matching your level, scope, or search filters.</p>
-          <button class="btn-primary" onclick="window.NihonHub.resetFilters()">Reset Filters</button>
+          <p>No Kanji found matching the current Level (${state.selectedLevel}) & Scope (${state.originFilter}) filters.</p>
+          <button class="btn-primary" onclick="window.NihonHub.resetFilters()">Reset All Filters</button>
         </div>
       `;
       return;
@@ -471,7 +567,6 @@
             <div class="kanji-badges">
               ${renderLevelPills(k.levels)}
               ${renderOriginBadge(k)}
-              ${k.strokes ? `<span class="stroke-badge">${k.strokes}s</span>` : ''}
             </div>
             <div class="kanji-actions">
               <button class="action-btn" data-speak="${k.char}" title="Listen pronunciation">${UI_ICONS.volume}</button>
@@ -515,7 +610,9 @@
     if (!modalBody || !modalBackdrop) return;
 
     const isBookmarked = state.bookmarks.has(kanji.id);
+    const sourceInfo = kanji.sources && kanji.sources[0] ? kanji.sources[0] : null;
     const firstLevel = kanji.firstLevel || (kanji.levels ? kanji.levels[0] : 'N5');
+    const isNew = firstLevel === state.selectedLevel || state.selectedLevel === 'ALL';
 
     modalBody.innerHTML = `
       <div class="modal-kanji-header">
@@ -532,15 +629,16 @@
           </div>
           <h2 class="modal-kanji-meaning">${kanji.meaning}</h2>
           
-          <div class="modal-level-journey">
-            <div class="journey-item">
-              <span class="journey-label">First Introduced:</span>
-              <span class="journey-val font-bold text-accent">JLPT ${firstLevel}</span>
+          <div class="modal-progression-box">
+            <div class="prog-info-line">
+              <strong>Level Origin:</strong> First introduced in <strong>JLPT ${firstLevel}</strong>
+              ${!isNew ? ` &bull; Reintroduced in <strong>JLPT ${state.selectedLevel}</strong> with new vocabulary` : ''}
             </div>
-            <div class="journey-item">
-              <span class="journey-label">All Levels Appearing In:</span>
-              <span class="journey-val">${(kanji.levels || []).join(', ')}</span>
-            </div>
+            ${sourceInfo ? `
+              <div class="modal-source-info">
+                ${UI_ICONS.book} <strong>${sourceInfo.book}</strong> &mdash; ${sourceInfo.chapter || ''} ${sourceInfo.notes ? `(${sourceInfo.notes})` : ''}
+              </div>
+            ` : ''}
           </div>
         </div>
       </div>
@@ -556,19 +654,7 @@
         </div>
       </div>
 
-      <div class="modal-section-title">
-        <span>Textbook Sources & Curriculum Reference</span>
-        <span class="count-chip">${(kanji.sources || []).length} Books</span>
-      </div>
-      <div class="modal-sources-list">
-        ${(kanji.sources || []).map(s => `
-          <div class="modal-source-row">
-            ${UI_ICONS.book} <strong>${s.book}</strong> &mdash; ${s.chapter || s.lesson || ''} ${s.notes ? `<em>(${s.notes})</em>` : ''}
-          </div>
-        `).join('')}
-      </div>
-
-      <div class="modal-examples-section" style="margin-top: 20px;">
+      <div class="modal-examples-section">
         <div class="modal-section-title">
           <span>Target Vocabulary & Compounds (熟語)</span>
           <span class="count-chip">${kanji.examples ? kanji.examples.length : 0} Words</span>
@@ -626,7 +712,7 @@
     }
 
     if (items.length === 0) {
-      list.innerHTML = `<div class="empty-state card-glass"><p>No vocabulary words found matching filters.</p></div>`;
+      list.innerHTML = `<div class="empty-state card-glass"><p>No vocabulary words found matching current filters.</p></div>`;
       return;
     }
 
@@ -689,7 +775,7 @@
     }
 
     if (items.length === 0) {
-      list.innerHTML = `<div class="empty-state card-glass"><p>No grammar points found matching filters.</p></div>`;
+      list.innerHTML = `<div class="empty-state card-glass"><p>No grammar points found matching current filters.</p></div>`;
       return;
     }
 
@@ -759,6 +845,12 @@
       });
     }
 
+    if (state.originFilter === 'NEW' && state.selectedLevel !== 'ALL') {
+      pool = pool.filter(item => item.firstLevel === state.selectedLevel);
+    } else if (state.originFilter === 'REVIEW' && state.selectedLevel !== 'ALL') {
+      pool = pool.filter(item => item.firstLevel !== state.selectedLevel);
+    }
+
     state.flashcards.deck = [...pool];
     state.flashcards.currentIndex = 0;
     state.flashcards.isFlipped = false;
@@ -781,7 +873,7 @@
       cardEl.classList.remove('flipped');
       cardEl.querySelector('.fc-front').innerHTML = `
         <div style="padding: 40px; text-align: center;">
-          <p>No cards in this deck for the selected level.</p>
+          <p>No cards in this deck for the selected level/scope.</p>
         </div>
       `;
       return;
@@ -801,12 +893,18 @@
 
     if (state.flashcards.category === 'kanji') {
       frontEl.innerHTML = `
-        <div class="fc-badge-top">${renderLevelPills(current.levels)} ${renderOriginBadge(current)}</div>
+        <div class="fc-badge-top">
+          ${renderLevelPills(current.levels)}
+          ${renderOriginBadge(current)}
+        </div>
         <div class="fc-big-text">${current.char}</div>
         <div class="fc-prompt">Click or press Space to reveal readings & meaning</div>
       `;
       backEl.innerHTML = `
-        <div class="fc-badge-top">${renderLevelPills(current.levels)} ${renderOriginBadge(current)}</div>
+        <div class="fc-badge-top">
+          ${renderLevelPills(current.levels)}
+          ${renderOriginBadge(current)}
+        </div>
         <div class="fc-back-title">${current.char}</div>
         <div class="fc-back-meaning">${current.meaning}</div>
         <div class="fc-back-readings">
@@ -821,12 +919,18 @@
       `;
     } else if (state.flashcards.category === 'vocab') {
       frontEl.innerHTML = `
-        <div class="fc-badge-top">${renderLevelPills(current.levels || [current.level])} ${renderOriginBadge(current)}</div>
+        <div class="fc-badge-top">
+          ${renderLevelPills(current.levels || [current.level])}
+          ${renderOriginBadge(current)}
+        </div>
         <div class="fc-big-text">${current.word}</div>
         <div class="fc-prompt">Click to reveal reading & English definition</div>
       `;
       backEl.innerHTML = `
-        <div class="fc-badge-top">${renderLevelPills(current.levels || [current.level])} ${renderOriginBadge(current)}</div>
+        <div class="fc-badge-top">
+          ${renderLevelPills(current.levels || [current.level])}
+          ${renderOriginBadge(current)}
+        </div>
         <div class="fc-back-title">${current.word}</div>
         <div class="fc-back-reading">【${current.reading}】</div>
         <div class="fc-back-meaning">${current.meaning}</div>
@@ -836,12 +940,18 @@
       `;
     } else {
       frontEl.innerHTML = `
-        <div class="fc-badge-top">${renderLevelPills(current.levels || [current.level])} ${renderOriginBadge(current)}</div>
+        <div class="fc-badge-top">
+          ${renderLevelPills(current.levels || [current.level])}
+          ${renderOriginBadge(current)}
+        </div>
         <div class="fc-big-text sm">${current.pattern}</div>
         <div class="fc-prompt">Click to reveal meaning & explanation</div>
       `;
       backEl.innerHTML = `
-        <div class="fc-badge-top">${renderLevelPills(current.levels || [current.level])} ${renderOriginBadge(current)}</div>
+        <div class="fc-badge-top">
+          ${renderLevelPills(current.levels || [current.level])}
+          ${renderOriginBadge(current)}
+        </div>
         <div class="fc-back-title sm">${current.pattern}</div>
         <div class="fc-back-meaning">${current.meaning}</div>
         <div class="fc-back-explanation">${current.explanation}</div>
