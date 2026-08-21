@@ -10,7 +10,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Prohibition, Ban, Forbid',
     onyomi: 'キン',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '示 (altar)',
     sources: [
@@ -27,7 +27,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Smoke, Fumes',
     onyomi: 'エン',
     kunyomi: 'けむ・り, けむ・い',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '火 (fire)',
     sources: [
@@ -44,7 +44,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Quiet, Still, Calm',
     onyomi: 'セイ, ジョウ',
     kunyomi: 'しず・か, しず・まる, しず・める',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 14,
     radical: '青 (blue)',
     sources: [
@@ -62,7 +62,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Dangerous, Fear, Uneasy',
     onyomi: 'キ',
     kunyomi: 'あぶ・ない, あや・うい, あや・ぶむ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '卩 (seal)',
     sources: [
@@ -80,7 +80,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Precipitous, Inaccessible, Sharp, Severe',
     onyomi: 'ケン',
     kunyomi: 'けわ・しい',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '阝 (hill)',
     sources: [
@@ -97,7 +97,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Connection, Barrier, Gateway, Involve',
     onyomi: 'カン',
     kunyomi: 'せき, かか・わる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '門 (gate)',
     sources: [
@@ -115,7 +115,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Person in charge, Connection, Duty',
     onyomi: 'ケイ',
     kunyomi: 'かかり, かか・わる',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '亻 (person)',
     sources: [
@@ -133,7 +133,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fall, Drop, Fail',
     onyomi: 'ラク',
     kunyomi: 'お・ちる, お・とす',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '艹 (grass)',
     sources: [
@@ -152,7 +152,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Stone, Rock',
     onyomi: 'セキ, シャク, コク',
     kunyomi: 'いし',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 5,
     radical: '石 (stone)',
     sources: [
@@ -170,7 +170,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fly, Skip, Scatter',
     onyomi: 'ヒ',
     kunyomi: 'と・ぶ, と・ばす',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '飛 (fly)',
     sources: [
@@ -188,7 +188,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Stop-over, Reside, Parking',
     onyomi: 'チュウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 15,
     radical: '馬 (horse)',
     sources: [
@@ -205,7 +205,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Discard, Throw away, Abandon',
     onyomi: 'シャ',
     kunyomi: 'す・てる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '扌 (hand)',
     sources: [
@@ -222,7 +222,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Play, Travel, Wander',
     onyomi: 'ユウ, ユ',
     kunyomi: 'あそ・ぶ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 12,
     radical: '辶 (road)',
     sources: [
@@ -240,7 +240,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Swim',
     onyomi: 'エイ',
     kunyomi: 'およ・ぐ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '氵 (water)',
     sources: [
@@ -257,7 +257,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Consume, Ingest, Smoke',
     onyomi: 'キツ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '口 (mouth)',
     sources: [
@@ -274,7 +274,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Un-, Non-, Negative, Wrong',
     onyomi: 'ヒ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '非 (wrong)',
     sources: [
@@ -292,7 +292,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Honorific Prefix, Honorable',
     onyomi: 'ゴ, オン',
     kunyomi: 'お, おん, み',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '彳 (step)',
     sources: [
@@ -310,7 +310,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Usual, Regular, Constant, Normal',
     onyomi: 'ジョウ',
     kunyomi: 'つね, とこ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '巾 (cloth)',
     sources: [
@@ -328,7 +328,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Receive, Accept, Undergo',
     onyomi: 'ジュ',
     kunyomi: 'う・ける, う・かる',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '又 (again)',
     sources: [
@@ -345,7 +345,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Attach, Adhere, Append',
     onyomi: 'フ',
     kunyomi: 'つ・ける, つ・く',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 5,
     radical: '亻 (person)',
     sources: [
@@ -364,7 +364,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Plan, Suggestion, Guide, Draft',
     onyomi: 'アン',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '木 (tree)',
     sources: [
@@ -381,7 +381,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Inside, Within, Inner',
     onyomi: 'ナイ, ダイ',
     kunyomi: 'うち',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 4,
     radical: '冂 (border)',
     sources: [
@@ -400,7 +400,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Deliberation, Consult, Debate',
     onyomi: 'ギ',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 20,
     radical: '言 (words)',
     sources: [
@@ -419,7 +419,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Change, Take form of, -ization',
     onyomi: 'カ, ケ',
     kunyomi: 'ば・ける, ば・かす',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 4,
     radical: '匕 (spoon)',
     sources: [
@@ -438,7 +438,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Storey, Floor, Stair, Level',
     onyomi: 'カイ',
     kunyomi: 'きざはし',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 12,
     radical: '阝 (hill)',
     sources: [
@@ -456,7 +456,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Grade, Steps, Stairs, Level',
     onyomi: 'ダン',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '殳 (strike)',
     sources: [
@@ -476,7 +476,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Occupy, Manage, Conduct, Business',
     onyomi: 'エイ',
     kunyomi: 'いとな・む',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '口 (mouth)',
     sources: [
@@ -493,7 +493,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Release, Set free, Emit, Broadcast',
     onyomi: 'ホウ',
     kunyomi: 'はな・す, はな・つ, はな・れる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '攵 (strike)',
     sources: [
@@ -512,7 +512,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Push, Press, Hold down',
     onyomi: 'オウ',
     kunyomi: 'お・す, お・さえる',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '扌 (hand)',
     sources: [
@@ -530,7 +530,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Semi-, Quasi-, Standard, Conform',
     onyomi: 'ジュン',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '氵 (water)',
     sources: [
@@ -549,7 +549,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Equip, Provision, Prepare',
     onyomi: 'ビ',
     kunyomi: 'そな・える, そな・わる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '亻 (person)',
     sources: [
@@ -567,7 +567,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Determine, Fix, Establish, Regular',
     onyomi: 'テイ, ジョウ',
     kunyomi: 'さだ・める, さだ・まる, さだ・か',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '宀 (roof)',
     sources: [
@@ -586,7 +586,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Flow, Current, Stream, Trend',
     onyomi: 'リュウ, ル',
     kunyomi: 'なが・れる, なが・す',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '氵 (water)',
     sources: [
@@ -605,7 +605,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Pure, Clean, Clear, Refined',
     onyomi: 'セイ, ショウ',
     kunyomi: 'きよ・い, きよ・まる, きよ・める',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '氵 (water)',
     sources: [
@@ -623,7 +623,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sweep, Clean, Clear away',
     onyomi: 'ソウ',
     kunyomi: 'は・く',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '扌 (hand)',
     sources: [
@@ -640,7 +640,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Closed, Shut, Close',
     onyomi: 'ヘイ',
     kunyomi: 'と・じる, し・める, し・まる',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '門 (gate)',
     sources: [
@@ -660,7 +660,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Point, Dot, Mark, Score',
     onyomi: 'テン',
     kunyomi: 'つ・く, つ・ける',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '灬 (fire)',
     sources: [
@@ -679,7 +679,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Examine, Investigate, Inspect',
     onyomi: 'ケン',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '木 (tree)',
     sources: [
@@ -696,7 +696,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Iron, Steel, Railway',
     onyomi: 'テツ',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 13,
     radical: '釒 (metal)',
     sources: [
@@ -713,7 +713,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Window, Pane',
     onyomi: 'ソウ',
     kunyomi: 'まど',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '穴 (hole)',
     sources: [
@@ -731,7 +731,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Token, Sign, Mark, Ticket',
     onyomi: 'フ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '竹 (bamboo)',
     sources: [
@@ -747,7 +747,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Refined, Spirit, Energy, Precision',
     onyomi: 'セイ, ショウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '米 (rice)',
     sources: [
@@ -764,7 +764,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Calculate, Divining, Number',
     onyomi: 'サン',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 14,
     radical: '竹 (bamboo)',
     sources: [
@@ -782,7 +782,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Reformation, Change, Modify, Inspect',
     onyomi: 'カイ',
     kunyomi: 'あらた・める, あらた・まる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '攵 (strike)',
     sources: [
@@ -799,7 +799,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Tag, Paper money, Card, Label',
     onyomi: 'サツ',
     kunyomi: 'ふだ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 5,
     radical: '木 (tree)',
     sources: [
@@ -817,7 +817,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Line, Track, Wire',
     onyomi: 'セン',
     kunyomi: 'すじ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 15,
     radical: '糸 (silk)',
     sources: [
@@ -835,7 +835,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Engrave, Cut fine, Time, Carve',
     onyomi: 'コク',
     kunyomi: 'きざ・む',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '刂 (knife)',
     sources: [
@@ -852,7 +852,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Number, Turn, Order, Watch',
     onyomi: 'バン',
     kunyomi: 'つがい',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 12,
     radical: '田 (field)',
     sources: [
@@ -869,7 +869,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Number, Item, Title, Call',
     onyomi: 'ゴウ',
     kunyomi: 'さけ・ぶ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 5,
     radical: '口 (mouth)',
     sources: [
@@ -887,7 +887,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Cheerful, Pleasant, Agreeable, Fast',
     onyomi: 'カイ',
     kunyomi: 'こころよ・い',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '忄 (heart)',
     sources: [
@@ -904,7 +904,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Quick, Fast, Speed',
     onyomi: 'ソク',
     kunyomi: 'はや・い, はや・める, すみ・やか',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '辶 (road)',
     sources: [
@@ -922,7 +922,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Path, Route, Road, Distance',
     onyomi: 'ロ',
     kunyomi: 'じ, みち',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 13,
     radical: '足 (foot)',
     sources: [
@@ -939,7 +939,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Harbor, Port',
     onyomi: 'コウ',
     kunyomi: 'みなと',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 12,
     radical: '氵 (water)',
     sources: [
@@ -956,7 +956,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Reason, Cause, Depend on',
     onyomi: 'ユウ, ユ',
     kunyomi: 'よし, よ・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 5,
     radical: '田 (field)',
     sources: [
@@ -974,7 +974,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Deep, Heighten, Intensify',
     onyomi: 'シン',
     kunyomi: 'ふか・い, ふか・まる, ふか・める',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '氵 (water)',
     sources: [
@@ -992,7 +992,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Descend, Precipitate, Fall, Surrender',
     onyomi: 'コウ',
     kunyomi: 'お・りる, お・ろす, ふ・る',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '阝 (hill)',
     sources: [
@@ -1011,7 +1011,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Both, Two, Counter for vehicles',
     onyomi: 'リョウ',
     kunyomi: 'てる, ふたつ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '一 (one)',
     sources: [
@@ -1030,7 +1030,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Exchange, Spare, Substitute',
     onyomi: 'タイ',
     kunyomi: 'か・える, か・わる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '曰 (say)',
     sources: [
@@ -1048,7 +1048,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fare, Fee, Rent, Wages',
     onyomi: 'チン',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '貝 (shell)',
     sources: [
@@ -1065,7 +1065,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Proportion, Divide, Split, Cut',
     onyomi: 'カツ',
     kunyomi: 'わ・る, わり, わ・れる, さ・く',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '刂 (knife)',
     sources: [
@@ -1085,7 +1085,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Increase, Add, Augment',
     onyomi: 'ゾウ',
     kunyomi: 'ま・す, ふ・える, ふ・やす',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '土 (earth)',
     sources: [
@@ -1103,7 +1103,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Tenderness, Excel, Superior, Actor',
     onyomi: 'ユウ, ウ',
     kunyomi: 'やさ・しい, すぐ・れる, まさ・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 17,
     radical: '亻 (person)',
     sources: [
@@ -1121,7 +1121,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Seat, Mat, Occasion, Place',
     onyomi: 'セキ',
     kunyomi: 'むしろ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '巾 (cloth)',
     sources: [
@@ -1139,7 +1139,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Side, Lean, Oppose',
     onyomi: 'ソク',
     kunyomi: 'かわ, がわ, そば',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '亻 (person)',
     sources: [
@@ -1157,7 +1157,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Squat, Seat, Cushion, Gathering',
     onyomi: 'ザ',
     kunyomi: 'すわ・る',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '广 (dotted cliff)',
     sources: [
@@ -1175,7 +1175,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Draw near, Stop in, Gather, Approach',
     onyomi: 'キ',
     kunyomi: 'よ・る, よ・せる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '宀 (roof)',
     sources: [
@@ -1194,7 +1194,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Mail, Stagecoach stop',
     onyomi: 'ユウ',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '阝 (town)',
     sources: [
@@ -1211,7 +1211,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bureau, Board, Office, Affair',
     onyomi: 'キョク',
     kunyomi: 'つぼね',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 7,
     radical: '尸 (corpse)',
     sources: [
@@ -1229,7 +1229,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Savings, Store, Lay up',
     onyomi: 'チョ',
     kunyomi: 'た・める, たくわ・える',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '貝 (shell)',
     sources: [
@@ -1245,7 +1245,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Wrap, Pack up, Cover, Conceal',
     onyomi: 'ホウ',
     kunyomi: 'つつ・む, つつ・み',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 5,
     radical: '勹 (wrap)',
     sources: [
@@ -1263,7 +1263,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Reach, Arrive, Attain, Plural suffix',
     onyomi: 'タツ, ダ',
     kunyomi: 'たち',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 12,
     radical: '辶 (road)',
     sources: [
@@ -1281,7 +1281,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Occasion, Edge, Border, When',
     onyomi: 'サイ',
     kunyomi: 'きわ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '阝 (hill)',
     sources: [
@@ -1299,7 +1299,7 @@ window.N2_KANJI_DATA = [
     meaning: 'First time, Beginning, Initial',
     onyomi: 'ショ',
     kunyomi: 'はじ・め, はじ・めて, はつ, うい, そ・める',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 7,
     radical: '衤 (clothing)',
     sources: [
@@ -1318,7 +1318,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Again, Twice, Second time',
     onyomi: 'サイ, サ',
     kunyomi: 'ふたた・び',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 6,
     radical: '冂 (border)',
     sources: [
@@ -1337,7 +1337,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Heal, Cure, Treatment',
     onyomi: 'リョウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 17,
     radical: '疒 (sickness)',
     sources: [
@@ -1355,7 +1355,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Department, Course, Section, Science',
     onyomi: 'カ',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '禾 (grain)',
     sources: [
@@ -1373,7 +1373,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Lady, Woman, Wife, Bride',
     onyomi: 'フ',
     kunyomi: 'よめ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '女 (woman)',
     sources: [
@@ -1391,7 +1391,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Pelt, Skin, Hide, Leather, Bark',
     onyomi: 'ヒ',
     kunyomi: 'かわ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 5,
     radical: '皮 (skin)',
     sources: [
@@ -1409,7 +1409,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Skin, Body, Grain, Texture',
     onyomi: 'フ',
     kunyomi: 'はだ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 15,
     radical: '虍 (tiger)',
     sources: [
@@ -1425,7 +1425,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Salvation, Save, Help, Rescue',
     onyomi: 'キュウ',
     kunyomi: 'すく・う',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '攵 (strike)',
     sources: [
@@ -1442,7 +1442,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Watch, See, Care for',
     onyomi: 'カン',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '目 (eye)',
     sources: [
@@ -1460,7 +1460,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Board, Plank, Plate',
     onyomi: 'ハン, バン',
     kunyomi: 'いた',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '木 (tree)',
     sources: [
@@ -1478,7 +1478,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Feather, Counter for birds/rabbits, Wing',
     onyomi: 'ウ',
     kunyomi: 'は, はね',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '羽 (feather)',
     sources: [
@@ -1496,7 +1496,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Turn into, Become, Attain',
     onyomi: 'セイ, ジョウ',
     kunyomi: 'な・る, な・す',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '戈 (spear)',
     sources: [
@@ -1513,7 +1513,7 @@ window.N2_KANJI_DATA = [
     meaning: 'No., Ordinal number prefix, Residence',
     onyomi: 'ダイ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '竹 (bamboo)',
     sources: [
@@ -1529,7 +1529,7 @@ window.N2_KANJI_DATA = [
     meaning: 'General, Whole, Total, All',
     onyomi: 'ソウ',
     kunyomi: 'す・べて, ふさ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '糸 (silk)',
     sources: [
@@ -1546,7 +1546,7 @@ window.N2_KANJI_DATA = [
     meaning: 'General, Broad, Universal, Normal',
     onyomi: 'フ',
     kunyomi: 'あまね・く',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '日 (sun)',
     sources: [
@@ -1563,7 +1563,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Ticket, Coupon, Certificate',
     onyomi: 'ケン',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '刀 (sword)',
     sources: [
@@ -1582,7 +1582,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Number, Strength, Fate, Count',
     onyomi: 'スウ, ス',
     kunyomi: 'かず, かぞ・える',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 13,
     radical: '攵 (strike)',
     sources: [
@@ -1601,7 +1601,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Mechanism, Opportunity, Machine, Airplane',
     onyomi: 'キ',
     kunyomi: 'はた',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 16,
     radical: '木 (tree)',
     sources: [
@@ -1620,7 +1620,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Restore, Return to, Revert, Repeat',
     onyomi: 'フク',
     kunyomi: 'また',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '彳 (step)',
     sources: [
@@ -1638,7 +1638,7 @@ window.N2_KANJI_DATA = [
     meaning: 'One-sided, Leaf, Fragment, Slice',
     onyomi: 'ヘン',
     kunyomi: 'かた, ひら',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 4,
     radical: '片 (split wood)',
     sources: [
@@ -1657,7 +1657,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Counter for flat thin objects / sheets',
     onyomi: 'マイ, バイ',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '木 (tree)',
     sources: [
@@ -1674,7 +1674,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Period, Time, Date, Term',
     onyomi: 'キ, ゴ',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 12,
     radical: '月 (moon)',
     sources: [
@@ -1692,7 +1692,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Marketing, Sell, Trade',
     onyomi: 'ハン',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '貝 (shell)',
     sources: [
@@ -1709,7 +1709,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Finger, Point to, Indicate',
     onyomi: 'シ',
     kunyomi: 'ゆび, さ・す',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '扌 (hand)',
     sources: [
@@ -1727,7 +1727,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Tune, Tone, Investigate, Prepare',
     onyomi: 'チョウ',
     kunyomi: 'しら・べる, ととの・う, ととの・える',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 15,
     radical: '言 (words)',
     sources: [
@@ -1745,7 +1745,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Organize, Arrange, Tune, Tone',
     onyomi: 'セイ',
     kunyomi: 'ととの・える, ととの・う',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 16,
     radical: '攵 (strike)',
     sources: [
@@ -1763,7 +1763,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Surface, Table, Chart, Express',
     onyomi: 'ヒョウ',
     kunyomi: 'おもて, あらわ・す, あらわ・れる',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '衣 (clothing)',
     sources: [
@@ -1783,7 +1783,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Show, Indicate, Point out, Display',
     onyomi: 'ジ, シ',
     kunyomi: 'しめ・す',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 5,
     radical: '示 (altar)',
     sources: [
@@ -1802,7 +1802,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Present, Existing, Actual, Appear',
     onyomi: 'ゲン',
     kunyomi: 'あらわ・れる, あらわ・す',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '王 (king)',
     sources: [
@@ -1820,7 +1820,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Branch, Support, Sustain',
     onyomi: 'シ',
     kunyomi: 'ささ・える, つか・える, か・う',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 4,
     radical: '支 (branch)',
     sources: [
@@ -1838,7 +1838,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Pay, Clear out, Sweep away',
     onyomi: 'ヒツ, フツ',
     kunyomi: 'はら・う',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 5,
     radical: '扌 (hand)',
     sources: [
@@ -1856,7 +1856,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Deposit, Custody, Entrust to',
     onyomi: 'ヨ',
     kunyomi: 'あず・ける, あず・かる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '頁 (leaf)',
     sources: [
@@ -1874,7 +1874,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Return, Revert, Recover',
     onyomi: 'レイ',
     kunyomi: 'もど・す, もど・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '戸 (door)',
     sources: [
@@ -1891,7 +1891,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Remainder, Remnant, Leftover',
     onyomi: 'ザン',
     kunyomi: 'のこ・る, のこ・す',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '歹 (death)',
     sources: [
@@ -1909,7 +1909,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Illuminate, Shine, Compare',
     onyomi: 'ショウ',
     kunyomi: 'て・る, て・らす, て・れる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '灬 (fire)',
     sources: [
@@ -1927,7 +1927,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Stiff, Hard, Tough, Rigid',
     onyomi: 'コウ',
     kunyomi: 'かた・い',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '石 (stone)',
     sources: [
@@ -1944,7 +1944,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Freight, Goods, Property, Coin',
     onyomi: 'カ',
     kunyomi: 'たから',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '貝 (shell)',
     sources: [
@@ -1961,7 +1961,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Assurance, Firm, Tight, Solid',
     onyomi: 'カク',
     kunyomi: 'たし・か, たし・かめる',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 15,
     radical: '石 (stone)',
     sources: [
@@ -1980,7 +1980,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Acknowledge, Witness, Recognize',
     onyomi: 'ニン',
     kunyomi: 'みと・める, したた・める',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '言 (words)',
     sources: [
@@ -1997,7 +1997,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Difference, Differ, Vary',
     onyomi: 'イ',
     kunyomi: 'ちが・う, ちが・える, たが・う',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 13,
     radical: '辶 (road)',
     sources: [
@@ -2016,7 +2016,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Take, Fetch, Take up',
     onyomi: 'シュ',
     kunyomi: 'と・る, と・り',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '又 (again)',
     sources: [
@@ -2036,7 +2036,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Extinguish, Blow out, Turn off, Cancel',
     onyomi: 'ショウ',
     kunyomi: 'き・える, け・す',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '氵 (water)',
     sources: [
@@ -2055,7 +2055,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Warm, Temperature',
     onyomi: 'オン',
     kunyomi: 'あたた・か, あたた・かい, あたた・まる, あたた・める',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 12,
     radical: '氵 (water)',
     sources: [
@@ -2074,7 +2074,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Cool, Cold, Chill',
     onyomi: 'レイ',
     kunyomi: 'つめ・たい, ひ・える, ひ・や, ひ・やす, さ・める, さ・ます',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 7,
     radical: '冫 (ice)',
     sources: [
@@ -2095,7 +2095,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Green',
     onyomi: 'リョク, ロク',
     kunyomi: 'みどり',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '糸 (silk)',
     sources: [
@@ -2113,7 +2113,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Crimson, Deep red',
     onyomi: 'コウ, ク',
     kunyomi: 'べに, くれない, あか・い',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '糸 (silk)',
     sources: [
@@ -2130,7 +2130,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Jewel, Ball, Coin',
     onyomi: 'ギョク',
     kunyomi: 'たま',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 5,
     radical: '玉 (jade)',
     sources: [
@@ -2148,7 +2148,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Return, Answer, Fade, Repay',
     onyomi: 'ヘン',
     kunyomi: 'かえ・す, かえ・る',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 7,
     radical: '辶 (road)',
     sources: [
@@ -2167,7 +2167,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Group, Association',
     onyomi: 'ダン, トン',
     kunyomi: 'かたまり, まる・い',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 6,
     radical: '囗 (enclosure)',
     sources: [
@@ -2186,7 +2186,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Van, Carrier, All, General',
     onyomi: 'ハン',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '舟 (boat)',
     sources: [
@@ -2203,7 +2203,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Infancy, Childhood',
     onyomi: 'ヨウ',
     kunyomi: 'おさな・い',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 5,
     radical: '幺 (short thread)',
     sources: [
@@ -2220,7 +2220,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Child, Young of animals',
     onyomi: 'ジ, ニ, ゲイ',
     kunyomi: 'こ, -こ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '儿 (legs)',
     sources: [
@@ -2237,7 +2237,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Year-end, Age, Counter for years',
     onyomi: 'サイ, セイ',
     kunyomi: 'とし, とせ, よわい',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 13,
     radical: '止 (stop)',
     sources: [
@@ -2254,7 +2254,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Un-, Not yet, Hitherto',
     onyomi: 'ミ, ビ',
     kunyomi: 'いま・だ, ひつじ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 5,
     radical: '木 (tree)',
     sources: [
@@ -2273,7 +2273,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Full, Enough, Satisfy',
     onyomi: 'マン',
     kunyomi: 'み・ちる, み・つ, み・たす',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '氵 (water)',
     sources: [
@@ -2292,7 +2292,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Old man, Old age, Grow old',
     onyomi: 'ロウ',
     kunyomi: 'お・いる, ふ・ける',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '老 (old)',
     sources: [
@@ -2309,7 +2309,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Establish, Provision, Prepare',
     onyomi: 'セツ',
     kunyomi: 'もう・ける',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '言 (words)',
     sources: [
@@ -2327,7 +2327,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Interchange, Period, Change',
     onyomi: 'カン',
     kunyomi: 'か・える, か・わる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '扌 (hand)',
     sources: [
@@ -2345,7 +2345,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Yonder, Facing, Beyond, Confront',
     onyomi: 'コウ',
     kunyomi: 'む・く, む・い, む・ける, む・かう, む・かい, む・こう',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '口 (mouth)',
     sources: [
@@ -2363,7 +2363,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Halt, Stopping',
     onyomi: 'テイ',
     kunyomi: 'と・める, と・まる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '亻 (person)',
     sources: [
@@ -2381,7 +2381,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Warmth',
     onyomi: 'ダン, ノン',
     kunyomi: 'あたた・か, あたた・かい, あたた・まる, あたた・める',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '日 (sun)',
     sources: [
@@ -2399,7 +2399,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Exclude, Remove, Abolish',
     onyomi: 'ジョ, ジ',
     kunyomi: 'のぞ・く, -よ・け',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '阝 (hill)',
     sources: [
@@ -2417,7 +2417,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Damp, Wet, Moisture',
     onyomi: 'シツ, シュウ',
     kunyomi: 'しめ・る, しめ・す, うるお・う',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '氵 (water)',
     sources: [
@@ -2435,7 +2435,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Signpost, Seal, Mark, Stamp',
     onyomi: 'ヒョウ',
     kunyomi: 'しるべ, しるし',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 15,
     radical: '木 (tree)',
     sources: [
@@ -2453,7 +2453,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Double, Twice, -fold, Times',
     onyomi: 'バイ',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '亻 (person)',
     sources: [
@@ -2470,7 +2470,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Scroll, Volume, Book, Roll up',
     onyomi: 'カン, ケン',
     kunyomi: 'ま・く, まき',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '己 (oneself)',
     sources: [
@@ -2488,7 +2488,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Record, Transcript',
     onyomi: 'ロク',
     kunyomi: 'と・る, しる・す',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 16,
     radical: '金 (gold)',
     sources: [
@@ -2505,7 +2505,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Quantity, Measure, Weight, Amount',
     onyomi: 'リョウ',
     kunyomi: 'はか・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '里 (village)',
     sources: [
@@ -2525,7 +2525,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Previous, In advance, I, Myself',
     onyomi: 'ヨ, シャ',
     kunyomi: 'あらかじ・め',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 4,
     radical: '亅 (hook)',
     sources: [
@@ -2544,7 +2544,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Promise, Approximately, Shrink',
     onyomi: 'ヤク',
     kunyomi: 'つづ・まる, つづま・やか',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '糸 (silk)',
     sources: [
@@ -2562,7 +2562,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sash, Belt, Zone, Region',
     onyomi: 'タイ',
     kunyomi: 'お・びる, おび',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '巾 (turban/cloth)',
     sources: [
@@ -2581,7 +2581,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Protect, Guarantee, Keep, Preserve',
     onyomi: 'ホ, ホウ',
     kunyomi: 'たも・つ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '亻 (person)',
     sources: [
@@ -2600,7 +2600,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Detain, Fasten, Halt, Stop',
     onyomi: 'リュウ, ル',
     kunyomi: 'と・める, と・まる, とど・める, とど・まる',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '田 (rice field)',
     sources: [
@@ -2620,7 +2620,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Guard, Protect, Defend, Obey',
     onyomi: 'シュ, ス',
     kunyomi: 'まも・る, まも・り, もり',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '宀 (roof)',
     sources: [
@@ -2639,7 +2639,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Transmit, Convey, Report, Follow',
     onyomi: 'デン, テン',
     kunyomi: 'つた・わる, つた・える, つた・う, つだ・う',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '亻 (person)',
     sources: [
@@ -2657,7 +2657,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Settle, Relieve, Finish, End',
     onyomi: 'サイ, セイ',
     kunyomi: 'す・む, す・ます',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '氵 (water)',
     sources: [
@@ -2675,7 +2675,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Affair, Case, Matter, Item',
     onyomi: 'ケン',
     kunyomi: 'くだん',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 6,
     radical: '亻 (person)',
     sources: [
@@ -2693,7 +2693,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Faith, Truth, Trust, Signal',
     onyomi: 'シン',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '亻 (person)',
     sources: [
@@ -2711,7 +2711,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Passage of time, History',
     onyomi: 'レキ, レッキ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '厂 (cliff)',
     sources: [
@@ -2729,7 +2729,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Box, Chest, Case, Bin',
     onyomi: 'ソウ',
     kunyomi: 'はこ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 15,
     radical: '竹 (bamboo)',
     sources: [
@@ -2747,7 +2747,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Standard, Measure, Rule',
     onyomi: 'キ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '見 (see)',
     sources: [
@@ -2764,7 +2764,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Unusual, Change, Strange',
     onyomi: 'ヘン',
     kunyomi: 'か・わる, か・わり, か・える',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '夂 (walk slowly)',
     sources: [
@@ -2783,7 +2783,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Elect, Select, Choose, Prefer',
     onyomi: 'セン',
     kunyomi: 'えら・ぶ, え・る, よ・る',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 15,
     radical: '辶 (road)',
     sources: [
@@ -2802,7 +2802,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Decide, Fix, Agree upon',
     onyomi: 'ケツ',
     kunyomi: 'き・める, き・まる, さ・く',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 7,
     radical: '氵 (water)',
     sources: [
@@ -2820,7 +2820,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Ascend, Climb up, Register',
     onyomi: 'トウ, ト, ドウ, ショウ, チョウ',
     kunyomi: 'のぼ・る, あ・がる',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 12,
     radical: '癶 (footsteps)',
     sources: [
@@ -2839,7 +2839,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Compilation, Knit, Plait, Edit',
     onyomi: 'ヘン',
     kunyomi: 'あ・む, -あ・み',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 15,
     radical: '糸 (silk)',
     sources: [
@@ -2858,7 +2858,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Ability, Talent, Skill, Capacity',
     onyomi: 'ノウ',
     kunyomi: 'よ・く',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '月 (meat/moon)',
     sources: [
@@ -2876,7 +2876,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Discipline, Conduct oneself well, Study',
     onyomi: 'シュウ, シュ',
     kunyomi: 'おさ・める, おさ・まる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '亻 (person)',
     sources: [
@@ -2894,7 +2894,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Perfect, Completion, End',
     onyomi: 'カン',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '宀 (roof)',
     sources: [
@@ -2912,7 +2912,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Complete, Finish, Understand',
     onyomi: 'リョウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 2,
     radical: '亅 (hook)',
     sources: [
@@ -2929,7 +2929,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Statue, Picture, Image, Figure',
     onyomi: 'ゾウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '亻 (person)',
     sources: [
@@ -2947,7 +2947,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sort, Kind, Variety, Class',
     onyomi: 'ルイ',
     kunyomi: 'たぐ・い',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 18,
     radical: '頁 (leaf)',
     sources: [
@@ -2965,7 +2965,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Style, Ceremony, Form, Expression',
     onyomi: 'シキ',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '弋 (ceremony)',
     sources: [
@@ -2984,7 +2984,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Center, Middle',
     onyomi: 'オウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 5,
     radical: '大 (big)',
     sources: [
@@ -3000,7 +3000,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Exist, Suppose, Be aware of',
     onyomi: 'ゾン, ソン',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 6,
     radical: '子 (child)',
     sources: [
@@ -3019,7 +3019,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Stamp, Seal, Mark, Symbol',
     onyomi: 'イン',
     kunyomi: 'しるし, -じるし, しる・す',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 6,
     radical: '卩 (seal)',
     sources: [
@@ -3037,7 +3037,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Printing, Print, Brush',
     onyomi: 'サツ',
     kunyomi: 'す・る, -ず・り, -ずり, は・く',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '刂 (knife)',
     sources: [
@@ -3053,7 +3053,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Broaden, Extend, Expand, Enlarge',
     onyomi: 'カク, コウ',
     kunyomi: 'ひろ・がる, ひろ・げる, ひろ・める',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '扌 (hand)',
     sources: [
@@ -3070,7 +3070,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Young, If, In this way',
     onyomi: 'ジャク, ニャク, ニャ',
     kunyomi: 'わか・い, わか-, も・しくわ, も・し, も・しくは, ごと・し',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '艹 (grass)',
     sources: [
@@ -3087,7 +3087,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Anti-, Oppose, Counter',
     onyomi: 'ハン, ホン, タン, ホ',
     kunyomi: 'そ・る, そ・らす, かえ・す, かえ・る',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 4,
     radical: '厂 (cliff)',
     sources: [
@@ -3103,7 +3103,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Approve, Praise, Assist',
     onyomi: 'サン',
     kunyomi: 'たす・ける, たた・える',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 15,
     radical: '貝 (shell)',
     sources: [
@@ -3119,7 +3119,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Pick up, Gather, Find, Go on foot',
     onyomi: 'シュウ, ジュウ',
     kunyomi: 'ひろ・う',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '扌 (hand)',
     sources: [
@@ -3135,7 +3135,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sharp, Pointed, Weapon',
     onyomi: 'エイ',
     kunyomi: 'するど・い',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 15,
     radical: '金 (gold)',
     sources: [
@@ -3151,7 +3151,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Dull, Slow, Foolish, Blunt',
     onyomi: 'ドン',
     kunyomi: 'にぶ・い, にぶ・る, なまくら',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '金 (gold)',
     sources: [
@@ -3167,7 +3167,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Agreement, Consent, Comply',
     onyomi: 'コウ',
     kunyomi: 'がえんじ・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '肉 (meat)',
     sources: [
@@ -3183,7 +3183,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Negate, No, Decline, Refuse',
     onyomi: 'ヒ',
     kunyomi: 'いな, いや',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '口 (mouth)',
     sources: [
@@ -3199,7 +3199,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Floating, Float, Rise, Surface',
     onyomi: 'フ',
     kunyomi: 'う・く, う・かれる, う・かぶ, む, う・かべる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '氵 (water)',
     sources: [
@@ -3216,7 +3216,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sink, Submerge, Be depressed',
     onyomi: 'チン, ジン',
     kunyomi: 'しず・む, しず・める',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '氵 (water)',
     sources: [
@@ -3233,7 +3233,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Esq., Way, Manner, Situation, Polite suffix',
     onyomi: 'ヨウ, ショウ',
     kunyomi: 'さま, さん',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 14,
     radical: '木 (tree)',
     sources: [
@@ -3252,7 +3252,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Need, Main point, Essential',
     onyomi: 'ヨウ',
     kunyomi: 'い・る, かなめ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '覀 (west)',
     sources: [
@@ -3271,7 +3271,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Profit, Advantage, Benefit',
     onyomi: 'リ',
     kunyomi: 'き・く',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 7,
     radical: '刂 (knife)',
     sources: [
@@ -3290,7 +3290,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Dainty, Get thin, Taper, Slender, Narrow',
     onyomi: 'サイ',
     kunyomi: 'ほそ・い, ほそ・る, こま・か, こま・かい',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '糸 (silk)',
     sources: [
@@ -3309,7 +3309,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Exist, Outskirts, Suburbs, Be located',
     onyomi: 'ザイ',
     kunyomi: 'あ・る',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '土 (earth)',
     sources: [
@@ -3328,7 +3328,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Guest, Visitor, Customer, Client',
     onyomi: 'キャク, カク',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '宀 (roof)',
     sources: [
@@ -3346,7 +3346,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Forehead, Tablet, Plaque, Amount',
     onyomi: 'ガク',
     kunyomi: 'ひたい',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 18,
     radical: '頁 (leaf)',
     sources: [
@@ -3364,7 +3364,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Crowded, Mixture, Into',
     onyomi: '-',
     kunyomi: 'こ・む, こ・める, こ・み',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 5,
     radical: '辶 (road)',
     sources: [
@@ -3384,7 +3384,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Jurisdiction, Dominions, Territory, Fief',
     onyomi: 'リョウ',
     kunyomi: 'えり',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '頁 (leaf)',
     sources: [
@@ -3403,7 +3403,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Income, Obtain, Reap, Pay, Store',
     onyomi: 'シュウ',
     kunyomi: 'おさ・める, おさ・まる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 4,
     radical: '又 (again)',
     sources: [
@@ -3423,7 +3423,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Contraption, Fetters, Machine, Instrument',
     onyomi: 'カイ',
     kunyomi: 'かせ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '木 (tree)',
     sources: [
@@ -3440,7 +3440,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bend, Music, Melody, Composition',
     onyomi: 'キョク',
     kunyomi: 'ま・がる, ま・げる, くま',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '曰 (say)',
     sources: [
@@ -3459,7 +3459,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Dirty, Pollute, Defile, Vile',
     onyomi: 'オ',
     kunyomi: 'きたな・い, けがら・わしい, よご・す, よご・れる, みっとも・ない',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 6,
     radical: '氵 (water)',
     sources: [
@@ -3478,7 +3478,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Mr., Hall, Mansion, Palace, Temple, Lord',
     onyomi: 'デン, テン',
     kunyomi: 'との, -どの',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '殳 (strike)',
     sources: [
@@ -3495,7 +3495,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Take along, Lead, Join, Connect',
     onyomi: 'レン',
     kunyomi: 'つら・なる, つら・ねる, つ・れる, -づ・れ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '辶 (road)',
     sources: [
@@ -3514,7 +3514,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Entwine, Coil around, Get caught in',
     onyomi: 'ラク',
     kunyomi: 'から・む, から・まる, から・げる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '糸 (silk)',
     sources: [
@@ -3530,7 +3530,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Baggage, Shoulder-pole load, Cargo',
     onyomi: 'カ',
     kunyomi: 'に',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '艹 (grass)',
     sources: [
@@ -3548,7 +3548,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Deliver, Reach, Arrive, Report',
     onyomi: 'カイ',
     kunyomi: 'とど・ける, -とど・け, とど・く',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '尸 (corpse)',
     sources: [
@@ -3566,7 +3566,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Nonplussed, Three (in documents), Visit, Go',
     onyomi: 'サン, シン',
     kunyomi: 'まい・る, まい-, まじわる, みつ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '厶 (private)',
     sources: [
@@ -3585,7 +3585,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Garment, Clothes, Dressing',
     onyomi: 'イ, エ',
     kunyomi: 'ころも, きぬ, -ぎ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '衣 (clothing)',
     sources: [
@@ -3604,7 +3604,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Other, Another, The others',
     onyomi: 'タ',
     kunyomi: 'ほか',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 5,
     radical: '亻 (person)',
     sources: [
@@ -3622,7 +3622,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Storehouse, Hide, Own, Have',
     onyomi: 'ゾウ, ソウ',
     kunyomi: 'くら, おさ・める, かく・れる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 15,
     radical: '艹 (grass)',
     sources: [
@@ -3640,7 +3640,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Frozen, Congeal, Freeze',
     onyomi: 'トウ',
     kunyomi: 'こお・る, こご・える, こご・る, い・てる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '冫 (ice)',
     sources: [
@@ -3658,7 +3658,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Et cetera, Class, Rank, Equal',
     onyomi: 'トウ',
     kunyomi: 'ひと・しい, など, ら',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 12,
     radical: '竹 (bamboo)',
     sources: [
@@ -3677,7 +3677,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Distribute, Exceed, Exile, Ration',
     onyomi: 'ハイ',
     kunyomi: 'くば・る',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '酉 (sake jar)',
     sources: [
@@ -3696,7 +3696,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Shouldering, Carry, Raise, Bear',
     onyomi: 'タン',
     kunyomi: 'かつ・ぐ, にな・う',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '扌 (hand)',
     sources: [
@@ -3713,7 +3713,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Hit, Right, Appropriate, Himself',
     onyomi: 'トウ',
     kunyomi: 'あ・たる, あ・たり, あ・てる, あ・て, まさ・に',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '小 (small)',
     sources: [
@@ -3732,7 +3732,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Place on the head, Receive, Top',
     onyomi: 'チョウ',
     kunyomi: 'いただ・く, いただき',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '頁 (leaf)',
     sources: [
@@ -3750,7 +3750,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Make a deal, Selling, Merchant',
     onyomi: 'ショウ',
     kunyomi: 'あきな・う',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '口 (mouth)',
     sources: [
@@ -3769,7 +3769,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Individual, Counter for articles',
     onyomi: 'コ, カ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '亻 (person)',
     sources: [
@@ -3788,7 +3788,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Inter-, Mutual, Together, Minister of state',
     onyomi: 'ソウ, ショウ',
     kunyomi: 'あい-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '木 (tree)',
     sources: [
@@ -3809,7 +3809,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Mix, Coming & going, Blend',
     onyomi: 'コウ',
     kunyomi: 'まじ・わる, まじ・える, ま・じる, ま・ざる, か・わす',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '亠 (lid)',
     sources: [
@@ -3828,7 +3828,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Merit, Efficiency, Benefit',
     onyomi: 'コウ',
     kunyomi: 'き・く, ききめ, なら・う',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '力 (power)',
     sources: [
@@ -3847,7 +3847,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Limit, Restrict, To the utmost',
     onyomi: 'ゲン',
     kunyomi: 'かぎ・る, かぎ・り, -かぎ・り',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '阝 (hill)',
     sources: [
@@ -3866,7 +3866,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Whole, Entire, Complete, All',
     onyomi: 'ゼン',
     kunyomi: 'まった・く, すべ・て',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '入 (enter)',
     sources: [
@@ -3886,7 +3886,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Together, Both, Neither, All, And',
     onyomi: 'キョウ',
     kunyomi: 'とも, とも・に, -ども',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '八 (eight)',
     sources: [
@@ -3903,7 +3903,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Forget',
     onyomi: 'ボウ',
     kunyomi: 'わす・れる',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 7,
     radical: '心 (heart)',
     sources: [
@@ -3921,7 +3921,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Pass through, Expire, Warp, Sutra',
     onyomi: 'ケイ, キョウ',
     kunyomi: 'へ・る, た・つ, たていと, はか・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '糸 (silk)',
     sources: [
@@ -3940,7 +3940,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Overdo, Exceed, Go beyond, Error',
     onyomi: 'カ',
     kunyomi: 'す・ぎる, -す・ぎる, -す・ぎ, す・ごす, あやま・つ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '辶 (road)',
     sources: [
@@ -3959,7 +3959,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Blame, Condemn, Censure',
     onyomi: 'セキ',
     kunyomi: 'せ・める',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '貝 (shell)',
     sources: [
@@ -3976,7 +3976,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Responsibility, Duty, Term, Entrust to',
     onyomi: 'ニン',
     kunyomi: 'まか・せる, まか・す',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 6,
     radical: '亻 (person)',
     sources: [
@@ -3993,7 +3993,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Defeat, Bear, Lose, Minus',
     onyomi: 'フ',
     kunyomi: 'ま・ける, ま・かす, お・う',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '貝 (shell)',
     sources: [
@@ -4011,7 +4011,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Invariably, Certain, Inevitable',
     onyomi: 'ヒツ',
     kunyomi: 'かなら・ず',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 5,
     radical: '心 (heart)',
     sources: [
@@ -4029,7 +4029,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sack, Bag, Pouch',
     onyomi: 'タイ',
     kunyomi: 'ふくろ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '衣 (clothing)',
     sources: [
@@ -4048,7 +4048,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Volume, Product (math), Acreage, Pile up',
     onyomi: 'セキ',
     kunyomi: 'つ・む, -づ・み, つ・もる, つ・もり',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 16,
     radical: '禾 (grain)',
     sources: [
@@ -4067,7 +4067,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Burn, Blaze, Glow',
     onyomi: 'ネン',
     kunyomi: 'も・える, も・やす, も・す',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 16,
     radical: '火 (fire)',
     sources: [
@@ -4086,7 +4086,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bough, Branch, Twig, Limb',
     onyomi: 'シ',
     kunyomi: 'えだ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '木 (tree)',
     sources: [
@@ -4103,7 +4103,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Leaf, Plane, Lobe, Needle, Blade, Spear',
     onyomi: 'ヨウ',
     kunyomi: 'は',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 12,
     radical: '艹 (grass)',
     sources: [
@@ -4123,7 +4123,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bury, Be filled up, Embedded',
     onyomi: 'マイ',
     kunyomi: 'う・める, う・まる, う・もれる, うず・める, うず・まる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '土 (earth)',
     sources: [
@@ -4141,7 +4141,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Manufacture, Make, Production',
     onyomi: 'セイ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '衣 (clothing)',
     sources: [
@@ -4158,7 +4158,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Contain, Form, Looks',
     onyomi: 'ヨウ',
     kunyomi: 'い・れる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '宀 (roof)',
     sources: [
@@ -4176,7 +4176,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Utensil, Vessel, Receptacle, Implement',
     onyomi: 'キ',
     kunyomi: 'うつわ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 15,
     radical: '口 (mouth)',
     sources: [
@@ -4195,7 +4195,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Attire, Dress, Pretend, Disguise',
     onyomi: 'ソウ, ショウ',
     kunyomi: 'よそお・う, よそお・い',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '衣 (clothing)',
     sources: [
@@ -4214,7 +4214,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Miscellaneous, Mixed, Rough',
     onyomi: 'ザツ, ゾウ',
     kunyomi: 'まじ・える, まじ・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '隹 (old bird)',
     sources: [
@@ -4233,7 +4233,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Document, Records, Magazine',
     onyomi: 'シ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '言 (words)',
     sources: [
@@ -4250,7 +4250,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Assets, Resources, Capital, Funds',
     onyomi: 'シ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '貝 (shell)',
     sources: [
@@ -4268,7 +4268,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Difficult, Impossible, Trouble, Hard',
     onyomi: 'ナン',
     kunyomi: 'かた・い, むずか・しい, むづか・しい, -にく・い',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 18,
     radical: '隹 (old bird)',
     sources: [
@@ -4287,7 +4287,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Instruction, Japanese character reading, Explanation',
     onyomi: 'クン, キン',
     kunyomi: 'おし・える, よ・む, くん・ずる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '言 (words)',
     sources: [
@@ -4304,7 +4304,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Practice, Gloss, Train, Drill, Refine',
     onyomi: 'レン',
     kunyomi: 'ね・る, ね・り',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 14,
     radical: '糸 (silk)',
     sources: [
@@ -4321,7 +4321,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Quake, Shake, Tremble, Quiver',
     onyomi: 'シン',
     kunyomi: 'ふる・う, ふる・える',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 15,
     radical: '雨 (rain)',
     sources: [
@@ -4338,7 +4338,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Add, Addition, Increase, Join',
     onyomi: 'カ',
     kunyomi: 'くわ・える, くわ・わる',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 5,
     radical: '力 (power)',
     sources: [
@@ -4357,7 +4357,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Prolong, Stretch, Delay, Extend',
     onyomi: 'エン',
     kunyomi: 'の・びる, の・べる, の・ばす',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '廴 (long stride)',
     sources: [
@@ -4376,7 +4376,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Severance, Decline, Refuse, Decision',
     onyomi: 'ダン',
     kunyomi: 'た・つ, ことわ・る, さだ・める',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '斤 (axe)',
     sources: [
@@ -4395,7 +4395,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Pipe, Tube, Wind instrument, Control',
     onyomi: 'カン',
     kunyomi: 'くだ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '竹 (bamboo)',
     sources: [
@@ -4414,7 +4414,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Scribe, Account, Narrative',
     onyomi: 'キ',
     kunyomi: 'しる・す',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '言 (words)',
     sources: [
@@ -4435,7 +4435,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Astray, Be perplexed, In doubt, Lost',
     onyomi: 'メイ',
     kunyomi: 'まよ・う',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '辶 (road)',
     sources: [
@@ -4454,7 +4454,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Co-, Cooperation',
     onyomi: 'キョウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '十 (ten)',
     sources: [
@@ -4472,7 +4472,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Petition, Request, Vow, Wish, Hope',
     onyomi: 'ガン',
     kunyomi: 'ねが・う, -ねがい',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 19,
     radical: '頁 (leaf)',
     sources: [
@@ -4489,7 +4489,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Even, Flat, Peace, Common',
     onyomi: 'ヘイ, ビョウ, ヒョウ',
     kunyomi: 'たい・ら, たい・らか, ひら',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 5,
     radical: '干 (dry)',
     sources: [
@@ -4510,7 +4510,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Tie, Bind, Contract, Join, Organize',
     onyomi: 'ケツ, ケチ',
     kunyomi: 'むす・ぶ, ゆ・う, ゆ・わえる',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 12,
     radical: '糸 (silk)',
     sources: [
@@ -4528,7 +4528,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fruit, Reward, Carry out, Achieve',
     onyomi: 'カ',
     kunyomi: 'は・たす, はた・す, -は・たす, は・てる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '木 (tree)',
     sources: [
@@ -4547,7 +4547,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Seal, Border',
     onyomi: 'フウ, ホウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '寸 (inch)',
     sources: [
@@ -4565,7 +4565,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Method, Law, Rule, Principle',
     onyomi: 'ホウ, ハッ, ホッ',
     kunyomi: 'のり',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '氵 (water)',
     sources: [
@@ -4584,7 +4584,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Each, Every, Either',
     onyomi: 'カク',
     kunyomi: 'おのおの',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 6,
     radical: '口 (mouth)',
     sources: [
@@ -4602,7 +4602,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Rank, Grade, Throne, About, Someone',
     onyomi: 'イ',
     kunyomi: 'くらい, ぐらい',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 7,
     radical: '亻 (person)',
     sources: [
@@ -4621,7 +4621,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Uncommon, Queerness, Strangeness, Differ',
     onyomi: 'イ',
     kunyomi: 'こと, こと・なる, け',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '田 (rice field)',
     sources: [
@@ -4640,7 +4640,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Shift, Move, Change, Drift, Catch (cold)',
     onyomi: 'イ',
     kunyomi: 'うつ・る, うつ・す',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '禾 (grain)',
     sources: [
@@ -4659,7 +4659,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Task, Duties',
     onyomi: 'ム',
     kunyomi: 'つと・める',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '力 (power)',
     sources: [
@@ -4678,7 +4678,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Grow late, Night watch, Sit up late, Renewal',
     onyomi: 'コウ',
     kunyomi: 'さら, さら・に, ふ・ける, ふ・かす',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '曰 (say)',
     sources: [
@@ -4696,7 +4696,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Surpass, Cross over, Move to, Exceed',
     onyomi: 'エツ, オツ',
     kunyomi: 'こ・す, -こ・す, -ご・し, こ・える, えつ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '走 (run)',
     sources: [
@@ -4714,7 +4714,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Outskirts, Suburbs, Rural area',
     onyomi: 'コウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '阝 (town)',
     sources: [
@@ -4731,7 +4731,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Circumference, Circuit, Lap',
     onyomi: 'シュウ',
     kunyomi: 'まわ・り',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '口 (mouth)',
     sources: [
@@ -4748,7 +4748,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Farm, Field, Garden, One\'s specialty',
     onyomi: '-',
     kunyomi: 'はた, はたけ, -ばたけ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '田 (rice field)',
     sources: [
@@ -4765,7 +4765,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Previous, Yesterday',
     onyomi: 'サク',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '日 (sun)',
     sources: [
@@ -4784,7 +4784,7 @@ window.N2_KANJI_DATA = [
     meaning: 'The following, Next',
     onyomi: 'ヨク',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '羽 (feather)',
     sources: [
@@ -4803,7 +4803,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Flats, Counter for houses, Eaves',
     onyomi: 'ケン',
     kunyomi: 'のき',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '車 (cart)',
     sources: [
@@ -4819,7 +4819,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Poison, Virus, Harm, Germ',
     onyomi: 'ドク',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '毋 (mother)',
     sources: [
@@ -4837,7 +4837,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Tears, Sympathy',
     onyomi: 'ルイ, レイ',
     kunyomi: 'なみだ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '氵 (water)',
     sources: [
@@ -4853,7 +4853,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Laugh, Smile',
     onyomi: 'ショウ',
     kunyomi: 'わら・う, え・む',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '竹 (bamboo)',
     sources: [
@@ -4870,7 +4870,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Signature, Government office, Police station',
     onyomi: 'ショ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '罒 (net)',
     sources: [
@@ -4889,7 +4889,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Reliant, Depend on, Due to',
     onyomi: 'イ, エ',
     kunyomi: 'よ・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '亻 (person)',
     sources: [
@@ -4905,7 +4905,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Trust, Request, Rely on',
     onyomi: 'ライ',
     kunyomi: 'たの・む, たの・もしい, たよ・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 16,
     radical: '頁 (leaf)',
     sources: [
@@ -4925,7 +4925,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Borough, Urban prefecture, Govt office',
     onyomi: 'フ',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '广 (dotted cliff)',
     sources: [
@@ -4942,7 +4942,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Arrival, Proceed, Reach, Result in',
     onyomi: 'トウ',
     kunyomi: 'いた・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '刂 (knife)',
     sources: [
@@ -4958,7 +4958,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Hope, Beg, Request, Pray, Rare',
     onyomi: 'キ, ケ',
     kunyomi: 'こいねが・う, まれ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '巾 (towel)',
     sources: [
@@ -4974,7 +4974,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Ambition, Full moon, Hope, Desire, Aspire',
     onyomi: 'ボウ, モウ',
     kunyomi: 'のぞ・む, もち',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '月 (moon)',
     sources: [
@@ -4992,7 +4992,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Have the honor to, Sign of the monkey, Speak humbly',
     onyomi: 'シン',
     kunyomi: 'もう・す, もう・し-, さる',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 5,
     radical: '田 (rice field)',
     sources: [
@@ -5011,7 +5011,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Surname',
     onyomi: 'セイ, ショウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '女 (woman)',
     sources: [
@@ -5028,7 +5028,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Age',
     onyomi: 'レイ',
     kunyomi: 'よわい, とし',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 17,
     radical: '歯 (tooth)',
     sources: [
@@ -5045,7 +5045,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sex, Gender, Nature, Quality',
     onyomi: 'セイ, ショウ',
     kunyomi: 'さが',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '忄 (heart)',
     sources: [
@@ -5066,7 +5066,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Home, House, Residence, Our house',
     onyomi: 'タク',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '宀 (roof)',
     sources: [
@@ -5085,7 +5085,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Diligence, Employ, Serve',
     onyomi: 'キン, ゴン',
     kunyomi: 'つと・める, -づと・め, つと・まる, いそ・しむ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '力 (power)',
     sources: [
@@ -5104,7 +5104,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Section, Bureau, Department, Class, Copy',
     onyomi: 'ブ',
     kunyomi: '-べ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '阝 (town)',
     sources: [
@@ -5124,7 +5124,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Marriage',
     onyomi: 'コン',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '女 (woman)',
     sources: [
@@ -5143,7 +5143,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Beckon, Invite, Summon, Engage',
     onyomi: 'ショウ',
     kunyomi: 'まね・く',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '扌 (hand)',
     sources: [
@@ -5160,7 +5160,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Status quo, Conditions, Form, Letter',
     onyomi: 'ジョウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '犬 (dog)',
     sources: [
@@ -5179,7 +5179,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Lack, Gap, Fail, Yawning radical',
     onyomi: 'ケツ, ケン',
     kunyomi: 'か・ける, か・く',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 4,
     radical: '欠 (lack)',
     sources: [
@@ -5198,7 +5198,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Rejoice, Take pleasure in',
     onyomi: 'キ',
     kunyomi: 'よろこ・ぶ, よろこ・ばす',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '口 (mouth)',
     sources: [
@@ -5215,7 +5215,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Reign, Cure, Heal, Rule, Conserve',
     onyomi: 'ジ, チ',
     kunyomi: 'おさ・める, おさ・まる, なお・る, なお・す',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '氵 (water)',
     sources: [
@@ -5234,7 +5234,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Committee, Entrust to, Leave to, Devote',
     onyomi: 'イ',
     kunyomi: 'ゆだ・ねる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '女 (woman)',
     sources: [
@@ -5252,7 +5252,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Celebrate, Congratulate',
     onyomi: 'シュク, シュウ',
     kunyomi: 'いわ・う',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '礻 (altar)',
     sources: [
@@ -5270,7 +5270,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Dance, Flit, Circle, Wheel',
     onyomi: 'ブ',
     kunyomi: 'ま・う, まい',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 15,
     radical: '舛 (box)',
     sources: [
@@ -5288,7 +5288,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Salute, Bow, Ceremony, Thanks, Remuneration',
     onyomi: 'レイ, ライ',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 5,
     radical: '礻 (altar)',
     sources: [
@@ -5306,7 +5306,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Busy, Occupied, Restless',
     onyomi: 'ボウ, モウ',
     kunyomi: 'いそが・しい, せわ・しい, おそ・る, うれ・えるさま',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '忄 (heart)',
     sources: [
@@ -5323,7 +5323,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Wife, Spouse',
     onyomi: 'サイ',
     kunyomi: 'つま',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '女 (woman)',
     sources: [
@@ -5340,7 +5340,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Lengthen, Counter for bows & stringed instruments, Stretch, Spread',
     onyomi: 'チョウ',
     kunyomi: 'は・る, -は・り, -ば・り',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '弓 (bow)',
     sources: [
@@ -5360,7 +5360,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Heart, Interior, Depths, Inside',
     onyomi: 'オウ',
     kunyomi: 'おく, おく・まる, くま',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '大 (big)',
     sources: [
@@ -5377,7 +5377,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Shallow, Superficial, Wretched, Shameful',
     onyomi: 'セン',
     kunyomi: 'あさ・い',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '氵 (water)',
     sources: [
@@ -5395,7 +5395,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Mister, You, Male honorific suffix, Ruler',
     onyomi: 'クン',
     kunyomi: 'きみ, -ぎみ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 7,
     radical: '口 (mouth)',
     sources: [
@@ -5412,7 +5412,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Long time, Old story',
     onyomi: 'キュウ, ク',
     kunyomi: 'ひさ・しい',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 3,
     radical: '丿 (slash)',
     sources: [
@@ -5429,7 +5429,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Mutually, Reciprocally, Together',
     onyomi: 'ゴ',
     kunyomi: 'たが・い, かたみ・に',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 4,
     radical: '二 (two)',
     sources: [
@@ -5447,7 +5447,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Chase, Drive away, Follow, Pursue',
     onyomi: 'ツイ',
     kunyomi: 'お・う',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '辶 (road)',
     sources: [
@@ -5466,7 +5466,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Expand, Stretch, Extend, Lengthen',
     onyomi: 'シン',
     kunyomi: 'の・びる, の・ばす, の・べる, の・す',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '亻 (person)',
     sources: [
@@ -5485,7 +5485,7 @@ window.N2_KANJI_DATA = [
     meaning: 'All, Everything',
     onyomi: 'カイ',
     kunyomi: 'みな, みんな',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '白 (white)',
     sources: [
@@ -5502,7 +5502,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Evening, Livelihood, Make a living, Spend time',
     onyomi: 'ボ',
     kunyomi: 'く・れる, く・らす',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '日 (sun)',
     sources: [
@@ -5521,7 +5521,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Accustomed, Get used to, Become experienced',
     onyomi: 'カン',
     kunyomi: 'な・れる, な・らす',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '忄 (heart)',
     sources: [
@@ -5538,7 +5538,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Living, Activity, Resuscitation',
     onyomi: 'カツ',
     kunyomi: 'い・きる, い・かす, い・ける',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '氵 (water)',
     sources: [
@@ -5557,7 +5557,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Romance, In love, Yearn for, Miss',
     onyomi: 'レン',
     kunyomi: 'こ・う, こい, こい・しい',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '心 (heart)',
     sources: [
@@ -5576,7 +5576,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Healthy, Health, Strength, Persistence',
     onyomi: 'ケン',
     kunyomi: 'すこ・やか',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '亻 (person)',
     sources: [
@@ -5594,7 +5594,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Ease, Peace',
     onyomi: 'コウ',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '广 (dotted cliff)',
     sources: [
@@ -5611,7 +5611,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Pray, Wish',
     onyomi: 'キ',
     kunyomi: 'いの・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '礻 (altar)',
     sources: [
@@ -5629,7 +5629,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Blessing, Fortune, Luck, Wealth',
     onyomi: 'フク',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '礻 (altar)',
     sources: [
@@ -5646,7 +5646,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Worship, Adore, Pray to',
     onyomi: 'ハイ',
     kunyomi: 'おが・む, おろが・む',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '扌 (hand)',
     sources: [
@@ -5665,7 +5665,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Strike, Hit, Knock, Pound, Dozen',
     onyomi: 'ダ, ダース',
     kunyomi: 'う・つ, う・ち-, ぶ・つ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 5,
     radical: '扌 (hand)',
     sources: [
@@ -5683,7 +5683,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Pay respects, Visit, Ask, Inquire, Question',
     onyomi: 'シ',
     kunyomi: 'うかが・う',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '亻 (person)',
     sources: [
@@ -5699,7 +5699,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Happiness, Blessing, Fortune',
     onyomi: 'コウ',
     kunyomi: 'さいわ・い, さち, しあわ・せ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '干 (dry)',
     sources: [
@@ -5718,7 +5718,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Lose, Error, Fault, Disadvantage',
     onyomi: 'シツ',
     kunyomi: 'うしな・う, う・せる',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 5,
     radical: '大 (big)',
     sources: [
@@ -5737,7 +5737,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Stab, Protruding, Thrusting, Sudden',
     onyomi: 'トツ, カ',
     kunyomi: 'つ・く',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '穴 (cave)',
     sources: [
@@ -5756,7 +5756,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sort of thing, So, If so, In that case',
     onyomi: 'ゼン, ネン',
     kunyomi: 'しか, しか・り, しか・し, さ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '灬 (fire)',
     sources: [
@@ -5775,7 +5775,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Various, Many, Several, Together',
     onyomi: 'ショ',
     kunyomi: 'もろ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 15,
     radical: '言 (words)',
     sources: [
@@ -5793,7 +5793,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Feelings, Emotion, Passion, Sympathy, Circumstances',
     onyomi: 'ジョウ, セイ',
     kunyomi: 'なさ・け',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '忄 (heart)',
     sources: [
@@ -5813,7 +5813,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Retreat, Withdraw, Retire, Resign',
     onyomi: 'タイ',
     kunyomi: 'しりぞ・く, しりぞ・ける, ひ・く, の・く, の・ける, ど・く',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '辶 (road)',
     sources: [
@@ -5832,7 +5832,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Post, Employment, Work',
     onyomi: 'ショク, ソク',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 18,
     radical: '耳 (ear)',
     sources: [
@@ -5851,7 +5851,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Introduce, Inherit, Help',
     onyomi: 'ショウ',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 11,
     radical: '糸 (silk)',
     sources: [
@@ -5867,7 +5867,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Jammed in, Shellfish, Mediate, Concern oneself with',
     onyomi: 'カイ',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 4,
     radical: '人 (person)',
     sources: [
@@ -5884,7 +5884,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Next, Order, Sequence',
     onyomi: 'ジ, シ',
     kunyomi: 'つ・ぐ, つぎ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '欠 (lack)',
     sources: [
@@ -5902,7 +5902,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Badge, Chapter, Composition, Poem, Design',
     onyomi: 'ショウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '立 (stand)',
     sources: [
@@ -5919,7 +5919,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Vis-a-vis, Opposite, Even, Equal, Versus',
     onyomi: 'タイ, ツイ',
     kunyomi: 'むか・う, こた・える, そ・ろい, つれあ・い, なら・ぶ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 7,
     radical: '寸 (inch)',
     sources: [
@@ -5939,7 +5939,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Utmost, Most, Extreme',
     onyomi: 'サイ, シュ',
     kunyomi: 'もっと・も, つま',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 12,
     radical: '日 (sun)',
     sources: [
@@ -5958,7 +5958,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Suitable, Capable, Qualified, Well-timed',
     onyomi: 'テキ',
     kunyomi: 'かな・う',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '辶 (road)',
     sources: [
@@ -5977,7 +5977,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Mistake, Err, Do wrong, Mislead',
     onyomi: 'ゴ',
     kunyomi: 'あやま・る, -あやま・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '言 (words)',
     sources: [
@@ -5994,7 +5994,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Straightaway, Honesty, Frankness, Repair',
     onyomi: 'チョク, ジキ, ジカ',
     kunyomi: 'ただ・ちに, なお・す, -なお・す, なお・る, なお・き, す・ぐ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '目 (eye)',
     sources: [
@@ -6014,7 +6014,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Example, Custom, Usage, Precedent',
     onyomi: 'レイ',
     kunyomi: 'たと・える, たと・えば',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '亻 (person)',
     sources: [
@@ -6034,7 +6034,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Part of speech, Words, Poetry',
     onyomi: 'シ',
     kunyomi: 'ことば',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '言 (words)',
     sources: [
@@ -6054,7 +6054,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Shape, Form, Style',
     onyomi: 'ケイ, ギョウ',
     kunyomi: 'かた, -がた, かたち, なり',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 7,
     radical: '彡 (hair)',
     sources: [
@@ -6073,7 +6073,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Help, Rescue, Assist',
     onyomi: 'ジョ',
     kunyomi: 'たす・かる, たす・ける, すけ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '力 (power)',
     sources: [
@@ -6093,7 +6093,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Vice-, Assistant, Aide, Duplicate',
     onyomi: 'フク',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '刂 (knife)',
     sources: [
@@ -6110,7 +6110,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Surround, Besiege, Enclosure',
     onyomi: 'イ',
     kunyomi: 'かこ・む, かこ・う, かこ・い',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '囗 (enclosure)',
     sources: [
@@ -6127,7 +6127,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Dream, Vision, Illusion',
     onyomi: 'ム, ボウ',
     kunyomi: 'ゆめ, ゆめ・みる, くら・い',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '夕 (evening)',
     sources: [
@@ -6144,7 +6144,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Specialty, Exclusive, Mainly, Solely',
     onyomi: 'セン',
     kunyomi: 'もっぱ・ら',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '寸 (inch)',
     sources: [
@@ -6162,7 +6162,7 @@ window.N2_KANJI_DATA = [
     meaning: 'History, Chronicle',
     onyomi: 'シ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 5,
     radical: '口 (mouth)',
     sources: [
@@ -6179,7 +6179,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Range, Region, Limits, Stage',
     onyomi: 'イキ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '土 (earth)',
     sources: [
@@ -6196,7 +6196,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Ritual, Offer prayers, Celebrate, Festival',
     onyomi: 'サイ',
     kunyomi: 'まつ・る, まつ・り, まつり',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '示 (altar)',
     sources: [
@@ -6214,7 +6214,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Investigate',
     onyomi: 'サ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '木 (tree)',
     sources: [
@@ -6232,7 +6232,7 @@ window.N2_KANJI_DATA = [
     meaning: 'War, Battle, Match',
     onyomi: 'セン',
     kunyomi: 'たたか・う, おのの・く, そよ・ぐ, わなな・く',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 13,
     radical: '戈 (spear)',
     sources: [
@@ -6251,7 +6251,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Contend, Dispute, Argue',
     onyomi: 'ソウ',
     kunyomi: 'あらそ・う, いか・でか',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 6,
     radical: '亅 (hook)',
     sources: [
@@ -6268,7 +6268,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Leader, Commander, General, Future',
     onyomi: 'ショウ, ソウ',
     kunyomi: 'まさ・に, はた, まさに, ひきい・る, もって',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '寸 (inch)',
     sources: [
@@ -6285,7 +6285,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bridge',
     onyomi: 'キョウ',
     kunyomi: 'はし',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 16,
     radical: '木 (tree)',
     sources: [
@@ -6304,7 +6304,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Hate, Detest',
     onyomi: 'ゾウ',
     kunyomi: 'にく・む, にく・い, にく・らしい, にく・しみ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '忄 (heart)',
     sources: [
@@ -6323,7 +6323,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Kill, Murder, Butcher',
     onyomi: 'サツ, サイ, セツ',
     kunyomi: 'ころ・す, -ごろ・し, そ・ぐ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '殳 (strike)',
     sources: [
@@ -6340,7 +6340,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Grieve, Sad, Deplore, Regret',
     onyomi: 'ヒ',
     kunyomi: 'かな・しい, かな・しむ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '心 (heart)',
     sources: [
@@ -6358,7 +6358,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Shame, Dishonor',
     onyomi: 'チ',
     kunyomi: 'は・じる, はじ, は・ずかしい, は・づかしい',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '心 (heart)',
     sources: [
@@ -6375,7 +6375,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Emotion, Feeling, Sensation',
     onyomi: 'カン',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 13,
     radical: '心 (heart)',
     sources: [
@@ -6394,7 +6394,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sphere, Ball',
     onyomi: 'キュウ',
     kunyomi: 'たま',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '玉 (jade)',
     sources: [
@@ -6413,7 +6413,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Harmony, Japanese style, Peace, Soften',
     onyomi: 'ワ, オ, カ',
     kunyomi: 'やわ・らぐ, やわ・らげる, なご・む, なご・やか',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '口 (mouth)',
     sources: [
@@ -6430,7 +6430,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Love, Affection, Favorite',
     onyomi: 'アイ',
     kunyomi: 'いと・しい, かな・しい, め・でる, お・しむ, まな',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '心 (heart)',
     sources: [
@@ -6449,7 +6449,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Go-between, Relationship',
     onyomi: 'チュウ',
     kunyomi: 'なか',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 6,
     radical: '亻 (person)',
     sources: [
@@ -6466,7 +6466,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Good, Pleasing, Skilled',
     onyomi: 'リョウ',
     kunyomi: 'よ・い, -よ・い, い・い, -い・い',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 7,
     radical: '艮 (stopping)',
     sources: [
@@ -6483,7 +6483,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Abdomen, Belly, Stomach',
     onyomi: 'フク',
     kunyomi: 'はら',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '月 (meat)',
     sources: [
@@ -6500,7 +6500,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Back, Behind, Disobey, Defy',
     onyomi: 'ハイ',
     kunyomi: 'せ, せい, そむ・く, そむ・ける',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '月 (meat)',
     sources: [
@@ -6516,7 +6516,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Breath, Respiration, Son, Interest (on money)',
     onyomi: 'ソク',
     kunyomi: 'いき',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '心 (heart)',
     sources: [
@@ -6534,7 +6534,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Blood',
     onyomi: 'ケツ',
     kunyomi: 'ち',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 6,
     radical: '血 (blood)',
     sources: [
@@ -6551,7 +6551,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Pressure, Push, Overwhelm, Oppress',
     onyomi: 'アツ, エン, オウ',
     kunyomi: 'お・す, へ・す, おさ・える, おさ・まる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 5,
     radical: '土 (earth)',
     sources: [
@@ -6567,7 +6567,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Entrails, Viscera, Bowels',
     onyomi: 'ゾウ',
     kunyomi: 'はらわた',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 19,
     radical: '月 (meat)',
     sources: [
@@ -6584,7 +6584,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fluid, Liquid, Juice, Sap',
     onyomi: 'エキ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '氵 (water)',
     sources: [
@@ -6600,7 +6600,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Nose, Snout',
     onyomi: 'ビ',
     kunyomi: 'はな',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '鼻 (nose)',
     sources: [
@@ -6618,7 +6618,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Suck, Imbibe, Inhale, Sip',
     onyomi: 'キュウ',
     kunyomi: 'す・う',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 6,
     radical: '口 (mouth)',
     sources: [
@@ -6636,7 +6636,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sleep, Die, Sleepy',
     onyomi: 'ミン',
     kunyomi: 'ねむ・る, ねむ・い',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '目 (eye)',
     sources: [
@@ -6655,7 +6655,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Longing, Covetousness, Greed, Passion',
     onyomi: 'ヨク',
     kunyomi: 'ほっ・する, ほ・しい',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '欠 (lack)',
     sources: [
@@ -6673,7 +6673,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Exhausted, Tire, Weary',
     onyomi: 'ヒ',
     kunyomi: 'つか・れる, -づか・れ, つか・らす',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '疒 (sickness)',
     sources: [
@@ -6689,7 +6689,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Stomach, Paunch, Crop',
     onyomi: 'イ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '田 (rice field)',
     sources: [
@@ -6706,7 +6706,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bosom, Breast, Chest, Heart, Feelings',
     onyomi: 'キョウ',
     kunyomi: 'むね, むな-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '月 (meat)',
     sources: [
@@ -6722,7 +6722,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Lean, Incline, Tilt, Trend, Wane, Bias',
     onyomi: 'ケイ',
     kunyomi: 'かたむ・く, かたむ・ける, かたぶ・く, かた・げる',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '亻 (person)',
     sources: [
@@ -6740,7 +6740,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sideways, Side, Horizontal, Width',
     onyomi: 'オウ',
     kunyomi: 'よこ',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 15,
     radical: '木 (tree)',
     sources: [
@@ -6758,7 +6758,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Hot water, Bath, Hot spring',
     onyomi: 'トウ',
     kunyomi: 'ゆ',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 12,
     radical: '氵 (water)',
     sources: [
@@ -6777,7 +6777,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fear, Dread, Be afraid, Awe',
     onyomi: 'キョウ',
     kunyomi: 'おそ・れる, おそ・ろしい, こわ・い, お・じる',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '心 (heart)',
     sources: [
@@ -6796,7 +6796,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Meadow, Original, Primitive, Field, Raw',
     onyomi: 'ゲン',
     kunyomi: 'はら',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 10,
     radical: '厂 (cliff)',
     sources: [
@@ -6814,7 +6814,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Cause, Factor, Depend on, Be associated with',
     onyomi: 'イン',
     kunyomi: 'よ・る, ちな・む',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 6,
     radical: '囗 (enclosure)',
     sources: [
@@ -6831,7 +6831,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Placement, Put, Set, Deposit, Leave',
     onyomi: 'チ',
     kunyomi: 'お・く, -お・き',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 13,
     radical: '罒 (net)',
     sources: [
@@ -6850,7 +6850,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sleep, Rest, Bed, Lie down',
     onyomi: 'シン',
     kunyomi: 'ね・る, ね・かす, い・ぬ, みたまや, や・める',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 13,
     radical: '宀 (roof)',
     sources: [
@@ -6869,7 +6869,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Heat, Temperature, Fever, Mania, Passion',
     onyomi: 'ネツ, ネッ',
     kunyomi: 'あつ・い',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 15,
     radical: '灬 (fire)',
     sources: [
@@ -6888,7 +6888,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bake, Burning, Roast, Grill',
     onyomi: 'ショウ',
     kunyomi: 'や・く, や・き, や・き-, -や・き, や・ける',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 12,
     radical: '火 (fire)',
     sources: [
@@ -6906,7 +6906,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Contact, Touch, Feel, Hit, Proclaim',
     onyomi: 'ショク',
     kunyomi: 'ふ・れる, さわ・る, さわ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '角 (horn)',
     sources: [
@@ -6925,7 +6925,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Lamp, A light, Light, Counter for lights',
     onyomi: 'トウ',
     kunyomi: 'ひ, ほ-, ともしび, とも・す, あかり',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 6,
     radical: '火 (fire)',
     sources: [
@@ -6944,7 +6944,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Oil, Fat',
     onyomi: 'ユ, ユウ',
     kunyomi: 'あぶら',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 8,
     radical: '氵 (water)',
     sources: [
@@ -6963,7 +6963,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Too much, Myself, Surplus, Other, Remainder',
     onyomi: 'ヨ',
     kunyomi: 'あま・る, あま・り, あま・す, あんま・り',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '人 (person)',
     sources: [
@@ -6982,7 +6982,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fur, Hair, Feather, Down',
     onyomi: 'モウ',
     kunyomi: 'け',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 4,
     radical: '毛 (fur)',
     sources: [
@@ -7000,7 +7000,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Thread',
     onyomi: 'シ',
     kunyomi: 'いと',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 8,
     radical: '糸 (thread)',
     sources: [
@@ -7017,7 +7017,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Texture, Skin, Body, Grain',
     onyomi: '-',
     kunyomi: 'はだ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 6,
     radical: '月 (meat)',
     sources: [
@@ -7034,7 +7034,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Tender, Weakness, Gentleness, Softness',
     onyomi: 'ジュウ, ニュウ',
     kunyomi: 'やわ・らか, やわ・らかい, やわ, やわ・ら',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '木 (tree)',
     sources: [
@@ -7052,7 +7052,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Incense, Smell, Perfume',
     onyomi: 'コウ, キョウ',
     kunyomi: 'かお・り, かお・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '香 (fragrance)',
     sources: [
@@ -7071,7 +7071,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Soft',
     onyomi: 'ナン',
     kunyomi: 'やわ・らか, やわ・らかい',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '車 (cart)',
     sources: [
@@ -7089,7 +7089,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Melt, Dissolve, Thaw',
     onyomi: 'ヨウ',
     kunyomi: 'と・ける, と・かす, と・く',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '氵 (water)',
     sources: [
@@ -7107,7 +7107,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Laundry, Wash, Pour on, Rinse',
     onyomi: 'タク',
     kunyomi: 'すす・ぐ, ゆす・ぐ',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 17,
     radical: '氵 (water)',
     sources: [
@@ -7124,7 +7124,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Touch, Contact, Adjoin, Piece together',
     onyomi: 'セツ, ショウ',
     kunyomi: 'つ・ぐ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '扌 (hand)',
     sources: [
@@ -7143,7 +7143,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Paint, Plaster, Daub, Smear, Coating',
     onyomi: 'ト',
     kunyomi: 'ぬ・る, ぬ・り, まみ・れる',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '土 (earth)',
     sources: [
@@ -7159,7 +7159,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Thong, Beginning, Inception, End, Cord, Strap',
     onyomi: 'ショ, チョ',
     kunyomi: 'お, いとぐち',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 14,
     radical: '糸 (thread)',
     sources: [
@@ -7175,7 +7175,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Mud, Mire, Adhere to, Be attached to',
     onyomi: 'デイ, ナイ, デ, ニ',
     kunyomi: 'どろ, なず・む',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '氵 (water)',
     sources: [
@@ -7192,7 +7192,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Yellow',
     onyomi: 'コウ, オウ',
     kunyomi: 'き, こ-',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 11,
     radical: '黄 (yellow)',
     sources: [
@@ -7210,7 +7210,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Route, Way, Road',
     onyomi: 'ト',
     kunyomi: 'みち',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '辶 (road)',
     sources: [
@@ -7229,7 +7229,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Tool, Utensil, Means, Possess, Ingredients',
     onyomi: 'グ',
     kunyomi: 'そな・える, つぶさ・に',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 8,
     radical: '八 (eight)',
     sources: [
@@ -7248,7 +7248,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bed, Counter for beds, Floor, Padding',
     onyomi: 'ショウ',
     kunyomi: 'とこ, ゆか',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '广 (cliff/roof)',
     sources: [
@@ -7267,7 +7267,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Wall, Lining (stomach), Fence',
     onyomi: 'ヘキ',
     kunyomi: 'かべ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 16,
     radical: '土 (earth)',
     sources: [
@@ -7283,7 +7283,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Drought, Dry, Dessicate, Drink up, Heaven',
     onyomi: 'カン, ケン',
     kunyomi: 'かわ・く, かわ・かす, ほ・す, ひ・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '乙 (second)',
     sources: [
@@ -7301,7 +7301,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Linen, Cloth, Spread, Distribute',
     onyomi: 'フ',
     kunyomi: 'ぬの, し・く',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 5,
     radical: '巾 (cloth)',
     sources: [
@@ -7320,7 +7320,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Pillar, Post, Cylinder, Support',
     onyomi: 'チュウ',
     kunyomi: 'はしら',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '木 (tree)',
     sources: [
@@ -7337,7 +7337,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Insect, Bug, Temper',
     onyomi: 'チュウ, キ',
     kunyomi: 'むし',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 6,
     radical: '虫 (insect)',
     sources: [
@@ -7356,7 +7356,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Tooth, Cog',
     onyomi: 'シ',
     kunyomi: 'よわい, は, よわ・い, よわい・する',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 12,
     radical: '歯 (tooth)',
     sources: [
@@ -7375,7 +7375,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Ward off, Defend, Protect, Resist',
     onyomi: 'ボウ',
     kunyomi: 'ふせ・ぐ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '阝 (mound)',
     sources: [
@@ -7394,7 +7394,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Grind, Polish, Scour, Improve, Brush (teeth)',
     onyomi: 'マ',
     kunyomi: 'みが・く, す・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 16,
     radical: '石 (stone)',
     sources: [
@@ -7411,7 +7411,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Slip out, Extract, Pull out, Omit, Surpass',
     onyomi: 'バツ, ハツ, ハイ',
     kunyomi: 'ぬ・く, ぬ・き, ぬ・ける, ぬ・かす, ぬ・かる',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '扌 (hand)',
     sources: [
@@ -7430,7 +7430,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Trouble, Worry, In pain, Distress',
     onyomi: 'ノウ',
     kunyomi: 'なや・む, なや・ます, なや・ましい, なや・み',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '忄 (heart)',
     sources: [
@@ -7447,7 +7447,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Hair of the head',
     onyomi: 'ハツ',
     kunyomi: 'かみ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 14,
     radical: '髟 (hair)',
     sources: [
@@ -7465,7 +7465,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Thorn, Pierce, Stab, Prick, Sting',
     onyomi: 'シ',
     kunyomi: 'さ・す, さ・さる, さ・し, とげ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '刂 (knife)',
     sources: [
@@ -7484,7 +7484,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Shoulder',
     onyomi: 'ケン',
     kunyomi: 'かた',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '月 (meat)',
     sources: [
@@ -7501,7 +7501,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Loins, Hips, Waist, Low back',
     onyomi: 'ヨウ',
     kunyomi: 'こし',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '月 (meat)',
     sources: [
@@ -7520,7 +7520,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Node, Season, Period, Occasion, Knot, Joint, Verse',
     onyomi: 'セツ, セチ',
     kunyomi: 'ふし, -ぶし, のっと',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '竹 (bamboo)',
     sources: [
@@ -7539,7 +7539,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Gods, Mind, Soul',
     onyomi: 'シン, ジン',
     kunyomi: 'かみ, かん-, こう-',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 9,
     radical: '礻 (altar)',
     sources: [
@@ -7559,7 +7559,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Pain, Hurt, Damage, Bruise',
     onyomi: 'ツウ',
     kunyomi: 'いた・い, いた・む, いた・ましい, いた・める',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 12,
     radical: '疒 (sickness)',
     sources: [
@@ -7578,7 +7578,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bathe, Be favored with, Bask in',
     onyomi: 'ヨク',
     kunyomi: 'あ・びる, あ・びせる',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 10,
     radical: '氵 (water)',
     sources: [
@@ -7598,7 +7598,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Target, Bullseye, Mark, Suffix: -like, -ish',
     onyomi: 'テキ',
     kunyomi: 'まと',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 8,
     radical: '白 (white)',
     sources: [
@@ -7617,7 +7617,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sweat, Perspire',
     onyomi: 'カン',
     kunyomi: 'あせ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 6,
     radical: '氵 (water)',
     sources: [
@@ -7633,7 +7633,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Expert, Master, Teacher, Army, Model',
     onyomi: 'シ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '巾 (cloth)',
     sources: [
@@ -7651,7 +7651,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Discuss, Talk',
     onyomi: 'ダン',
     kunyomi: '-',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 15,
     radical: '言 (words)',
     sources: [
@@ -7669,7 +7669,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Parch, Dry up',
     onyomi: 'ソウ',
     kunyomi: 'はしゃ・ぐ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 17,
     radical: '火 (fire)',
     sources: [
@@ -7685,7 +7685,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fold, Break, Fracture, Bend, Yield',
     onyomi: 'セツ',
     kunyomi: 'お・る, お・り, お・れる, お・り',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 7,
     radical: '扌 (hand)',
     sources: [
@@ -7703,7 +7703,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Prize, Reward, Praise',
     onyomi: 'ショウ',
     kunyomi: 'ほ・める',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 15,
     radical: '貝 (shell)',
     sources: [
@@ -7722,7 +7722,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Warehouse, Storehouse',
     onyomi: 'コ, ク',
     kunyomi: 'くら',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '广 (cliff/roof)',
     sources: [
@@ -7740,7 +7740,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Create, Make, Structure, Physique',
     onyomi: 'ゾウ',
     kunyomi: 'つく・る, つく・り, みやつこ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '辶 (road)',
     sources: [
@@ -7758,7 +7758,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Expense, Cost, Spend, Consume, Waste',
     onyomi: 'ヒ',
     kunyomi: 'つい・やす, つい・える',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '貝 (shell)',
     sources: [
@@ -7776,7 +7776,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Can, Passable, Approval, Possibility',
     onyomi: 'カ, コ',
     kunyomi: '-べ・き, -べ・し',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 5,
     radical: '口 (mouth)',
     sources: [
@@ -7795,7 +7795,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Second (1/60 minute)',
     onyomi: 'ビョウ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '禾 (grain)',
     sources: [
@@ -7811,7 +7811,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Somebody, Person, One\'s station in life',
     onyomi: 'シン',
     kunyomi: 'み',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 7,
     radical: '身 (body)',
     sources: [
@@ -7832,7 +7832,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Seduce, Call, Send for, Wear, Put on, Eat, Drink',
     onyomi: 'ショウ',
     kunyomi: 'め・す',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 5,
     radical: '口 (mouth)',
     sources: [
@@ -7848,7 +7848,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Counter for cupfuls, Wine glass, Glass, Toast',
     onyomi: 'ハイ',
     kunyomi: 'さかずき',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 8,
     radical: '木 (tree)',
     sources: [
@@ -7866,7 +7866,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Seethe, Boil, Ferment, Uproar',
     onyomi: 'フツ',
     kunyomi: 'わ・く, わ・かす',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '氵 (water)',
     sources: [
@@ -7884,7 +7884,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Flour, Powder, Dust',
     onyomi: 'フン',
     kunyomi: 'こ, こな',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '米 (rice)',
     sources: [
@@ -7903,7 +7903,7 @@ window.N2_KANJI_DATA = [
     meaning: 'End, Close, Tip, Powder, Posterity',
     onyomi: 'マツ, バツ',
     kunyomi: 'すえ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 5,
     radical: '木 (tree)',
     sources: [
@@ -7921,7 +7921,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Flourish, Prosperity, Honor, Glory, Splendor',
     onyomi: 'エイ, ヨウ',
     kunyomi: 'さか・える, は・え, -ば・え, は・える, え',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '木 (tree)',
     sources: [
@@ -7939,7 +7939,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Chirp, Cry, Bark, Sound, Ring, Echo',
     onyomi: 'メイ',
     kunyomi: 'な・る, な・らす, な・く',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 14,
     radical: '鳥 (bird)',
     sources: [
@@ -7958,7 +7958,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Call on, Visit, Look up, Offer sympathy',
     onyomi: 'ホウ',
     kunyomi: 'おとず・れる, たず・ねる, と・う',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '言 (words)',
     sources: [
@@ -7976,7 +7976,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Call, Call out to, Invite',
     onyomi: 'コ',
     kunyomi: 'よ・ぶ',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 8,
     radical: '口 (mouth)',
     sources: [
@@ -7994,7 +7994,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Admonish, Commandment, Warn',
     onyomi: 'ケイ',
     kunyomi: 'いまし・める',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 19,
     radical: '言 (words)',
     sources: [
@@ -8012,7 +8012,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Report, News, Reward, Retribution',
     onyomi: 'ホウ',
     kunyomi: 'むく・いる',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '土 (earth)',
     sources: [
@@ -8031,7 +8031,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Back, Amidst, In, Reverse, Inside, Palm, Sole, Rear',
     onyomi: 'リ',
     kunyomi: 'うら',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '衣 (clothing)',
     sources: [
@@ -8050,7 +8050,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Distinction, Difference, Variation, Discrepancy',
     onyomi: 'サ',
     kunyomi: 'さ・す, さ・し',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '羊 (sheep)',
     sources: [
@@ -8070,7 +8070,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Continue, Series, Sequel',
     onyomi: 'ゾク, ショク, コウ, キョウ',
     kunyomi: 'つづ・く, つづ・ける, つぐ・なう',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 13,
     radical: '糸 (thread)',
     sources: [
@@ -8089,7 +8089,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Resign, Word, Term, Refuse',
     onyomi: 'ジ',
     kunyomi: 'や・める, いな・む',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '辛 (bitter)',
     sources: [
@@ -8108,7 +8108,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Mask, Face, Features, Surface',
     onyomi: 'メン, ベン',
     kunyomi: 'おも, おもて, つら',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 9,
     radical: '面 (face)',
     sources: [
@@ -8127,7 +8127,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Maneuver, Manipulate, Operate, Steer, Chastity',
     onyomi: 'ソウ, サン',
     kunyomi: 'みさお, あやつ・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 16,
     radical: '扌 (hand)',
     sources: [
@@ -8144,7 +8144,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Reality, Truth, Fruit, Nut, Seed, Content',
     onyomi: 'ジツ, シツ',
     kunyomi: 'み, みの・る, まこと, まことに, みち・る',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 8,
     radical: '宀 (roof)',
     sources: [
@@ -8164,7 +8164,7 @@ window.N2_KANJI_DATA = [
     meaning: 'File, Row, Rank, Tier, Column',
     onyomi: 'レツ, レ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 6,
     radical: '刂 (knife)',
     sources: [
@@ -8183,7 +8183,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Rod, Stick, Cane, Pole, Club',
     onyomi: 'ボウ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '木 (tree)',
     sources: [
@@ -8200,7 +8200,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Wither, Die, Dry up, Season',
     onyomi: 'コ',
     kunyomi: 'か・れる, か・らす',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '木 (tree)',
     sources: [
@@ -8216,7 +8216,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Boat, Ship',
     onyomi: 'シュウ',
     kunyomi: 'ふね, ふな-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 6,
     radical: '舟 (boat)',
     sources: [
@@ -8232,7 +8232,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Poverty, Poor',
     onyomi: 'ヒン, ビン',
     kunyomi: 'まず・しい',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '貝 (shell)',
     sources: [
@@ -8249,7 +8249,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Once upon a time, Antiquity, Old times',
     onyomi: 'セキ, シャク',
     kunyomi: 'むかし',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 8,
     radical: '日 (sun)',
     sources: [
@@ -8266,7 +8266,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Boulder, Rock, Cliff',
     onyomi: 'ガン',
     kunyomi: 'いわ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '山 (mountain)',
     sources: [
@@ -8283,7 +8283,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Cry, Weep, Moan',
     onyomi: 'キュウ',
     kunyomi: 'な・く',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '氵 (water)',
     sources: [
@@ -8299,7 +8299,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bloom, Blossom',
     onyomi: 'ショウ',
     kunyomi: 'さ・く, -ざき',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 9,
     radical: '口 (mouth)',
     sources: [
@@ -8315,7 +8315,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Director, Official, Administer, Rule',
     onyomi: 'シ',
     kunyomi: 'つかさど・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 5,
     radical: '口 (mouth)',
     sources: [
@@ -8331,7 +8331,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Wish, Sense, Idea, Thought, Feeling, Desire',
     onyomi: 'ネン',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '心 (heart)',
     sources: [
@@ -8348,7 +8348,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Refreshing, Nice and cool',
     onyomi: 'リョウ',
     kunyomi: 'すず・しい, すず・む, すず・やか',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '氵 (water)',
     sources: [
@@ -8365,7 +8365,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Scatter, Disperse, Spend, Squander',
     onyomi: 'サン',
     kunyomi: 'ち・る, ち・らす, -ち・らす, ち・らかす, ち・らかる, ばら',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '攵 (strike)',
     sources: [
@@ -8383,7 +8383,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Blow, Breathe, Puff, Emit, Smelt',
     onyomi: 'スイ',
     kunyomi: 'ふ・く',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '口 (mouth)',
     sources: [
@@ -8399,7 +8399,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Boy, Priest, Monk, Room',
     onyomi: 'ボウ, ボッ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '土 (earth)',
     sources: [
@@ -8416,7 +8416,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Angry, Be offended',
     onyomi: 'ド, ヌ',
     kunyomi: 'いか・る, おこ・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '心 (heart)',
     sources: [
@@ -8433,7 +8433,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Livestock, Domestic fowl and animals',
     onyomi: 'チク',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '田 (rice field)',
     sources: [
@@ -8449,7 +8449,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Genius, Years old, Talent',
     onyomi: 'サイ',
     kunyomi: '-',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 3,
     radical: '手 (hand)',
     sources: [
@@ -8466,7 +8466,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Rare, Curious, Strange',
     onyomi: 'チン',
     kunyomi: 'めずら・しい, たから',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '玉 (jade)',
     sources: [
@@ -8482,7 +8482,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Gain, Get, Find, Earn, Acquire, Profit, Advantage',
     onyomi: 'トク',
     kunyomi: 'え・る, う・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '彳 (step)',
     sources: [
@@ -8501,7 +8501,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Tell, Proclaim, Announce, Inform, Report',
     onyomi: 'コク',
     kunyomi: 'つ・げる',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 7,
     radical: '口 (mouth)',
     sources: [
@@ -8520,7 +8520,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Tax, Duty',
     onyomi: 'ゼイ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '禾 (grain)',
     sources: [
@@ -8539,7 +8539,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Value, Price',
     onyomi: 'カ, ケ',
     kunyomi: 'あたい',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '亻 (person)',
     sources: [
@@ -8556,7 +8556,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Status, Rank, Capacity, Character, Case (grammar)',
     onyomi: 'カク, コウ, キャク, ゴウ',
     kunyomi: 'いた・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '木 (tree)',
     sources: [
@@ -8573,7 +8573,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Transcend, Super-, Ultra-, Exceed, Go beyond',
     onyomi: 'チョウ',
     kunyomi: 'こ・える, こ・す',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '走 (run)',
     sources: [
@@ -8592,7 +8592,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Level, Average',
     onyomi: 'キン',
     kunyomi: 'なら・す',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '土 (earth)',
     sources: [
@@ -8610,7 +8610,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Shoes, Boots',
     onyomi: 'カ',
     kunyomi: 'くつ, かの',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '革 (leather)',
     sources: [
@@ -8629,7 +8629,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Submit, Offer, Present, Accompany',
     onyomi: 'キョウ, ク, クウ, グ',
     kunyomi: 'そな・える, とも, -ども',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 8,
     radical: '亻 (person)',
     sources: [
@@ -8646,7 +8646,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Elephant, Pattern after, Imitate, Image, Shape',
     onyomi: 'ショウ, ゾウ',
     kunyomi: 'かたど・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '豕 (pig)',
     sources: [
@@ -8665,7 +8665,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Association, Assemble, Unite, Class, Team',
     onyomi: 'ソ',
     kunyomi: 'く・む, くみ, -ぐみ',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 11,
     radical: '糸 (thread)',
     sources: [
@@ -8684,7 +8684,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Price, Cost, Value',
     onyomi: 'チ',
     kunyomi: 'ね, あたい',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '亻 (person)',
     sources: [
@@ -8703,7 +8703,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Recruit, Campaign, Gather (contributions)',
     onyomi: 'ボ',
     kunyomi: 'つの・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '力 (power)',
     sources: [
@@ -8722,7 +8722,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Nothingness, None, Ain\'t, Nothing, Nil, Not',
     onyomi: 'ム, ブ',
     kunyomi: 'な・い',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 12,
     radical: '灬 (fire)',
     sources: [
@@ -8741,7 +8741,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Packed, Close, Pressed, Rebuked, Blamed',
     onyomi: 'キツ, キチ',
     kunyomi: 'つ・める, つ・め, -づ・め, つ・まる, つ・む',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '言 (words)',
     sources: [
@@ -8759,7 +8759,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Barley, Wheat',
     onyomi: 'バク',
     kunyomi: 'むぎ',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 7,
     radical: '麦 (wheat)',
     sources: [
@@ -8776,7 +8776,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Genuine, Purity, Innocence, Net (profit)',
     onyomi: 'ジュン',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '糸 (thread)',
     sources: [
@@ -8795,7 +8795,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Grass, Weeds, Herbs, Pasture, Write, Draft',
     onyomi: 'ソウ',
     kunyomi: 'くさ, くさ-, -ぐさ',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 9,
     radical: '艹 (grass)',
     sources: [
@@ -8814,7 +8814,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Salt',
     onyomi: 'エン',
     kunyomi: 'しお',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 13,
     radical: '土 (earth)',
     sources: [
@@ -8831,7 +8831,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Harden, Set, Clot, Curdle, Firm',
     onyomi: 'コ',
     kunyomi: 'かた・める, かた・まる, かた・い, かた・く',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '囗 (enclosure)',
     sources: [
@@ -8851,7 +8851,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Performance, Act, Play, Render, Stage',
     onyomi: 'エン',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 14,
     radical: '氵 (water)',
     sources: [
@@ -8870,7 +8870,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Candy, Cakes, Fruit',
     onyomi: 'カ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '艹 (grass)',
     sources: [
@@ -8888,7 +8888,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Presents, Send, Give to, Award to, Confer on',
     onyomi: 'ゾウ, ソウ',
     kunyomi: 'おく・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 18,
     radical: '貝 (shell)',
     sources: [
@@ -8905,7 +8905,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Focus, Government ministry, Conserve',
     onyomi: 'セイ, ショウ',
     kunyomi: 'かえり・みる, はぶ・く',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '目 (eye)',
     sources: [
@@ -8926,7 +8926,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Acquiesce, Hear, Listen to, Be informed, Receive',
     onyomi: 'ショウ, ジョウ',
     kunyomi: 'うけたまわ・る, う・ける',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '手 (hand)',
     sources: [
@@ -8945,7 +8945,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Unfold, Expand',
     onyomi: 'テン',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '尸 (corpse)',
     sources: [
@@ -8964,7 +8964,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Rend, Rip, Tear, Break, Destroy, Defeat',
     onyomi: 'ハ',
     kunyomi: 'やぶ・る, やぶ・れる',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '石 (stone)',
     sources: [
@@ -8984,7 +8984,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Dispose, Manage, Deal with, Sentence, Condemn',
     onyomi: 'ショ',
     kunyomi: 'ところ, こ, お・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 5,
     radical: '几 (table)',
     sources: [
@@ -9002,7 +9002,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Spring, Fountain',
     onyomi: 'セン',
     kunyomi: 'いずみ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '水 (water)',
     sources: [
@@ -9019,7 +9019,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Inn, Lodging, Relayed station, Dwell, Home',
     onyomi: 'シュク',
     kunyomi: 'やど, やど・る, やど・す',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 11,
     radical: '宀 (roof)',
     sources: [
@@ -9037,7 +9037,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Seasons',
     onyomi: 'キ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '子 (child)',
     sources: [
@@ -9055,7 +9055,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bountiful, Excellent, Rich',
     onyomi: 'ホウ, ブ',
     kunyomi: 'ゆた・か, とよ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '豆 (bean)',
     sources: [
@@ -9072,7 +9072,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Wealth, Enrich, Abundant',
     onyomi: 'フ, フウ',
     kunyomi: 'と・む, とみ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '宀 (roof)',
     sources: [
@@ -9091,7 +9091,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Welcome, Meet, Greet',
     onyomi: 'ゲイ',
     kunyomi: 'むか・える',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '辶 (road)',
     sources: [
@@ -9110,7 +9110,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Overnight stay, Put up at, Ride at anchor',
     onyomi: 'ハク',
     kunyomi: 'と・まる, と・める',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 8,
     radical: '氵 (water)',
     sources: [
@@ -9128,7 +9128,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Reside, To be, Exist, Live with',
     onyomi: 'キョ, コ',
     kunyomi: 'い・る, お・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '尸 (corpse)',
     sources: [
@@ -9147,7 +9147,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fabricate, Build, Construct',
     onyomi: 'チク',
     kunyomi: 'きず・く',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 16,
     radical: '竹 (bamboo)',
     sources: [
@@ -9164,7 +9164,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Angle, Corner, Square, Horn',
     onyomi: 'カク',
     kunyomi: 'かど, つの',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 7,
     radical: '角 (horn)',
     sources: [
@@ -9183,7 +9183,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Junior, Emptiness, Vanity, Futility, Gang, On foot',
     onyomi: 'ト',
     kunyomi: 'いたずら, あだ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '彳 (step)',
     sources: [
@@ -9200,7 +9200,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Tatami mat, Counter for tatami mats, Fold',
     onyomi: 'ジョウ, チョウ',
     kunyomi: 'たた・む, たたみ, かさ・なる',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '田 (rice field)',
     sources: [
@@ -9218,7 +9218,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Rice, USA, Meter',
     onyomi: 'ベイ, マイ, メエトル',
     kunyomi: 'こめ, よね',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 6,
     radical: '米 (rice)',
     sources: [
@@ -9237,7 +9237,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Unravel, Notes, Key, Explanation, Solve',
     onyomi: 'カイ, ゲ',
     kunyomi: 'と・く, と・かす, と・ける, ほど・く, ほど・ける, わか・る, さと・る',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 13,
     radical: '角 (horn)',
     sources: [
@@ -9258,7 +9258,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Environs, Boundary, Border, Vicinity',
     onyomi: 'ヘン',
     kunyomi: 'あた・り, ほと・り, -べ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 5,
     radical: '辶 (road)',
     sources: [
@@ -9277,7 +9277,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Guess, Presume, Surmise, Judge, Understand',
     onyomi: 'サツ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 14,
     radical: '宀 (roof)',
     sources: [
@@ -9294,7 +9294,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Duty, War, Campaign, Role',
     onyomi: 'ヤク, エキ',
     kunyomi: '-',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 7,
     radical: '彳 (step)',
     sources: [
@@ -9313,7 +9313,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Beauty, Beautiful',
     onyomi: 'ビ, ミ',
     kunyomi: 'うつく・しい',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '羊 (sheep)',
     sources: [
@@ -9331,7 +9331,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Art, Technique, Skill, Means, Trick',
     onyomi: 'ジュツ',
     kunyomi: 'すべ',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 11,
     radical: '行 (go)',
     sources: [
@@ -9350,7 +9350,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Slope, Incline, Hill',
     onyomi: 'ハン',
     kunyomi: 'さか',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '土 (earth)',
     sources: [
@@ -9367,7 +9367,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Buddhist temple',
     onyomi: 'ジ',
     kunyomi: 'てら',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 6,
     radical: '寸 (inch)',
     sources: [
@@ -9385,7 +9385,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Gulf, Bay, Inlet',
     onyomi: 'ワン',
     kunyomi: 'いりえ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '氵 (water)',
     sources: [
@@ -9402,7 +9402,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Island',
     onyomi: 'トウ',
     kunyomi: 'しま',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 10,
     radical: '山 (mountain)',
     sources: [
@@ -9421,7 +9421,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Beach',
     onyomi: 'ガン',
     kunyomi: 'きし',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '山 (mountain)',
     sources: [
@@ -9440,7 +9440,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Park, Garden, Yard, Farm',
     onyomi: 'エン',
     kunyomi: 'その',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 13,
     radical: '囗 (enclosure)',
     sources: [
@@ -9459,7 +9459,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Lake',
     onyomi: 'コ',
     kunyomi: 'みずうみ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '氵 (water)',
     sources: [
@@ -9476,7 +9476,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Castle',
     onyomi: 'ジョウ',
     kunyomi: 'しろ, き',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '土 (earth)',
     sources: [
@@ -9493,7 +9493,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Valley',
     onyomi: 'コク',
     kunyomi: 'たに, きわ・まる',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 7,
     radical: '谷 (valley)',
     sources: [
@@ -9512,7 +9512,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Property, Money, Wealth, Assets',
     onyomi: 'ザイ, サイ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '貝 (shell)',
     sources: [
@@ -9530,7 +9530,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Outlook, Look, Appearance, Condition, View',
     onyomi: 'カン',
     kunyomi: 'み・る, しめ・す',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 18,
     radical: '見 (see)',
     sources: [
@@ -9549,7 +9549,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Treasure, Wealth, Valuables',
     onyomi: 'ホウ',
     kunyomi: 'たから',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '宀 (roof)',
     sources: [
@@ -9568,7 +9568,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Buddha, The dead, France',
     onyomi: 'ブツ, フツ',
     kunyomi: 'ほとけ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 4,
     radical: '亻 (person)',
     sources: [
@@ -9587,7 +9587,7 @@ window.N2_KANJI_DATA = [
     meaning: 'King, Rule, Magnate',
     onyomi: 'オウ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 4,
     radical: '王 (king)',
     sources: [
@@ -9606,7 +9606,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Copper',
     onyomi: 'ドウ',
     kunyomi: 'あかがね',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 14,
     radical: '金 (metal)',
     sources: [
@@ -9623,7 +9623,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Pagoda, Tower, Steeple',
     onyomi: 'トウ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '土 (earth)',
     sources: [
@@ -9641,7 +9641,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Picture, Drawing, Painting, Sketch',
     onyomi: 'エ, カイ',
     kunyomi: '-',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 12,
     radical: '糸 (thread)',
     sources: [
@@ -9659,7 +9659,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Abbreviation, Omission, Outline, Shorten',
     onyomi: 'リャク',
     kunyomi: 'ほぼ, おか・す, おさ・める, はかりごと, はか・る, はぶ・く',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '田 (rice field)',
     sources: [
@@ -9678,7 +9678,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Obey, Order, Turn, Right, Docility, Occasion',
     onyomi: 'ジュン',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '頁 (leaf)',
     sources: [
@@ -9697,7 +9697,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Printing block, Printing plate, Edition, Impression',
     onyomi: 'ハン',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '片 (split wood)',
     sources: [
@@ -9715,7 +9715,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Technique, Art, Craft, Performance, Acting',
     onyomi: 'ゲイ, ウン',
     kunyomi: 'う・える, のり, わざ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '艹 (grass)',
     sources: [
@@ -9734,7 +9734,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Duplicate, Double, Compound, Multiple',
     onyomi: 'フク',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 14,
     radical: '衤 (clothing)',
     sources: [
@@ -9753,7 +9753,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Publish, Carve, Engrave',
     onyomi: 'カン',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 5,
     radical: '刂 (knife)',
     sources: [
@@ -9772,7 +9772,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Stratum, Social class, Layer, Story, Floor',
     onyomi: 'ソウ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 14,
     radical: '尸 (corpse)',
     sources: [
@@ -9790,7 +9790,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bundle, Sheaf, Ream, Tie in bundles, Govern',
     onyomi: 'ソク',
     kunyomi: 'たば, たば・ねる, つか, つか・ねる',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '木 (tree)',
     sources: [
@@ -9809,7 +9809,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sweet, Coax, Pamper, Sugary',
     onyomi: 'カン',
     kunyomi: 'あま・い, あま・える, あま・やかす, うま・い',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 5,
     radical: '甘 (sweet)',
     sources: [
@@ -9827,7 +9827,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Spicy, Hot, Bitter, Pungent',
     onyomi: 'シン',
     kunyomi: 'から・い, つら・い, -づら・い, かのと',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '辛 (bitter)',
     sources: [
@@ -9844,7 +9844,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Dish, A helping, Plate',
     onyomi: 'ベイ',
     kunyomi: 'さら',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 5,
     radical: '皿 (dish)',
     sources: [
@@ -9863,7 +9863,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Cotton',
     onyomi: 'メン',
     kunyomi: 'わた',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 14,
     radical: '糸 (thread)',
     sources: [
@@ -9881,7 +9881,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Old times, Old things, Old friend, Former',
     onyomi: 'キュウ',
     kunyomi: 'ふる・い, もと',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 5,
     radical: '日 (sun)',
     sources: [
@@ -9899,7 +9899,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Thick, Heavy, Rich, Kind, Cordial',
     onyomi: 'コウ',
     kunyomi: 'あつ・い, あか',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '厂 (cliff)',
     sources: [
@@ -9919,7 +9919,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Dilute, Thin, Weak (tea), Paled',
     onyomi: 'ハク',
     kunyomi: 'うす・い, うす-, -うす, うす・める, うす・まる, うす・らぐ, うす・れる, すすき',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 16,
     radical: '艹 (grass)',
     sources: [
@@ -9938,7 +9938,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Grains, Drop, Counter for tiny particles',
     onyomi: 'リュウ',
     kunyomi: 'つぶ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '米 (rice)',
     sources: [
@@ -9955,7 +9955,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Poles, Settlement, Conclusion, End, Highest rank',
     onyomi: 'キョク, ゴク',
     kunyomi: 'きわ・める, きわ・まる, きわ・まり, きわ・み, き・める, -ぎ・め, き・まる',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '木 (tree)',
     sources: [
@@ -9975,7 +9975,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Leather, Skin, Reform, Become serious',
     onyomi: 'カク',
     kunyomi: 'かわ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '革 (leather)',
     sources: [
@@ -9994,7 +9994,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Suffering, Trial, Worry, Hardship, Feel bitter',
     onyomi: 'ク',
     kunyomi: 'くる・しい, -ぐる・しい, くる・しむ, くる・しめる, にが・い, にが・る',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 8,
     radical: '艹 (grass)',
     sources: [
@@ -10013,7 +10013,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Quandary, Become distressed, Annoyed',
     onyomi: 'コン',
     kunyomi: 'こま・る',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 7,
     radical: '囗 (enclosure)',
     sources: [
@@ -10030,7 +10030,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Icicle, Ice, Hail, Freeze, Congeal',
     onyomi: 'ヒョウ',
     kunyomi: 'こおり, ひ, こお・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 5,
     radical: '水 (water)',
     sources: [
@@ -10047,7 +10047,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Eternity, Long, Lengthy',
     onyomi: 'エイ',
     kunyomi: 'なが・い',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 5,
     radical: '水 (water)',
     sources: [
@@ -10064,7 +10064,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Husband, Man',
     onyomi: 'フ, フウ, ブ',
     kunyomi: 'おっと, そ・れ',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 4,
     radical: '大 (large)',
     sources: [
@@ -10082,7 +10082,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Discriminating, Know, Write',
     onyomi: 'シキ',
     kunyomi: 'し・る, しる・す',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 19,
     radical: '言 (words)',
     sources: [
@@ -10100,7 +10100,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Pinch, Between, Insert',
     onyomi: 'キョウ, ショウ',
     kunyomi: 'はさ・む, はさ・まる, わきばさ・む, さしはさ・む',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '扌 (hand)',
     sources: [
@@ -10117,7 +10117,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Cramped, Narrow, Contract, Tight',
     onyomi: 'キョウ, コウ',
     kunyomi: 'せま・い, せば・める, せば・まる, おでま',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 9,
     radical: '犭 (dog)',
     sources: [
@@ -10133,7 +10133,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Flock, Group, Crowd, Herd, Swarm, Cluster',
     onyomi: 'グン',
     kunyomi: 'む・れる, む・れ, むら, むら・がる',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '羊 (sheep)',
     sources: [
@@ -10151,7 +10151,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Ancestor, Pioneer, Founder',
     onyomi: 'ソ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '礻 (altar)',
     sources: [
@@ -10169,7 +10169,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Corner, Nook',
     onyomi: 'グウ',
     kunyomi: 'すみ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '阝 (mound)',
     sources: [
@@ -10186,7 +10186,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Accidentally, Even number, Couple, Man & wife, Same kind',
     onyomi: 'グウ',
     kunyomi: 'たま',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '亻 (person)',
     sources: [
@@ -10204,7 +10204,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Request, Want, Wish for, Require, Demand',
     onyomi: 'キュウ, グ',
     kunyomi: 'もと・める',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '水 (water)',
     sources: [
@@ -10223,7 +10223,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Simplicity, Brevity',
     onyomi: 'カン, ケン',
     kunyomi: 'えら・ぶ, ふだ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 18,
     radical: '竹 (bamboo)',
     sources: [
@@ -10239,7 +10239,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Simple, One, Single, Merely',
     onyomi: 'タン',
     kunyomi: 'ひとえ',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 9,
     radical: '十 (ten)',
     sources: [
@@ -10258,7 +10258,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Permit, Approve',
     onyomi: 'キョ',
     kunyomi: 'ゆる・す, もと',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '言 (words)',
     sources: [
@@ -10276,7 +10276,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Salary, Wage, Gift, Allow, Grant, Bestow',
     onyomi: 'キュウ',
     kunyomi: 'たま・う, たも・う, -たま・え',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '糸 (thread)',
     sources: [
@@ -10297,7 +10297,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bestow, Participate in, Give, Award, Impart',
     onyomi: 'ヨ',
     kunyomi: 'あた・える, あずか・る, くみ・する, ともに',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 3,
     radical: '一 (one)',
     sources: [
@@ -10314,7 +10314,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Apply, Answer, Yes, OK, Adapt',
     onyomi: 'オウ, ヨウ, ノウ',
     kunyomi: 'こた・える, こた・え, まさ・に',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '心 (heart)',
     sources: [
@@ -10333,7 +10333,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Chapter, Lesson, Section, Department, Division',
     onyomi: 'カ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 15,
     radical: '言 (words)',
     sources: [
@@ -10351,7 +10351,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Extent, Degree, Law, Formula, Distance, Limits',
     onyomi: 'テイ',
     kunyomi: 'ほど, -ほど',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '禾 (grain)',
     sources: [
@@ -10370,7 +10370,7 @@ window.N2_KANJI_DATA = [
     meaning: 'System, Regulate, Rule, Control',
     onyomi: 'セイ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '刂 (knife)',
     sources: [
@@ -10389,7 +10389,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Lecture, Club, Association',
     onyomi: 'コウ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 17,
     radical: '言 (words)',
     sources: [
@@ -10408,7 +10408,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Class, Rank, Grade',
     onyomi: 'キュウ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '糸 (thread)',
     sources: [
@@ -10427,7 +10427,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fundamentals, Radical (chem), Counter for machines, Foundation',
     onyomi: 'キ',
     kunyomi: 'もと, もとい',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '土 (earth)',
     sources: [
@@ -10446,7 +10446,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Guide, Conduct, Usher',
     onyomi: 'ドウ',
     kunyomi: 'みちび・く',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 15,
     radical: '寸 (inch)',
     sources: [
@@ -10464,7 +10464,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Courtyard, Garden, Yard',
     onyomi: 'テイ',
     kunyomi: 'にわ',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 10,
     radical: '广 (dotted cliff)',
     sources: [
@@ -10482,7 +10482,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bring up, Grow up, Raise, Rear',
     onyomi: 'イク',
     kunyomi: 'そだ・つ, そだ・ち, そだ・てる, はぐく・む',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 8,
     radical: '⺼ (meat)',
     sources: [
@@ -10502,7 +10502,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Cat',
     onyomi: 'ビョウ',
     kunyomi: 'ねこ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '犭 (dog)',
     sources: [
@@ -10518,7 +10518,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Grope, Search, Look for',
     onyomi: 'タン',
     kunyomi: 'さが・す, さぐ・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '扌 (hand)',
     sources: [
@@ -10536,7 +10536,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Ashes, Puckery juice, Creep, Low',
     onyomi: 'カイ',
     kunyomi: 'はい',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 6,
     radical: '火 (fire)',
     sources: [
@@ -10554,7 +10554,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Wheel, Ring, Circle, Link, Loop, Counter for wheels and flowers',
     onyomi: 'リン',
     kunyomi: 'わ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 15,
     radical: '車 (cart)',
     sources: [
@@ -10572,7 +10572,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Nightfall, Night',
     onyomi: 'バン',
     kunyomi: '-',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 12,
     radical: '日 (sun)',
     sources: [
@@ -10590,7 +10590,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Drama, Play',
     onyomi: 'ゲキ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 15,
     radical: '刂 (knife)',
     sources: [
@@ -10609,7 +10609,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Public, Prince, Official, Governmental',
     onyomi: 'コウ, ク',
     kunyomi: 'おおやけ',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 4,
     radical: '八 (eight)',
     sources: [
@@ -10628,7 +10628,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Jump, Dance, Leap, Skip',
     onyomi: 'ヨウ',
     kunyomi: 'おど・る, おど・り',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 14,
     radical: '足 (foot)',
     sources: [
@@ -10646,7 +10646,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Species, Kind, Class, Variety, Seed',
     onyomi: 'シュ',
     kunyomi: 'たね, -ぐさ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 14,
     radical: '禾 (grain)',
     sources: [
@@ -10665,7 +10665,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Equal, Head, Counter for small animals, Roll of cloth',
     onyomi: 'ヒツ',
     kunyomi: 'ひき',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 4,
     radical: '匚 (box)',
     sources: [
@@ -10682,7 +10682,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Transit, Ferry, Cross, Import, Deliver',
     onyomi: 'ト',
     kunyomi: 'わた・る, -わた・る, わた・す',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '氵 (water)',
     sources: [
@@ -10701,7 +10701,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Horse',
     onyomi: 'バ',
     kunyomi: 'うま, うま-, ま',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 10,
     radical: '馬 (horse)',
     sources: [
@@ -10718,7 +10718,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Shellfish, Shell',
     onyomi: '-',
     kunyomi: 'かい',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 7,
     radical: '貝 (shell)',
     sources: [
@@ -10735,7 +10735,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sake, Alcohol',
     onyomi: 'シュ',
     kunyomi: 'さけ, さか-',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 10,
     radical: '酉 (wine bottle)',
     sources: [
@@ -10754,7 +10754,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Steam, Heat, Foment, Get musty',
     onyomi: 'ジョウ, セイ',
     kunyomi: 'む・す, む・れる, む・らす',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '艹 (grass)',
     sources: [
@@ -10773,7 +10773,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Dry, Parch, Ebb, Recede, Interfere, Intercede',
     onyomi: 'カン',
     kunyomi: 'ほ・す, ほ・し-, -ぼ・し, ひ・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 3,
     radical: '干 (dry)',
     sources: [
@@ -10790,7 +10790,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bamboo',
     onyomi: 'チク',
     kunyomi: 'たけ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 6,
     radical: '竹 (bamboo)',
     sources: [
@@ -10807,7 +10807,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Egg, Ovum, Spawn, Roe',
     onyomi: 'ラン',
     kunyomi: 'たまご',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 7,
     radical: '卩 (seal)',
     sources: [
@@ -10824,7 +10824,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Root, Radical, Head (pimple)',
     onyomi: 'コン',
     kunyomi: 'ね, -ね',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '木 (tree)',
     sources: [
@@ -10842,7 +10842,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Lumber, Material, Talent, Timber',
     onyomi: 'ザイ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '木 (tree)',
     sources: [
@@ -10861,7 +10861,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Plant',
     onyomi: 'ショク',
     kunyomi: 'う・える, う・わる',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 12,
     radical: '木 (tree)',
     sources: [
@@ -10880,7 +10880,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sand',
     onyomi: 'サ, シャ',
     kunyomi: 'すな',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '石 (stone)',
     sources: [
@@ -10898,7 +10898,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Milk, Breasts',
     onyomi: 'ニュウ',
     kunyomi: 'ちち, ち',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '乙 (second)',
     sources: [
@@ -10917,7 +10917,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Contain, Formulate, Include',
     onyomi: 'ガン',
     kunyomi: 'ふく・む, ふく・める',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '口 (mouth)',
     sources: [
@@ -10934,7 +10934,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Charcoal, Coal',
     onyomi: 'タン',
     kunyomi: 'すみ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '火 (fire)',
     sources: [
@@ -10952,7 +10952,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fat, Grease, Tallow, Lard, Rosin, Gum',
     onyomi: 'シ',
     kunyomi: 'あぶら',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '⺼ (meat)',
     sources: [
@@ -10971,7 +10971,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Cylinder, Pipe, Tube, Snorkel',
     onyomi: 'トウ',
     kunyomi: 'つつ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '竹 (bamboo)',
     sources: [
@@ -10989,7 +10989,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Graduate, Soldier, Private, Die',
     onyomi: 'ソツ, シュツ',
     kunyomi: 'そっ・する, お・える, お・わる, ついに, にわか',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 8,
     radical: '十 (ten)',
     sources: [
@@ -11006,7 +11006,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Exploits, Unreeling cocoons',
     onyomi: 'セキ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 17,
     radical: '糸 (thread)',
     sources: [
@@ -11024,7 +11024,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Argument, Discourse',
     onyomi: 'ロン',
     kunyomi: '-',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 15,
     radical: '言 (words)',
     sources: [
@@ -11043,7 +11043,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Intention, Plan, Resolve, Aspire, Motive, Aim',
     onyomi: 'シ',
     kunyomi: 'こころざ・す, こころざし',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '心 (heart)',
     sources: [
@@ -11060,7 +11060,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Mention, State, Speak, Relate',
     onyomi: 'ジュツ',
     kunyomi: 'の・べる',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '辶 (road)',
     sources: [
@@ -11079,7 +11079,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Posture, Build, Pretend',
     onyomi: 'コウ',
     kunyomi: 'かま・える, かま・う',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 14,
     radical: '木 (tree)',
     sources: [
@@ -11098,7 +11098,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Slow, Late, Back, Later',
     onyomi: 'チ',
     kunyomi: 'おそ・い, おく・れる, おく・らす',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 12,
     radical: '辶 (road)',
     sources: [
@@ -11116,7 +11116,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sham, Temporary, Interim, Assumed (name), Informal',
     onyomi: 'カ, ケ',
     kunyomi: 'かり, かり-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 6,
     radical: '亻 (person)',
     sources: [
@@ -11135,7 +11135,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Desk, Table',
     onyomi: 'キ',
     kunyomi: 'つくえ',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 6,
     radical: '木 (tree)',
     sources: [
@@ -11151,7 +11151,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Tome, Counter for books, Volume',
     onyomi: 'サツ, サク',
     kunyomi: 'ふみ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 5,
     radical: '冂 (upside-down box)',
     sources: [
@@ -11168,7 +11168,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Pick, Take, Fetch, Take up',
     onyomi: 'サイ',
     kunyomi: 'と・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '扌 (hand)',
     sources: [
@@ -11187,7 +11187,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Concentrated, Thick, Dark, Undiluted',
     onyomi: 'ノウ',
     kunyomi: 'こ・い',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 16,
     radical: '氵 (water)',
     sources: [
@@ -11204,7 +11204,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Writing brush, Writing, Paintbrush',
     onyomi: 'ヒツ',
     kunyomi: 'ふで',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '竹 (bamboo)',
     sources: [
@@ -11223,7 +11223,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Navigate, Sail, Cruise, Fly',
     onyomi: 'コウ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '舟 (boat)',
     sources: [
@@ -11241,7 +11241,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Land, Six',
     onyomi: 'リク, ロク',
     kunyomi: 'おか',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '阝 (mound)',
     sources: [
@@ -11260,7 +11260,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Damage, Loss, Disadvantage, Hurt, Injure',
     onyomi: 'ソン',
     kunyomi: 'そこ・なう, そこな・う, -そこ・なう, そこ・ねる, -そこ・ねる',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '扌 (hand)',
     sources: [
@@ -11279,7 +11279,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Climate, Season, Weather, Wait for, Expect',
     onyomi: 'コウ',
     kunyomi: 'そうろう',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '亻 (person)',
     sources: [
@@ -11296,7 +11296,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Ship, Boat',
     onyomi: 'セン',
     kunyomi: 'ふね, ふな-',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 11,
     radical: '舟 (boat)',
     sources: [
@@ -11315,7 +11315,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Round, Full (month), Perfection, -maru suffix',
     onyomi: 'ガン',
     kunyomi: 'まる, まる・める, まる・い',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 3,
     radical: '丶 (dot)',
     sources: [
@@ -11333,7 +11333,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Mix, Blend, Confuse',
     onyomi: 'コン',
     kunyomi: 'ま・じる, -ま・じり, ま・ざる, ま・ぜる, こ・む',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '氵 (water)',
     sources: [
@@ -11352,7 +11352,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Concept, Think, Idea, Thought',
     onyomi: 'ソウ, ソ',
     kunyomi: 'おも・う',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '心 (heart)',
     sources: [
@@ -11371,7 +11371,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Happenstance, Especially, Cause, Reason, The late',
     onyomi: 'コ',
     kunyomi: 'ゆえ, ふる・い, もと',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '攴 (action)',
     sources: [
@@ -11389,7 +11389,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Riot, War, Disorder, Disturbed',
     onyomi: 'ラン, ロン',
     kunyomi: 'みだ・れる, みだ・る, みだ・す, おさ・める, わた・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 7,
     radical: '乙 (second)',
     sources: [
@@ -11407,7 +11407,7 @@ window.N2_KANJI_DATA = [
     meaning: 'River',
     onyomi: 'カ',
     kunyomi: 'かわ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '氵 (water)',
     sources: [
@@ -11425,7 +11425,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Transport, Send, Be inferior',
     onyomi: 'ユ, シュ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 16,
     radical: '車 (cart)',
     sources: [
@@ -11444,7 +11444,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Ratio, Rate, Proportion, Lead, Factor',
     onyomi: 'リツ, ソツ',
     kunyomi: 'ひき・いる',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '玄 (profound)',
     sources: [
@@ -11464,7 +11464,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Eaves, Roof, House, Heaven',
     onyomi: 'ウ',
     kunyomi: '-',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 6,
     radical: '宀 (roof)',
     sources: [
@@ -11481,7 +11481,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Door, Counter for houses',
     onyomi: 'コ',
     kunyomi: 'と',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 4,
     radical: '戸 (door)',
     sources: [
@@ -11501,7 +11501,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Clear up, Clear weather, Fine',
     onyomi: 'セイ',
     kunyomi: 'は・れる, は・らす',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 12,
     radical: '日 (sun)',
     sources: [
@@ -11520,7 +11520,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Cloudy weather, Cloud up',
     onyomi: 'ドン',
     kunyomi: 'くも・る',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 16,
     radical: '日 (sun)',
     sources: [
@@ -11537,7 +11537,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Snow',
     onyomi: 'セツ',
     kunyomi: 'ゆき',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 11,
     radical: '雨 (rain)',
     sources: [
@@ -11556,7 +11556,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Favor, Blessing, Grace, Kindness',
     onyomi: 'ケイ, エ',
     kunyomi: 'めぐ・む, めぐ・み',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 10,
     radical: '心 (heart)',
     sources: [
@@ -11574,7 +11574,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Sunshine, Yang principle, Positive, Male, Heaven, Daytime',
     onyomi: 'ヨウ',
     kunyomi: 'ひ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '阝 (mound)',
     sources: [
@@ -11591,7 +11591,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Cloud',
     onyomi: 'ウン',
     kunyomi: 'くも, -ぐも',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '雨 (rain)',
     sources: [
@@ -11608,7 +11608,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fishing, Fishery',
     onyomi: 'ギョ, リョウ',
     kunyomi: 'あさ・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 14,
     radical: '氵 (water)',
     sources: [
@@ -11625,7 +11625,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bottom, Sole, Depth, Bottom price',
     onyomi: 'テイ',
     kunyomi: 'そこ',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 8,
     radical: '广 (dotted cliff)',
     sources: [
@@ -11642,7 +11642,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Mineral, Ore',
     onyomi: 'コウ',
     kunyomi: 'あらがね',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '金 (metal)',
     sources: [
@@ -11659,7 +11659,7 @@ window.N2_KANJI_DATA = [
     meaning: 'He, That, The',
     onyomi: 'ヒ',
     kunyomi: 'かれ, かの, あれ',
-    levels: ["N2", "N4"],
+    levels: ['N2'],
     strokes: 8,
     radical: '彳 (step)',
     sources: [
@@ -11677,7 +11677,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Drop, Trickle, Dripping',
     onyomi: 'テキ',
     kunyomi: 'しずく, したた・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 14,
     radical: '氵 (water)',
     sources: [
@@ -11693,7 +11693,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Admirable, Greatness, Remarkable, Conceited, Famous',
     onyomi: 'イ',
     kunyomi: 'えら・い',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '亻 (person)',
     sources: [
@@ -11710,7 +11710,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Rule, Follow, Based on, Model after',
     onyomi: 'ソク',
     kunyomi: 'のっと・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 9,
     radical: '刂 (knife)',
     sources: [
@@ -11726,7 +11726,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fathom, Plan, Scheme, Measure',
     onyomi: 'ソク',
     kunyomi: 'はか・る',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 12,
     radical: '氵 (water)',
     sources: [
@@ -11743,7 +11743,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Impart, Instruct, Grant, Confer',
     onyomi: 'ジュ',
     kunyomi: 'さず・かる, さず・ける',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 11,
     radical: '扌 (hand)',
     sources: [
@@ -11759,7 +11759,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Zero, Spill, Overflow, Nothing',
     onyomi: 'レイ',
     kunyomi: 'ぜろ, こぼ・す, こぼ・れる',
-    levels: ["N2", "N3"],
+    levels: ['N2'],
     strokes: 13,
     radical: '雨 (rain)',
     sources: [
@@ -11775,7 +11775,7 @@ window.N2_KANJI_DATA = [
     meaning: 'State, Province',
     onyomi: 'シュウ, ス',
     kunyomi: 'す',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 6,
     radical: '川 (river)',
     sources: [
@@ -11793,7 +11793,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Wave',
     onyomi: 'ハ',
     kunyomi: 'なみ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '氵 (water)',
     sources: [
@@ -11811,7 +11811,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Steal, Rob, Thief',
     onyomi: 'トウ',
     kunyomi: 'ぬす・む, ぬす・びと',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '皿 (dish)',
     sources: [
@@ -11829,7 +11829,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Escape, Flee, Shirk',
     onyomi: 'トウ',
     kunyomi: 'に・げる, に・がす, のが・す, のが・れる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '辶 (road)',
     sources: [
@@ -11848,7 +11848,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Doubt, Distrust, Be suspicious, Question',
     onyomi: 'ギ',
     kunyomi: 'うたが・う',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '疋 (bolt of cloth)',
     sources: [
@@ -11866,7 +11866,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Catch, Capture',
     onyomi: 'ホ',
     kunyomi: 'と・らえる, と・らわれる, と・る, つか・まえる, つか・まる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '扌 (hand)',
     sources: [
@@ -11886,7 +11886,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Discontinue, Sever, Cut off, Incomparable',
     onyomi: 'ゼツ',
     kunyomi: 'た・える, た・やす, た・つ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '糸 (silk)',
     sources: [
@@ -11904,7 +11904,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Party, Faction, Clique',
     onyomi: 'トウ',
     kunyomi: 'なかま, むら',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '儿 (legs)',
     sources: [
@@ -11923,7 +11923,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Supplement, Supply, Make good, Offset',
     onyomi: 'ホ',
     kunyomi: 'おぎな・う',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '衤 (clothing)',
     sources: [
@@ -11942,7 +11942,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Child, Juvenile',
     onyomi: 'ドウ',
     kunyomi: 'わらべ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '立 (stand)',
     sources: [
@@ -11959,7 +11959,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bomb, Burst open, Pop, Split',
     onyomi: 'バク',
     kunyomi: 'は・ぜる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 19,
     radical: '火 (fire)',
     sources: [
@@ -11975,7 +11975,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Outburst, Raving, Run wild, Violence',
     onyomi: 'ボウ, バク',
     kunyomi: 'あば・れる, あば・く',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 15,
     radical: '日 (sun)',
     sources: [
@@ -11993,7 +11993,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Deceased, The late, Dying, Perish',
     onyomi: 'ボウ, モウ',
     kunyomi: 'な・くなる, な・き, ほろ・びる, ほろ・ぶ, ほろ・ぼす',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 3,
     radical: '亠 (lid)',
     sources: [
@@ -12011,7 +12011,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Guilt, Sin, Crime, Fault, Blame',
     onyomi: 'ザイ',
     kunyomi: 'つみ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '罒 (net)',
     sources: [
@@ -12030,7 +12030,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Mould, Type, Model',
     onyomi: 'ケイ',
     kunyomi: 'かた, -がた',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '土 (earth)',
     sources: [
@@ -12048,7 +12048,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Europe',
     onyomi: 'オウ',
     kunyomi: 'うた・う, は・く',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '欠 (lack)',
     sources: [
@@ -12065,7 +12065,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Labor, Thank for, Toil, Trouble',
     onyomi: 'ロウ',
     kunyomi: 'ねぎら・う, つか・れる, いたわ・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '力 (power)',
     sources: [
@@ -12083,7 +12083,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Portent, 10**12, Trillion, Sign, Omen',
     onyomi: 'チョウ',
     kunyomi: 'きざ・す, きざ・し',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 6,
     radical: '儿 (legs)',
     sources: [
@@ -12099,7 +12099,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Trade, Exchange',
     onyomi: 'ボウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '貝 (shell)',
     sources: [
@@ -12115,7 +12115,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Easy, Ready to, Simple, Fortune-telling',
     onyomi: 'エキ, イ',
     kunyomi: 'やさ・しい, やす・い',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '日 (sun)',
     sources: [
@@ -12134,7 +12134,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Agriculture, Farmers',
     onyomi: 'ノウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '辰 (dragon)',
     sources: [
@@ -12152,7 +12152,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fate, Command, Decree, Life, Destiny',
     onyomi: 'メイ, ミョウ',
     kunyomi: 'いのち',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 8,
     radical: '口 (mouth)',
     sources: [
@@ -12171,7 +12171,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Orders, Ancient scroll, Laws, Command',
     onyomi: 'レイ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 5,
     radical: '人 (person)',
     sources: [
@@ -12187,7 +12187,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Incur, Cover, Veil, Brood over, Suffer',
     onyomi: 'ヒ',
     kunyomi: 'こうむ・る, おお・う, かぶ・る, かぶ・せる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '衤 (clothing)',
     sources: [
@@ -12205,7 +12205,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Harm, Damage, Injury',
     onyomi: 'ガイ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '宀 (roof)',
     sources: [
@@ -12224,7 +12224,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Authority, Power, Rights',
     onyomi: 'ケン, ゴン',
     kunyomi: 'おもり, かり, はか・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 15,
     radical: '木 (tree)',
     sources: [
@@ -12242,7 +12242,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Hundred million, 10**8',
     onyomi: 'オク',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 15,
     radical: '亻 (person)',
     sources: [
@@ -12258,7 +12258,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Star, Spot, Dot',
     onyomi: 'セイ, ショウ',
     kunyomi: 'ほし, -ぼし',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '日 (sun)',
     sources: [
@@ -12276,7 +12276,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Warrior, Military, Chivalry, Arms',
     onyomi: 'ブ, ム',
     kunyomi: 'たけ・し',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '止 (stop)',
     sources: [
@@ -12294,7 +12294,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Gigantic, Big, Large, Great',
     onyomi: 'キョ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 5,
     radical: '匚 (box)',
     sources: [
@@ -12311,7 +12311,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Emulate, Compete with, Bid, Contest',
     onyomi: 'キョウ, ケイ',
     kunyomi: 'きそ・う, せ・る, くら・べる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 20,
     radical: '立 (stand)',
     sources: [
@@ -12329,7 +12329,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Failure, Defeat, Reversal',
     onyomi: 'ハイ',
     kunyomi: 'やぶ・れる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '攴 (rap)',
     sources: [
@@ -12347,7 +12347,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Inverted, Reverse, Opposite, Wicked',
     onyomi: 'ギャク, ゲキ',
     kunyomi: 'さか, さか・さ, さか・らう',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '辶 (road)',
     sources: [
@@ -12366,7 +12366,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Victory, Win, Prevail, Excel',
     onyomi: 'ショウ',
     kunyomi: 'か・つ, -が・ち, まさ・る, すぐ・れる',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 12,
     radical: '力 (power)',
     sources: [
@@ -12385,7 +12385,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Throw, Discard, Abandon, Launch into',
     onyomi: 'トウ',
     kunyomi: 'な・げる, -な・げ',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 7,
     radical: '扌 (hand)',
     sources: [
@@ -12404,7 +12404,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Army, Force, Military, War',
     onyomi: 'グン',
     kunyomi: 'いくさ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '車 (cart)',
     sources: [
@@ -12422,7 +12422,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Soldier, Private, Troops, Army',
     onyomi: 'ヘイ, ヒョウ',
     kunyomi: 'つわもの',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '八 (eight)',
     sources: [
@@ -12440,7 +12440,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Search, Seek, Investigate',
     onyomi: 'ソウ, シュ, シュウ',
     kunyomi: 'さが・す',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '扌 (hand)',
     sources: [
@@ -12457,7 +12457,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fall, Collapse, Drop, Overturn',
     onyomi: 'トウ',
     kunyomi: 'たお・れる, -だお・れ, たお・す',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 10,
     radical: '亻 (person)',
     sources: [
@@ -12476,7 +12476,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Skeleton, Bone, Remains, Frame',
     onyomi: 'コツ',
     kunyomi: 'ほね',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '骨 (bone)',
     sources: [
@@ -12493,7 +12493,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Needle, Pin, Staple, Stitch, Pointer',
     onyomi: 'シン',
     kunyomi: 'はり',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '金 (metal)',
     sources: [
@@ -12512,7 +12512,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Shout, Exclaim, Yell',
     onyomi: 'キョウ',
     kunyomi: 'さけ・ぶ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 6,
     radical: '口 (mouth)',
     sources: [
@@ -12529,7 +12529,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Brain, Memory',
     onyomi: 'ノウ, ドウ',
     kunyomi: 'のうずる',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '月 (meat)',
     sources: [
@@ -12546,7 +12546,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Embrace, Hug, Hold in arms',
     onyomi: 'ホウ',
     kunyomi: 'だ・く, いだ・く, かか・える',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '扌 (hand)',
     sources: [
@@ -12564,7 +12564,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Pair, Set, Comparison, Counter for pairs',
     onyomi: 'ソウ',
     kunyomi: 'ふた, たぐい, ならぶ, ふたつ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 4,
     radical: '又 (again)',
     sources: [
@@ -12581,7 +12581,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Revered, Valuable, Precious, Noble',
     onyomi: 'ソン',
     kunyomi: 'とうと・い, たっと・い, とうと・ぶ, たっと・ぶ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '寸 (inch)',
     sources: [
@@ -12598,7 +12598,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Employ, Hire',
     onyomi: 'コ',
     kunyomi: 'やと・う',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '隹 (short-tailed bird)',
     sources: [
@@ -12616,7 +12616,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Article, Clause, Item, Stripe, Streak',
     onyomi: 'ジョウ, チョウ, デキ',
     kunyomi: 'えだ, すじ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '木 (tree)',
     sources: [
@@ -12633,7 +12633,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Virtuous, Good, Goodness',
     onyomi: 'ゼン',
     kunyomi: 'よ・い, い・い, よく, よし・とする',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '口 (mouth)',
     sources: [
@@ -12651,7 +12651,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Rhythm, Law, Regulation, Control',
     onyomi: 'リツ, リチ, レツ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '彳 (step)',
     sources: [
@@ -12668,7 +12668,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Forces, Energy, Military strength',
     onyomi: 'セイ, ゼイ',
     kunyomi: 'いきお・い, はずみ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '力 (power)',
     sources: [
@@ -12687,7 +12687,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Dreadful, Be frightened, Fearful',
     onyomi: 'フ, ホ',
     kunyomi: 'こわ・い, こわ・がる, お・じる, おそ・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '忄 (heart)',
     sources: [
@@ -12704,7 +12704,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Laid waste, Rough, Rude, Wild',
     onyomi: 'コウ',
     kunyomi: 'あら・い, あら・す, -あらし, あ・れる, あ・らす, すさ・む',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '艹 (grass)',
     sources: [
@@ -12722,7 +12722,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Till, Plow, Cultivate',
     onyomi: 'コウ',
     kunyomi: 'たがや・す',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '耒 (plow)',
     sources: [
@@ -12740,7 +12740,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Scenery, View',
     onyomi: 'ケイ',
     kunyomi: '-',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 12,
     radical: '日 (sun)',
     sources: [
@@ -12759,7 +12759,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Dig, Delve, Excavate',
     onyomi: 'クツ',
     kunyomi: 'ほ・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '扌 (hand)',
     sources: [
@@ -12776,7 +12776,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Criticism, Strike',
     onyomi: 'ヒ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '扌 (hand)',
     sources: [
@@ -12793,7 +12793,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Judgement, Signature, Stamp, Seal',
     onyomi: 'ハン, バン',
     kunyomi: 'わか・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '刂 (knife)',
     sources: [
@@ -12811,7 +12811,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Retainer, Minister, Subject',
     onyomi: 'シン, ジン',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '臣 (minister)',
     sources: [
@@ -12829,7 +12829,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Intelligent, Wise, Wisdom, Cleverness',
     onyomi: 'ケン',
     kunyomi: 'かしこ・い',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 16,
     radical: '貝 (shell)',
     sources: [
@@ -12846,7 +12846,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Courage, Cheer up, Bravery, Heroism',
     onyomi: 'ユウ',
     kunyomi: 'いさ・む',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '力 (power)',
     sources: [
@@ -12863,7 +12863,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Awe, Respect, Honor, Revere',
     onyomi: 'ケイ, キョウ',
     kunyomi: 'うやま・う',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '攵 (rap)',
     sources: [
@@ -12881,7 +12881,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Evaluate, Criticize, Comment',
     onyomi: 'ヒョウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '言 (words)',
     sources: [
@@ -12898,7 +12898,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Becoming, Resemble, Counterfeit, Suitable',
     onyomi: 'ジ',
     kunyomi: 'に・る, ひ・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '亻 (person)',
     sources: [
@@ -12916,7 +12916,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Crime, Sin, Offense',
     onyomi: 'ハン, ボン',
     kunyomi: 'おか・す',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 5,
     radical: '犭 (dog)',
     sources: [
@@ -12934,7 +12934,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Grandchild, Descendants',
     onyomi: 'ソン',
     kunyomi: 'まご',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '子 (child)',
     sources: [
@@ -12951,7 +12951,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Daughter, Girl',
     onyomi: 'ジョウ',
     kunyomi: 'むすめ, こ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 10,
     radical: '女 (woman)',
     sources: [
@@ -12968,7 +12968,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Memorize, Learn, Remember, Awake',
     onyomi: 'カク',
     kunyomi: 'おぼ・える, さ・ます, さ・める, さと・る',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 12,
     radical: '見 (see)',
     sources: [
@@ -12988,7 +12988,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Cap, Headgear',
     onyomi: 'ボウ, モウ',
     kunyomi: 'ずきん, おお・う',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '巾 (cloth)',
     sources: [
@@ -13004,7 +13004,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Ring, Circle, Link',
     onyomi: 'カン',
     kunyomi: 'わ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 17,
     radical: '玉 (jade)',
     sources: [
@@ -13021,7 +13021,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Boundary, Border, Region',
     onyomi: 'キョウ, ケイ',
     kunyomi: 'さかい',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 14,
     radical: '土 (earth)',
     sources: [
@@ -13040,7 +13040,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Dwindle, Decrease, Subside, Decline',
     onyomi: 'ゲン',
     kunyomi: 'へ・る, へ・らす',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '氵 (water)',
     sources: [
@@ -13059,7 +13059,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Toil, Diligent, Exert oneself',
     onyomi: 'ド',
     kunyomi: 'つと・める',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '力 (power)',
     sources: [
@@ -13076,7 +13076,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Government office',
     onyomi: 'チョウ, テイ',
     kunyomi: 'やくしょ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 5,
     radical: '广 (broad roof)',
     sources: [
@@ -13094,7 +13094,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Bureaucrat, The government, Organ',
     onyomi: 'カン',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '宀 (roof)',
     sources: [
@@ -13111,7 +13111,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Mid-air, Air, Space, Sky, Memorization',
     onyomi: 'チュウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '宀 (roof)',
     sources: [
@@ -13127,7 +13127,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Single, Alone, Spontaneously, Germany',
     onyomi: 'ドク, トク',
     kunyomi: 'ひと・り',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 9,
     radical: '犭 (dog)',
     sources: [
@@ -13146,7 +13146,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Skill, Art, Craft, Ability, Feat',
     onyomi: 'ギ',
     kunyomi: 'わざ',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 7,
     radical: '扌 (hand)',
     sources: [
@@ -13166,7 +13166,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Politics, Government',
     onyomi: 'セイ, ショウ',
     kunyomi: 'まつりごと',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 9,
     radical: '攵 (rap)',
     sources: [
@@ -13185,7 +13185,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Condition, Situation',
     onyomi: 'キョウ',
     kunyomi: 'まし・て, いわ・んや',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '氵 (water)',
     sources: [
@@ -13202,7 +13202,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Arm, Ability, Talent',
     onyomi: 'ワン',
     kunyomi: 'うで',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '月 (meat)',
     sources: [
@@ -13220,7 +13220,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Rise up, Ascend',
     onyomi: 'ショウ',
     kunyomi: 'のぼ・る',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '日 (sun)',
     sources: [
@@ -13237,7 +13237,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Hanging scroll, Width',
     onyomi: 'フク',
     kunyomi: 'はば',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 12,
     radical: '巾 (cloth)',
     sources: [
@@ -13254,7 +13254,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Renowned, Publish, Write, Remarkable, Phenomenal',
     onyomi: 'チョ, チャク',
     kunyomi: 'あらわ・す, いちじる・しい',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 11,
     radical: '艹 (grass)',
     sources: [
@@ -13272,7 +13272,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Fortune-telling, Divining, Forecasting, Occupy, Hold',
     onyomi: 'セン',
     kunyomi: 'し・める, うらな・う',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 5,
     radical: '卜 (divination)',
     sources: [
@@ -13289,7 +13289,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Compare, Race, Ratio, Compare with',
     onyomi: 'ヒ',
     kunyomi: 'くら・べる',
-    levels: ['N2', 'N4'],
+    levels: ['N2'],
     strokes: 4,
     radical: '比 (compare)',
     sources: [
@@ -13307,7 +13307,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Contrast, Compare',
     onyomi: 'カク, コウ',
     kunyomi: '-',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 13,
     radical: '車 (cart)',
     sources: [
@@ -13324,7 +13324,7 @@ window.N2_KANJI_DATA = [
     meaning: 'Row, And, Besides, As well as, Line up, Rank with',
     onyomi: 'ヘイ, ホウ',
     kunyomi: 'なみ, なら・べる, なら・ぶ, なら・びに',
-    levels: ['N2', 'N3'],
+    levels: ['N2'],
     strokes: 8,
     radical: '一 (one)',
     sources: [
