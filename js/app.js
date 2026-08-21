@@ -1,7 +1,8 @@
 /**
  * NihonHub - Interactive Application Engine
  * Clean, User-Friendly JLPT N5 to N2 Learning Platform
- * Supports 739+ Kanji from Sou Matome, Vocabulary, Grammar, Kana, Flashcards, and Bookmarks.
+ * Supports 739+ Kanji from Sou Matome, Cross-Level Progression Tracking (New vs Review),
+ * Vocabulary, Grammar, Kana, Flashcards, and Bookmarks.
  */
 
 (function () {
@@ -12,7 +13,6 @@
     volume: `<svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`,
     starOutline: `<svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
     starFilled: `<svg class="ui-icon text-warning" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
-    check: `<svg class="ui-icon text-success" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
     sun: `<svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`,
     moon: `<svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`,
     book: `<svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>`
@@ -23,6 +23,7 @@
     currentTab: 'kanji',
     selectedLevel: 'ALL',
     selectedWeek: 'ALL',
+    originFilter: 'ALL', // 'ALL', 'NEW', 'REVIEW'
     searchQuery: '',
     showFurigana: true,
     showRomaji: true,
@@ -145,6 +146,18 @@
     return arr.map(lvl => `<span class="level-badge badge-${lvl.toLowerCase()}">${lvl}</span>`).join(' ');
   }
 
+  // Helper: Render origin/progression badge
+  function renderOriginBadge(item) {
+    const firstLevel = item.firstLevel || (item.levels ? item.levels[0] : 'N5');
+    if (state.selectedLevel === 'ALL') {
+      return `<span class="origin-tag info" title="First introduced in JLPT ${firstLevel}">Origin: ${firstLevel}</span>`;
+    }
+    if (firstLevel === state.selectedLevel) {
+      return `<span class="origin-tag new" title="Introduced for the first time in JLPT ${state.selectedLevel}">✨ New in ${state.selectedLevel}</span>`;
+    }
+    return `<span class="origin-tag review" title="First introduced in JLPT ${firstLevel}, reintroduced in ${state.selectedLevel} with new vocabulary">🔄 From ${firstLevel}</span>`;
+  }
+
   // --- FILTERING ENGINE ---
   function matchLevel(item) {
     if (state.selectedLevel === 'ALL') return true;
@@ -152,10 +165,23 @@
     return itemLevels.includes(state.selectedLevel);
   }
 
+  function matchOrigin(item) {
+    if (state.originFilter === 'ALL' || state.selectedLevel === 'ALL') return true;
+    const firstLevel = item.firstLevel || (item.levels ? item.levels[0] : 'N5');
+    if (state.originFilter === 'NEW') {
+      return firstLevel === state.selectedLevel;
+    }
+    if (state.originFilter === 'REVIEW') {
+      return firstLevel !== state.selectedLevel && item.levels && item.levels.includes(state.selectedLevel);
+    }
+    return true;
+  }
+
   function filterItems(items, searchFields = []) {
     const q = state.searchQuery.trim().toLowerCase();
     return items.filter(item => {
       if (!matchLevel(item)) return false;
+      if (!matchOrigin(item)) return false;
       if (!q) return true;
       
       // Search in specified fields
@@ -205,6 +231,16 @@
         state.selectedLevel = e.currentTarget.getAttribute('data-level');
         buildFlashcardDeck();
         renderAll();
+      });
+    });
+
+    // Origin / Scope filter pills (New vs Review)
+    document.querySelectorAll('.origin-pill').forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        document.querySelectorAll('.origin-pill').forEach(p => p.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        state.originFilter = e.currentTarget.getAttribute('data-origin');
+        renderActiveTab();
       });
     });
 
@@ -387,6 +423,7 @@
   function renderKanji() {
     const grid = document.getElementById('kanji-grid');
     const countTag = document.getElementById('kanji-count');
+    const breakdownTag = document.getElementById('kanji-origin-breakdown');
     if (!grid) return;
 
     let items = filterItems(window.JLPT_DATA.kanji, ['char', 'meaning', 'onyomi', 'kunyomi', 'radical']);
@@ -400,13 +437,22 @@
     }
 
     if (countTag) {
-      countTag.textContent = `${items.length} Kanji found`;
+      countTag.textContent = `${items.length} Kanji displayed`;
+    }
+
+    if (breakdownTag && window.JLPT_DATA.getLevelStats) {
+      const stats = window.JLPT_DATA.getLevelStats('kanji', state.selectedLevel);
+      if (state.selectedLevel === 'ALL') {
+        breakdownTag.textContent = `(${stats.total} total across all levels)`;
+      } else {
+        breakdownTag.innerHTML = `&bull; <strong>${stats.newCount}</strong> New in ${state.selectedLevel} &bull; <strong>${stats.reviewCount}</strong> Review from lower levels`;
+      }
     }
 
     if (items.length === 0) {
       grid.innerHTML = `
         <div class="empty-state card-glass" style="grid-column: 1 / -1;">
-          <p>No Kanji found matching your level/search filters.</p>
+          <p>No Kanji found matching your level, scope, or search filters.</p>
           <button class="btn-primary" onclick="window.NihonHub.resetFilters()">Reset Filters</button>
         </div>
       `;
@@ -424,7 +470,8 @@
           <div class="kanji-card-top">
             <div class="kanji-badges">
               ${renderLevelPills(k.levels)}
-              ${k.strokes ? `<span class="stroke-badge">${k.strokes} strokes</span>` : ''}
+              ${renderOriginBadge(k)}
+              ${k.strokes ? `<span class="stroke-badge">${k.strokes}s</span>` : ''}
             </div>
             <div class="kanji-actions">
               <button class="action-btn" data-speak="${k.char}" title="Listen pronunciation">${UI_ICONS.volume}</button>
@@ -468,26 +515,33 @@
     if (!modalBody || !modalBackdrop) return;
 
     const isBookmarked = state.bookmarks.has(kanji.id);
-    const sourceInfo = kanji.sources && kanji.sources[0] ? kanji.sources[0] : null;
+    const firstLevel = kanji.firstLevel || (kanji.levels ? kanji.levels[0] : 'N5');
 
     modalBody.innerHTML = `
       <div class="modal-kanji-header">
         <div class="modal-kanji-char-box">
           <span class="modal-kanji-char">${kanji.char}</span>
-          <button class="audio-btn-large" data-speak="${kanji.char}" title="Listen Kanji">${UI_ICONS.volume}</button>
+          <button class="audio-btn-large" data-speak="${kanji.char}" title="Listen Kanji">${UI_ICONS.volume} Listen</button>
         </div>
         <div class="modal-kanji-info">
           <div class="modal-badges-row">
             ${renderLevelPills(kanji.levels)}
+            ${renderOriginBadge(kanji)}
             ${kanji.strokes ? `<span class="stroke-badge">${kanji.strokes} strokes</span>` : ''}
             ${kanji.radical ? `<span class="radical-badge">Radical: ${kanji.radical}</span>` : ''}
           </div>
           <h2 class="modal-kanji-meaning">${kanji.meaning}</h2>
-          ${sourceInfo ? `
-            <div class="modal-source-info">
-              ${UI_ICONS.book} <strong>${sourceInfo.book}</strong> &mdash; ${sourceInfo.chapter || ''} ${sourceInfo.notes ? `(${sourceInfo.notes})` : ''}
+          
+          <div class="modal-level-journey">
+            <div class="journey-item">
+              <span class="journey-label">First Introduced:</span>
+              <span class="journey-val font-bold text-accent">JLPT ${firstLevel}</span>
             </div>
-          ` : ''}
+            <div class="journey-item">
+              <span class="journey-label">All Levels Appearing In:</span>
+              <span class="journey-val">${(kanji.levels || []).join(', ')}</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -502,7 +556,19 @@
         </div>
       </div>
 
-      <div class="modal-examples-section">
+      <div class="modal-section-title">
+        <span>Textbook Sources & Curriculum Reference</span>
+        <span class="count-chip">${(kanji.sources || []).length} Books</span>
+      </div>
+      <div class="modal-sources-list">
+        ${(kanji.sources || []).map(s => `
+          <div class="modal-source-row">
+            ${UI_ICONS.book} <strong>${s.book}</strong> &mdash; ${s.chapter || s.lesson || ''} ${s.notes ? `<em>(${s.notes})</em>` : ''}
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="modal-examples-section" style="margin-top: 20px;">
         <div class="modal-section-title">
           <span>Target Vocabulary & Compounds (熟語)</span>
           <span class="count-chip">${kanji.examples ? kanji.examples.length : 0} Words</span>
@@ -543,14 +609,24 @@
   function renderVocabulary() {
     const list = document.getElementById('vocab-list');
     const countTag = document.getElementById('vocab-count');
+    const breakdownTag = document.getElementById('vocab-origin-breakdown');
     if (!list) return;
 
     const items = filterItems(window.JLPT_DATA.vocabulary, ['word', 'reading', 'romaji', 'meaning']);
 
-    if (countTag) countTag.textContent = `${items.length} Words`;
+    if (countTag) countTag.textContent = `${items.length} Words displayed`;
+
+    if (breakdownTag && window.JLPT_DATA.getLevelStats) {
+      const stats = window.JLPT_DATA.getLevelStats('vocabulary', state.selectedLevel);
+      if (state.selectedLevel === 'ALL') {
+        breakdownTag.textContent = `(${stats.total} total across all levels)`;
+      } else {
+        breakdownTag.innerHTML = `&bull; <strong>${stats.newCount}</strong> New in ${state.selectedLevel} &bull; <strong>${stats.reviewCount}</strong> Review`;
+      }
+    }
 
     if (items.length === 0) {
-      list.innerHTML = `<div class="empty-state card-glass"><p>No vocabulary words found.</p></div>`;
+      list.innerHTML = `<div class="empty-state card-glass"><p>No vocabulary words found matching filters.</p></div>`;
       return;
     }
 
@@ -559,7 +635,10 @@
       return `
         <div class="vocab-card card-glass">
           <div class="vocab-top">
-            <div class="vocab-badges">${renderLevelPills(v.levels || [v.level])}</div>
+            <div class="vocab-badges">
+              ${renderLevelPills(v.levels || [v.level])}
+              ${renderOriginBadge(v)}
+            </div>
             <div class="vocab-actions">
               <button class="action-btn" data-speak="${v.word}" title="Listen">${UI_ICONS.volume}</button>
               <button class="action-btn" data-bookmark-id="${v.id}" title="Bookmark">
@@ -593,14 +672,24 @@
   function renderGrammar() {
     const list = document.getElementById('grammar-list');
     const countTag = document.getElementById('grammar-count');
+    const breakdownTag = document.getElementById('grammar-origin-breakdown');
     if (!list) return;
 
     const items = filterItems(window.JLPT_DATA.grammar, ['pattern', 'meaning', 'explanation', 'structure']);
 
-    if (countTag) countTag.textContent = `${items.length} Grammar Points`;
+    if (countTag) countTag.textContent = `${items.length} Grammar Points displayed`;
+
+    if (breakdownTag && window.JLPT_DATA.getLevelStats) {
+      const stats = window.JLPT_DATA.getLevelStats('grammar', state.selectedLevel);
+      if (state.selectedLevel === 'ALL') {
+        breakdownTag.textContent = `(${stats.total} total across all levels)`;
+      } else {
+        breakdownTag.innerHTML = `&bull; <strong>${stats.newCount}</strong> New in ${state.selectedLevel} &bull; <strong>${stats.reviewCount}</strong> Review`;
+      }
+    }
 
     if (items.length === 0) {
-      list.innerHTML = `<div class="empty-state card-glass"><p>No grammar points found.</p></div>`;
+      list.innerHTML = `<div class="empty-state card-glass"><p>No grammar points found matching filters.</p></div>`;
       return;
     }
 
@@ -609,7 +698,10 @@
       return `
         <div class="grammar-card card-glass">
           <div class="grammar-header">
-            <div class="grammar-badges">${renderLevelPills(g.levels || [g.level])}</div>
+            <div class="grammar-badges">
+              ${renderLevelPills(g.levels || [g.level])}
+              ${renderOriginBadge(g)}
+            </div>
             <div class="grammar-actions">
               <button class="action-btn" data-speak="${g.pattern}" title="Listen">${UI_ICONS.volume}</button>
               <button class="action-btn" data-bookmark-id="${g.id}" title="Bookmark">
@@ -709,12 +801,12 @@
 
     if (state.flashcards.category === 'kanji') {
       frontEl.innerHTML = `
-        <div class="fc-badge-top">${renderLevelPills(current.levels)}</div>
+        <div class="fc-badge-top">${renderLevelPills(current.levels)} ${renderOriginBadge(current)}</div>
         <div class="fc-big-text">${current.char}</div>
         <div class="fc-prompt">Click or press Space to reveal readings & meaning</div>
       `;
       backEl.innerHTML = `
-        <div class="fc-badge-top">${renderLevelPills(current.levels)}</div>
+        <div class="fc-badge-top">${renderLevelPills(current.levels)} ${renderOriginBadge(current)}</div>
         <div class="fc-back-title">${current.char}</div>
         <div class="fc-back-meaning">${current.meaning}</div>
         <div class="fc-back-readings">
@@ -729,12 +821,12 @@
       `;
     } else if (state.flashcards.category === 'vocab') {
       frontEl.innerHTML = `
-        <div class="fc-badge-top">${renderLevelPills(current.levels || [current.level])}</div>
+        <div class="fc-badge-top">${renderLevelPills(current.levels || [current.level])} ${renderOriginBadge(current)}</div>
         <div class="fc-big-text">${current.word}</div>
         <div class="fc-prompt">Click to reveal reading & English definition</div>
       `;
       backEl.innerHTML = `
-        <div class="fc-badge-top">${renderLevelPills(current.levels || [current.level])}</div>
+        <div class="fc-badge-top">${renderLevelPills(current.levels || [current.level])} ${renderOriginBadge(current)}</div>
         <div class="fc-back-title">${current.word}</div>
         <div class="fc-back-reading">【${current.reading}】</div>
         <div class="fc-back-meaning">${current.meaning}</div>
@@ -744,12 +836,12 @@
       `;
     } else {
       frontEl.innerHTML = `
-        <div class="fc-badge-top">${renderLevelPills(current.levels || [current.level])}</div>
+        <div class="fc-badge-top">${renderLevelPills(current.levels || [current.level])} ${renderOriginBadge(current)}</div>
         <div class="fc-big-text sm">${current.pattern}</div>
         <div class="fc-prompt">Click to reveal meaning & explanation</div>
       `;
       backEl.innerHTML = `
-        <div class="fc-badge-top">${renderLevelPills(current.levels || [current.level])}</div>
+        <div class="fc-badge-top">${renderLevelPills(current.levels || [current.level])} ${renderOriginBadge(current)}</div>
         <div class="fc-back-title sm">${current.pattern}</div>
         <div class="fc-back-meaning">${current.meaning}</div>
         <div class="fc-back-explanation">${current.explanation}</div>
@@ -889,11 +981,13 @@
     resetFilters: () => {
       state.selectedLevel = 'ALL';
       state.selectedWeek = 'ALL';
+      state.originFilter = 'ALL';
       state.searchQuery = '';
       const s = document.getElementById('global-search-input');
       if (s) s.value = '';
       document.querySelectorAll('.level-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-level') === 'ALL'));
       document.querySelectorAll('.week-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-week') === 'ALL'));
+      document.querySelectorAll('.origin-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-origin') === 'ALL'));
       renderAll();
     },
     switchTab: switchTab,

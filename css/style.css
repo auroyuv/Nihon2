@@ -115,6 +115,7 @@ body.hide-romaji .kana-romaji {
 .text-accent { color: var(--brand-primary) !important; }
 .text-success { color: #10b981 !important; }
 .text-warning { color: #f59e0b !important; }
+.font-bold { font-weight: 700 !important; }
 
 /* SVG Icons */
 .ui-icon {
@@ -254,6 +255,36 @@ body.hide-romaji .kana-romaji {
 .badge-n3 { background: var(--n3-glow); color: var(--n3-color); border: 1px solid var(--n3-color); }
 .badge-n2 { background: var(--n2-glow); color: var(--n2-color); border: 1px solid var(--n2-color); }
 
+/* Origin & Progression Badges */
+.origin-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
+}
+
+.origin-tag.new {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.origin-tag.review {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.origin-tag.info {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
 /* --- App Layout --- */
 .app-container {
   max-width: 1320px;
@@ -392,7 +423,7 @@ body.hide-romaji .kana-romaji {
   background: rgba(255, 255, 255, 0.12);
 }
 
-/* --- Control Bar (Levels & Toggles) --- */
+/* --- Control Bar (Levels, Origin & Toggles) --- */
 .control-bar {
   display: flex;
   flex-wrap: wrap;
@@ -403,7 +434,7 @@ body.hide-romaji .kana-romaji {
   margin-bottom: 20px;
 }
 
-.level-selector-group {
+.level-selector-group, .origin-selector-group {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -411,16 +442,16 @@ body.hide-romaji .kana-romaji {
 }
 
 .level-group-label {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--text-muted);
-  margin-right: 4px;
+  margin-right: 2px;
 }
 
-.level-pill {
-  padding: 6px 14px;
+.level-pill, .origin-pill {
+  padding: 5px 12px;
   border-radius: 10px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   border: 1px solid var(--border-subtle);
   background: rgba(255, 255, 255, 0.04);
@@ -429,12 +460,12 @@ body.hide-romaji .kana-romaji {
   transition: all var(--trans-fast);
 }
 
-.level-pill:hover {
+.level-pill:hover, .origin-pill:hover {
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-primary);
 }
 
-.level-pill.active {
+.level-pill.active, .origin-pill.active {
   background: var(--brand-primary);
   color: white;
   border-color: var(--brand-primary);
@@ -547,10 +578,26 @@ body.hide-romaji .kana-romaji {
   font-weight: 800;
 }
 
+.header-stats-badges {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .section-count-tag {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.origin-breakdown-tag {
+  font-size: 0.82rem;
   color: var(--text-muted);
-  font-weight: 600;
+}
+
+.origin-breakdown-tag strong {
+  color: var(--text-primary);
 }
 
 /* --- Sub-Filter Card & Week Selector --- */
@@ -641,8 +688,9 @@ body.hide-romaji .kana-romaji {
 
 .kanji-badges {
   display: flex;
-  gap: 6px;
+  gap: 5px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .stroke-badge, .radical-badge {
@@ -788,7 +836,7 @@ body.hide-romaji .kana-romaji {
   display: flex;
   align-items: center;
   gap: 24px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   border-bottom: 1px solid var(--border-subtle);
   padding-bottom: 20px;
 }
@@ -836,19 +884,38 @@ body.hide-romaji .kana-romaji {
 .modal-kanji-meaning {
   font-size: 1.5rem;
   font-weight: 800;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-.modal-source-info {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
+.modal-level-journey {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+}
+
+.journey-item {
+  display: flex;
+  gap: 8px;
+}
+
+.journey-label {
+  color: var(--text-muted);
+}
+
+.journey-val {
+  color: var(--text-primary);
 }
 
 .modal-readings-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .modal-reading-box {
@@ -871,6 +938,21 @@ body.hide-romaji .kana-romaji {
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-primary);
+}
+
+.modal-sources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.modal-source-row {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 
 .modal-examples-section {
@@ -974,6 +1056,13 @@ body.hide-romaji .kana-romaji {
   margin-bottom: 10px;
 }
 
+.vocab-badges {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .vocab-actions {
   display: flex;
   gap: 6px;
@@ -1050,6 +1139,13 @@ body.hide-romaji .kana-romaji {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
+}
+
+.grammar-badges {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .grammar-pattern-row {
@@ -1255,6 +1351,9 @@ body.hide-romaji .kana-romaji {
   position: absolute;
   top: 16px;
   left: 16px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
 }
 
 .fc-big-text {
@@ -1502,7 +1601,7 @@ body.hide-romaji .kana-romaji {
     align-items: stretch;
   }
 
-  .level-selector-group {
+  .level-selector-group, .origin-selector-group {
     justify-content: center;
   }
 

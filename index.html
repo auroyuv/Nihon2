@@ -73,12 +73,20 @@
     <div class="control-bar card-glass">
       <!-- JLPT Level Selector -->
       <div class="level-selector-group">
-        <span class="level-group-label">JLPT Level:</span>
+        <span class="level-group-label">Level:</span>
         <button class="level-pill active" data-level="ALL">All (N5-N2)</button>
         <button class="level-pill" data-level="N5">N5</button>
         <button class="level-pill" data-level="N4">N4</button>
         <button class="level-pill" data-level="N3">N3</button>
         <button class="level-pill" data-level="N2">N2</button>
+      </div>
+
+      <!-- Progression / Overlap Filter (New vs Review) -->
+      <div class="origin-selector-group" id="origin-filter-container">
+        <span class="level-group-label">Scope:</span>
+        <button class="origin-pill active" data-origin="ALL">All Items</button>
+        <button class="origin-pill" data-origin="NEW">✨ New Only</button>
+        <button class="origin-pill" data-origin="REVIEW">🔄 Review / Repeated</button>
       </div>
 
       <!-- Feature Toggles -->
@@ -134,9 +142,12 @@
               <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
               <path d="M6 6h10"/><path d="M6 10h10"/>
             </svg>
-            <span>Sou Matome N2 Textbook Chapter Filter</span>
+            <span>Sou Matome N2 Chapter Filter</span>
           </div>
-          <span id="kanji-count" class="section-count-tag">Loading Kanji...</span>
+          <div class="header-stats-badges">
+            <span id="kanji-count" class="section-count-tag">Loading Kanji...</span>
+            <span id="kanji-origin-breakdown" class="origin-breakdown-tag"></span>
+          </div>
         </div>
         
         <div class="week-pills-row">
@@ -162,7 +173,10 @@
     <section id="tab-vocab" class="tab-pane">
       <div class="section-header-row">
         <h2 class="section-title">Vocabulary</h2>
-        <span id="vocab-count" class="section-count-tag">Loading Vocabulary...</span>
+        <div class="header-stats-badges">
+          <span id="vocab-count" class="section-count-tag">Loading Vocabulary...</span>
+          <span id="vocab-origin-breakdown" class="origin-breakdown-tag"></span>
+        </div>
       </div>
       <div id="vocab-list" class="vocab-list"></div>
     </section>
@@ -173,7 +187,10 @@
     <section id="tab-grammar" class="tab-pane">
       <div class="section-header-row">
         <h2 class="section-title">Grammar Points</h2>
-        <span id="grammar-count" class="section-count-tag">Loading Grammar...</span>
+        <div class="header-stats-badges">
+          <span id="grammar-count" class="section-count-tag">Loading Grammar...</span>
+          <span id="grammar-origin-breakdown" class="origin-breakdown-tag"></span>
+        </div>
       </div>
       <div id="grammar-list" class="grammar-list"></div>
     </section>
@@ -287,7 +304,7 @@
       <span>•</span>
       <span>2,248+ Compound Vocabularies</span>
       <span>•</span>
-      <span>Audio Speech Enabled</span>
+      <span>Cross-Level Progression Tracking</span>
     </div>
   </footer>
 
