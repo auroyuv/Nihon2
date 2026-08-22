@@ -523,8 +523,8 @@
     }
   }
 
-  function updateOverviewCounts() {
-    const el = document.getElementById('overview-counts-text');
+  function updateFooterStats() {
+    const el = document.getElementById('footer-stats');
     if (!el || !window.JLPT_DATA) return;
     const kCount = window.JLPT_DATA.kanji ? window.JLPT_DATA.kanji.length : 0;
     const vCount = window.JLPT_DATA.vocabulary ? window.JLPT_DATA.vocabulary.length : 0;
@@ -1434,9 +1434,13 @@
       progressFill.style.width = `${pct}%`;
     }
 
+    const frontEl = cardEl.querySelector('.fc-front');
+    const backEl = cardEl.querySelector('.fc-back');
+    if (!frontEl || !backEl) return;
+
     if (total === 0) {
-      cardEl.querySelector('.fc-front').innerHTML = `<div class="fc-empty"><p>No cards available for ${state.selectedLevel}.</p></div>`;
-      cardEl.querySelector('.fc-back').innerHTML = `<div class="fc-empty"><p>Select another level.</p></div>`;
+      frontEl.innerHTML = `<div class="fc-empty"><p>No cards available for ${state.selectedLevel}.</p></div>`;
+      backEl.innerHTML = `<div class="fc-empty"><p>Select another level.</p></div>`;
       return;
     }
 
@@ -1446,12 +1450,12 @@
     cardEl.classList.toggle('flipped', state.flashcards.isFlipped);
 
     if (cat === 'kanji') {
-      cardEl.querySelector('.fc-front').innerHTML = `
+      frontEl.innerHTML = `
         <div class="fc-badges-top">${renderLevelPills(item.levels)}</div>
         <div class="fc-kanji-char">${item.char}</div>
         <div class="fc-hint">Click card to reveal readings & meaning</div>
       `;
-      cardEl.querySelector('.fc-back').innerHTML = `
+      backEl.innerHTML = `
         <div class="fc-meaning">${item.meaning}</div>
         <div class="fc-readings">
           ${item.onyomi ? `<div><span class="fc-r-label">ON:</span> ${item.onyomi}</div>` : ''}
@@ -1464,23 +1468,23 @@
         ` : ''}
       `;
     } else if (cat === 'vocab') {
-      cardEl.querySelector('.fc-front').innerHTML = `
+      frontEl.innerHTML = `
         <div class="fc-badges-top">${renderLevelPills(item.levels || [item.level])}</div>
         <div class="fc-vocab-word">${item.word}</div>
         <div class="fc-hint">Click to reveal reading & English</div>
       `;
-      cardEl.querySelector('.fc-back').innerHTML = `
+      backEl.innerHTML = `
         <div class="fc-vocab-reading">【${item.reading}】</div>
         <div class="fc-meaning">${item.meaning}</div>
         ${item.romaji ? `<div class="fc-romaji">${item.romaji}</div>` : ''}
       `;
     } else if (cat === 'grammar') {
-      cardEl.querySelector('.fc-front').innerHTML = `
+      frontEl.innerHTML = `
         <div class="fc-badges-top">${renderLevelPills(item.levels || [item.level])}</div>
         <div class="fc-grammar-pattern">${item.pattern}</div>
         <div class="fc-hint">Click to reveal meaning & structure</div>
       `;
-      cardEl.querySelector('.fc-back').innerHTML = `
+      backEl.innerHTML = `
         <div class="fc-meaning">${item.meaning}</div>
         ${item.structure ? `<div class="fc-structure"><code>${item.structure}</code></div>` : ''}
         <div class="fc-explanation">${item.explanation || ''}</div>
