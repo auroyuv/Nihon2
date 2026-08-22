@@ -2252,6 +2252,8 @@
           <div class="fc-face-badges">
             <span class="sno-badge">#${sNo}</span>
             ${renderLevelPills(item.levels)}
+            ${renderOriginBadge(item)}
+            ${chapterTag ? `<span class="source-pill">${chapterTag}</span>` : ''}
           </div>
           <div class="fc-face-actions" onclick="event.stopPropagation()">
             <button class="action-btn" data-speak="${item.char}" title="Listen (A)">${UI_ICONS.volume}</button>
@@ -2261,22 +2263,43 @@
           </div>
         </div>
 
-        <div class="fc-main-center">
-          <div class="fc-meaning-lead">${item.meaning}</div>
-          <div class="fc-readings-box">
-            ${item.onyomi ? `<div><span class="r-label">ON:</span> <span class="r-val">${item.onyomi}</span></div>` : ''}
-            ${item.kunyomi ? `<div><span class="r-label">KUN:</span> <span class="r-val">${item.kunyomi}</span></div>` : ''}
-          </div>
-          ${item.examples && item.examples.length > 0 ? `
-            <div class="fc-examples-box">
-              <div class="fc-ex-row">
-                <span class="fc-ex-ja"><strong>${item.examples[0].word}</strong> 【${item.examples[0].reading}】</span>
-                <button class="mini-audio-btn" data-speak="${item.examples[0].word}" onclick="event.stopPropagation()" title="Listen">${UI_ICONS.volume}</button>
+        <div class="fc-kanji-back-header">
+          <div class="fc-kanji-main-row">
+            <span class="fc-kanji-char">${item.char}</span>
+            <div class="fc-kanji-info">
+              <div class="fc-meaning-lead" style="margin-bottom: 4px; font-size: 1.25rem;">${item.meaning}</div>
+              <div class="fc-readings-box" style="margin-bottom: 4px; font-size: 0.95rem;">
+                ${item.onyomi ? `<div><span class="r-label">ON:</span> <span class="r-val">${item.onyomi}</span></div>` : ''}
+                ${item.kunyomi ? `<div><span class="r-label">KUN:</span> <span class="r-val">${item.kunyomi}</span></div>` : ''}
               </div>
-              <div class="fc-ex-en">${item.examples[0].meaning}</div>
+              <div class="fc-meta-tags">
+                ${item.strokes ? `<span class="prog-chip-sm">${item.strokes} Strokes</span>` : ''}
+                ${item.radical ? `<span class="prog-chip-sm">Radical: ${item.radical}</span>` : ''}
+              </div>
             </div>
-          ` : ''}
+          </div>
         </div>
+
+        ${item.examples && item.examples.length > 0 ? `
+          <div class="fc-compounds-section">
+            <div class="fc-compounds-title">
+              <span>Target Compounds (熟語)</span>
+              <span class="pill-chip">${item.examples.length} Words</span>
+            </div>
+            <div class="fc-compounds-grid">
+              ${item.examples.map(ex => `
+                <div class="fc-compound-item" onclick="event.stopPropagation()">
+                  <div class="fc-comp-top">
+                    <span class="fc-comp-word">${ex.word}</span>
+                    <span class="fc-comp-reading">【${ex.reading}】</span>
+                    <button class="mini-audio-btn" data-speak="${ex.word}" title="Listen">${UI_ICONS.volume}</button>
+                  </div>
+                  <div class="fc-comp-meaning">${ex.meaning}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
 
         <div class="fc-face-footer" onclick="event.stopPropagation()">
           <div class="fc-quick-response-btns">
