@@ -406,6 +406,22 @@
             <button class="fc-category-pill" data-category="bookmarks">⭐ Saved Bookmarks</button>
           </div>
 
+          <!-- Vocab Type Filter Pills (Shown when Vocabulary Deck is active) -->
+          <div id="fc-vocab-type-bar" class="vtype-pill-group hidden" style="margin-bottom: 12px;">
+            <button class="vtype-pill active" data-fc-vtype="ALL">
+              <span>All Vocabulary</span>
+              <span id="fc-vtype-count-all" class="vtype-count-badge">0</span>
+            </button>
+            <button class="vtype-pill" data-fc-vtype="TEXTBOOK">
+              <span>📚 Textbook Vocab</span>
+              <span id="fc-vtype-count-textbook" class="vtype-count-badge">0</span>
+            </button>
+            <button class="vtype-pill" data-fc-vtype="COMPOUNDS">
+              <span>🈁 Kanji Compounds</span>
+              <span id="fc-vtype-count-compounds" class="vtype-count-badge">0</span>
+            </button>
+          </div>
+
           <!-- Secondary Filter Controls Row -->
           <div class="fc-filter-controls-row">
             <!-- Dynamic Textbook Selector -->
@@ -458,7 +474,7 @@
 
         <!-- Interactive 3D Flip Card -->
         <div class="flashcard-wrapper">
-          <div id="flashcard-element" class="flashcard-card card-glass">
+          <div id="flashcard-element" class="flashcard-card">
             <div class="fc-face fc-front"></div>
             <div class="fc-face fc-back"></div>
           </div>

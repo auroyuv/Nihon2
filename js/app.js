@@ -876,6 +876,22 @@
       });
     });
 
+    // Flashcard vocab type selector (All / Textbook / Compounds)
+    document.querySelectorAll('[data-fc-vtype]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const vtype = e.currentTarget.getAttribute('data-fc-vtype');
+        state.vocabTypeFilter = vtype;
+        document.querySelectorAll('.vtype-pill').forEach(p => {
+          p.classList.toggle('active', (p.getAttribute('data-vocab-type') === vtype || p.getAttribute('data-fc-vtype') === vtype));
+        });
+        state.flashcards.book = 'ALL';
+        state.flashcards.chapter = 'ALL';
+        renderFlashcardSourceFilter();
+        buildFlashcardDeck();
+        renderFlashcard();
+      });
+    });
+
     // Flashcard status pills (All / Unmastered / Mastered)
     document.querySelectorAll('.fc-status-pill').forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -1892,6 +1908,29 @@
 
     const cat = state.flashcards.category;
     const catName = cat === 'vocab' ? 'vocabulary' : cat;
+
+    // Show/hide and update Vocab Type Filter Pills
+    const vocabTypeBar = document.getElementById('fc-vocab-type-bar');
+    if (vocabTypeBar) {
+      if (cat === 'vocab') {
+        vocabTypeBar.classList.remove('hidden');
+        if (window.JLPT_DATA.getVocabStats) {
+          const vStats = window.JLPT_DATA.getVocabStats(state.selectedLevel);
+          const cAll = document.getElementById('fc-vtype-count-all');
+          const cTb = document.getElementById('fc-vtype-count-textbook');
+          const cCmp = document.getElementById('fc-vtype-count-compounds');
+          if (cAll) cAll.textContent = vStats.total;
+          if (cTb) cTb.textContent = vStats.textbookCount;
+          if (cCmp) cCmp.textContent = vStats.compoundsCount;
+        }
+        vocabTypeBar.querySelectorAll('[data-fc-vtype]').forEach(p => {
+          p.classList.toggle('active', p.getAttribute('data-fc-vtype') === state.vocabTypeFilter);
+        });
+      } else {
+        vocabTypeBar.classList.add('hidden');
+      }
+    }
+
     let books = [];
 
     if (cat === 'bookmarks') {
@@ -2036,10 +2075,21 @@
 
     // 1. Filter by JLPT Level & Scope
     let filtered = baseItems.filter(item => {
-      if (cat !== 'bookmarks') {
+      if (cat === 'vocab') {
+        if (state.vocabTypeFilter === 'TEXTBOOK') {
+          if (!item.isTextbookVocab) return false;
+          if (state.selectedLevel !== 'ALL' && (!item.textbookLevels || !item.textbookLevels.includes(state.selectedLevel))) return false;
+        } else if (state.vocabTypeFilter === 'COMPOUNDS') {
+          if (!item.isKanjiCompound) return false;
+          if (state.selectedLevel !== 'ALL' && (!item.compoundLevels || !item.compoundLevels.includes(state.selectedLevel))) return false;
+        } else {
+          if (!matchLevel(item)) return false;
+        }
+      } else if (cat !== 'bookmarks') {
         if (!matchLevel(item)) return false;
-        if (!matchOrigin(item)) return false;
       }
+
+      if (!matchOrigin(item)) return false;
 
       // Filter by selected Textbook
       let srcList = item.sources || [];
