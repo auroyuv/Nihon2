@@ -1,8 +1,9 @@
 /**
  * NihonHub - Interactive Application Engine
- * Clean, User-Friendly JLPT N5 to N2 Learning Platform
- * Fully dynamic: Real-time calculation of all counts, dynamic textbook & chapter extractions,
- * cross-level origin tracking (New vs Review), vocabulary, grammar, kana charts, flashcards, and bookmarks.
+ * Comprehensive JLPT N5 to N2 Learning Platform
+ * Unified 2,450+ Vocabulary Vault, 3-Way Script Display Modes (Kanji / Hiragana / Progressive Hybrid),
+ * Kanji Building-Block Anatomy Breakdown, Personal Mastery Tracking, Dual Audio Speed, Memory Recall Mode,
+ * and 100% Dynamic Textbook & Chapter Filtering.
  */
 
 (function () {
@@ -16,8 +17,9 @@
     sun: `<svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`,
     moon: `<svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`,
     book: `<svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>`,
+    check: `<svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
     sparkles: `<svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>`,
-    repeat: `<svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>`
+    search: `<svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>`
   };
 
   // --- APPLICATION STATE ---
@@ -28,8 +30,15 @@
     searchQuery: '',
     showFurigana: true,
     showRomaji: true,
+    hideEnglish: false,
+    audioSpeed: 0.9, // 0.9 (Normal) vs 0.72 (Slow)
     theme: 'dark',
     bookmarks: new Set(),
+    mastered: new Set(), // Set of mastered item IDs
+
+    // Vocab Tab Specific Controls
+    vocabScriptMode: 'kanji', // 'kanji', 'hiragana', 'progressive'
+    vocabTypeFilter: 'ALL',   // 'ALL', 'COMPOUNDS', 'GENERAL'
 
     // Dynamic textbook & chapter filters per category
     filters: {
@@ -68,8 +77,20 @@
       const savedRomaji = localStorage.getItem('nihon_romaji');
       if (savedRomaji !== null) state.showRomaji = savedRomaji === 'true';
 
+      const savedHideEnglish = localStorage.getItem('nihon_hide_english');
+      if (savedHideEnglish !== null) state.hideEnglish = savedHideEnglish === 'true';
+
+      const savedAudioSpeed = localStorage.getItem('nihon_audio_speed');
+      if (savedAudioSpeed !== null) state.audioSpeed = parseFloat(savedAudioSpeed);
+
+      const savedScriptMode = localStorage.getItem('nihon_vocab_script_mode');
+      if (savedScriptMode) state.vocabScriptMode = savedScriptMode;
+
       const savedBookmarks = localStorage.getItem('nihon_bookmarks');
       if (savedBookmarks) state.bookmarks = new Set(JSON.parse(savedBookmarks));
+
+      const savedMastered = localStorage.getItem('nihon_mastered');
+      if (savedMastered) state.mastered = new Set(JSON.parse(savedMastered));
     } catch (e) {
       console.warn('LocalStorage error:', e);
     }
@@ -80,7 +101,11 @@
       localStorage.setItem('nihon_theme', state.theme);
       localStorage.setItem('nihon_furigana', state.showFurigana);
       localStorage.setItem('nihon_romaji', state.showRomaji);
+      localStorage.setItem('nihon_hide_english', state.hideEnglish);
+      localStorage.setItem('nihon_audio_speed', state.audioSpeed);
+      localStorage.setItem('nihon_vocab_script_mode', state.vocabScriptMode);
       localStorage.setItem('nihon_bookmarks', JSON.stringify(Array.from(state.bookmarks)));
+      localStorage.setItem('nihon_mastered', JSON.stringify(Array.from(state.mastered)));
     } catch (e) {
       console.warn('LocalStorage save error:', e);
     }
@@ -105,7 +130,7 @@
     savePreferences();
   }
 
-  // --- NATIVE SPEECH SYNTHESIS ---
+  // --- NATIVE SPEECH SYNTHESIS (WITH SPEED CONTROL) ---
   function speakJapanese(text) {
     if (!('speechSynthesis' in window)) {
       alert('Speech synthesis is not supported in this browser.');
@@ -117,13 +142,23 @@
 
     const utterance = new SpeechSynthesisUtterance(cleanText);
     utterance.lang = 'ja-JP';
-    utterance.rate = 0.88;
+    utterance.rate = state.audioSpeed || 0.9;
 
     const voices = window.speechSynthesis.getVoices();
     const jaVoice = voices.find(v => v.lang.startsWith('ja') || v.lang.includes('JP'));
     if (jaVoice) utterance.voice = jaVoice;
 
     window.speechSynthesis.speak(utterance);
+  }
+
+  function toggleAudioSpeed() {
+    state.audioSpeed = state.audioSpeed > 0.8 ? 0.72 : 0.92;
+    const isNormal = state.audioSpeed > 0.8;
+    const speedIcon = document.getElementById('audio-speed-icon');
+    const speedText = document.getElementById('audio-speed-text');
+    if (speedIcon) speedIcon.textContent = isNormal ? '🐇' : '🐢';
+    if (speedText) speedText.textContent = isNormal ? '1.0x Audio' : '0.75x Audio';
+    savePreferences();
   }
 
   // --- FURIGANA PARSER ---
@@ -164,6 +199,25 @@
       return `<span class="origin-tag new" title="Introduced for the first time in JLPT ${state.selectedLevel}">✨ New in ${state.selectedLevel}</span>`;
     }
     return `<span class="origin-tag review" title="First learned in JLPT ${firstLevel} &bull; Practicing advanced ${state.selectedLevel} compound words">🔄 From ${firstLevel}</span>`;
+  }
+
+  // --- MASTERY TRACKER ---
+  function toggleMastery(id) {
+    if (state.mastered.has(id)) {
+      state.mastered.delete(id);
+    } else {
+      state.mastered.add(id);
+    }
+    savePreferences();
+    updateMasteryHeaderStatus();
+    renderActiveTab();
+  }
+
+  function updateMasteryHeaderStatus() {
+    const el = document.getElementById('mastery-stats-text');
+    if (!el) return;
+    const count = state.mastered.size;
+    el.textContent = `${count} Mastered`;
   }
 
   // --- DYNAMIC SOURCE / BOOK / CHAPTER QUERY HELPERS ---
@@ -209,10 +263,9 @@
         }
 
         if (!chapterMap.has(groupKey)) {
-          let label = groupKey;
           chapterMap.set(groupKey, {
             id: groupKey,
-            label: label,
+            label: groupKey,
             items: new Set()
           });
         }
@@ -253,12 +306,10 @@
     const availableBooks = getAvailableBooks(category, state.selectedLevel);
     const stats = window.JLPT_DATA ? window.JLPT_DATA.getLevelStats(category, state.selectedLevel) : { total: 0 };
 
-    // Validate selected book
     if (currentFilter.book !== 'ALL' && !availableBooks.some(b => b.book === currentFilter.book)) {
       currentFilter.book = 'ALL';
     }
 
-    // Populate Book Select Dropdown
     let selectOptions = `<option value="ALL">All Textbooks (${stats.total})</option>`;
     availableBooks.forEach(b => {
       const isSelected = currentFilter.book === b.book ? 'selected' : '';
@@ -266,7 +317,6 @@
     });
     selectEl.innerHTML = selectOptions;
 
-    // Update Title if Kanji
     if (titleEl) {
       if (currentFilter.book !== 'ALL') {
         titleEl.textContent = `${currentFilter.book} Chapter Filter`;
@@ -277,7 +327,6 @@
       }
     }
 
-    // Populate Chapter Pills
     const availableChapters = getAvailableChapters(category, state.selectedLevel, currentFilter.book);
     if (currentFilter.chapter !== 'ALL' && !availableChapters.some(c => c.id === currentFilter.chapter)) {
       currentFilter.chapter = 'ALL';
@@ -306,7 +355,6 @@
 
     pillsEl.innerHTML = pillsHtml;
 
-    // Attach Event Listeners
     selectEl.onchange = function () {
       currentFilter.book = this.value;
       currentFilter.chapter = 'ALL';
@@ -347,7 +395,6 @@
     const totalMasterCount = masterList.length;
     const stats = window.JLPT_DATA.getLevelStats(category, state.selectedLevel);
 
-    // Update filter pill chip numbers
     const pillAll = document.getElementById('scope-count-all');
     const pillNew = document.getElementById('scope-count-new');
     const pillReview = document.getElementById('scope-count-review');
@@ -356,7 +403,6 @@
     if (pillNew) pillNew.textContent = stats.newCount;
     if (pillReview) pillReview.textContent = stats.reviewCount;
 
-    // Calculate percentage of New vs Review
     const newPct = stats.total > 0 ? Math.round((stats.newCount / stats.total) * 100) : 100;
     const reviewPct = stats.total > 0 ? 100 - newPct : 0;
 
@@ -455,6 +501,12 @@
       if (!matchLevel(item)) return false;
       if (!matchOrigin(item)) return false;
 
+      // Filter by Vocab Type (Compounds vs General)
+      if (category === 'vocabulary') {
+        if (state.vocabTypeFilter === 'COMPOUNDS' && !item.isKanjiCompound) return false;
+        if (state.vocabTypeFilter === 'GENERAL' && item.isKanjiCompound) return false;
+      }
+
       // Filter by selected Book
       if (catFilter.book !== 'ALL') {
         const hasBook = Array.isArray(item.sources) && item.sources.some(s => s.book === catFilter.book);
@@ -473,7 +525,6 @@
 
       if (!q) return true;
       
-      // Search in specified fields
       const matchedField = searchFields.some(field => {
         const val = item[field];
         if (typeof val === 'string') return val.toLowerCase().includes(q);
@@ -484,14 +535,12 @@
         return false;
       });
 
-      // Search in sources
       const matchedSource = Array.isArray(item.sources) && item.sources.some(s => 
         (s.book && s.book.toLowerCase().includes(q)) || 
         (s.chapter && s.chapter.toLowerCase().includes(q)) ||
         (s.notes && s.notes.toLowerCase().includes(q))
       );
 
-      // Search in examples
       const matchedExamples = Array.isArray(item.examples) && item.examples.some(ex =>
         (ex.word && ex.word.toLowerCase().includes(q)) ||
         (ex.reading && ex.reading.toLowerCase().includes(q)) ||
@@ -500,6 +549,42 @@
 
       return matchedField || matchedSource || matchedExamples;
     });
+  }
+
+  // --- SCRIPT DISPLAY RENDERER (KANJI / HIRAGANA / PROGRESSIVE HYBRID) ---
+  function renderVocabWordByMode(v) {
+    const mode = state.vocabScriptMode;
+    const word = v.word;
+    const reading = v.reading || v.word;
+
+    if (mode === 'hiragana') {
+      return `<span class="vocab-word" title="Standard Kanji: ${word}">${reading}</span>`;
+    }
+
+    if (mode === 'progressive') {
+      const kanjiRegex = /[\u4e00-\u9faf\u3400-\u4dbf]/g;
+      const chars = Array.from(word);
+
+      // Build progressive HTML
+      let html = '';
+      chars.forEach(ch => {
+        if (kanjiRegex.test(ch)) {
+          const kObj = window.JLPT_DATA.getKanjiByChar(ch);
+          const isKnown = !!kObj;
+          if (isKnown) {
+            html += `<span class="learned-kanji-token" onclick="window.NihonHub.openKanjiModalByChar('${ch}')" title="Learned Kanji: ${ch} (${kObj.meaning} • ${kObj.firstLevel})">${ch}</span>`;
+          } else {
+            html += `<span class="kana-token">${ch}</span>`;
+          }
+        } else {
+          html += `<span class="kana-token">${ch}</span>`;
+        }
+      });
+      return `<span class="vocab-word">${html}</span>`;
+    }
+
+    // Default: Kanji View
+    return `<span class="vocab-word">${word}</span>`;
   }
 
   // --- EVENT LISTENERS ---
@@ -519,7 +604,6 @@
         e.currentTarget.classList.add('active');
         state.selectedLevel = e.currentTarget.getAttribute('data-level');
         
-        // Reset category chapter filters to ALL on level switch
         state.filters.kanji.chapter = 'ALL';
         state.filters.vocabulary.chapter = 'ALL';
         state.filters.grammar.chapter = 'ALL';
@@ -566,6 +650,52 @@
     if (!state.showRomaji) {
       document.body.classList.add('hide-romaji');
     }
+
+    // Hide English / Memory Recall Toggle
+    const hideEnglishToggle = document.getElementById('hide-english-toggle');
+    if (hideEnglishToggle) {
+      hideEnglishToggle.checked = state.hideEnglish;
+      hideEnglishToggle.addEventListener('change', (e) => {
+        state.hideEnglish = e.target.checked;
+        document.body.classList.toggle('hide-english', state.hideEnglish);
+        savePreferences();
+      });
+    }
+    if (state.hideEnglish) {
+      document.body.classList.add('hide-english');
+    }
+
+    // Audio Speed Toggle
+    const audioSpeedBtn = document.getElementById('audio-speed-btn');
+    if (audioSpeedBtn) {
+      audioSpeedBtn.addEventListener('click', toggleAudioSpeed);
+      const isNormal = state.audioSpeed > 0.8;
+      const speedIcon = document.getElementById('audio-speed-icon');
+      const speedText = document.getElementById('audio-speed-text');
+      if (speedIcon) speedIcon.textContent = isNormal ? '🐇' : '🐢';
+      if (speedText) speedText.textContent = isNormal ? '1.0x Audio' : '0.75x Audio';
+    }
+
+    // 3-Way Script Display Mode Selector
+    document.querySelectorAll('[data-script-mode]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('[data-script-mode]').forEach(b => b.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        state.vocabScriptMode = e.currentTarget.getAttribute('data-script-mode');
+        savePreferences();
+        renderVocabulary();
+      });
+    });
+
+    // Vocab Category Type Selector (All / Compounds / General)
+    document.querySelectorAll('[data-vocab-type]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('[data-vocab-type]').forEach(b => b.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        state.vocabTypeFilter = e.currentTarget.getAttribute('data-vocab-type');
+        renderVocabulary();
+      });
+    });
 
     // Theme Toggle
     const themeBtn = document.getElementById('theme-toggle-btn');
@@ -662,6 +792,13 @@
         return;
       }
 
+      const masteryBtn = e.target.closest('[data-mastery-id]');
+      if (masteryBtn) {
+        e.stopPropagation();
+        toggleMastery(masteryBtn.getAttribute('data-mastery-id'));
+        return;
+      }
+
       const kanjiCard = e.target.closest('[data-kanji-modal-id]');
       if (kanjiCard) {
         const kanjiId = kanjiCard.getAttribute('data-kanji-modal-id');
@@ -687,6 +824,7 @@
   function renderAll() {
     updateLevelProgressionBanner();
     updateFooterStats();
+    updateMasteryHeaderStatus();
     renderSourceFilter('kanji');
     renderKanji();
     renderSourceFilter('vocabulary');
@@ -701,6 +839,7 @@
   function renderActiveTab() {
     updateLevelProgressionBanner();
     updateFooterStats();
+    updateMasteryHeaderStatus();
     switch (state.currentTab) {
       case 'kanji':
         renderSourceFilter('kanji');
@@ -754,18 +893,23 @@
 
     grid.innerHTML = items.map(k => {
       const isBookmarked = state.bookmarks.has(k.id);
+      const isMastered = state.mastered.has(k.id);
       const sourceInfo = k.sources && k.sources[0] ? k.sources[0] : null;
       const chapterBadge = sourceInfo ? (sourceInfo.chapter || sourceInfo.lesson || '') : '';
       const notes = sourceInfo && sourceInfo.notes ? sourceInfo.notes : '';
+      const compoundCount = k.examples ? k.examples.length : 0;
 
       return `
-        <div class="kanji-card card-glass" data-kanji-modal-id="${k.id}">
+        <div class="kanji-card card-glass ${isMastered ? 'mastered-card' : ''}" data-kanji-modal-id="${k.id}">
           <div class="kanji-card-top">
             <div class="kanji-badges">
               ${renderLevelPills(k.levels)}
               ${renderOriginBadge(k)}
             </div>
             <div class="kanji-actions">
+              <button class="mastery-btn ${isMastered ? 'is-mastered' : ''}" data-mastery-id="${k.id}" title="${isMastered ? 'Marked as Mastered' : 'Mark as Mastered'}">
+                ${isMastered ? '✓' : '○'}
+              </button>
               <button class="action-btn" data-speak="${k.char}" title="Listen pronunciation">${UI_ICONS.volume}</button>
               <button class="action-btn" data-bookmark-id="${k.id}" title="Save bookmark">
                 ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
@@ -789,8 +933,10 @@
           ` : ''}
 
           <div class="kanji-card-footer">
-            <span class="example-count">${k.examples ? k.examples.length : 0} vocabulary words</span>
-            <span class="open-detail-link">View details &rarr;</span>
+            <span class="example-count" onclick="event.stopPropagation(); window.NihonHub.showCompoundsForKanji('${k.char}')" title="Click to view all compound words with ${k.char}" style="cursor: pointer; text-decoration: underline;">
+              ${compoundCount} compound words &rarr;
+            </span>
+            <span class="open-detail-link">Details &rarr;</span>
           </div>
         </div>
       `;
@@ -852,9 +998,9 @@
     if (!modalBackdrop || !modalBody) return;
 
     const isBookmarked = state.bookmarks.has(kanji.id);
+    const isMastered = state.mastered.has(kanji.id);
     const examples = kanji.examples || [];
 
-    // Calculate level breakdown of compound words
     const levelCounts = {};
     examples.forEach(ex => {
       const lvls = ex.levels || [ex.level || 'N2'];
@@ -934,16 +1080,23 @@
         <div id="modal-examples-container" class="modal-examples-list"></div>
       </div>
 
-      <div class="modal-footer-actions">
-        <button class="btn-secondary" data-bookmark-id="${kanji.id}">
-          ${isBookmarked ? `${UI_ICONS.starFilled} Bookmarked` : `${UI_ICONS.starOutline} Add to Bookmarks`}
+      <div class="modal-footer-actions" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <button class="btn-primary-sm" onclick="window.NihonHub.showCompoundsForKanji('${kanji.char}')">
+          ${UI_ICONS.search} Explore in Vocabulary Vault &rarr;
         </button>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn-secondary" data-mastery-id="${kanji.id}">
+            ${isMastered ? '✓ Mastered' : 'Mark Mastered'}
+          </button>
+          <button class="btn-secondary" data-bookmark-id="${kanji.id}">
+            ${isBookmarked ? `${UI_ICONS.starFilled} Bookmarked` : `${UI_ICONS.starOutline} Add to Bookmarks`}
+          </button>
+        </div>
       </div>
     `;
 
     renderModalExamples(examples, state.selectedLevel);
 
-    // Setup modal compound filter listeners
     modalBody.querySelectorAll('[data-modal-filter]').forEach(btn => {
       btn.addEventListener('click', (e) => {
         modalBody.querySelectorAll('[data-modal-filter]').forEach(b => b.classList.remove('active'));
@@ -957,13 +1110,20 @@
     document.body.style.overflow = 'hidden';
   }
 
+  function openKanjiModalByChar(char) {
+    const k = window.JLPT_DATA.getKanjiByChar(char);
+    if (k) {
+      openKanjiModal(k.id);
+    }
+  }
+
   function closeModal() {
     const modalBackdrop = document.getElementById('modal-backdrop');
     if (modalBackdrop) modalBackdrop.classList.add('hidden');
     document.body.style.overflow = '';
   }
 
-  // --- 2. VOCABULARY RENDERER ---
+  // --- 2. VOCABULARY RENDERER (UNIFIED & 3-WAY SCRIPT) ---
   function renderVocabulary() {
     const list = document.getElementById('vocab-list');
     const countTag = document.getElementById('vocab-count');
@@ -990,14 +1150,21 @@
 
     list.innerHTML = items.map(v => {
       const isBookmarked = state.bookmarks.has(v.id);
+      const isMastered = state.mastered.has(v.id);
+      const components = v.kanjiComponents || [];
+
       return `
-        <div class="vocab-card card-glass">
+        <div class="vocab-card card-glass ${isMastered ? 'mastered-card' : ''}">
           <div class="vocab-top">
             <div class="vocab-badges">
               ${renderLevelPills(v.levels || [v.level])}
               ${renderOriginBadge(v)}
+              ${v.isKanjiCompound ? '<span class="source-pill" style="color: #38bdf8; border-color: rgba(56,189,248,0.3);">熟語 Compound</span>' : ''}
             </div>
             <div class="vocab-actions">
+              <button class="mastery-btn ${isMastered ? 'is-mastered' : ''}" data-mastery-id="${v.id}" title="${isMastered ? 'Marked Mastered' : 'Mark Mastered'}">
+                ${isMastered ? '✓' : '○'}
+              </button>
               <button class="action-btn" data-speak="${v.word}" title="Listen">${UI_ICONS.volume}</button>
               <button class="action-btn" data-bookmark-id="${v.id}" title="Bookmark">
                 ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
@@ -1006,17 +1173,32 @@
           </div>
 
           <div class="vocab-main">
-            <span class="vocab-word">${v.word}</span>
-            <span class="vocab-reading">【${v.reading}】</span>
+            ${renderVocabWordByMode(v)}
+            ${state.vocabScriptMode !== 'hiragana' ? `<span class="vocab-reading">【${v.reading}】</span>` : ''}
           </div>
 
-          <div class="vocab-romaji">${v.romaji || ''}</div>
+          ${v.romaji ? `<div class="vocab-romaji">${v.romaji}</div>` : ''}
           <div class="vocab-meaning">${v.meaning || ''}</div>
+
+          ${components.length > 0 ? `
+            <div class="kanji-anatomy-section">
+              <div class="kanji-anatomy-header">🧩 Kanji Building Blocks:</div>
+              <div class="kanji-anatomy-chips">
+                ${components.map(comp => `
+                  <div class="kanji-building-block" onclick="window.NihonHub.openKanjiModalByChar('${comp.char}')" title="Click to inspect Kanji ${comp.char} (${comp.meaning})">
+                    <span class="block-char">${comp.char}</span>
+                    <span class="block-meaning">${comp.meaning}</span>
+                    <span class="block-level">${comp.level}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
 
           ${v.example ? `
             <div class="vocab-example-box">
-              <p class="vocab-ex-ja">${parseFurigana(v.example.furigana)}</p>
-              <p class="vocab-ex-en">${v.example.en}</p>
+              <p class="vocab-ex-ja">${parseFurigana(v.example.furigana || v.example.ja)}</p>
+              <p class="vocab-ex-en">${v.example.en || ''}</p>
             </div>
           ` : ''}
 
@@ -1053,14 +1235,18 @@
 
     list.innerHTML = items.map(g => {
       const isBookmarked = state.bookmarks.has(g.id);
+      const isMastered = state.mastered.has(g.id);
       return `
-        <div class="grammar-card card-glass">
+        <div class="grammar-card card-glass ${isMastered ? 'mastered-card' : ''}">
           <div class="grammar-top">
             <div class="grammar-badges">
               ${renderLevelPills(g.levels || [g.level])}
               ${renderOriginBadge(g)}
             </div>
             <div class="grammar-actions">
+              <button class="mastery-btn ${isMastered ? 'is-mastered' : ''}" data-mastery-id="${g.id}" title="${isMastered ? 'Marked Mastered' : 'Mark Mastered'}">
+                ${isMastered ? '✓' : '○'}
+              </button>
               <button class="action-btn" data-speak="${g.pattern}" title="Listen">${UI_ICONS.volume}</button>
               <button class="action-btn" data-bookmark-id="${g.id}" title="Bookmark">
                 ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
@@ -1320,6 +1506,7 @@
       state.selectedLevel = 'ALL';
       state.originFilter = 'ALL';
       state.searchQuery = '';
+      state.vocabTypeFilter = 'ALL';
       state.filters.kanji = { book: 'ALL', chapter: 'ALL' };
       state.filters.vocabulary = { book: 'ALL', chapter: 'ALL' };
       state.filters.grammar = { book: 'ALL', chapter: 'ALL' };
@@ -1327,12 +1514,27 @@
       if (s) s.value = '';
       document.querySelectorAll('.level-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-level') === 'ALL'));
       document.querySelectorAll('.origin-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-origin') === 'ALL'));
+      document.querySelectorAll('.vtype-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-vocab-type') === 'ALL'));
       renderAll();
+    },
+    showCompoundsForKanji: (char) => {
+      closeModal();
+      switchTab('vocab');
+      state.searchQuery = char;
+      const s = document.getElementById('global-search-input');
+      if (s) {
+        s.value = char;
+        const clearBtn = document.getElementById('search-clear-btn');
+        if (clearBtn) clearBtn.classList.remove('hidden');
+      }
+      renderVocabulary();
     },
     switchTab: switchTab,
     openKanjiModal: openKanjiModal,
+    openKanjiModalByChar: openKanjiModalByChar,
     speakJapanese: speakJapanese,
-    toggleBookmark: toggleBookmark
+    toggleBookmark: toggleBookmark,
+    toggleMastery: toggleMastery
   };
 
 })();

@@ -2,7 +2,7 @@
  * NihonHub - Master Data Loader & Cross-Level Origin Indexer
  * Aggregates all modular level datasets (N5 to N2), handles cross-book deduplication,
  * detects first-introduced levels (Origin Level), unifies compound vocabulary across levels,
- * and normalizes multi-level source citations into `window.JLPT_DATA`.
+ * builds rich Kanji Building-Block anatomy mappings, and normalizes multi-level citations into `window.JLPT_DATA`.
  */
 
 (function () {
@@ -55,7 +55,6 @@
               );
 
               if (existingEx) {
-                // Same word appears in this higher level as well!
                 if (!Array.isArray(existingEx.levels)) existingEx.levels = [existingEx.level || existingEx.firstLevel || 'N5'];
                 if (!existingEx.levels.includes(level)) {
                   existingEx.levels.push(level);
@@ -67,7 +66,6 @@
                   existingEx.sources.push(newSource);
                 }
               } else {
-                // New word under this Kanji
                 const exClone = JSON.parse(JSON.stringify(ex));
                 exClone.firstLevel = level;
                 exClone.levels = [level];
@@ -89,7 +87,7 @@
           // Brand new entry in the index
           const cloned = JSON.parse(JSON.stringify(item));
           
-          cloned.firstLevel = level; // Lowest level where this item first appears
+          cloned.firstLevel = level;
           cloned.levels = cloned.levels && cloned.levels.length > 0 ? cloned.levels : [level];
           if (!cloned.levels.includes(level)) {
             cloned.levels.push(level);
@@ -100,7 +98,6 @@
             cloned.sources = [];
           }
           
-          // Tag examples with firstLevel, levels, and sources
           if (Array.isArray(cloned.examples)) {
             cloned.examples = cloned.examples.map(ex => {
               const exClone = JSON.parse(JSON.stringify(ex));
@@ -160,14 +157,122 @@
   };
 
   const mergedKanji = mergeAndIndexDatasets(kanjiByLevel, 'char');
-  const mergedVocab = mergeAndIndexDatasets(vocabByLevel, 'word');
+  const standaloneVocab = mergeAndIndexDatasets(vocabByLevel, 'word');
   const mergedGrammar = mergeAndIndexDatasets(grammarByLevel, 'pattern');
   const mergedReading = mergeAndIndexDatasets(readingByLevel, 'id');
   const mergedListening = mergeAndIndexDatasets(listeningByLevel, 'id');
 
+  // Build Kanji fast-lookup map by character
+  const kanjiMap = new Map();
+  mergedKanji.forEach(k => {
+    if (k.char) kanjiMap.set(k.char, k);
+  });
+
+  // --- UNIFY VOCABULARY: Standalone + All Kanji Compound Target Vocabulary ---
+  const unifiedVocabMap = new Map();
+
+  // 1. Insert standalone vocabulary words
+  standaloneVocab.forEach(v => {
+    const cloned = JSON.parse(JSON.stringify(v));
+    cloned.isKanjiCompound = false;
+    cloned.parentKanji = [];
+    unifiedVocabMap.set(cloned.word, cloned);
+  });
+
+  // 2. Aggregate all compound words from Kanji syllabus examples
+  mergedKanji.forEach(k => {
+    (k.examples || []).forEach(ex => {
+      const wordText = ex.word || ex.ja;
+      if (!wordText) return;
+
+      const defaultSource = (k.sources && k.sources[0]) ? k.sources[0] : { book: 'Sou Matome ' + k.firstLevel + ' Kanji', chapter: '' };
+
+      if (unifiedVocabMap.has(wordText)) {
+        const existing = unifiedVocabMap.get(wordText);
+        existing.isKanjiCompound = true;
+        if (!existing.parentKanji) existing.parentKanji = [];
+        if (!existing.parentKanji.includes(k.char)) existing.parentKanji.push(k.char);
+
+        // Merge levels
+        const exLevels = ex.levels || (ex.level ? [ex.level] : k.levels);
+        exLevels.forEach(lvl => {
+          if (!existing.levels.includes(lvl)) {
+            existing.levels.push(lvl);
+            existing.levels.sort((a, b) => (LEVEL_ORDER[a] || 99) - (LEVEL_ORDER[b] || 99));
+          }
+        });
+
+        // Merge sources
+        const newSrc = ex.source ? { book: ex.source } : defaultSource;
+        const srcExists = existing.sources.some(s => s.book === newSrc.book);
+        if (!srcExists) existing.sources.push(newSrc);
+
+        if (!existing.reading && ex.reading) existing.reading = ex.reading;
+        if (!existing.meaning && ex.meaning) existing.meaning = ex.meaning;
+
+      } else {
+        // Brand new compound vocabulary entry
+        const exLevels = ex.levels || (ex.level ? [ex.level] : [k.firstLevel || 'N5']);
+        const sources = [];
+        if (ex.source) sources.push({ book: ex.source });
+        else if (k.sources && k.sources[0]) sources.push(k.sources[0]);
+
+        const newVocabItem = {
+          id: 'v-cmp-' + (ex.id || encodeURIComponent(wordText)),
+          word: wordText,
+          reading: ex.reading || '',
+          romaji: ex.romaji || '',
+          meaning: ex.meaning || '',
+          levels: [...exLevels].sort((a, b) => (LEVEL_ORDER[a] || 99) - (LEVEL_ORDER[b] || 99)),
+          firstLevel: ex.firstLevel || exLevels[0] || k.firstLevel || 'N5',
+          isKanjiCompound: true,
+          parentKanji: [k.char],
+          sources: sources,
+          example: ex.example || null
+        };
+        unifiedVocabMap.set(wordText, newVocabItem);
+      }
+    });
+  });
+
+  const mergedVocab = Array.from(unifiedVocabMap.values());
+
+  // 3. Enrich all vocabulary items with Kanji Anatomy Components
+  const kanjiRegex = /[\u4e00-\u9faf\u3400-\u4dbf]/g;
+  mergedVocab.forEach(item => {
+    const charsInWord = item.word.match(kanjiRegex) || [];
+    const components = [];
+    charsInWord.forEach(ch => {
+      const kObj = kanjiMap.get(ch);
+      if (kObj) {
+        components.push({
+          char: ch,
+          meaning: kObj.meaning,
+          level: kObj.firstLevel || (kObj.levels ? kObj.levels[0] : 'N5'),
+          onyomi: kObj.onyomi,
+          kunyomi: kObj.kunyomi,
+          id: kObj.id
+        });
+        if (!item.parentKanji) item.parentKanji = [];
+        if (!item.parentKanji.includes(ch)) item.parentKanji.push(ch);
+        item.isKanjiCompound = true;
+      } else {
+        components.push({
+          char: ch,
+          meaning: 'Kanji',
+          level: 'External',
+          onyomi: '',
+          kunyomi: '',
+          id: null
+        });
+      }
+    });
+    item.kanjiComponents = components;
+  });
+
   const kana = window.KANA_DATA || { hiragana: [], katakana: [] };
 
-  // Construct Master JLPT_DATA Object with query helpers
+  // Construct Master JLPT_DATA Object with rich query helpers
   window.JLPT_DATA = {
     levels: [
       { id: 'N5', name: 'JLPT N5', title: 'Beginner / 基礎', desc: 'Basic Japanese, ~100 Kanji, ~800 Vocab, introductory grammar.' },
@@ -181,6 +286,17 @@
     grammar: mergedGrammar,
     reading: mergedReading,
     listening: mergedListening,
+    kanjiMap: kanjiMap,
+
+    // Helper: Find Kanji Object by character
+    getKanjiByChar: function (char) {
+      return kanjiMap.get(char) || null;
+    },
+
+    // Helper: Find all vocabulary containing a specific Kanji character
+    getWordsForKanji: function (char) {
+      return this.vocabulary.filter(v => v.word && v.word.includes(char));
+    },
 
     // Helper: Determine if item is brand-new or review in a given level
     getItemStatusInLevel: function (item, targetLevel) {
