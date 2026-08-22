@@ -1,7 +1,7 @@
 /**
  * NihonHub - Dedicated Mobile & Tablet Responsive Stylesheet
- * Compact UI, Header Hamburger Integration & Level Badge,
- * Full-Screen Immersion, and Bottom App Navigation.
+ * Zen Study Modal, Clean Header Hamburger, Generous Bottom Clearance,
+ * and Anti-Clipping Card Action Buttons.
  */
 
 /* ====================================================== */
@@ -96,13 +96,13 @@
 /* ====================================================== */
 @media screen and (max-width: 640px) {
   
-  /* --- App Viewport & Safe Areas --- */
+  /* --- App Viewport & Generous Bottom Clearance --- */
   :root {
     --header-height: 92px;
   }
 
   body {
-    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px)) !important;
     width: 100%;
     overflow-x: hidden;
   }
@@ -176,7 +176,7 @@
   }
 
   #theme-text-container {
-    display: none !important; /* Icon-only on mobile */
+    display: none !important;
   }
 
   /* Row 2: Full-width live search bar */
@@ -193,12 +193,12 @@
     height: 36px !important;
   }
 
-  /* App Container: matches header padding exactly */
+  /* App Container: matches header padding & gives generous bottom clearance */
   .app-container {
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
-    padding: 0 12px 60px 12px !important;
+    padding: 0 12px 110px 12px !important;
     box-sizing: border-box !important;
     overflow-x: hidden !important;
   }
@@ -221,21 +221,6 @@
   .prog-chip-sm {
     font-size: 0.7rem !important;
     padding: 2px 6px !important;
-  }
-
-  /* All Cards: 100% flush width */
-  .progression-banner,
-  .sub-filter-card,
-  .kanji-card,
-  .vocab-card,
-  .grammar-card,
-  .flashcard-card,
-  .empty-state {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
   }
 
   /* Desktop Nav Tabs: Hide on mobile */
@@ -298,7 +283,7 @@
     font-weight: 700;
   }
 
-  /* Compact Sub-Filter Card & Textbook Selectors */
+  /* Sub-Filter Card & Textbook Selectors */
   .sub-filter-card {
     padding: 10px 10px !important;
     margin-bottom: 10px !important;
@@ -338,41 +323,59 @@
     flex-shrink: 0;
   }
 
-  /* Vocabulary Study Toolbar on Mobile */
-  .vocab-study-toolbar {
-    padding: 8px 10px;
-    gap: 8px;
+  /* All Cards: 100% flush width & Anti-clipping Card Top */
+  .progression-banner,
+  .sub-filter-card,
+  .kanji-card,
+  .vocab-card,
+  .grammar-card,
+  .flashcard-card,
+  .empty-state {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 
-  .segmented-control {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 4px;
+  .kanji-card-top,
+  .vocab-top,
+  .grammar-top {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: 6px !important;
+    margin-bottom: 8px !important;
   }
 
-  .segment-btn {
-    text-align: center;
-    padding: 6px 8px;
-    font-size: 0.76rem;
+  .kanji-badges,
+  .vocab-badges,
+  .grammar-badges {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    flex-wrap: wrap !important;
+    max-width: calc(100% - 96px) !important;
   }
 
-  .vocab-type-pills {
-    width: 100%;
-    display: flex;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-    gap: 6px;
+  .kanji-actions,
+  .vocab-actions,
+  .grammar-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    flex-shrink: 0 !important;
   }
 
-  .vtype-pill {
-    flex-shrink: 0;
-    font-size: 0.74rem;
-    padding: 3px 8px;
+  .action-btn,
+  .mastery-btn {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.76rem !important;
   }
 
-  /* Compact Kanji Cards (1 Column) */
+  /* Compact Kanji Matrix Cards */
   .kanji-grid {
     grid-template-columns: 1fr !important;
     gap: 10px !important;
@@ -392,7 +395,7 @@
     min-height: auto;
   }
 
-  /* Compact Vocabulary Cards (1 Column) */
+  /* Compact Vocabulary Vault Cards */
   .vocab-list {
     grid-template-columns: 1fr !important;
     gap: 10px !important;
@@ -407,95 +410,57 @@
     font-size: 1.15rem;
   }
 
-  .kanji-anatomy-chips {
-    gap: 4px;
-  }
-
-  .kanji-building-block {
-    padding: 2px 6px;
-    font-size: 0.7rem;
-  }
-
-  /* Compact Grammar Cards */
-  .grammar-card {
-    padding: 12px;
-  }
-
-  .grammar-pattern {
-    font-size: 1.15rem;
-  }
-
-  /* Flashcards on Mobile */
-  .flashcard-card {
-    min-height: 250px;
-    padding: 16px;
-  }
-
-  .fc-kanji-char {
-    font-size: 3.5rem;
-  }
-
-  .fc-vocab-word {
-    font-size: 1.6rem;
-  }
-
-  .fc-controls-row {
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .fc-btn {
-    flex: 1 1 40%;
-    padding: 8px;
-    font-size: 0.8rem;
-  }
-
-  /* Modal Sheet on Mobile */
+  /* Zen Modal on Mobile */
   .modal-dialog {
-    width: 96vw;
-    max-height: 88vh;
-    padding: 14px;
-    border-radius: 16px;
+    width: 96vw !important;
+    max-height: 90vh !important;
+    padding: 14px !important;
+    border-radius: 16px !important;
   }
 
-  .modal-kanji-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
+  .zen-hero-header {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 10px !important;
   }
 
-  .modal-kanji-big {
-    font-size: 3.4rem;
+  .zen-kanji-char {
+    font-size: 3.2rem !important;
   }
 
-  .modal-readings-grid {
-    grid-template-columns: 1fr;
-    gap: 6px;
+  .zen-meta-row {
+    justify-content: center !important;
   }
 
-  .modal-example-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-    padding: 8px 10px;
+  .zen-readings-bar {
+    justify-content: center !important;
   }
 
-  .example-en-col {
-    text-align: left;
-    max-width: 100%;
-    font-size: 0.84rem;
+  .zen-examples-list {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
   }
 
-  .modal-footer-actions {
-    flex-direction: column;
-    gap: 6px;
+  .zen-modal-footer {
+    flex-direction: column !important;
+    gap: 6px !important;
     align-items: stretch !important;
   }
 
-  .modal-footer-actions button {
-    width: 100%;
-    justify-content: center;
+  .zen-modal-footer button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .zen-footer-right {
+    display: flex !important;
+    gap: 6px !important;
+    width: 100% !important;
+  }
+
+  .zen-footer-right button {
+    flex: 1 !important;
   }
 }
 
@@ -507,7 +472,7 @@
   .app-container {
     width: 100% !important;
     max-width: 100% !important;
-    padding: 0 16px 60px 16px !important;
+    padding: 0 16px 80px 16px !important;
   }
 
   .header-inner {

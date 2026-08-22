@@ -957,7 +957,7 @@
     }).join('');
   }
 
-  // --- KANJI DETAIL MODAL ---
+  // --- ZEN STUDY KANJI MODAL ---
   let modalCompoundFilter = 'ALL';
 
   function renderModalExamples(examples, selectedLevel) {
@@ -972,32 +972,30 @@
       });
     }
 
+    if (filtered.length === 0) {
+      list.innerHTML = `<div class="modal-empty-compounds">No compound words found for this level.</div>`;
+      return;
+    }
+
     list.innerHTML = filtered.map(ex => {
       const exLevels = ex.levels || [ex.level || 'N2'];
       const firstLvl = ex.firstLevel || exLevels[0] || 'N2';
       const isMultiLevel = exLevels.length > 1;
-      const isNewInCurrent = selectedLevel !== 'ALL' && firstLvl === selectedLevel && !isMultiLevel;
-      const isPriorReview = selectedLevel !== 'ALL' && firstLvl !== selectedLevel;
-      const sourcesList = ex.sources || (ex.source ? [ex.source] : []);
 
       return `
-        <div class="modal-example-row">
-          <div class="example-jp-col">
-            <div class="example-main-text">
-              <span class="example-word">${ex.word}</span>
-              <span class="example-reading">【${ex.reading}】</span>
+        <div class="zen-compound-item">
+          <div class="zen-comp-left">
+            <div class="zen-comp-word-row">
+              <span class="zen-comp-word">${ex.word}</span>
+              <span class="zen-comp-reading">【${ex.reading}】</span>
               <button class="mini-audio-btn" data-speak="${ex.word}" title="Listen">${UI_ICONS.volume}</button>
             </div>
-            
-            <div class="ex-meta-badges">
-              ${exLevels.map(lvl => `<span class="level-badge badge-${lvl.toLowerCase()}">${lvl}</span>`).join(' ')}
-              ${sourcesList.map(s => `<span class="ex-source-chip" title="Textbook Source">${UI_ICONS.book} ${s}</span>`).join(' ')}
-              ${isMultiLevel ? `<span class="ex-novelty-chip review">🔄 In ${exLevels.join(' & ')}</span>` : ''}
-              ${isNewInCurrent ? `<span class="ex-novelty-chip new">✨ New in ${firstLvl}</span>` : ''}
-              ${isPriorReview && !isMultiLevel ? `<span class="ex-novelty-chip review">🔄 Studied in ${firstLvl}</span>` : ''}
+            <div class="zen-comp-meta">
+              ${renderLevelPills(exLevels)}
+              ${isMultiLevel ? '<span class="origin-tag review">🔄 Multi-Level</span>' : ''}
             </div>
           </div>
-          <div class="example-en-col">${ex.meaning}</div>
+          <div class="zen-comp-meaning">${ex.meaning}</div>
         </div>
       `;
     }).join('');
@@ -1024,87 +1022,96 @@
     });
 
     const distinctLevels = Object.keys(levelCounts).sort();
-    const breakdownText = distinctLevels.map(lvl => `${lvl}: ${levelCounts[lvl]}`).join(' • ');
-
     modalCompoundFilter = 'ALL';
 
     modalBody.innerHTML = `
-      <div class="modal-kanji-header">
-        <div class="modal-kanji-big">${kanji.char}</div>
-        <div class="modal-kanji-info">
-          <div class="modal-badges-row">
-            ${renderLevelPills(kanji.levels)}
-            ${renderOriginBadge(kanji)}
+      <div class="zen-modal-container">
+        <!-- Hero Header -->
+        <div class="zen-hero-header">
+          <div class="zen-char-box">
+            <span class="zen-kanji-char">${kanji.char}</span>
+            <button class="zen-audio-btn" data-speak="${kanji.char}" title="Listen Kanji Pronunciation">
+              ${UI_ICONS.volume} Speak
+            </button>
           </div>
-          <h2 class="modal-meaning-title">${kanji.meaning}</h2>
-          <div class="modal-details-grid">
-            <div class="modal-detail-item">
-              <span class="detail-label">Strokes:</span>
-              <span class="detail-val">${kanji.strokes || '—'}</span>
+          
+          <div class="zen-header-info">
+            <div class="zen-meta-row">
+              ${renderLevelPills(kanji.levels)}
+              ${renderOriginBadge(kanji)}
+              <span class="zen-stat-pill">${kanji.strokes ? `${kanji.strokes} Strokes` : ''}</span>
+              ${kanji.radical ? `<span class="zen-stat-pill">Radical: ${kanji.radical}</span>` : ''}
             </div>
-            <div class="modal-detail-item">
-              <span class="detail-label">Radical:</span>
-              <span class="detail-val">${kanji.radical || '—'}</span>
+            
+            <h2 class="zen-meaning-title">${kanji.meaning}</h2>
+
+            <!-- Clean Readings Bar -->
+            <div class="zen-readings-bar">
+              <div class="zen-reading-chip">
+                <span class="z-label">ON</span>
+                <span class="z-val">${kanji.onyomi || '—'}</span>
+              </div>
+              <div class="zen-reading-chip">
+                <span class="z-label">KUN</span>
+                <span class="z-val">${kanji.kunyomi || '—'}</span>
+              </div>
             </div>
-            ${kanji.sources && kanji.sources.length > 0 ? `
-              <div class="modal-sources-list">
-                ${kanji.sources.map(s => `
-                  <div class="modal-source-pill">
-                    ${UI_ICONS.book} <strong>${s.book}</strong> &mdash; ${s.chapter || s.lesson || ''} ${s.notes ? `(${s.notes})` : ''}
-                  </div>
+          </div>
+        </div>
+
+        <!-- Collapsible Textbook Lessons (Cleaner, No Clutter!) -->
+        ${kanji.sources && kanji.sources.length > 0 ? `
+          <details class="zen-textbook-drawer">
+            <summary class="zen-drawer-summary">
+              <span>📖 Textbook Lessons & Context (${kanji.sources.length} Sources)</span>
+              <span class="drawer-arrow">▾</span>
+            </summary>
+            <div class="zen-drawer-body">
+              ${kanji.sources.map(s => `
+                <div class="zen-source-entry">
+                  ${UI_ICONS.book} <strong>${s.book}</strong> &mdash; ${s.chapter || s.lesson || ''} ${s.notes ? `(${s.notes})` : ''}
+                </div>
+              `).join('')}
+            </div>
+          </details>
+        ` : ''}
+
+        <!-- Clean Target Compounds Section -->
+        <div class="zen-compounds-section">
+          <div class="zen-compounds-header">
+            <div class="zen-comp-title">
+              <span>Target Compounds (熟語)</span>
+              <span class="count-chip">${examples.length} Words</span>
+            </div>
+
+            ${distinctLevels.length > 1 ? `
+              <div class="zen-filter-pills">
+                <button class="modal-filter-btn active" data-modal-filter="ALL">All (${examples.length})</button>
+                ${distinctLevels.map(lvl => `
+                  <button class="modal-filter-btn" data-modal-filter="${lvl}">
+                    ${lvl} (${levelCounts[lvl]})
+                  </button>
                 `).join('')}
               </div>
             ` : ''}
           </div>
-        </div>
-      </div>
 
-      <div class="modal-readings-grid">
-        <div class="modal-reading-box">
-          <div class="reading-title">On'yomi (音読み - Chinese Reading)</div>
-          <div class="reading-content">${kanji.onyomi || '—'}</div>
-        </div>
-        <div class="modal-reading-box">
-          <div class="reading-title">Kun'yomi (訓読み - Japanese Reading)</div>
-          <div class="reading-content">${kanji.kunyomi || '—'}</div>
-        </div>
-      </div>
-
-      <div class="modal-examples-section">
-        <div class="modal-section-title">
-          <div class="ex-title-left">
-            <span>Target Vocabulary & Compounds (熟語)</span>
-            <span class="count-chip">${examples.length} Unique Words</span>
-          </div>
-          ${breakdownText ? `<div class="modal-vocab-breakdown">(${breakdownText})</div>` : ''}
+          <div id="modal-examples-container" class="zen-examples-list"></div>
         </div>
 
-        ${distinctLevels.length > 1 ? `
-          <div class="modal-compound-filter-bar">
-            <span class="filter-mini-label">Filter Vocab:</span>
-            <button class="modal-filter-btn active" data-modal-filter="ALL">All (${examples.length})</button>
-            ${distinctLevels.map(lvl => `
-              <button class="modal-filter-btn" data-modal-filter="${lvl}">
-                <span class="level-badge badge-${lvl.toLowerCase()}">${lvl}</span> (${levelCounts[lvl]})
-              </button>
-            `).join('')}
-          </div>
-        ` : ''}
-        
-        <div id="modal-examples-container" class="modal-examples-list"></div>
-      </div>
-
-      <div class="modal-footer-actions" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-        <button class="btn-primary-sm" onclick="window.NihonHub.showCompoundsForKanji('${kanji.char}')">
-          ${UI_ICONS.search} Explore in Vocabulary Vault &rarr;
-        </button>
-        <div style="display: flex; gap: 8px;">
-          <button class="btn-secondary" data-mastery-id="${kanji.id}">
-            ${isMastered ? '✓ Mastered' : 'Mark Mastered'}
+        <!-- Clean Footer Actions -->
+        <div class="zen-modal-footer">
+          <button class="btn-primary-sm" onclick="window.NihonHub.showCompoundsForKanji('${kanji.char}')">
+            ${UI_ICONS.search} View in Vocab Vault &rarr;
           </button>
-          <button class="btn-secondary" data-bookmark-id="${kanji.id}">
-            ${isBookmarked ? `${UI_ICONS.starFilled} Bookmarked` : `${UI_ICONS.starOutline} Add to Bookmarks`}
-          </button>
+          <div class="zen-footer-right">
+            <button class="btn-secondary-sm" data-mastery-id="${kanji.id}">
+              ${isMastered ? '✓ Mastered' : 'Mark Mastered'}
+            </button>
+            <button class="btn-secondary-sm" data-bookmark-id="${kanji.id}">
+              ${isBookmarked ? `${UI_ICONS.starFilled} Bookmarked` : `${UI_ICONS.starOutline} Save`}
+            </button>
+          </div>
         </div>
       </div>
     `;

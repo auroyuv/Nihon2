@@ -2563,3 +2563,270 @@ body.hide-english .grammar-meaning:active {
 .kanji-card {
   padding: 14px;
 }
+
+/* ====================================================== */
+/* ZEN STUDY KANJI MODAL & STREAMLINED DICTIONARY CARD    */
+/* ====================================================== */
+.zen-modal-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.zen-hero-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.zen-char-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.zen-kanji-char {
+  font-family: var(--font-jp);
+  font-size: 3.8rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.zen-audio-btn {
+  background: var(--brand-primary);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 4px 10px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all var(--trans-fast);
+}
+
+.zen-audio-btn:hover {
+  background: var(--brand-primary-hover);
+  transform: scale(1.05);
+}
+
+.zen-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.zen-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.zen-stat-pill {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.zen-meaning-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.zen-readings-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.zen-reading-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 4px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+}
+
+[data-theme="light"] .zen-reading-chip {
+  background: #f1f5f9;
+}
+
+.zen-reading-chip .z-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--brand-primary);
+}
+
+.zen-reading-chip .z-val {
+  font-family: var(--font-jp);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Collapsible Textbook Lessons Drawer */
+.zen-textbook-drawer {
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+[data-theme="light"] .zen-textbook-drawer {
+  background: #f8fafc;
+}
+
+.zen-drawer-summary {
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  list-style: none;
+}
+
+.zen-drawer-summary::-webkit-details-marker {
+  display: none;
+}
+
+.zen-drawer-body {
+  padding: 8px 12px 10px 12px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.zen-source-entry {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Zen Target Compounds */
+.zen-compounds-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.zen-compounds-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.zen-comp-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.zen-filter-pills {
+  display: flex;
+  gap: 6px;
+}
+
+.zen-examples-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media screen and (max-width: 640px) {
+  .zen-examples-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.zen-compound-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: all var(--trans-fast);
+}
+
+.zen-compound-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.zen-comp-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.zen-comp-word-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.zen-comp-word {
+  font-family: var(--font-jp);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.zen-comp-reading {
+  font-family: var(--font-jp);
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+}
+
+.zen-comp-meaning {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Zen Footer */
+.zen-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.zen-footer-right {
+  display: flex;
+  gap: 6px;
+}
