@@ -2181,6 +2181,77 @@ body.hide-romaji .kana-romaji {
   color: #ffffff;
 }
 
+.fc-ctrl-btn.toggle-active {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+  color: #38bdf8;
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.25);
+}
+
+[data-theme="light"] .fc-ctrl-btn.toggle-active {
+  background: #e0f2fe;
+  border-color: #38bdf8;
+  color: #0284c7;
+}
+
+.fc-ctrl-btn.toggle-inactive {
+  opacity: 0.55;
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--border-subtle);
+  color: var(--text-muted);
+}
+
+.fc-key-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: currentColor;
+}
+
+[data-theme="light"] .fc-key-badge {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.fc-spoiler-mask {
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 2px 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  user-select: none;
+  font-style: italic;
+  font-size: 0.88em;
+  transition: all var(--trans-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.fc-spoiler-mask:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #38bdf8;
+}
+
+[data-theme="light"] .fc-spoiler-mask {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #64748b;
+}
+
+[data-theme="light"] .fc-spoiler-mask:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
 .fc-shortcuts-legend {
   display: flex;
   justify-content: center;

@@ -63,7 +63,9 @@
       status: 'ALL',       // 'ALL' | 'UNMASTERED' | 'MASTERED'
       deck: [],
       currentIndex: 0,
-      isFlipped: false
+      isFlipped: false,
+      showHiragana: true,
+      showEnglish: true
     }
   };
 
@@ -946,6 +948,10 @@
     if (fcQuickAudio) fcQuickAudio.addEventListener('click', speakCurrentFlashcard);
     const fcMasteryBtn = document.getElementById('fc-toggle-mastery-btn');
     if (fcMasteryBtn) fcMasteryBtn.addEventListener('click', toggleMasteryCurrentFlashcard);
+    const fcToggleReading = document.getElementById('fc-toggle-reading-btn');
+    if (fcToggleReading) fcToggleReading.addEventListener('click', toggleFlashcardHiragana);
+    const fcToggleMeaning = document.getElementById('fc-toggle-meaning-btn');
+    if (fcToggleMeaning) fcToggleMeaning.addEventListener('click', toggleFlashcardEnglish);
 
     // Modal Close
     document.querySelectorAll('.modal-close-btn').forEach(btn => {
@@ -969,6 +975,10 @@
           nextFlashcard();
         } else if (e.key === 'ArrowLeft' || e.key === 'k' || e.key === 'K') {
           prevFlashcard();
+        } else if (e.key === 'h' || e.key === 'H') {
+          toggleFlashcardHiragana();
+        } else if (e.key === 'e' || e.key === 'E') {
+          toggleFlashcardEnglish();
         } else if (e.key === 'a' || e.key === 'A') {
           speakCurrentFlashcard();
         } else if (e.key === 'm' || e.key === 'M') {
@@ -2161,9 +2171,13 @@
     const masteryText = document.getElementById('fc-mastery-text');
     if (!cardEl) return;
 
+    updateFlashcardStudyAidButtons();
+
     const deck = state.flashcards.deck;
     const total = deck.length;
     const idx = state.flashcards.currentIndex;
+    const showHira = state.flashcards.showHiragana;
+    const showEn = state.flashcards.showEnglish;
 
     if (indexDisplay) indexDisplay.textContent = total > 0 ? idx + 1 : 0;
     if (totalDisplay) totalDisplay.textContent = total;
@@ -2247,6 +2261,11 @@
         </div>
       `;
 
+      const kanjiMeaningHtml = showEn ? item.meaning : `<span class="fc-spoiler-mask" onclick="this.outerHTML='${(item.meaning || '').replace(/'/g, "\\'")}'; event.stopPropagation();" title="Click or press E to reveal">•••• Reveal Meaning (E)</span>`;
+
+      const onReadingHtml = item.onyomi ? (showHira ? item.onyomi : `<span class="fc-spoiler-mask" onclick="this.outerHTML='${item.onyomi}'; event.stopPropagation();" title="Click or press H to reveal">•••• (H)</span>`) : '';
+      const kunReadingHtml = item.kunyomi ? (showHira ? item.kunyomi : `<span class="fc-spoiler-mask" onclick="this.outerHTML='${(item.kunyomi || '').replace(/'/g, "\\'")}'; event.stopPropagation();" title="Click or press H to reveal">•••• (H)</span>`) : '';
+
       backEl.innerHTML = `
         <div class="fc-face-header">
           <div class="fc-face-badges">
@@ -2267,10 +2286,10 @@
           <div class="fc-kanji-main-row">
             <span class="fc-kanji-char">${item.char}</span>
             <div class="fc-kanji-info">
-              <div class="fc-meaning-lead" style="margin-bottom: 4px; font-size: 1.25rem;">${item.meaning}</div>
+              <div class="fc-meaning-lead" style="margin-bottom: 4px; font-size: 1.25rem;">${kanjiMeaningHtml}</div>
               <div class="fc-readings-box" style="margin-bottom: 4px; font-size: 0.95rem;">
-                ${item.onyomi ? `<div><span class="r-label">ON:</span> <span class="r-val">${item.onyomi}</span></div>` : ''}
-                ${item.kunyomi ? `<div><span class="r-label">KUN:</span> <span class="r-val">${item.kunyomi}</span></div>` : ''}
+                ${item.onyomi ? `<div><span class="r-label">ON:</span> <span class="r-val">${onReadingHtml}</span></div>` : ''}
+                ${item.kunyomi ? `<div><span class="r-label">KUN:</span> <span class="r-val">${kunReadingHtml}</span></div>` : ''}
               </div>
               <div class="fc-meta-tags">
                 ${item.strokes ? `<span class="prog-chip-sm">${item.strokes} Strokes</span>` : ''}
@@ -2291,10 +2310,10 @@
                 <div class="fc-compound-item" onclick="event.stopPropagation()">
                   <div class="fc-comp-top">
                     <span class="fc-comp-word">${ex.word}</span>
-                    <span class="fc-comp-reading">【${ex.reading}】</span>
+                    <span class="fc-comp-reading">${showHira ? `【${ex.reading}】` : `<span class="fc-spoiler-mask" onclick="this.outerHTML='【${ex.reading}】'; event.stopPropagation();" title="Click or press H">【••••】</span>`}</span>
                     <button class="mini-audio-btn" data-speak="${ex.word}" title="Listen">${UI_ICONS.volume}</button>
                   </div>
-                  <div class="fc-comp-meaning">${ex.meaning}</div>
+                  <div class="fc-comp-meaning">${showEn ? ex.meaning : `<span class="fc-spoiler-mask" onclick="this.outerHTML='${(ex.meaning || '').replace(/'/g, "\\'")}'; event.stopPropagation();" title="Click or press E">•••• Reveal</span>`}</div>
                 </div>
               `).join('')}
             </div>
@@ -2316,6 +2335,9 @@
     } else if (isVocab) {
       // Vocabulary Card Face
       const components = item.kanjiComponents || [];
+      const frontReadingHtml = (state.vocabScriptMode !== 'hiragana' && item.reading) ? 
+        (showHira ? `<div class="fc-reading-sub">【${item.reading}】</div>` : `<div class="fc-reading-sub"><span class="fc-spoiler-mask" onclick="this.outerHTML='【${item.reading}】'; event.stopPropagation();">【•••• (H)】</span></div>`) : '';
+
       frontEl.innerHTML = `
         <div class="fc-face-header">
           <div class="fc-face-badges">
@@ -2335,7 +2357,7 @@
 
         <div class="fc-main-center">
           <div class="fc-big-word">${renderVocabWordByMode(item)}</div>
-          ${state.vocabScriptMode !== 'hiragana' && item.reading ? `<div class="fc-reading-sub">【${item.reading}】</div>` : ''}
+          ${frontReadingHtml}
           <div class="fc-prompt-hint" style="margin-top: 12px;">Tap card or press <kbd>Space</kbd> to reveal meaning ↺</div>
         </div>
 
@@ -2344,6 +2366,9 @@
           <span class="fc-prompt-hint">Flip ↺</span>
         </div>
       `;
+
+      const backReadingHtml = showHira ? `【${item.reading}】` : `<span class="fc-spoiler-mask" onclick="this.outerHTML='【${item.reading}】'; event.stopPropagation();" title="Click or press H">【•••• (H)】</span>`;
+      const vocabMeaningHtml = showEn ? item.meaning : `<span class="fc-spoiler-mask" onclick="this.outerHTML='${(item.meaning || '').replace(/'/g, "\\'")}'; event.stopPropagation();" title="Click or press E">•••• Reveal Meaning (E)</span>`;
 
       backEl.innerHTML = `
         <div class="fc-face-header">
@@ -2361,10 +2386,10 @@
 
         <div class="fc-main-center">
           <div class="fc-reading-sub" style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary);">
-            ${item.word} 【${item.reading}】
+            ${item.word} ${backReadingHtml}
           </div>
           ${item.romaji ? `<div class="text-muted" style="font-size: 0.85rem; margin-bottom: 6px;">${item.romaji}</div>` : ''}
-          <div class="fc-meaning-lead">${item.meaning}</div>
+          <div class="fc-meaning-lead">${vocabMeaningHtml}</div>
 
           ${components.length > 0 ? `
             <div class="t-mini-blocks" style="justify-content: center; margin-bottom: 10px;" onclick="event.stopPropagation()">
@@ -2379,10 +2404,10 @@
           ${item.example ? `
             <div class="fc-examples-box">
               <div class="fc-ex-row">
-                <span class="fc-ex-ja">${parseFurigana(item.example.furigana || item.example.ja)}</span>
+                <span class="fc-ex-ja">${showHira ? parseFurigana(item.example.furigana || item.example.ja) : item.example.ja}</span>
                 <button class="mini-audio-btn" data-speak="${item.example.ja}" onclick="event.stopPropagation()" title="Listen">${UI_ICONS.volume}</button>
               </div>
-              <div class="fc-ex-en">${item.example.en || ''}</div>
+              <div class="fc-ex-en">${showEn ? (item.example.en || '') : `<span class="fc-spoiler-mask" onclick="this.outerHTML='${(item.example.en || '').replace(/'/g, "\\'")}'; event.stopPropagation();">•••• Reveal Example Translation (E)</span>`}</div>
             </div>
           ` : ''}
         </div>
@@ -2428,6 +2453,8 @@
         </div>
       `;
 
+      const grammarMeaningHtml = showEn ? item.meaning : `<span class="fc-spoiler-mask" onclick="this.outerHTML='${(item.meaning || '').replace(/'/g, "\\'")}'; event.stopPropagation();">•••• Reveal Meaning (E)</span>`;
+
       backEl.innerHTML = `
         <div class="fc-face-header">
           <div class="fc-face-badges">
@@ -2443,17 +2470,17 @@
         </div>
 
         <div class="fc-main-center">
-          <div class="fc-meaning-lead">${item.meaning}</div>
+          <div class="fc-meaning-lead">${grammarMeaningHtml}</div>
           ${item.structure ? `<div style="margin-bottom: 8px;"><code class="t-structure-code">${item.structure}</code></div>` : ''}
-          ${item.explanation ? `<div class="t-grammar-expl" style="margin-bottom: 10px; max-width: 580px;">${item.explanation}</div>` : ''}
+          ${item.explanation ? `<div class="t-grammar-expl" style="margin-bottom: 10px; max-width: 580px;">${showEn ? item.explanation : `<span class="fc-spoiler-mask" onclick="this.outerHTML='${(item.explanation || '').replace(/'/g, "\\'")}'; event.stopPropagation();">•••• Reveal Explanation (E)</span>`}</div>` : ''}
           
           ${Array.isArray(item.examples) && item.examples.length > 0 ? `
             <div class="fc-examples-box">
               <div class="fc-ex-row">
-                <span class="fc-ex-ja">${parseFurigana(item.examples[0].furigana || item.examples[0].ja)}</span>
+                <span class="fc-ex-ja">${showHira ? parseFurigana(item.examples[0].furigana || item.examples[0].ja) : item.examples[0].ja}</span>
                 <button class="mini-audio-btn" data-speak="${item.examples[0].ja}" onclick="event.stopPropagation()" title="Listen">${UI_ICONS.volume}</button>
               </div>
-              <div class="fc-ex-en">${item.examples[0].en}</div>
+              <div class="fc-ex-en">${showEn ? item.examples[0].en : `<span class="fc-spoiler-mask" onclick="this.outerHTML='${(item.examples[0].en || '').replace(/'/g, "\\'")}'; event.stopPropagation();">•••• Reveal Translation (E)</span>`}</div>
             </div>
           ` : ''}
         </div>
@@ -2469,6 +2496,31 @@
           </div>
         </div>
       `;
+    }
+  }
+
+  function toggleFlashcardHiragana() {
+    state.flashcards.showHiragana = !state.flashcards.showHiragana;
+    updateFlashcardStudyAidButtons();
+    renderFlashcard();
+  }
+
+  function toggleFlashcardEnglish() {
+    state.flashcards.showEnglish = !state.flashcards.showEnglish;
+    updateFlashcardStudyAidButtons();
+    renderFlashcard();
+  }
+
+  function updateFlashcardStudyAidButtons() {
+    const hBtn = document.getElementById('fc-toggle-reading-btn');
+    const eBtn = document.getElementById('fc-toggle-meaning-btn');
+    if (hBtn) {
+      hBtn.classList.toggle('toggle-active', state.flashcards.showHiragana);
+      hBtn.classList.toggle('toggle-inactive', !state.flashcards.showHiragana);
+    }
+    if (eBtn) {
+      eBtn.classList.toggle('toggle-active', state.flashcards.showEnglish);
+      eBtn.classList.toggle('toggle-inactive', !state.flashcards.showEnglish);
     }
   }
 
@@ -2752,7 +2804,9 @@
     flipFlashcard: flipFlashcard,
     nextFlashcard: nextFlashcard,
     prevFlashcard: prevFlashcard,
-    shuffleFlashcards: shuffleFlashcards
+    shuffleFlashcards: shuffleFlashcards,
+    toggleFlashcardHiragana: toggleFlashcardHiragana,
+    toggleFlashcardEnglish: toggleFlashcardEnglish
   };
 
 })();
