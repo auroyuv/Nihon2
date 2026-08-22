@@ -221,13 +221,36 @@
   }
 
   // --- DYNAMIC SOURCE / BOOK / CHAPTER QUERY HELPERS ---
+  // --- DYNAMIC SOURCE / BOOK / CHAPTER QUERY HELPERS ---
   function getAvailableBooks(category, level) {
     const masterList = (window.JLPT_DATA && window.JLPT_DATA[category]) ? window.JLPT_DATA[category] : [];
-    const levelItems = masterList.filter(item => level === 'ALL' || (item.levels && item.levels.includes(level)));
+    let levelItems = masterList.filter(item => level === 'ALL' || (item.levels && item.levels.includes(level)));
+    
+    if (category === 'vocabulary') {
+      if (state.vocabTypeFilter === 'TEXTBOOK') {
+        levelItems = masterList.filter(item => {
+          if (!item.isTextbookVocab) return false;
+          return level === 'ALL' || (item.textbookLevels && item.textbookLevels.includes(level));
+        });
+      } else if (state.vocabTypeFilter === 'COMPOUNDS') {
+        levelItems = masterList.filter(item => {
+          if (!item.isKanjiCompound) return false;
+          return level === 'ALL' || (item.compoundLevels && item.compoundLevels.includes(level));
+        });
+      }
+    }
     const bookMap = new Map();
 
     levelItems.forEach(item => {
-      (item.sources || []).forEach(s => {
+      let srcList = item.sources || [];
+      if (category === 'vocabulary') {
+        if (state.vocabTypeFilter === 'TEXTBOOK' && item.textbookSources && item.textbookSources.length > 0) {
+          srcList = item.textbookSources;
+        } else if (state.vocabTypeFilter === 'COMPOUNDS' && item.compoundSources && item.compoundSources.length > 0) {
+          srcList = item.compoundSources;
+        }
+      }
+      srcList.forEach(s => {
         if (s.book) {
           bookMap.set(s.book, (bookMap.get(s.book) || 0) + 1);
         }
@@ -241,11 +264,33 @@
 
   function getAvailableChapters(category, level, selectedBook) {
     const masterList = (window.JLPT_DATA && window.JLPT_DATA[category]) ? window.JLPT_DATA[category] : [];
-    const levelItems = masterList.filter(item => level === 'ALL' || (item.levels && item.levels.includes(level)));
+    let levelItems = masterList.filter(item => level === 'ALL' || (item.levels && item.levels.includes(level)));
+    
+    if (category === 'vocabulary') {
+      if (state.vocabTypeFilter === 'TEXTBOOK') {
+        levelItems = masterList.filter(item => {
+          if (!item.isTextbookVocab) return false;
+          return level === 'ALL' || (item.textbookLevels && item.textbookLevels.includes(level));
+        });
+      } else if (state.vocabTypeFilter === 'COMPOUNDS') {
+        levelItems = masterList.filter(item => {
+          if (!item.isKanjiCompound) return false;
+          return level === 'ALL' || (item.compoundLevels && item.compoundLevels.includes(level));
+        });
+      }
+    }
     const chapterMap = new Map();
 
     levelItems.forEach(item => {
-      (item.sources || []).forEach(s => {
+      let srcList = item.sources || [];
+      if (category === 'vocabulary') {
+        if (state.vocabTypeFilter === 'TEXTBOOK' && item.textbookSources && item.textbookSources.length > 0) {
+          srcList = item.textbookSources;
+        } else if (state.vocabTypeFilter === 'COMPOUNDS' && item.compoundSources && item.compoundSources.length > 0) {
+          srcList = item.compoundSources;
+        }
+      }
+      srcList.forEach(s => {
         if (selectedBook !== 'ALL' && s.book !== selectedBook) return;
         const rawChap = s.chapter || s.lesson;
         if (!rawChap) return;
@@ -304,13 +349,22 @@
 
     const currentFilter = state.filters[category] || { book: 'ALL', chapter: 'ALL' };
     const availableBooks = getAvailableBooks(category, state.selectedLevel);
-    const stats = window.JLPT_DATA ? window.JLPT_DATA.getLevelStats(category, state.selectedLevel) : { total: 0 };
+    
+    let currentCategoryTotal = 0;
+    if (category === 'vocabulary' && window.JLPT_DATA.getVocabStats) {
+      const vStats = window.JLPT_DATA.getVocabStats(state.selectedLevel);
+      currentCategoryTotal = state.vocabTypeFilter === 'TEXTBOOK' ? vStats.textbookCount :
+                             state.vocabTypeFilter === 'COMPOUNDS' ? vStats.compoundsCount : vStats.total;
+    } else {
+      const stats = window.JLPT_DATA ? window.JLPT_DATA.getLevelStats(category, state.selectedLevel) : { total: 0 };
+      currentCategoryTotal = stats.total;
+    }
 
     if (currentFilter.book !== 'ALL' && !availableBooks.some(b => b.book === currentFilter.book)) {
       currentFilter.book = 'ALL';
     }
 
-    let selectOptions = `<option value="ALL">All Textbooks (${stats.total})</option>`;
+    let selectOptions = `<option value="ALL">All Textbooks (${currentCategoryTotal})</option>`;
     availableBooks.forEach(b => {
       const isSelected = currentFilter.book === b.book ? 'selected' : '';
       selectOptions += `<option value="${b.book}" ${isSelected}>${b.book} (${b.count})</option>`;
@@ -332,7 +386,7 @@
       currentFilter.chapter = 'ALL';
     }
 
-    let selectedBookTotal = stats.total;
+    let selectedBookTotal = currentCategoryTotal;
     if (currentFilter.book !== 'ALL') {
       const bObj = availableBooks.find(b => b.book === currentFilter.book);
       if (bObj) selectedBookTotal = bObj.count;
@@ -376,7 +430,7 @@
     });
   }
 
-  // --- DYNAMIC LEVEL PROGRESSION & OVERLAP BANNER (COMPACT SLEEK UI) ---
+  // --- LEVEL PROGRESSION BANNER UPDATE ---
   function updateLevelProgressionBanner() {
     const banner = document.getElementById('level-progression-banner');
     if (!banner || !window.JLPT_DATA) return;
@@ -414,10 +468,10 @@
     }
 
     if (state.selectedLevel === 'ALL') {
-      const n5Count = masterList.filter(i => i.firstLevel === 'N5').length;
-      const n4Count = masterList.filter(i => i.firstLevel === 'N4').length;
-      const n3Count = masterList.filter(i => i.firstLevel === 'N3').length;
-      const n2Count = masterList.filter(i => i.firstLevel === 'N2').length;
+      const n5Count = masterList.filter(i => (i.firstLevel === 'N5' || (i.levels && i.levels.includes('N5')))).length;
+      const n4Count = masterList.filter(i => (i.firstLevel === 'N4' || (i.levels && i.levels.includes('N4')))).length;
+      const n3Count = masterList.filter(i => (i.firstLevel === 'N3' || (i.levels && i.levels.includes('N3')))).length;
+      const n2Count = masterList.filter(i => (i.firstLevel === 'N2' || (i.levels && i.levels.includes('N2')))).length;
 
       banner.innerHTML = `
         <div class="compact-banner-row">
@@ -434,28 +488,43 @@
         </div>
       `;
     } else {
-      banner.innerHTML = `
-        <div class="compact-banner-row">
-          <div class="compact-banner-left">
-            <span class="compact-banner-title">JLPT ${state.selectedLevel} ${catTitle}:</span>
-            <span class="compact-banner-badge-big">${stats.total} Total</span>
+      if (state.currentTab === 'vocab' && window.JLPT_DATA.getVocabStats) {
+        const vStats = window.JLPT_DATA.getVocabStats(state.selectedLevel);
+        banner.innerHTML = `
+          <div class="compact-banner-row">
+            <div class="compact-banner-left">
+              <span class="compact-banner-title">JLPT ${state.selectedLevel} ${catTitle}:</span>
+              <span class="compact-banner-badge-big">${vStats.total} Total</span>
+            </div>
+            <div class="compact-origin-pills">
+              <span class="prog-chip-sm" style="background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3);" title="Extracted from textbook chapters">📚 Textbook Vocab: <strong>${vStats.textbookCount}</strong></span>
+              <span class="prog-chip-sm" style="background: rgba(56,189,248,0.15); color: #38bdf8; border: 1px solid rgba(56,189,248,0.3);" title="Learned from Kanji stroke examples">🈁 Kanji Compounds: <strong>${vStats.compoundsCount}</strong></span>
+            </div>
           </div>
-          <div class="compact-origin-pills">
-            <span class="prog-chip-sm new-chip" title="Brand new in ${state.selectedLevel}">✨ New: <strong>${stats.newCount}</strong> (${newPct}%)</span>
-            <span class="prog-chip-sm review-chip" title="Repeated from earlier levels">🔄 Review: <strong>${stats.reviewCount}</strong> (${reviewPct}%)</span>
+        `;
+      } else {
+        banner.innerHTML = `
+          <div class="compact-banner-row">
+            <div class="compact-banner-left">
+              <span class="compact-banner-title">JLPT ${state.selectedLevel} ${catTitle}:</span>
+              <span class="compact-banner-badge-big">${stats.total} Total</span>
+            </div>
+            <div class="compact-origin-pills">
+              <span class="prog-chip-sm new-chip" title="Brand new in ${state.selectedLevel}">✨ New: <strong>${stats.newCount}</strong> (${newPct}%)</span>
+              <span class="prog-chip-sm review-chip" title="Repeated from earlier levels">🔄 Review: <strong>${stats.reviewCount}</strong> (${reviewPct}%)</span>
+            </div>
           </div>
-        </div>
-        <div class="compact-split-bar">
-          <div class="split-fill-new" style="width: ${newPct}%;" title="${stats.newCount} New (${newPct}%)"></div>
-          <div class="split-fill-review" style="width: ${reviewPct}%;" title="${stats.reviewCount} Review (${reviewPct}%)"></div>
-        </div>
-      `;
+          <div class="compact-split-bar">
+            <div class="split-fill-new" style="width: ${newPct}%;" title="${stats.newCount} New (${newPct}%)"></div>
+            <div class="split-fill-review" style="width: ${reviewPct}%;" title="${stats.reviewCount} Review (${reviewPct}%)"></div>
+          </div>
+        `;
+      }
     }
   }
 
-  // --- DYNAMIC FOOTER STATS ---
-  function updateFooterStats() {
-    const el = document.getElementById('footer-stats');
+  function updateOverviewCounts() {
+    const el = document.getElementById('overview-counts-text');
     if (!el || !window.JLPT_DATA) return;
     const kCount = window.JLPT_DATA.kanji ? window.JLPT_DATA.kanji.length : 0;
     const vCount = window.JLPT_DATA.vocabulary ? window.JLPT_DATA.vocabulary.length : 0;
@@ -487,14 +556,22 @@
     const catFilter = state.filters[category] || { book: 'ALL', chapter: 'ALL' };
 
     return items.filter(item => {
-      if (!matchLevel(item)) return false;
-      if (!matchOrigin(item)) return false;
-
-      // Filter by Vocab Source (Textbook vs Kanji Compounds vs All)
+      // Filter by Level & Vocab Source
       if (category === 'vocabulary') {
-        if (state.vocabTypeFilter === 'TEXTBOOK' && !item.isTextbookVocab) return false;
-        if (state.vocabTypeFilter === 'COMPOUNDS' && !item.isKanjiCompound) return false;
+        if (state.vocabTypeFilter === 'TEXTBOOK') {
+          if (!item.isTextbookVocab) return false;
+          if (state.selectedLevel !== 'ALL' && (!item.textbookLevels || !item.textbookLevels.includes(state.selectedLevel))) return false;
+        } else if (state.vocabTypeFilter === 'COMPOUNDS') {
+          if (!item.isKanjiCompound) return false;
+          if (state.selectedLevel !== 'ALL' && (!item.compoundLevels || !item.compoundLevels.includes(state.selectedLevel))) return false;
+        } else {
+          if (!matchLevel(item)) return false;
+        }
+      } else {
+        if (!matchLevel(item)) return false;
       }
+
+      if (!matchOrigin(item)) return false;
 
       // Filter by selected Book
       if (catFilter.book !== 'ALL') {
@@ -701,12 +778,15 @@
       });
     });
 
-    // Vocab Category Type Selector (All / Compounds / General)
+    // Vocab Category Type Selector (All / Textbook / Compounds)
     document.querySelectorAll('[data-vocab-type]').forEach(btn => {
       btn.addEventListener('click', (e) => {
         document.querySelectorAll('[data-vocab-type]').forEach(b => b.classList.remove('active'));
         e.currentTarget.classList.add('active');
         state.vocabTypeFilter = e.currentTarget.getAttribute('data-vocab-type');
+        state.filters.vocabulary.book = 'ALL';
+        state.filters.vocabulary.chapter = 'ALL';
+        renderSourceFilter('vocabulary');
         renderVocabulary();
       });
     });

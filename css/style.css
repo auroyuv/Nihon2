@@ -2023,19 +2023,20 @@ body.hide-romaji .kana-romaji {
 }
 
 /* Vocabulary Study Toolbar */
+/* Vocabulary Study Toolbar */
 .vocab-study-toolbar {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  background: rgba(0, 0, 0, 0.16);
+  background: rgba(0, 0, 0, 0.2);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
-  padding: 12px 16px;
-  margin-bottom: 14px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
 }
 
 [data-theme="light"] .vocab-study-toolbar {
-  background: #f8fafc;
+  background: #f1f5f9;
 }
 
 .study-control-group {
@@ -2050,17 +2051,19 @@ body.hide-romaji .kana-romaji {
   font-weight: 700;
   color: var(--text-secondary);
   white-space: nowrap;
+  min-width: 140px;
 }
 
-/* 3-Way Segmented Control */
+/* Standardized Segmented Control & Vocab Pills */
 .segmented-control {
   display: inline-flex;
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid var(--border-subtle);
-  border-radius: 10px;
+  border-radius: 9px;
   padding: 3px;
   gap: 4px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 [data-theme="light"] .segmented-control {
@@ -2072,10 +2075,14 @@ body.hide-romaji .kana-romaji {
   border: none;
   color: var(--text-secondary);
   font-size: 0.82rem;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 8px;
+  font-weight: 600;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 7px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: all var(--trans-fast);
   white-space: nowrap;
 }
@@ -2086,9 +2093,10 @@ body.hide-romaji .kana-romaji {
 }
 
 .segment-btn.active {
-  background: var(--brand-primary);
-  color: white;
-  box-shadow: 0 2px 8px rgba(255, 71, 87, 0.35);
+  background: #4f46e5;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.35);
+  font-weight: 700;
 }
 
 /* Vocab Category Selector Pills */
@@ -2096,6 +2104,7 @@ body.hide-romaji .kana-romaji {
   display: inline-flex;
   gap: 8px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .vtype-pill {
@@ -2104,13 +2113,15 @@ body.hide-romaji .kana-romaji {
   color: var(--text-secondary);
   font-size: 0.82rem;
   font-weight: 600;
-  padding: 5px 12px;
+  height: 34px;
+  padding: 0 14px;
   border-radius: 8px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   transition: all var(--trans-fast);
+  white-space: nowrap;
 }
 
 .vtype-pill:hover {
@@ -2119,14 +2130,32 @@ body.hide-romaji .kana-romaji {
 }
 
 .vtype-pill.active {
-  background: #3b82f6;
-  color: white;
-  border-color: #3b82f6;
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+  font-weight: 700;
+}
+
+.vtype-pill[data-vocab-type="TEXTBOOK"].active {
+  background: #059669;
+  border-color: #059669;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.35);
+}
+
+.vtype-pill[data-vocab-type="COMPOUNDS"].active {
+  background: #0284c7;
+  border-color: #0284c7;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
 }
 
 .vtype-count-badge {
-  display: inline-block;
-  padding: 1px 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 18px;
+  padding: 0 6px;
   font-size: 0.72rem;
   font-weight: 700;
   border-radius: 999px;
@@ -2136,7 +2165,7 @@ body.hide-romaji .kana-romaji {
 }
 
 .vtype-pill.active .vtype-count-badge {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.3);
   color: #ffffff;
 }
 
@@ -2148,6 +2177,9 @@ body.hide-romaji .kana-romaji {
 
 .badge-compound {
   color: #38bdf8 !important;
+  border-color: rgba(56, 189, 248, 0.35) !important;
+  background: rgba(56, 189, 248, 0.1) !important;
+}
   border-color: rgba(56, 189, 248, 0.35) !important;
   background: rgba(56, 189, 248, 0.1) !important;
 }

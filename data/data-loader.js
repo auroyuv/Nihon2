@@ -174,8 +174,13 @@
   // 1. Insert standalone textbook vocabulary words
   standaloneVocab.forEach(v => {
     const cloned = JSON.parse(JSON.stringify(v));
+    const tbLevel = cloned.levels ? cloned.levels[0] : (cloned.level || 'N5');
     cloned.isTextbookVocab = true;
     cloned.isKanjiCompound = false;
+    cloned.textbookLevels = (cloned.levels && cloned.levels.length > 0) ? [...cloned.levels] : [tbLevel];
+    cloned.compoundLevels = [];
+    cloned.textbookSources = cloned.sources ? JSON.parse(JSON.stringify(cloned.sources)) : [];
+    cloned.compoundSources = [];
     cloned.parentKanji = [];
     unifiedVocabMap.set(cloned.word, cloned);
   });
@@ -187,15 +192,29 @@
       if (!wordText) return;
 
       const defaultSource = (k.sources && k.sources[0]) ? k.sources[0] : { book: 'Sou Matome ' + k.firstLevel + ' Kanji', chapter: '' };
+      const exLevel = ex.level || (ex.levels ? ex.levels[0] : (k.firstLevel || 'N5'));
+      const exLevels = ex.levels || (ex.level ? [ex.level] : [exLevel]);
+      const newSrc = ex.source ? { book: ex.source } : defaultSource;
 
       if (unifiedVocabMap.has(wordText)) {
         const existing = unifiedVocabMap.get(wordText);
         existing.isKanjiCompound = true;
+        if (!existing.compoundLevels) existing.compoundLevels = [];
+        exLevels.forEach(lvl => {
+          if (!existing.compoundLevels.includes(lvl)) {
+            existing.compoundLevels.push(lvl);
+            existing.compoundLevels.sort((a, b) => (LEVEL_ORDER[a] || 99) - (LEVEL_ORDER[b] || 99));
+          }
+        });
+
+        if (!existing.compoundSources) existing.compoundSources = [];
+        const cmpSrcExists = existing.compoundSources.some(s => s.book === newSrc.book);
+        if (!cmpSrcExists) existing.compoundSources.push(newSrc);
+
         if (!existing.parentKanji) existing.parentKanji = [];
         if (!existing.parentKanji.includes(k.char)) existing.parentKanji.push(k.char);
 
-        // Merge levels
-        const exLevels = ex.levels || (ex.level ? [ex.level] : k.levels);
+        // Merge overall levels
         exLevels.forEach(lvl => {
           if (!existing.levels.includes(lvl)) {
             existing.levels.push(lvl);
@@ -203,8 +222,7 @@
           }
         });
 
-        // Merge sources
-        const newSrc = ex.source ? { book: ex.source } : defaultSource;
+        // Merge overall sources
         const srcExists = existing.sources.some(s => s.book === newSrc.book);
         if (!srcExists) existing.sources.push(newSrc);
 
@@ -213,7 +231,6 @@
 
       } else {
         // Brand new compound vocabulary entry from Kanji examples
-        const exLevels = ex.levels || (ex.level ? [ex.level] : [k.firstLevel || 'N5']);
         const sources = [];
         if (ex.source) sources.push({ book: ex.source });
         else if (k.sources && k.sources[0]) sources.push(k.sources[0]);
@@ -228,6 +245,10 @@
           firstLevel: ex.firstLevel || exLevels[0] || k.firstLevel || 'N5',
           isTextbookVocab: false,
           isKanjiCompound: true,
+          textbookLevels: [],
+          compoundLevels: [...exLevels].sort((a, b) => (LEVEL_ORDER[a] || 99) - (LEVEL_ORDER[b] || 99)),
+          textbookSources: [],
+          compoundSources: sources,
           parentKanji: [k.char],
           sources: sources,
           example: ex.example || null
@@ -301,18 +322,28 @@
 
     // Helper: Get detailed vocabulary breakdown (Textbook vs Kanji Compounds)
     getVocabStats: function (targetLevel = 'ALL') {
-      const items = this.vocabulary.filter(v => {
+      const items = this.vocabulary;
+      const textbookCount = items.filter(v => {
+        if (!v.isTextbookVocab) return false;
+        if (targetLevel === 'ALL') return true;
+        return v.textbookLevels && v.textbookLevels.includes(targetLevel);
+      }).length;
+
+      const compoundsCount = items.filter(v => {
+        if (!v.isKanjiCompound) return false;
+        if (targetLevel === 'ALL') return true;
+        return v.compoundLevels && v.compoundLevels.includes(targetLevel);
+      }).length;
+
+      const total = items.filter(v => {
         if (targetLevel === 'ALL') return true;
         return v.levels && v.levels.includes(targetLevel);
-      });
-      const textbookCount = items.filter(v => v.isTextbookVocab).length;
-      const compoundsCount = items.filter(v => v.isKanjiCompound).length;
-      const bothCount = items.filter(v => v.isTextbookVocab && v.isKanjiCompound).length;
+      }).length;
+
       return {
         textbookCount,
         compoundsCount,
-        bothCount,
-        total: items.length
+        total
       };
     },
 
