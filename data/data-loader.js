@@ -185,76 +185,78 @@
     unifiedVocabMap.set(cloned.word, cloned);
   });
 
-  // 2. Aggregate all compound words from Kanji syllabus examples
-  mergedKanji.forEach(k => {
-    (k.examples || []).forEach(ex => {
-      const wordText = ex.word || ex.ja;
-      if (!wordText) return;
+  // 2. Aggregate all compound words from Kanji syllabus examples across each level
+  ['N5', 'N4', 'N3', 'N2'].forEach(level => {
+    const rawKanjiList = kanjiByLevel[level] || [];
+    rawKanjiList.forEach(k => {
+      const defaultSource = (k.sources && k.sources[0]) ? k.sources[0] : { book: 'Sou Matome ' + level, chapter: '' };
+      
+      (k.examples || []).forEach(ex => {
+        const wordText = ex.word || ex.ja;
+        if (!wordText) return;
 
-      const defaultSource = (k.sources && k.sources[0]) ? k.sources[0] : { book: 'Sou Matome ' + k.firstLevel + ' Kanji', chapter: '' };
-      const exLevel = ex.level || (ex.levels ? ex.levels[0] : (k.firstLevel || 'N5'));
-      const exLevels = ex.levels || (ex.level ? [ex.level] : [exLevel]);
-      const newSrc = ex.source ? { book: ex.source } : defaultSource;
+        const exSourceBook = ex.source || defaultSource.book || ('Sou Matome ' + level);
+        const newSrc = {
+          book: exSourceBook,
+          chapter: defaultSource.chapter || '',
+          notes: defaultSource.notes || ''
+        };
 
-      if (unifiedVocabMap.has(wordText)) {
-        const existing = unifiedVocabMap.get(wordText);
-        existing.isKanjiCompound = true;
-        if (!existing.compoundLevels) existing.compoundLevels = [];
-        exLevels.forEach(lvl => {
-          if (!existing.compoundLevels.includes(lvl)) {
-            existing.compoundLevels.push(lvl);
+        if (unifiedVocabMap.has(wordText)) {
+          const existing = unifiedVocabMap.get(wordText);
+          existing.isKanjiCompound = true;
+          
+          if (!existing.compoundLevels) existing.compoundLevels = [];
+          if (!existing.compoundLevels.includes(level)) {
+            existing.compoundLevels.push(level);
             existing.compoundLevels.sort((a, b) => (LEVEL_ORDER[a] || 99) - (LEVEL_ORDER[b] || 99));
           }
-        });
 
-        if (!existing.compoundSources) existing.compoundSources = [];
-        const cmpSrcExists = existing.compoundSources.some(s => s.book === newSrc.book);
-        if (!cmpSrcExists) existing.compoundSources.push(newSrc);
+          if (!existing.compoundSources) existing.compoundSources = [];
+          const cmpSrcExists = existing.compoundSources.some(s => s.book === newSrc.book && s.chapter === newSrc.chapter);
+          if (!cmpSrcExists) existing.compoundSources.push(newSrc);
 
-        if (!existing.parentKanji) existing.parentKanji = [];
-        if (!existing.parentKanji.includes(k.char)) existing.parentKanji.push(k.char);
+          if (!existing.parentKanji) existing.parentKanji = [];
+          if (!existing.parentKanji.includes(k.char)) existing.parentKanji.push(k.char);
 
-        // Merge overall levels
-        exLevels.forEach(lvl => {
-          if (!existing.levels.includes(lvl)) {
-            existing.levels.push(lvl);
+          // Merge overall levels
+          if (!existing.levels.includes(level)) {
+            existing.levels.push(level);
             existing.levels.sort((a, b) => (LEVEL_ORDER[a] || 99) - (LEVEL_ORDER[b] || 99));
           }
-        });
 
-        // Merge overall sources
-        const srcExists = existing.sources.some(s => s.book === newSrc.book);
-        if (!srcExists) existing.sources.push(newSrc);
+          // Merge overall sources
+          const srcExists = existing.sources.some(s => s.book === newSrc.book && s.chapter === newSrc.chapter);
+          if (!srcExists) existing.sources.push(newSrc);
 
-        if (!existing.reading && ex.reading) existing.reading = ex.reading;
-        if (!existing.meaning && ex.meaning) existing.meaning = ex.meaning;
+          if (!existing.reading && ex.reading) existing.reading = ex.reading;
+          if (!existing.meaning && ex.meaning) existing.meaning = ex.meaning;
 
-      } else {
-        // Brand new compound vocabulary entry from Kanji examples
-        const sources = [];
-        if (ex.source) sources.push({ book: ex.source });
-        else if (k.sources && k.sources[0]) sources.push(k.sources[0]);
+        } else {
+          // Brand new compound vocabulary entry from Kanji examples
+          const sources = [newSrc];
 
-        const newVocabItem = {
-          id: 'v-cmp-' + (ex.id || encodeURIComponent(wordText)),
-          word: wordText,
-          reading: ex.reading || '',
-          romaji: ex.romaji || '',
-          meaning: ex.meaning || '',
-          levels: [...exLevels].sort((a, b) => (LEVEL_ORDER[a] || 99) - (LEVEL_ORDER[b] || 99)),
-          firstLevel: ex.firstLevel || exLevels[0] || k.firstLevel || 'N5',
-          isTextbookVocab: false,
-          isKanjiCompound: true,
-          textbookLevels: [],
-          compoundLevels: [...exLevels].sort((a, b) => (LEVEL_ORDER[a] || 99) - (LEVEL_ORDER[b] || 99)),
-          textbookSources: [],
-          compoundSources: sources,
-          parentKanji: [k.char],
-          sources: sources,
-          example: ex.example || null
-        };
-        unifiedVocabMap.set(wordText, newVocabItem);
-      }
+          const newVocabItem = {
+            id: 'v-cmp-' + (ex.id || encodeURIComponent(wordText)),
+            word: wordText,
+            reading: ex.reading || '',
+            romaji: ex.romaji || '',
+            meaning: ex.meaning || '',
+            levels: [level],
+            firstLevel: level,
+            isTextbookVocab: false,
+            isKanjiCompound: true,
+            textbookLevels: [],
+            compoundLevels: [level],
+            textbookSources: [],
+            compoundSources: [newSrc],
+            parentKanji: [k.char],
+            sources: sources,
+            example: ex.example || null
+          };
+          unifiedVocabMap.set(wordText, newVocabItem);
+        }
+      });
     });
   });
 

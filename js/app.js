@@ -251,10 +251,9 @@
           srcList = item.compoundSources;
         }
       }
-      srcList.forEach(s => {
-        if (s.book) {
-          bookMap.set(s.book, (bookMap.get(s.book) || 0) + 1);
-        }
+      const distinctBooks = [...new Set(srcList.map(s => s.book).filter(Boolean))];
+      distinctBooks.forEach(b => {
+        bookMap.set(b, (bookMap.get(b) || 0) + 1);
       });
     });
 
@@ -575,14 +574,23 @@
       if (!matchOrigin(item)) return false;
 
       // Filter by selected Book
+      let srcList = item.sources || [];
+      if (category === 'vocabulary') {
+        if (state.vocabTypeFilter === 'TEXTBOOK' && item.textbookSources && item.textbookSources.length > 0) {
+          srcList = item.textbookSources;
+        } else if (state.vocabTypeFilter === 'COMPOUNDS' && item.compoundSources && item.compoundSources.length > 0) {
+          srcList = item.compoundSources;
+        }
+      }
+
       if (catFilter.book !== 'ALL') {
-        const hasBook = Array.isArray(item.sources) && item.sources.some(s => s.book === catFilter.book);
+        const hasBook = Array.isArray(srcList) && srcList.some(s => s.book === catFilter.book);
         if (!hasBook) return false;
       }
 
       // Filter by selected Chapter / Week
       if (catFilter.chapter !== 'ALL') {
-        const hasChapter = Array.isArray(item.sources) && item.sources.some(s => {
+        const hasChapter = Array.isArray(srcList) && srcList.some(s => {
           if (catFilter.book !== 'ALL' && s.book !== catFilter.book) return false;
           const rawChap = s.chapter || s.lesson;
           return rawChap && (rawChap === catFilter.chapter || rawChap.startsWith(catFilter.chapter));
@@ -1013,7 +1021,9 @@
     const existingSentinel = document.getElementById(s.sentinelId);
     if (existingSentinel) {
       if (scrollObserver) scrollObserver.unobserve(existingSentinel);
-      existingSentinel.remove();
+      if (typeof existingSentinel.remove === 'function') {
+        existingSentinel.remove();
+      }
     }
 
     const nextItems = s.items.slice(s.renderedCount, s.renderedCount + CHUNK_SIZE);
