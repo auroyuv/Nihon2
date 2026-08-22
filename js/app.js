@@ -47,6 +47,14 @@
       grammar: { book: 'ALL', chapter: 'ALL' }
     },
 
+    // View Modes per Category ('cards' | 'table')
+    viewModes: {
+      kanji: 'cards',
+      vocabulary: 'cards',
+      grammar: 'cards',
+      bookmarks: 'cards'
+    },
+
     // Flashcard state
     flashcards: {
       deck: [],
@@ -92,6 +100,9 @@
 
       const savedMastered = localStorage.getItem('nihon_mastered');
       if (savedMastered) state.mastered = new Set(JSON.parse(savedMastered));
+
+      const savedViewModes = localStorage.getItem('nihon_view_modes');
+      if (savedViewModes) state.viewModes = Object.assign(state.viewModes, JSON.parse(savedViewModes));
     } catch (e) {
       console.warn('LocalStorage error:', e);
     }
@@ -107,6 +118,7 @@
       localStorage.setItem('nihon_vocab_script_mode', state.vocabScriptMode);
       localStorage.setItem('nihon_bookmarks', JSON.stringify(Array.from(state.bookmarks)));
       localStorage.setItem('nihon_mastered', JSON.stringify(Array.from(state.mastered)));
+      localStorage.setItem('nihon_view_modes', JSON.stringify(state.viewModes));
     } catch (e) {
       console.warn('LocalStorage save error:', e);
     }
@@ -800,6 +812,23 @@
       });
     });
 
+    // View Mode Toggle (Cards vs Table)
+    document.querySelectorAll('[data-view-target]').forEach(wrapper => {
+      const targetCat = wrapper.getAttribute('data-view-target');
+      wrapper.querySelectorAll('[data-view]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const mode = e.currentTarget.getAttribute('data-view');
+          state.viewModes[targetCat] = mode;
+          updateViewModeButtons(targetCat);
+          savePreferences();
+          if (targetCat === 'kanji') renderKanji();
+          else if (targetCat === 'vocabulary') renderVocabulary();
+          else if (targetCat === 'grammar') renderGrammar();
+          else if (targetCat === 'bookmarks') renderBookmarks();
+        });
+      });
+    });
+
     // Theme Toggle
     const themeBtn = document.getElementById('theme-toggle-btn');
     if (themeBtn) {
@@ -983,10 +1012,86 @@
   const CHUNK_SIZE = 30; // Loads in batches of 30 for < 5ms instant responsiveness
 
   const scrollState = {
-    kanji: { items: [], renderedCount: 0, containerId: 'kanji-grid', sentinelId: 'kanji-sentinel', renderCard: renderKanjiCardHtml },
-    vocabulary: { items: [], renderedCount: 0, containerId: 'vocab-list', sentinelId: 'vocab-sentinel', renderCard: renderVocabCardHtml },
-    grammar: { items: [], renderedCount: 0, containerId: 'grammar-list', sentinelId: 'grammar-sentinel', renderCard: renderGrammarCardHtml },
-    bookmarks: { items: [], renderedCount: 0, containerId: 'bookmarks-list', sentinelId: 'bookmarks-sentinel', renderCard: renderBookmarkCardHtml }
+    kanji: { items: [], renderedCount: 0, containerId: 'kanji-grid', sentinelId: 'kanji-sentinel' },
+    vocabulary: { items: [], renderedCount: 0, containerId: 'vocab-list', sentinelId: 'vocab-sentinel' },
+    grammar: { items: [], renderedCount: 0, containerId: 'grammar-list', sentinelId: 'grammar-sentinel' },
+    bookmarks: { items: [], renderedCount: 0, containerId: 'bookmarks-list', sentinelId: 'bookmarks-sentinel' }
+  };
+
+  const TABLE_HEADERS = {
+    kanji: `
+      <thead>
+        <tr>
+          <th style="width: 50px;">#</th>
+          <th style="width: 100px;">Kanji</th>
+          <th style="width: 220px;">Readings (ON / KUN)</th>
+          <th>Meaning</th>
+          <th style="width: 140px;">Level & Scope</th>
+          <th style="width: 160px;">Textbook / Lesson</th>
+          <th style="width: 130px; text-align: right;">Actions</th>
+        </tr>
+      </thead>
+    `,
+    vocabulary: `
+      <thead>
+        <tr>
+          <th style="width: 50px;">#</th>
+          <th style="width: 200px;">Word & Reading</th>
+          <th>Meaning & Example</th>
+          <th style="width: 170px;">Type & Anatomy</th>
+          <th style="width: 130px;">Level</th>
+          <th style="width: 160px;">Textbook / Source</th>
+          <th style="width: 100px; text-align: right;">Actions</th>
+        </tr>
+      </thead>
+    `,
+    grammar: `
+      <thead>
+        <tr>
+          <th style="width: 50px;">#</th>
+          <th style="width: 200px;">Grammar Pattern</th>
+          <th>Meaning & Explanation</th>
+          <th style="width: 200px;">Structure</th>
+          <th style="width: 130px;">Level</th>
+          <th style="width: 150px;">Source</th>
+          <th style="width: 100px; text-align: right;">Actions</th>
+        </tr>
+      </thead>
+    `,
+    bookmarks: `
+      <thead>
+        <tr>
+          <th style="width: 50px;">#</th>
+          <th style="width: 90px;">Type</th>
+          <th style="width: 200px;">Item & Reading</th>
+          <th>Meaning</th>
+          <th style="width: 110px; text-align: right;">Actions</th>
+        </tr>
+      </thead>
+    `
+  };
+
+  function updateViewModeButtons(category) {
+    const wrapper = document.querySelector(`[data-view-target="${category}"]`);
+    if (!wrapper) return;
+    const currentMode = state.viewModes[category] || 'cards';
+    wrapper.querySelectorAll('[data-view]').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-view') === currentMode);
+    });
+  }
+
+  const CARD_RENDERERS = {
+    kanji: renderKanjiCardHtml,
+    vocabulary: renderVocabCardHtml,
+    grammar: renderGrammarCardHtml,
+    bookmarks: renderBookmarkCardHtml
+  };
+
+  const TABLE_RENDERERS = {
+    kanji: renderKanjiTableRowHtml,
+    vocabulary: renderVocabTableRowHtml,
+    grammar: renderGrammarTableRowHtml,
+    bookmarks: renderBookmarkTableRowHtml
   };
 
   let scrollObserver = null;
@@ -1014,7 +1119,10 @@
   function loadNextChunk(category) {
     const s = scrollState[category];
     if (!s) return;
-    const container = document.getElementById(s.containerId);
+    const isTable = (state.viewModes[category] === 'table');
+    const container = isTable 
+      ? document.getElementById(`${category}-table-body`) 
+      : document.getElementById(s.containerId);
     if (!container) return;
 
     // Remove existing sentinel element before appending new chunk
@@ -1027,34 +1135,48 @@
     }
 
     const nextItems = s.items.slice(s.renderedCount, s.renderedCount + CHUNK_SIZE);
+    const renderer = isTable ? TABLE_RENDERERS[category] : CARD_RENDERERS[category];
+
     if (nextItems.length === 0) {
       if (s.renderedCount > CHUNK_SIZE) {
         const existingNotice = container.querySelector('.all-loaded-indicator');
         if (!existingNotice) {
-          const endNotice = document.createElement('div');
-          endNotice.className = 'all-loaded-indicator';
-          endNotice.innerHTML = `✨ All ${s.items.length} items loaded`;
-          container.appendChild(endNotice);
+          if (isTable) {
+            const endRow = document.createElement('tr');
+            endRow.innerHTML = `<td colspan="10" class="all-loaded-indicator">✨ All ${s.items.length} items loaded</td>`;
+            container.appendChild(endRow);
+          } else {
+            const endNotice = document.createElement('div');
+            endNotice.className = 'all-loaded-indicator';
+            endNotice.innerHTML = `✨ All ${s.items.length} items loaded`;
+            container.appendChild(endNotice);
+          }
         }
       }
       return;
     }
 
-    const htmlChunk = nextItems.map((item, idx) => s.renderCard(item, s.renderedCount + idx + 1)).join('');
+    const htmlChunk = nextItems.map((item, idx) => renderer(item, s.renderedCount + idx + 1)).join('');
     container.insertAdjacentHTML('beforeend', htmlChunk);
     s.renderedCount += nextItems.length;
 
     // If more items remain, append a new sentinel and observe it
     if (s.renderedCount < s.items.length) {
-      const sentinel = document.createElement('div');
-      sentinel.id = s.sentinelId;
-      sentinel.className = 'scroll-sentinel';
-      sentinel.setAttribute('data-scroll-category', category);
-      sentinel.innerHTML = `<div class="scroll-loading-spinner" title="Loading more..."></div>`;
-      container.appendChild(sentinel);
-
-      if (scrollObserver) {
-        scrollObserver.observe(sentinel);
+      if (isTable) {
+        const sentinelRow = document.createElement('tr');
+        sentinelRow.id = s.sentinelId;
+        sentinelRow.setAttribute('data-scroll-category', category);
+        sentinelRow.innerHTML = `<td colspan="10" class="table-sentinel-cell"><div class="scroll-loading-spinner" title="Loading more..."></div></td>`;
+        container.appendChild(sentinelRow);
+        if (scrollObserver) scrollObserver.observe(sentinelRow);
+      } else {
+        const sentinel = document.createElement('div');
+        sentinel.id = s.sentinelId;
+        sentinel.className = 'scroll-sentinel';
+        sentinel.setAttribute('data-scroll-category', category);
+        sentinel.innerHTML = `<div class="scroll-loading-spinner" title="Loading more..."></div>`;
+        container.appendChild(sentinel);
+        if (scrollObserver) scrollObserver.observe(sentinel);
       }
     }
   }
@@ -1065,13 +1187,33 @@
     const container = document.getElementById(s.containerId);
     if (!container) return;
 
+    updateViewModeButtons(category);
+    const isTable = (state.viewModes[category] === 'table');
+
     s.items = items;
     s.renderedCount = 0;
     container.innerHTML = '';
 
+    if (isTable) {
+      container.classList.add('table-view-active');
+    } else {
+      container.classList.remove('table-view-active');
+    }
+
     if (items.length === 0) {
       container.innerHTML = `<div class="empty-state card-glass" style="grid-column: 1 / -1;"><p>${emptyMessage}</p></div>`;
       return;
+    }
+
+    if (isTable) {
+      container.innerHTML = `
+        <div class="study-table-responsive card-glass">
+          <table class="study-table">
+            ${TABLE_HEADERS[category] || ''}
+            <tbody id="${category}-table-body"></tbody>
+          </table>
+        </div>
+      `;
     }
 
     // Render first chunk immediately (< 5ms)
@@ -1128,6 +1270,60 @@
           <span class="open-detail-link">Details &rarr;</span>
         </div>
       </div>
+    `;
+  }
+
+  function renderKanjiTableRowHtml(k, sNo) {
+    const isBookmarked = state.bookmarks.has(k.id);
+    const isMastered = state.mastered.has(k.id);
+    const sourceInfo = k.sources && k.sources[0] ? k.sources[0] : null;
+    const chapterBadge = sourceInfo ? (sourceInfo.chapter || sourceInfo.lesson || '') : '';
+    const notes = sourceInfo && sourceInfo.notes ? sourceInfo.notes : '';
+
+    return `
+      <tr class="study-table-row ${isMastered ? 'mastered-row' : ''}" data-kanji-modal-id="${k.id}">
+        <td class="col-sno"><span class="sno-badge">#${sNo}</span></td>
+        <td class="col-main-char">
+          <div class="t-char-box">
+            <span class="t-char" onclick="window.NihonHub.openKanjiModal('${k.id}')" title="Click to view details">${k.char}</span>
+            <button class="mini-audio-btn" data-speak="${k.char}" title="Listen pronunciation">${UI_ICONS.volume}</button>
+          </div>
+        </td>
+        <td class="col-readings">
+          <div class="t-readings-wrap">
+            ${k.onyomi ? `<div><span class="r-label">ON:</span> <span class="r-val">${k.onyomi}</span></div>` : ''}
+            ${k.kunyomi ? `<div><span class="r-label">KUN:</span> <span class="r-val">${k.kunyomi}</span></div>` : ''}
+          </div>
+        </td>
+        <td class="col-meaning">
+          <div class="t-meaning">${k.meaning}</div>
+        </td>
+        <td class="col-badges">
+          <div class="t-badges-wrap">
+            ${renderLevelPills(k.levels)}
+            ${renderOriginBadge(k)}
+          </div>
+        </td>
+        <td class="col-source">
+          ${chapterBadge ? `
+            <div class="t-source-tag" title="${notes}">
+              <span>${chapterBadge}</span>
+              ${notes ? `<small>${notes}</small>` : ''}
+            </div>
+          ` : '<span class="text-muted">—</span>'}
+        </td>
+        <td class="col-actions">
+          <div class="t-actions-wrap" onclick="event.stopPropagation()">
+            <button class="mastery-btn ${isMastered ? 'is-mastered' : ''}" data-mastery-id="${k.id}" title="${isMastered ? 'Marked Mastered' : 'Mark Mastered'}">
+              ${isMastered ? '✓' : '○'}
+            </button>
+            <button class="action-btn" data-bookmark-id="${k.id}" title="Bookmark">
+              ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
+            </button>
+            <span class="t-details-btn" onclick="window.NihonHub.openKanjiModal('${k.id}')" title="Details">Details &rarr;</span>
+          </div>
+        </td>
+      </tr>
     `;
   }
 
@@ -1405,6 +1601,73 @@
     `;
   }
 
+  function renderVocabTableRowHtml(v, sNo) {
+    const isBookmarked = state.bookmarks.has(v.id);
+    const isMastered = state.mastered.has(v.id);
+    const components = v.kanjiComponents || [];
+    const sourceInfo = v.sources && v.sources[0] ? v.sources[0] : null;
+    const chapterBadge = sourceInfo ? (sourceInfo.chapter || sourceInfo.lesson || sourceInfo.book || '') : '';
+
+    return `
+      <tr class="study-table-row ${isMastered ? 'mastered-row' : ''}">
+        <td class="col-sno"><span class="sno-badge">#${sNo}</span></td>
+        <td class="col-vocab-word">
+          <div class="t-vocab-main">
+            <div class="t-word-row">
+              <span class="t-vocab-text">${renderVocabWordByMode(v)}</span>
+              <button class="mini-audio-btn" data-speak="${v.word}" title="Listen">${UI_ICONS.volume}</button>
+            </div>
+            ${state.vocabScriptMode !== 'hiragana' ? `<span class="t-reading">【${v.reading}】</span>` : ''}
+            ${v.romaji ? `<span class="t-romaji">${v.romaji}</span>` : ''}
+          </div>
+        </td>
+        <td class="col-meaning">
+          <div class="t-meaning">${v.meaning || ''}</div>
+          ${v.example ? `
+            <div class="t-example-snippet">
+              <div class="t-ex-ja">${parseFurigana(v.example.furigana || v.example.ja)}</div>
+              <div class="t-ex-en">${v.example.en || ''}</div>
+            </div>
+          ` : ''}
+        </td>
+        <td class="col-anatomy">
+          <div class="t-anatomy-wrap">
+            ${v.isTextbookVocab ? '<span class="source-pill badge-textbook">📚 Textbook</span>' : ''}
+            ${v.isKanjiCompound ? '<span class="source-pill badge-compound">🈁 Compound</span>' : ''}
+            ${components.length > 0 ? `
+              <div class="t-mini-blocks">
+                ${components.map(comp => `
+                  <span class="t-mini-block" onclick="window.NihonHub.openKanjiModalByChar('${comp.char}')" title="${comp.char}: ${comp.meaning}">
+                    ${comp.char}
+                  </span>
+                `).join('')}
+              </div>
+            ` : ''}
+          </div>
+        </td>
+        <td class="col-badges">
+          <div class="t-badges-wrap">
+            ${renderLevelPills(v.levels || [v.level])}
+            ${renderOriginBadge(v)}
+          </div>
+        </td>
+        <td class="col-source">
+          ${chapterBadge ? `<div class="t-source-tag">${chapterBadge}</div>` : '<span class="text-muted">—</span>'}
+        </td>
+        <td class="col-actions">
+          <div class="t-actions-wrap">
+            <button class="mastery-btn ${isMastered ? 'is-mastered' : ''}" data-mastery-id="${v.id}" title="${isMastered ? 'Marked Mastered' : 'Mark Mastered'}">
+              ${isMastered ? '✓' : '○'}
+            </button>
+            <button class="action-btn" data-bookmark-id="${v.id}" title="Bookmark">
+              ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
+            </button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }
+
   function renderVocabulary() {
     const list = document.getElementById('vocab-list');
     const countTag = document.getElementById('vocab-count');
@@ -1488,6 +1751,51 @@
 
         ${renderSourcesHtml(g.sources)}
       </div>
+    `;
+  }
+
+  function renderGrammarTableRowHtml(g, sNo) {
+    const isBookmarked = state.bookmarks.has(g.id);
+    const isMastered = state.mastered.has(g.id);
+    const sourceInfo = g.sources && g.sources[0] ? g.sources[0] : null;
+    const chapterBadge = sourceInfo ? (sourceInfo.chapter || sourceInfo.lesson || sourceInfo.book || '') : '';
+
+    return `
+      <tr class="study-table-row ${isMastered ? 'mastered-row' : ''}">
+        <td class="col-sno"><span class="sno-badge">#${sNo}</span></td>
+        <td class="col-grammar-pattern">
+          <div class="t-pattern-box">
+            <span class="t-pattern">${g.pattern}</span>
+            <button class="mini-audio-btn" data-speak="${g.pattern}" title="Listen">${UI_ICONS.volume}</button>
+          </div>
+        </td>
+        <td class="col-meaning">
+          <div class="t-meaning"><strong>${g.meaning}</strong></div>
+          ${g.explanation ? `<div class="t-grammar-expl">${g.explanation}</div>` : ''}
+        </td>
+        <td class="col-structure">
+          ${g.structure ? `<code class="t-structure-code">${g.structure}</code>` : '<span class="text-muted">—</span>'}
+        </td>
+        <td class="col-badges">
+          <div class="t-badges-wrap">
+            ${renderLevelPills(g.levels || [g.level])}
+            ${renderOriginBadge(g)}
+          </div>
+        </td>
+        <td class="col-source">
+          ${chapterBadge ? `<div class="t-source-tag">${chapterBadge}</div>` : '<span class="text-muted">—</span>'}
+        </td>
+        <td class="col-actions">
+          <div class="t-actions-wrap">
+            <button class="mastery-btn ${isMastered ? 'is-mastered' : ''}" data-mastery-id="${g.id}" title="${isMastered ? 'Marked Mastered' : 'Mark Mastered'}">
+              ${isMastered ? '✓' : '○'}
+            </button>
+            <button class="action-btn" data-bookmark-id="${g.id}" title="Bookmark">
+              ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
+            </button>
+          </div>
+        </td>
+      </tr>
     `;
   }
 
@@ -1687,6 +1995,38 @@
     `;
   }
 
+  function renderBookmarkTableRowHtml(item, sNo) {
+    const isKanji = !!item.char;
+    const isVocab = !!item.word;
+
+    return `
+      <tr class="study-table-row">
+        <td class="col-sno"><span class="sno-badge">#${sNo}</span></td>
+        <td class="col-bm-type">
+          <span class="bm-type-badge">${isKanji ? 'Kanji' : isVocab ? 'Vocab' : 'Grammar'}</span>
+        </td>
+        <td class="col-bm-main">
+          <div class="t-bm-item">
+            <span class="t-bm-title">${item.char || item.word || item.pattern}</span>
+            <button class="mini-audio-btn" data-speak="${item.char || item.word || item.pattern}" title="Listen">${UI_ICONS.volume}</button>
+            ${(item.reading || item.onyomi) ? `<span class="t-reading">【${item.reading || item.onyomi}】</span>` : ''}
+          </div>
+        </td>
+        <td class="col-meaning">
+          <div class="t-meaning">${item.meaning || item.explanation || ''}</div>
+        </td>
+        <td class="col-actions">
+          <div class="t-actions-wrap">
+            <button class="action-btn" data-bookmark-id="${item.id}" title="Remove Bookmark">
+              ${UI_ICONS.starFilled}
+            </button>
+            ${isKanji ? `<span class="t-details-btn" onclick="window.NihonHub.openKanjiModal('${item.id}')">View &rarr;</span>` : ''}
+          </div>
+        </td>
+      </tr>
+    `;
+  }
+
   function toggleBookmark(id) {
     if (state.bookmarks.has(id)) {
       state.bookmarks.delete(id);
@@ -1764,6 +2104,17 @@
       renderVocabulary();
     },
     switchTab: switchTab,
+    setViewMode: (category, mode) => {
+      if (state.viewModes[category]) {
+        state.viewModes[category] = mode;
+        updateViewModeButtons(category);
+        savePreferences();
+        if (category === 'kanji') renderKanji();
+        else if (category === 'vocabulary') renderVocabulary();
+        else if (category === 'grammar') renderGrammar();
+        else if (category === 'bookmarks') renderBookmarks();
+      }
+    },
     openKanjiModal: openKanjiModal,
     openKanjiModalByChar: openKanjiModalByChar,
     speakJapanese: speakJapanese,

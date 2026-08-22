@@ -209,9 +209,21 @@
             </svg>
             <span id="kanji-chapter-filter-title">Textbook & Chapter Filter</span>
           </div>
-          <div class="header-stats-badges">
-            <span id="kanji-count" class="section-count-tag">Loading Kanji...</span>
-            <span id="kanji-origin-breakdown" class="origin-breakdown-tag"></span>
+          <div class="header-right-controls">
+            <div class="view-mode-toggle" data-view-target="kanji">
+              <button class="view-mode-btn active" data-view="cards" title="Cards Grid View">
+                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+                <span>Cards</span>
+              </button>
+              <button class="view-mode-btn" data-view="table" title="Table List View">
+                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/></svg>
+                <span>Table</span>
+              </button>
+            </div>
+            <div class="header-stats-badges">
+              <span id="kanji-count" class="section-count-tag">Loading Kanji...</span>
+              <span id="kanji-origin-breakdown" class="origin-breakdown-tag"></span>
+            </div>
           </div>
         </div>
 
@@ -248,9 +260,21 @@
             </svg>
             <span>Vocabulary Hub & Study Controls</span>
           </div>
-          <div class="header-stats-badges">
-            <span id="vocab-count" class="section-count-tag">Loading Vocabulary...</span>
-            <span id="vocab-origin-breakdown" class="origin-breakdown-tag"></span>
+          <div class="header-right-controls">
+            <div class="view-mode-toggle" data-view-target="vocabulary">
+              <button class="view-mode-btn active" data-view="cards" title="Cards Grid View">
+                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+                <span>Cards</span>
+              </button>
+              <button class="view-mode-btn" data-view="table" title="Table List View">
+                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/></svg>
+                <span>Table</span>
+              </button>
+            </div>
+            <div class="header-stats-badges">
+              <span id="vocab-count" class="section-count-tag">Loading Vocabulary...</span>
+              <span id="vocab-origin-breakdown" class="origin-breakdown-tag"></span>
+            </div>
           </div>
         </div>
 
@@ -318,9 +342,21 @@
             </svg>
             <span>Grammar Textbook & Lesson Filter</span>
           </div>
-          <div class="header-stats-badges">
-            <span id="grammar-count" class="section-count-tag">Loading Grammar...</span>
-            <span id="grammar-origin-breakdown" class="origin-breakdown-tag"></span>
+          <div class="header-right-controls">
+            <div class="view-mode-toggle" data-view-target="grammar">
+              <button class="view-mode-btn active" data-view="cards" title="Cards Grid View">
+                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+                <span>Cards</span>
+              </button>
+              <button class="view-mode-btn" data-view="table" title="Table List View">
+                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/></svg>
+                <span>Table</span>
+              </button>
+            </div>
+            <div class="header-stats-badges">
+              <span id="grammar-count" class="section-count-tag">Loading Grammar...</span>
+              <span id="grammar-origin-breakdown" class="origin-breakdown-tag"></span>
+            </div>
           </div>
         </div>
 
@@ -428,7 +464,19 @@
     <section id="tab-bookmarks" class="tab-pane">
       <div class="section-header-row">
         <h2 class="section-title">Saved Bookmarks</h2>
-        <span id="bookmark-count" class="section-count-tag">0 Saved Items</span>
+        <div class="header-right-controls">
+          <div class="view-mode-toggle" data-view-target="bookmarks">
+            <button class="view-mode-btn active" data-view="cards" title="Cards Grid View">
+              <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+              <span>Cards</span>
+            </button>
+            <button class="view-mode-btn" data-view="table" title="Table List View">
+              <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/></svg>
+              <span>Table</span>
+            </button>
+          </div>
+          <span id="bookmark-count" class="section-count-tag">0 Saved Items</span>
+        </div>
       </div>
       <div id="bookmarks-list" class="bookmarks-list"></div>
     </section>
