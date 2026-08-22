@@ -60,6 +60,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     loadPreferences();
     initTheme();
+    initScrollObserver();
     setupEventListeners();
     buildFlashcardDeck();
     renderAll();
@@ -900,6 +901,23 @@
         return;
       }
     });
+
+    // Window Scroll Fallback for fast scrolling
+    if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') {
+      let isScrollThrottled = false;
+      window.addEventListener('scroll', () => {
+        if (isScrollThrottled) return;
+        isScrollThrottled = true;
+        setTimeout(() => { isScrollThrottled = false; }, 120);
+
+        if ((window.innerHeight + (window.scrollY || 0)) >= ((document.body ? document.body.offsetHeight : 1000) - 500)) {
+          const activeCat = state.currentTab === 'vocab' ? 'vocabulary' : state.currentTab;
+          if (scrollState[activeCat]) {
+            loadNextChunk(activeCat);
+          }
+        }
+      }, { passive: true });
+    }
   }
 
   // --- TAB SWITCHING ---
@@ -953,7 +971,155 @@
     }
   }
 
+  // --- PROGRESSIVE INFINITE SCROLL ENGINE (HIGH PERFORMANCE) ---
+  const CHUNK_SIZE = 30; // Loads in batches of 30 for < 5ms instant responsiveness
+
+  const scrollState = {
+    kanji: { items: [], renderedCount: 0, containerId: 'kanji-grid', sentinelId: 'kanji-sentinel', renderCard: renderKanjiCardHtml },
+    vocabulary: { items: [], renderedCount: 0, containerId: 'vocab-list', sentinelId: 'vocab-sentinel', renderCard: renderVocabCardHtml },
+    grammar: { items: [], renderedCount: 0, containerId: 'grammar-list', sentinelId: 'grammar-sentinel', renderCard: renderGrammarCardHtml },
+    bookmarks: { items: [], renderedCount: 0, containerId: 'bookmarks-list', sentinelId: 'bookmarks-sentinel', renderCard: renderBookmarkCardHtml }
+  };
+
+  let scrollObserver = null;
+
+  function initScrollObserver() {
+    if (typeof IntersectionObserver === 'undefined') return;
+    if (scrollObserver) scrollObserver.disconnect();
+
+    scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const category = entry.target.getAttribute('data-scroll-category');
+          if (category && scrollState[category]) {
+            loadNextChunk(category);
+          }
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '400px 0px', // Pre-fetch next batch 400px before reaching bottom
+      threshold: 0.01
+    });
+  }
+
+  function loadNextChunk(category) {
+    const s = scrollState[category];
+    if (!s) return;
+    const container = document.getElementById(s.containerId);
+    if (!container) return;
+
+    // Remove existing sentinel element before appending new chunk
+    const existingSentinel = document.getElementById(s.sentinelId);
+    if (existingSentinel) {
+      if (scrollObserver) scrollObserver.unobserve(existingSentinel);
+      existingSentinel.remove();
+    }
+
+    const nextItems = s.items.slice(s.renderedCount, s.renderedCount + CHUNK_SIZE);
+    if (nextItems.length === 0) {
+      if (s.renderedCount > CHUNK_SIZE) {
+        const existingNotice = container.querySelector('.all-loaded-indicator');
+        if (!existingNotice) {
+          const endNotice = document.createElement('div');
+          endNotice.className = 'all-loaded-indicator';
+          endNotice.innerHTML = `✨ All ${s.items.length} items loaded`;
+          container.appendChild(endNotice);
+        }
+      }
+      return;
+    }
+
+    const htmlChunk = nextItems.map(item => s.renderCard(item)).join('');
+    container.insertAdjacentHTML('beforeend', htmlChunk);
+    s.renderedCount += nextItems.length;
+
+    // If more items remain, append a new sentinel and observe it
+    if (s.renderedCount < s.items.length) {
+      const sentinel = document.createElement('div');
+      sentinel.id = s.sentinelId;
+      sentinel.className = 'scroll-sentinel';
+      sentinel.setAttribute('data-scroll-category', category);
+      sentinel.innerHTML = `<div class="scroll-loading-spinner" title="Loading more..."></div>`;
+      container.appendChild(sentinel);
+
+      if (scrollObserver) {
+        scrollObserver.observe(sentinel);
+      }
+    }
+  }
+
+  function renderCategoryWithProgressiveScroll(category, items, emptyMessage) {
+    const s = scrollState[category];
+    if (!s) return;
+    const container = document.getElementById(s.containerId);
+    if (!container) return;
+
+    s.items = items;
+    s.renderedCount = 0;
+    container.innerHTML = '';
+
+    if (items.length === 0) {
+      container.innerHTML = `<div class="empty-state card-glass" style="grid-column: 1 / -1;"><p>${emptyMessage}</p></div>`;
+      return;
+    }
+
+    // Render first chunk immediately (< 5ms)
+    loadNextChunk(category);
+  }
+
   // --- 1. KANJI MATRIX RENDERER ---
+  function renderKanjiCardHtml(k) {
+    const isBookmarked = state.bookmarks.has(k.id);
+    const isMastered = state.mastered.has(k.id);
+    const sourceInfo = k.sources && k.sources[0] ? k.sources[0] : null;
+    const chapterBadge = sourceInfo ? (sourceInfo.chapter || sourceInfo.lesson || '') : '';
+    const notes = sourceInfo && sourceInfo.notes ? sourceInfo.notes : '';
+    const compoundCount = k.examples ? k.examples.length : 0;
+
+    return `
+      <div class="kanji-card card-glass ${isMastered ? 'mastered-card' : ''}" data-kanji-modal-id="${k.id}">
+        <div class="kanji-card-top">
+          <div class="kanji-badges">
+            ${renderLevelPills(k.levels)}
+            ${renderOriginBadge(k)}
+          </div>
+          <div class="kanji-actions">
+            <button class="mastery-btn ${isMastered ? 'is-mastered' : ''}" data-mastery-id="${k.id}" title="${isMastered ? 'Marked as Mastered' : 'Mark as Mastered'}">
+              ${isMastered ? '✓' : '○'}
+            </button>
+            <button class="action-btn" data-speak="${k.char}" title="Listen pronunciation">${UI_ICONS.volume}</button>
+            <button class="action-btn" data-bookmark-id="${k.id}" title="Save bookmark">
+              ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
+            </button>
+          </div>
+        </div>
+
+        <div class="kanji-character-big">${k.char}</div>
+
+        <div class="kanji-readings-row">
+          ${k.onyomi ? `<div class="kanji-reading"><span class="r-label">ON</span><span class="r-val">${k.onyomi}</span></div>` : ''}
+          ${k.kunyomi ? `<div class="kanji-reading"><span class="r-label">KUN</span><span class="r-val">${k.kunyomi}</span></div>` : ''}
+        </div>
+
+        <div class="kanji-meaning">${k.meaning}</div>
+
+        ${chapterBadge ? `
+          <div class="kanji-source-tag" title="${notes}">
+            ${UI_ICONS.book} ${chapterBadge} ${notes ? `• ${notes}` : ''}
+          </div>
+        ` : ''}
+
+        <div class="kanji-card-footer">
+          <span class="example-count" onclick="event.stopPropagation(); window.NihonHub.showCompoundsForKanji('${k.char}')" title="Click to view all compound words with ${k.char}" style="cursor: pointer; text-decoration: underline;">
+            ${compoundCount} compound words &rarr;
+          </span>
+          <span class="open-detail-link">Details &rarr;</span>
+        </div>
+      </div>
+    `;
+  }
+
   function renderKanji() {
     const grid = document.getElementById('kanji-grid');
     const countTag = document.getElementById('kanji-count');
@@ -975,66 +1141,7 @@
       }
     }
 
-    if (items.length === 0) {
-      grid.innerHTML = `
-        <div class="empty-state card-glass" style="grid-column: 1 / -1;">
-          <p>No Kanji found matching the current Level (${state.selectedLevel}), Textbook, and Scope filters.</p>
-          <button class="btn-primary" onclick="window.NihonHub.resetFilters()">Reset All Filters</button>
-        </div>
-      `;
-      return;
-    }
-
-    grid.innerHTML = items.map(k => {
-      const isBookmarked = state.bookmarks.has(k.id);
-      const isMastered = state.mastered.has(k.id);
-      const sourceInfo = k.sources && k.sources[0] ? k.sources[0] : null;
-      const chapterBadge = sourceInfo ? (sourceInfo.chapter || sourceInfo.lesson || '') : '';
-      const notes = sourceInfo && sourceInfo.notes ? sourceInfo.notes : '';
-      const compoundCount = k.examples ? k.examples.length : 0;
-
-      return `
-        <div class="kanji-card card-glass ${isMastered ? 'mastered-card' : ''}" data-kanji-modal-id="${k.id}">
-          <div class="kanji-card-top">
-            <div class="kanji-badges">
-              ${renderLevelPills(k.levels)}
-              ${renderOriginBadge(k)}
-            </div>
-            <div class="kanji-actions">
-              <button class="mastery-btn ${isMastered ? 'is-mastered' : ''}" data-mastery-id="${k.id}" title="${isMastered ? 'Marked as Mastered' : 'Mark as Mastered'}">
-                ${isMastered ? '✓' : '○'}
-              </button>
-              <button class="action-btn" data-speak="${k.char}" title="Listen pronunciation">${UI_ICONS.volume}</button>
-              <button class="action-btn" data-bookmark-id="${k.id}" title="Save bookmark">
-                ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
-              </button>
-            </div>
-          </div>
-
-          <div class="kanji-character-big">${k.char}</div>
-
-          <div class="kanji-readings-row">
-            ${k.onyomi ? `<div class="kanji-reading"><span class="r-label">ON</span><span class="r-val">${k.onyomi}</span></div>` : ''}
-            ${k.kunyomi ? `<div class="kanji-reading"><span class="r-label">KUN</span><span class="r-val">${k.kunyomi}</span></div>` : ''}
-          </div>
-
-          <div class="kanji-meaning">${k.meaning}</div>
-
-          ${chapterBadge ? `
-            <div class="kanji-source-tag" title="${notes}">
-              ${UI_ICONS.book} ${chapterBadge} ${notes ? `• ${notes}` : ''}
-            </div>
-          ` : ''}
-
-          <div class="kanji-card-footer">
-            <span class="example-count" onclick="event.stopPropagation(); window.NihonHub.showCompoundsForKanji('${k.char}')" title="Click to view all compound words with ${k.char}" style="cursor: pointer; text-decoration: underline;">
-              ${compoundCount} compound words &rarr;
-            </span>
-            <span class="open-detail-link">Details &rarr;</span>
-          </div>
-        </div>
-      `;
-    }).join('');
+    renderCategoryWithProgressiveScroll('kanji', items, `No Kanji found matching the current Level (${state.selectedLevel}), Textbook, and Scope filters.`);
   }
 
   // --- ZEN STUDY KANJI MODAL ---
@@ -1225,6 +1332,67 @@
   }
 
   // --- 2. VOCABULARY RENDERER (UNIFIED & 3-WAY SCRIPT) ---
+  // --- 2. VOCABULARY RENDERER (UNIFIED & 3-WAY SCRIPT) ---
+  function renderVocabCardHtml(v) {
+    const isBookmarked = state.bookmarks.has(v.id);
+    const isMastered = state.mastered.has(v.id);
+    const components = v.kanjiComponents || [];
+
+    return `
+      <div class="vocab-card card-glass ${isMastered ? 'mastered-card' : ''}">
+        <div class="vocab-top">
+          <div class="vocab-badges">
+            ${renderLevelPills(v.levels || [v.level])}
+            ${renderOriginBadge(v)}
+            ${v.isTextbookVocab ? '<span class="source-pill badge-textbook" title="Extracted from textbook chapters/index">📚 Textbook Vocab</span>' : ''}
+            ${v.isKanjiCompound ? '<span class="source-pill badge-compound" title="Learned from Kanji compound examples">🈁 Kanji Compound</span>' : ''}
+          </div>
+          <div class="vocab-actions">
+            <button class="mastery-btn ${isMastered ? 'is-mastered' : ''}" data-mastery-id="${v.id}" title="${isMastered ? 'Marked Mastered' : 'Mark Mastered'}">
+              ${isMastered ? '✓' : '○'}
+            </button>
+            <button class="action-btn" data-speak="${v.word}" title="Listen">${UI_ICONS.volume}</button>
+            <button class="action-btn" data-bookmark-id="${v.id}" title="Bookmark">
+              ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
+            </button>
+          </div>
+        </div>
+
+        <div class="vocab-main">
+          ${renderVocabWordByMode(v)}
+          ${state.vocabScriptMode !== 'hiragana' ? `<span class="vocab-reading">【${v.reading}】</span>` : ''}
+        </div>
+
+        ${v.romaji ? `<div class="vocab-romaji">${v.romaji}</div>` : ''}
+        <div class="vocab-meaning">${v.meaning || ''}</div>
+
+        ${components.length > 0 ? `
+          <div class="kanji-anatomy-section">
+            <div class="kanji-anatomy-header">🧩 Kanji Building Blocks:</div>
+            <div class="kanji-anatomy-chips">
+              ${components.map(comp => `
+                <div class="kanji-building-block" onclick="window.NihonHub.openKanjiModalByChar('${comp.char}')" title="Click to inspect Kanji ${comp.char} (${comp.meaning})">
+                  <span class="block-char">${comp.char}</span>
+                  <span class="block-meaning">${comp.meaning}</span>
+                  <span class="block-level">${comp.level}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        ${v.example ? `
+          <div class="vocab-example-box">
+            <p class="vocab-ex-ja">${parseFurigana(v.example.furigana || v.example.ja)}</p>
+            <p class="vocab-ex-en">${v.example.en || ''}</p>
+          </div>
+        ` : ''}
+
+        ${renderSourcesHtml(v.sources)}
+      </div>
+    `;
+  }
+
   function renderVocabulary() {
     const list = document.getElementById('vocab-list');
     const countTag = document.getElementById('vocab-count');
@@ -1252,77 +1420,64 @@
       if (state.selectedLevel === 'ALL') {
         breakdownTag.innerHTML = `&bull; <strong>${vStats.textbookCount}</strong> Textbook Vocab &bull; <strong>${vStats.compoundsCount}</strong> Kanji Compounds &bull; <strong>${vStats.total}</strong> Total`;
       } else {
-        breakdownTag.innerHTML = `&bull; <strong>${vStats.textbookCount}</strong> Textbook Vocab in ${state.selectedLevel} &bull; <strong>${vStats.compoundsCount}</strong> Kanji Compounds`;
+        breakdownTag.innerHTML = `&bull; <strong>${vStats.textbookCount}</strong> Textbook Vocab in ${state.selectedLevel} &bull; <strong>${vStats.compoundsCount}</strong> Kanji Compounds in ${state.selectedLevel}`;
       }
     }
 
-    if (items.length === 0) {
-      list.innerHTML = `<div class="empty-state card-glass"><p>No vocabulary words found matching current filters.</p></div>`;
-      return;
-    }
-
-    list.innerHTML = items.map(v => {
-      const isBookmarked = state.bookmarks.has(v.id);
-      const isMastered = state.mastered.has(v.id);
-      const components = v.kanjiComponents || [];
-
-      return `
-        <div class="vocab-card card-glass ${isMastered ? 'mastered-card' : ''}">
-          <div class="vocab-top">
-            <div class="vocab-badges">
-              ${renderLevelPills(v.levels || [v.level])}
-              ${renderOriginBadge(v)}
-              ${v.isTextbookVocab ? '<span class="source-pill badge-textbook" title="Extracted from textbook chapters/index">📚 Textbook Vocab</span>' : ''}
-              ${v.isKanjiCompound ? '<span class="source-pill badge-compound" title="Learned from Kanji compound examples">🈁 Kanji Compound</span>' : ''}
-            </div>
-            <div class="vocab-actions">
-              <button class="mastery-btn ${isMastered ? 'is-mastered' : ''}" data-mastery-id="${v.id}" title="${isMastered ? 'Marked Mastered' : 'Mark Mastered'}">
-                ${isMastered ? '✓' : '○'}
-              </button>
-              <button class="action-btn" data-speak="${v.word}" title="Listen">${UI_ICONS.volume}</button>
-              <button class="action-btn" data-bookmark-id="${v.id}" title="Bookmark">
-                ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
-              </button>
-            </div>
-          </div>
-
-          <div class="vocab-main">
-            ${renderVocabWordByMode(v)}
-            ${state.vocabScriptMode !== 'hiragana' ? `<span class="vocab-reading">【${v.reading}】</span>` : ''}
-          </div>
-
-          ${v.romaji ? `<div class="vocab-romaji">${v.romaji}</div>` : ''}
-          <div class="vocab-meaning">${v.meaning || ''}</div>
-
-          ${components.length > 0 ? `
-            <div class="kanji-anatomy-section">
-              <div class="kanji-anatomy-header">🧩 Kanji Building Blocks:</div>
-              <div class="kanji-anatomy-chips">
-                ${components.map(comp => `
-                  <div class="kanji-building-block" onclick="window.NihonHub.openKanjiModalByChar('${comp.char}')" title="Click to inspect Kanji ${comp.char} (${comp.meaning})">
-                    <span class="block-char">${comp.char}</span>
-                    <span class="block-meaning">${comp.meaning}</span>
-                    <span class="block-level">${comp.level}</span>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          ` : ''}
-
-          ${v.example ? `
-            <div class="vocab-example-box">
-              <p class="vocab-ex-ja">${parseFurigana(v.example.furigana || v.example.ja)}</p>
-              <p class="vocab-ex-en">${v.example.en || ''}</p>
-            </div>
-          ` : ''}
-
-          ${renderSourcesHtml(v.sources)}
-        </div>
-      `;
-    }).join('');
+    renderCategoryWithProgressiveScroll('vocabulary', items, 'No vocabulary words found matching current filters.');
   }
 
   // --- 3. GRAMMAR RENDERER ---
+  function renderGrammarCardHtml(g) {
+    const isBookmarked = state.bookmarks.has(g.id);
+    const isMastered = state.mastered.has(g.id);
+    return `
+      <div class="grammar-card card-glass ${isMastered ? 'mastered-card' : ''}">
+        <div class="grammar-top">
+          <div class="grammar-badges">
+            ${renderLevelPills(g.levels || [g.level])}
+            ${renderOriginBadge(g)}
+          </div>
+          <div class="grammar-actions">
+            <button class="mastery-btn ${isMastered ? 'is-mastered' : ''}" data-mastery-id="${g.id}" title="${isMastered ? 'Marked Mastered' : 'Mark Mastered'}">
+              ${isMastered ? '✓' : '○'}
+            </button>
+            <button class="action-btn" data-speak="${g.pattern}" title="Listen">${UI_ICONS.volume}</button>
+            <button class="action-btn" data-bookmark-id="${g.id}" title="Bookmark">
+              ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
+            </button>
+          </div>
+        </div>
+
+        <div class="grammar-pattern">${g.pattern}</div>
+        <div class="grammar-meaning">${g.meaning}</div>
+
+        ${g.structure ? `
+          <div class="grammar-structure-box">
+            <span class="struct-label">Structure:</span>
+            <code>${g.structure}</code>
+          </div>
+        ` : ''}
+
+        <div class="grammar-explanation">${g.explanation || ''}</div>
+
+        ${Array.isArray(g.examples) && g.examples.length > 0 ? `
+          <div class="grammar-examples-list">
+            <div class="ex-label">Example Sentences:</div>
+            ${g.examples.map(ex => `
+              <div class="grammar-ex-item">
+                <p class="g-ja">${parseFurigana(ex.furigana || ex.ja)} <button class="mini-audio-btn" data-speak="${ex.ja}" title="Listen">${UI_ICONS.volume}</button></p>
+                <p class="g-en">${ex.en}</p>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+
+        ${renderSourcesHtml(g.sources)}
+      </div>
+    `;
+  }
+
   function renderGrammar() {
     const list = document.getElementById('grammar-list');
     const countTag = document.getElementById('grammar-count');
@@ -1342,60 +1497,7 @@
       }
     }
 
-    if (items.length === 0) {
-      list.innerHTML = `<div class="empty-state card-glass"><p>No grammar points found matching current filters.</p></div>`;
-      return;
-    }
-
-    list.innerHTML = items.map(g => {
-      const isBookmarked = state.bookmarks.has(g.id);
-      const isMastered = state.mastered.has(g.id);
-      return `
-        <div class="grammar-card card-glass ${isMastered ? 'mastered-card' : ''}">
-          <div class="grammar-top">
-            <div class="grammar-badges">
-              ${renderLevelPills(g.levels || [g.level])}
-              ${renderOriginBadge(g)}
-            </div>
-            <div class="grammar-actions">
-              <button class="mastery-btn ${isMastered ? 'is-mastered' : ''}" data-mastery-id="${g.id}" title="${isMastered ? 'Marked Mastered' : 'Mark Mastered'}">
-                ${isMastered ? '✓' : '○'}
-              </button>
-              <button class="action-btn" data-speak="${g.pattern}" title="Listen">${UI_ICONS.volume}</button>
-              <button class="action-btn" data-bookmark-id="${g.id}" title="Bookmark">
-                ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
-              </button>
-            </div>
-          </div>
-
-          <div class="grammar-pattern">${g.pattern}</div>
-          <div class="grammar-meaning">${g.meaning}</div>
-
-          ${g.structure ? `
-            <div class="grammar-structure-box">
-              <span class="struct-label">Structure:</span>
-              <code>${g.structure}</code>
-            </div>
-          ` : ''}
-
-          <div class="grammar-explanation">${g.explanation || ''}</div>
-
-          ${Array.isArray(g.examples) && g.examples.length > 0 ? `
-            <div class="grammar-examples-list">
-              <div class="ex-label">Example Sentences:</div>
-              ${g.examples.map(ex => `
-                <div class="grammar-ex-item">
-                  <p class="g-ja">${parseFurigana(ex.furigana || ex.ja)} <button class="mini-audio-btn" data-speak="${ex.ja}" title="Listen">${UI_ICONS.volume}</button></p>
-                  <p class="g-en">${ex.en}</p>
-                </div>
-              `).join('')}
-            </div>
-          ` : ''}
-
-          ${renderSourcesHtml(g.sources)}
-        </div>
-      `;
-    }).join('');
+    renderCategoryWithProgressiveScroll('grammar', items, 'No grammar points found matching current filters.');
   }
 
   // --- 4. FLASHCARDS ENGINE ---
@@ -1542,6 +1644,33 @@
   }
 
   // --- 6. BOOKMARKS RENDERER ---
+  function renderBookmarkCardHtml(item) {
+    const isKanji = !!item.char;
+    const isVocab = !!item.word;
+
+    return `
+      <div class="bookmark-card card-glass">
+        <div class="bm-header">
+          <div class="bm-type-badge">${isKanji ? 'Kanji' : isVocab ? 'Vocab' : 'Grammar'}</div>
+          <button class="action-btn" data-bookmark-id="${item.id}" title="Remove Bookmark">
+            ${UI_ICONS.starFilled}
+          </button>
+        </div>
+        <div class="bm-body">
+          <div class="bm-title">${item.char || item.word || item.pattern}</div>
+          <div class="bm-sub">${item.reading || item.onyomi || item.meaning}</div>
+          <div class="bm-meaning">${item.meaning || item.explanation || ''}</div>
+        </div>
+        <div class="bm-footer">
+          <button class="btn-primary-sm" data-speak="${item.char || item.word || item.pattern}">
+            ${UI_ICONS.volume} Listen
+          </button>
+          ${isKanji ? `<button class="btn-secondary-sm" onclick="window.NihonHub.openKanjiModal('${item.id}')">View Kanji</button>` : ''}
+        </div>
+      </div>
+    `;
+  }
+
   function toggleBookmark(id) {
     if (state.bookmarks.has(id)) {
       state.bookmarks.delete(id);
@@ -1570,41 +1699,7 @@
 
     if (countTag) countTag.textContent = `${saved.length} Items Saved`;
 
-    if (saved.length === 0) {
-      list.innerHTML = `
-        <div class="empty-state card-glass" style="grid-column: 1 / -1;">
-          <p>No bookmarked items yet. Click the star icon on any Kanji, word, or grammar rule to save it here!</p>
-        </div>
-      `;
-      return;
-    }
-
-    list.innerHTML = saved.map(item => {
-      const isKanji = !!item.char;
-      const isVocab = !!item.word;
-
-      return `
-        <div class="bookmark-card card-glass">
-          <div class="bm-header">
-            <div class="bm-type-badge">${isKanji ? 'Kanji' : isVocab ? 'Vocab' : 'Grammar'}</div>
-            <button class="action-btn" data-bookmark-id="${item.id}" title="Remove Bookmark">
-              ${UI_ICONS.starFilled}
-            </button>
-          </div>
-          <div class="bm-body">
-            <div class="bm-title">${item.char || item.word || item.pattern}</div>
-            <div class="bm-sub">${item.reading || item.onyomi || item.meaning}</div>
-            <div class="bm-meaning">${item.meaning || item.explanation || ''}</div>
-          </div>
-          <div class="bm-footer">
-            <button class="btn-primary-sm" data-speak="${item.char || item.word || item.pattern}">
-              ${UI_ICONS.volume} Listen
-            </button>
-            ${isKanji ? `<button class="btn-secondary-sm" onclick="window.NihonHub.openKanjiModal('${item.id}')">View Kanji</button>` : ''}
-          </div>
-        </div>
-      `;
-    }).join('');
+    renderCategoryWithProgressiveScroll('bookmarks', saved, 'No bookmarked items yet. Click the star icon on any Kanji, word, or grammar rule to save it here!');
   }
 
   // --- EXPOSE API GLOBALLY ---
