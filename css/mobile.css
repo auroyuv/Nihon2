@@ -1,7 +1,7 @@
 /**
  * NihonHub - Dedicated Mobile & Tablet Responsive Stylesheet
  * Bulletproof 1-Card Mobile Layout, Zero Horizontal Overflow,
- * Zen Study Modal, and Bottom App Navigation.
+ * Touch-Optimized Flashcards Studio, Zen Study Modal, and Bottom App Navigation.
  */
 
 /* ====================================================== */
@@ -33,7 +33,7 @@
     min-width: 0 !important;
   }
 
-  /* Slide-Over Drawer */
+  /* Slide-Over Sidebar Drawer */
   .app-sidebar {
     position: fixed !important;
     top: 0 !important;
@@ -106,11 +106,11 @@
   
   /* --- App Viewport & Generous Bottom Clearance --- */
   :root {
-    --header-height: 92px;
+    --header-height: 96px;
   }
 
   body {
-    padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: calc(90px + env(safe-area-inset-bottom, 0px)) !important;
     width: 100% !important;
     max-width: 100vw !important;
     overflow-x: hidden !important;
@@ -208,7 +208,7 @@
     width: 100% !important;
     max-width: 100vw !important;
     margin: 0 !important;
-    padding: 0 12px 110px 12px !important;
+    padding: 0 10px 100px 10px !important;
     box-sizing: border-box !important;
     overflow-x: hidden !important;
   }
@@ -221,6 +221,20 @@
     box-sizing: border-box !important;
   }
 
+  .compact-banner-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+
+  .compact-banner-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    justify-content: space-between;
+  }
+
   .compact-banner-title {
     font-size: 0.8rem !important;
   }
@@ -228,6 +242,13 @@
   .compact-banner-badge-big {
     font-size: 0.82rem !important;
     padding: 2px 7px !important;
+  }
+
+  .compact-origin-pills {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    flex-wrap: wrap;
   }
 
   .prog-chip-sm {
@@ -273,7 +294,7 @@
     justify-content: center;
     background: transparent;
     border: none;
-    padding: 4px 2px;
+    padding: 4px 1px;
     cursor: pointer;
     color: var(--text-secondary);
     transition: all var(--trans-fast);
@@ -285,26 +306,58 @@
   }
 
   .mobile-nav-icon {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     margin-bottom: 1px;
     line-height: 1;
   }
 
   .mobile-nav-label {
-    font-size: 0.66rem;
+    font-size: 0.64rem;
     font-weight: 700;
   }
 
-  /* Sub-Filter Card & Textbook Selectors */
+  /* Sub-Filter Card & Header */
   .sub-filter-card {
-    padding: 10px 10px !important;
+    padding: 12px 10px !important;
     margin-bottom: 10px !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
 
+  .sub-filter-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+    margin-bottom: 10px !important;
+  }
+
   .sub-filter-title {
-    font-size: 0.82rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.84rem !important;
+    font-weight: 700;
+  }
+
+  .header-right-controls {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .view-mode-toggle {
+    display: flex !important;
+    flex: 1 !important;
+  }
+
+  .view-mode-btn {
+    flex: 1 !important;
+    justify-content: center !important;
+    padding: 5px 8px !important;
+    font-size: 0.76rem !important;
   }
 
   .source-filter-controls {
@@ -324,7 +377,7 @@
   .book-select-dropdown {
     width: 100% !important;
     font-size: 0.82rem;
-    padding: 6px 30px 6px 10px;
+    padding: 7px 30px 7px 10px;
     box-sizing: border-box !important;
   }
 
@@ -333,6 +386,8 @@
     gap: 6px;
     width: 100% !important;
     box-sizing: border-box !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
   }
 
   .week-pill {
@@ -393,9 +448,9 @@
 
   .action-btn,
   .mastery-btn {
-    width: 28px !important;
-    height: 28px !important;
-    font-size: 0.76rem !important;
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 0.8rem !important;
     flex-shrink: 0 !important;
   }
 
@@ -499,7 +554,7 @@
   }
 
   .vocab-word {
-    font-size: 1.2rem !important;
+    font-size: 1.3rem !important;
   }
 
   .vocab-study-toolbar {
@@ -511,16 +566,16 @@
 
   .segmented-control {
     width: 100% !important;
-    display: grid !important;
-    grid-template-columns: 1fr !important;
+    display: flex !important;
     gap: 4px !important;
     box-sizing: border-box !important;
   }
 
   .segment-btn {
+    flex: 1 !important;
     text-align: center !important;
-    padding: 6px 8px !important;
-    font-size: 0.76rem !important;
+    padding: 6px 4px !important;
+    font-size: 0.74rem !important;
   }
 
   .vocab-type-pills {
@@ -535,7 +590,7 @@
   .vtype-pill {
     flex-shrink: 0 !important;
     font-size: 0.74rem !important;
-    padding: 3px 8px !important;
+    padding: 4px 9px !important;
   }
 
   /* Grammar List on Mobile */
@@ -585,62 +640,272 @@
   }
 
   .grammar-pattern {
-    font-size: 1.2rem !important;
+    font-size: 1.25rem !important;
   }
 
-  /* Flashcards on Mobile */
-  .flashcard-card {
-    min-height: 250px !important;
-    padding: 16px !important;
+  /* ====================================================== */
+  /* 🎴 TOUCH-OPTIMIZED FLASHCARDS STUDIO ON MOBILE         */
+  /* ====================================================== */
+  .flashcards-container {
     width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .fc-category-bar {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .fc-category-pill {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 8px 6px !important;
+    font-size: 0.8rem !important;
+    text-align: center !important;
     box-sizing: border-box !important;
   }
 
-  .fc-kanji-char {
-    font-size: 3.5rem !important;
+  .fc-filter-controls-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+    margin-bottom: 10px !important;
   }
 
-  .fc-vocab-word {
-    font-size: 1.6rem !important;
+  .fc-status-pills {
+    display: flex !important;
+    width: 100% !important;
+    gap: 4px !important;
   }
 
-  .fc-controls-row {
-    flex-wrap: wrap !important;
-    gap: 6px !important;
+  .fc-status-pill {
+    flex: 1 !important;
+    text-align: center !important;
+    padding: 6px 4px !important;
+    font-size: 0.74rem !important;
+    box-sizing: border-box !important;
+  }
+
+  .fc-meta-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+    padding: 10px 12px !important;
+  }
+
+  .fc-meta-left {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     width: 100% !important;
   }
 
-  .fc-btn {
-    flex: 1 1 40% !important;
-    padding: 8px !important;
+  .fc-meta-right {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  /* 3D Flip Card Container on Mobile */
+  .flashcard-wrapper {
+    width: 100% !important;
+    min-height: 420px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .flashcard-card {
+    min-height: 420px !important;
+    width: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  .fc-face {
+    padding: 18px 14px !important;
+    border-radius: 18px !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .fc-big-text {
+    font-size: 3.8rem !important;
+    margin-bottom: 6px !important;
+  }
+
+  .fc-big-word {
+    font-size: 2.2rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  .fc-big-pattern {
+    font-size: 1.7rem !important;
+  }
+
+  .fc-reading-sub {
+    font-size: 1.15rem !important;
+  }
+
+  .fc-meaning-lead {
+    font-size: 1.2rem !important;
+  }
+
+  /* Kanji Back Face Compound Grid on Mobile */
+  .fc-kanji-main-row {
+    padding: 8px 10px !important;
+    gap: 10px !important;
+  }
+
+  .fc-kanji-char {
+    font-size: 2.6rem !important;
+  }
+
+  .fc-compounds-grid {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+    max-height: 200px !important;
+  }
+
+  .fc-compound-item {
+    padding: 6px 10px !important;
+  }
+
+  .fc-comp-word {
+    font-size: 1rem !important;
+  }
+
+  .fc-comp-reading {
+    font-size: 0.82rem !important;
+  }
+
+  .fc-comp-meaning {
+    font-size: 0.78rem !important;
+  }
+
+  /* Flashcard Action Buttons on Mobile */
+  .fc-controls-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1.3fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+  }
+
+  .fc-ctrl-btn {
+    padding: 10px 6px !important;
+    font-size: 0.82rem !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  #fc-toggle-reading-btn,
+  #fc-toggle-meaning-btn,
+  #fc-shuffle-btn {
+    font-size: 0.8rem !important;
+    padding: 9px 4px !important;
+  }
+
+  #fc-toggle-mastery-btn {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    padding: 11px !important;
+    font-size: 0.88rem !important;
+  }
+
+  .fc-quick-response-btns {
+    display: flex !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .fc-resp-btn {
+    flex: 1 !important;
+    justify-content: center !important;
+    padding: 10px 6px !important;
     font-size: 0.8rem !important;
   }
 
-  /* Zen Modal on Mobile */
+  .fc-shortcuts-legend {
+    display: none !important;
+  }
+
+  /* ====================================================== */
+  /* RESPONSIVE STUDY TABLES ON MOBILE                      */
+  /* ====================================================== */
+  .study-table-responsive {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 10px !important;
+    width: 100% !important;
+  }
+
+  .study-table th {
+    padding: 10px 8px !important;
+    font-size: 0.72rem !important;
+  }
+
+  .study-table td {
+    padding: 10px 8px !important;
+    font-size: 0.82rem !important;
+  }
+
+  .t-char {
+    font-size: 1.4rem !important;
+  }
+
+  /* ====================================================== */
+  /* KANA CHART ON MOBILE                                   */
+  /* ====================================================== */
+  .kana-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 6px !important;
+  }
+
+  .kana-card {
+    padding: 8px 2px !important;
+    min-height: 52px !important;
+  }
+
+  .kana-main-char {
+    font-size: 1.35rem !important;
+  }
+
+  .kana-romaji-label {
+    font-size: 0.72rem !important;
+  }
+
+  /* ====================================================== */
+  /* ZEN STUDY KANJI MODAL ON MOBILE                        */
+  /* ====================================================== */
   .modal-dialog {
-    width: 96vw !important;
-    max-height: 90vh !important;
-    padding: 14px !important;
+    width: 94vw !important;
+    max-height: 88vh !important;
+    padding: 16px 12px !important;
     border-radius: 16px !important;
   }
 
   .zen-hero-header {
-    flex-direction: column !important;
+    flex-direction: row !important;
     align-items: center !important;
-    text-align: center !important;
-    gap: 10px !important;
+    text-align: left !important;
+    gap: 12px !important;
   }
 
   .zen-kanji-char {
-    font-size: 3.2rem !important;
+    font-size: 2.8rem !important;
   }
 
   .zen-meta-row {
-    justify-content: center !important;
+    justify-content: flex-start !important;
   }
 
   .zen-readings-bar {
-    justify-content: center !important;
+    justify-content: flex-start !important;
   }
 
   .zen-examples-list {
