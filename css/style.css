@@ -2180,9 +2180,6 @@ body.hide-romaji .kana-romaji {
   border-color: rgba(56, 189, 248, 0.35) !important;
   background: rgba(56, 189, 248, 0.1) !important;
 }
-  border-color: rgba(56, 189, 248, 0.35) !important;
-  background: rgba(56, 189, 248, 0.1) !important;
-}
 
 /* Kanji Building Block Anatomy Section */
 .kanji-anatomy-section {
