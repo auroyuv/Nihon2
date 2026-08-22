@@ -1,0 +1,486 @@
+/**
+ * NihonHub - Dedicated Mobile & Tablet Responsive Stylesheet
+ * Optimized for smartphones (iPhone, Android) and tablets (iPad, Galaxy Tab).
+ * Features bottom app-like navigation, touch-friendly tap targets, momentum scrolling,
+ * responsive modal sheets, and fluid card layouts.
+ */
+
+/* ====================================================== */
+/* 1. SMARTPHONE OPTIMIZATIONS (Screen width <= 640px)    */
+/* ====================================================== */
+@media screen and (max-width: 640px) {
+  
+  /* --- App Layout & Safe Areas --- */
+  :root {
+    --header-height: 56px;
+  }
+
+  body {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .app-container {
+    padding: 10px 8px;
+  }
+
+  /* --- Site Header --- */
+  .site-header {
+    height: auto;
+    padding: 8px 10px;
+  }
+
+  .header-inner {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .brand-logo {
+    gap: 6px;
+  }
+
+  .logo-text {
+    font-size: 1.15rem;
+  }
+
+  .header-center-search {
+    order: 3;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 4px;
+  }
+
+  .search-input {
+    padding: 8px 12px 8px 34px;
+    font-size: 0.84rem;
+  }
+
+  .header-right-controls {
+    gap: 6px;
+  }
+
+  .theme-toggle-btn {
+    padding: 5px 8px;
+    font-size: 0.78rem;
+  }
+
+  #theme-text-container {
+    display: none; /* Icon-only on small screens */
+  }
+
+  /* --- Top Control Bar --- */
+  .control-bar {
+    padding: 10px 8px;
+    gap: 10px;
+  }
+
+  .level-selector-group {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .level-selector-group::-webkit-scrollbar {
+    display: none;
+  }
+
+  .level-pill {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .origin-selector-group {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .origin-selector-group::-webkit-scrollbar {
+    display: none;
+  }
+
+  .origin-pill {
+    padding: 6px 10px;
+    font-size: 0.76rem;
+    flex-shrink: 0;
+  }
+
+  .toggles-group {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .toggle-switch-label {
+    font-size: 0.76rem;
+    padding: 6px 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+    justify-content: flex-start;
+  }
+
+  .toolbar-speed-btn,
+  .mastery-status-chip {
+    font-size: 0.76rem;
+    padding: 5px 8px;
+    justify-content: center;
+  }
+
+  /* --- Level Progression Banner --- */
+  .progression-banner {
+    padding: 12px 10px;
+  }
+
+  .prog-huge-val {
+    font-size: 1.8rem;
+  }
+
+  .prog-split-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .prog-levels-breakdown {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .prog-level-chip {
+    font-size: 0.74rem;
+    padding: 4px 8px;
+  }
+
+  /* --- Desktop Nav Tabs: Hide on mobile --- */
+  .main-nav-tabs {
+    display: none !important;
+  }
+
+  /* --- Mobile App-Like Bottom Navigation Bar --- */
+  .mobile-bottom-nav {
+    display: flex !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(60px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    z-index: 999;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  [data-theme="light"] .mobile-bottom-nav {
+    background: rgba(255, 255, 255, 0.96);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .mobile-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 6px 2px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all var(--trans-fast);
+    touch-action: manipulation;
+  }
+
+  .mobile-nav-item.active {
+    color: var(--brand-primary);
+  }
+
+  .mobile-nav-icon {
+    font-size: 1.25rem;
+    margin-bottom: 2px;
+    line-height: 1;
+  }
+
+  .mobile-nav-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+  }
+
+  /* --- Sub-Filter Card & Textbook Selectors --- */
+  .sub-filter-card {
+    padding: 12px 10px;
+  }
+
+  .sub-filter-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .source-filter-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .book-select-wrapper {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+
+  .book-select-dropdown {
+    width: 100%;
+    font-size: 0.84rem;
+  }
+
+  .week-pills-row {
+    padding-bottom: 6px;
+  }
+
+  .week-pill {
+    padding: 5px 10px;
+    font-size: 0.78rem;
+    flex-shrink: 0;
+  }
+
+  /* --- Vocabulary Study Toolbar on Mobile --- */
+  .vocab-study-toolbar {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .segmented-control {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .segment-btn {
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  .vocab-type-pills {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .vtype-pill {
+    flex-shrink: 0;
+    font-size: 0.76rem;
+    padding: 4px 10px;
+  }
+
+  /* --- Kanji Matrix Grid on Mobile (1 Column) --- */
+  .kanji-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  .kanji-card {
+    padding: 14px;
+  }
+
+  .kanji-character-big {
+    font-size: 3.2rem;
+  }
+
+  .kanji-meaning {
+    font-size: 0.88rem;
+    min-height: auto;
+  }
+
+  /* --- Vocabulary Vault on Mobile (1 Column) --- */
+  .vocab-list {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  .vocab-card {
+    padding: 14px;
+  }
+
+  .vocab-word {
+    font-size: 1.25rem;
+  }
+
+  .kanji-anatomy-chips {
+    gap: 4px;
+  }
+
+  .kanji-building-block {
+    padding: 3px 6px;
+    font-size: 0.72rem;
+  }
+
+  /* --- Grammar Guide on Mobile --- */
+  .grammar-card {
+    padding: 14px;
+  }
+
+  .grammar-pattern {
+    font-size: 1.25rem;
+  }
+
+  /* --- Flashcards on Mobile --- */
+  .flashcard-card {
+    min-height: 280px;
+    padding: 20px;
+  }
+
+  .fc-kanji-char {
+    font-size: 4rem;
+  }
+
+  .fc-vocab-word {
+    font-size: 1.8rem;
+  }
+
+  .fc-controls-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .fc-btn {
+    flex: 1 1 40%;
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  /* --- Kana Charts on Mobile --- */
+  .kana-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .kana-card {
+    padding: 8px 4px;
+  }
+
+  .kana-char {
+    font-size: 1.4rem;
+  }
+
+  /* --- Modal Sheet on Mobile --- */
+  .modal-dialog {
+    width: 96vw;
+    max-height: 88vh;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .modal-kanji-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .modal-kanji-big {
+    font-size: 4rem;
+  }
+
+  .modal-readings-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .modal-example-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .example-en-col {
+    text-align: left;
+    max-width: 100%;
+    font-size: 0.88rem;
+  }
+
+  .modal-footer-actions {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch !important;
+  }
+
+  .modal-footer-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ====================================================== */
+/* 2. TABLET OPTIMIZATIONS (641px <= Screen width <= 1024px) */
+/* ====================================================== */
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+  
+  .app-container {
+    padding: 16px 14px;
+  }
+
+  .mobile-bottom-nav {
+    display: none !important;
+  }
+
+  .main-nav-tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: thin;
+    padding-bottom: 4px;
+  }
+
+  .kanji-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
+    gap: 14px;
+  }
+
+  .vocab-list {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 14px;
+  }
+
+  .kana-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  .modal-dialog {
+    max-width: 720px;
+    padding: 24px;
+  }
+}
+
+/* ====================================================== */
+/* 3. DESKTOP SCREENS (> 1024px)                          */
+/* ====================================================== */
+@media screen and (min-width: 1025px) {
+  .mobile-bottom-nav {
+    display: none !important;
+  }
+}
