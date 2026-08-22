@@ -1888,14 +1888,13 @@
   function renderFlashcardSourceFilter() {
     const bookSelect = document.getElementById('fc-book-select');
     const chapterContainer = document.getElementById('fc-chapter-pills-container');
-    if (!bookSelect) return;
+    if (!bookSelect || !chapterContainer) return;
 
     const cat = state.flashcards.category;
+    const catName = cat === 'vocab' ? 'vocabulary' : cat;
     let books = [];
-    if (cat === 'kanji') books = getAvailableBooks('kanji');
-    else if (cat === 'vocab') books = getAvailableBooks('vocabulary');
-    else if (cat === 'grammar') books = getAvailableBooks('grammar');
-    else if (cat === 'bookmarks') {
+
+    if (cat === 'bookmarks') {
       const allBookmarks = [
         ...(window.JLPT_DATA.kanji || []),
         ...(window.JLPT_DATA.vocabulary || []),
@@ -1907,43 +1906,114 @@
         dBooks.forEach(b => bMap.set(b, (bMap.get(b) || 0) + 1));
       });
       books = Array.from(bMap.entries()).map(([book, count]) => ({ book, count })).sort((a, b) => b.count - a.count);
+    } else {
+      books = getAvailableBooks(catName, state.selectedLevel);
     }
 
-    const currentBook = state.flashcards.book;
-    let bookOptions = `<option value="ALL">All Textbooks</option>`;
+    // Ensure selected book is valid
+    if (state.flashcards.book !== 'ALL' && !books.some(b => b.book === state.flashcards.book)) {
+      state.flashcards.book = 'ALL';
+    }
+
+    // Compute total items for "All Textbooks"
+    let categoryTotal = 0;
+    if (cat === 'vocab' && window.JLPT_DATA.getVocabStats) {
+      const vStats = window.JLPT_DATA.getVocabStats(state.selectedLevel);
+      categoryTotal = state.vocabTypeFilter === 'TEXTBOOK' ? vStats.textbookCount :
+                      state.vocabTypeFilter === 'COMPOUNDS' ? vStats.compoundsCount : vStats.total;
+    } else if (cat === 'bookmarks') {
+      categoryTotal = state.bookmarks.size;
+    } else if (window.JLPT_DATA && window.JLPT_DATA.getLevelStats) {
+      const stats = window.JLPT_DATA.getLevelStats(catName, state.selectedLevel);
+      categoryTotal = stats.total;
+    }
+
+    // Populate Textbook Dropdown
+    let bookOptions = `<option value="ALL">All Textbooks (${categoryTotal})</option>`;
     books.forEach(b => {
-      bookOptions += `<option value="${b.book}" ${b.book === currentBook ? 'selected' : ''}>${b.book} (${b.count})</option>`;
+      const isSelected = state.flashcards.book === b.book ? 'selected' : '';
+      bookOptions += `<option value="${b.book}" ${isSelected}>${b.book} (${b.count})</option>`;
     });
     bookSelect.innerHTML = bookOptions;
 
-    // Populate Chapter / Week Pills
-    if (chapterContainer) {
-      if (currentBook === 'ALL' || books.length === 0) {
-        chapterContainer.innerHTML = '';
-      } else {
-        const chapters = getAvailableChapters(cat === 'vocab' ? 'vocabulary' : cat, currentBook);
-        if (chapters.length > 0) {
-          const currentChapter = state.flashcards.chapter;
-          chapterContainer.innerHTML = `
-            <button class="week-pill ${currentChapter === 'ALL' ? 'active' : ''}" data-fc-chapter="ALL">All Lessons</button>
-            ${chapters.map(ch => `
-              <button class="week-pill ${currentChapter === ch ? 'active' : ''}" data-fc-chapter="${ch}">${ch}</button>
-            `).join('')}
-          `;
-          chapterContainer.querySelectorAll('[data-fc-chapter]').forEach(pill => {
-            pill.addEventListener('click', (e) => {
-              state.flashcards.chapter = e.currentTarget.getAttribute('data-fc-chapter');
-              chapterContainer.querySelectorAll('[data-fc-chapter]').forEach(p => p.classList.remove('active'));
-              e.currentTarget.classList.add('active');
-              buildFlashcardDeck();
-              renderFlashcard();
-            });
-          });
-        } else {
-          chapterContainer.innerHTML = '';
-        }
-      }
+    // Retrieve Available Chapters / Lessons
+    let chapters = [];
+    if (cat === 'bookmarks') {
+      const allBookmarks = [
+        ...(window.JLPT_DATA.kanji || []),
+        ...(window.JLPT_DATA.vocabulary || []),
+        ...(window.JLPT_DATA.grammar || [])
+      ].filter(item => state.bookmarks.has(item.id));
+      const chapMap = new Map();
+      allBookmarks.forEach(item => {
+        (item.sources || []).forEach(s => {
+          if (state.flashcards.book !== 'ALL' && s.book !== state.flashcards.book) return;
+          const rawChap = s.chapter || s.lesson;
+          if (!rawChap) return;
+          let groupKey = rawChap;
+          const weekMatch = rawChap.match(/^(Week\s+\d+)/i);
+          const lessonMatch = rawChap.match(/^(Lesson\s+\d+)/i);
+          const chapterMatch = rawChap.match(/^(Chapter\s+\d+)/i);
+          if (weekMatch) groupKey = weekMatch[1];
+          else if (lessonMatch) groupKey = lessonMatch[1];
+          else if (chapterMatch) groupKey = chapterMatch[1];
+          chapMap.set(groupKey, (chapMap.get(groupKey) || 0) + 1);
+        });
+      });
+      chapters = Array.from(chapMap.entries()).map(([id, count]) => ({ id, label: id, count })).sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }));
+    } else {
+      chapters = getAvailableChapters(catName, state.selectedLevel, state.flashcards.book);
     }
+
+    // Ensure selected chapter is valid
+    if (state.flashcards.chapter !== 'ALL' && !chapters.some(c => c.id === state.flashcards.chapter)) {
+      state.flashcards.chapter = 'ALL';
+    }
+
+    // Compute total count for selected book / all books
+    let selectedBookTotal = categoryTotal;
+    if (state.flashcards.book !== 'ALL') {
+      const bObj = books.find(b => b.book === state.flashcards.book);
+      if (bObj) selectedBookTotal = bObj.count;
+    }
+
+    // Populate Chapter / Lesson Pills
+    let pillsHtml = `
+      <button class="week-pill ${state.flashcards.chapter === 'ALL' ? 'active' : ''}" data-fc-chapter="ALL">
+        All Lessons (${selectedBookTotal})
+      </button>
+    `;
+
+    chapters.forEach(c => {
+      const isAct = state.flashcards.chapter === c.id ? 'active' : '';
+      pillsHtml += `
+        <button class="week-pill ${isAct}" data-fc-chapter="${c.id}">
+          ${c.label} (${c.count})
+        </button>
+      `;
+    });
+
+    chapterContainer.innerHTML = pillsHtml;
+
+    // Attach event listeners for chapter pills
+    chapterContainer.querySelectorAll('[data-fc-chapter]').forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        chapterContainer.querySelectorAll('[data-fc-chapter]').forEach(p => p.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        state.flashcards.chapter = e.currentTarget.getAttribute('data-fc-chapter');
+        buildFlashcardDeck();
+        renderFlashcard();
+      });
+    });
+
+    // Wire change handler on bookSelect
+    bookSelect.onchange = function () {
+      state.flashcards.book = this.value;
+      state.flashcards.chapter = 'ALL';
+      renderFlashcardSourceFilter();
+      buildFlashcardDeck();
+      renderFlashcard();
+    };
   }
 
   function buildFlashcardDeck() {
@@ -1972,27 +2042,31 @@
       }
 
       // Filter by selected Textbook
+      let srcList = item.sources || [];
+      if (cat === 'vocab') {
+        if (state.vocabTypeFilter === 'TEXTBOOK' && item.textbookSources && item.textbookSources.length > 0) srcList = item.textbookSources;
+        else if (state.vocabTypeFilter === 'COMPOUNDS' && item.compoundSources && item.compoundSources.length > 0) srcList = item.compoundSources;
+      }
+
       if (state.flashcards.book !== 'ALL') {
-        let srcList = item.sources || [];
-        if (cat === 'vocab') {
-          if (state.vocabTypeFilter === 'TEXTBOOK' && item.textbookSources && item.textbookSources.length > 0) srcList = item.textbookSources;
-          else if (state.vocabTypeFilter === 'COMPOUNDS' && item.compoundSources && item.compoundSources.length > 0) srcList = item.compoundSources;
-        }
         const hasBook = Array.isArray(srcList) && srcList.some(s => s.book === state.flashcards.book);
         if (!hasBook) return false;
       }
 
       // Filter by selected Chapter / Lesson
       if (state.flashcards.chapter !== 'ALL') {
-        let srcList = item.sources || [];
-        if (cat === 'vocab') {
-          if (state.vocabTypeFilter === 'TEXTBOOK' && item.textbookSources && item.textbookSources.length > 0) srcList = item.textbookSources;
-          else if (state.vocabTypeFilter === 'COMPOUNDS' && item.compoundSources && item.compoundSources.length > 0) srcList = item.compoundSources;
-        }
         const hasChapter = Array.isArray(srcList) && srcList.some(s => {
           if (state.flashcards.book !== 'ALL' && s.book !== state.flashcards.book) return false;
           const rawChap = s.chapter || s.lesson;
-          return rawChap && (rawChap === state.flashcards.chapter || rawChap.startsWith(state.flashcards.chapter));
+          if (!rawChap) return false;
+          let groupKey = rawChap;
+          const weekMatch = rawChap.match(/^(Week\s+\d+)/i);
+          const lessonMatch = rawChap.match(/^(Lesson\s+\d+)/i);
+          const chapterMatch = rawChap.match(/^(Chapter\s+\d+)/i);
+          if (weekMatch) groupKey = weekMatch[1];
+          else if (lessonMatch) groupKey = lessonMatch[1];
+          else if (chapterMatch) groupKey = chapterMatch[1];
+          return groupKey === state.flashcards.chapter || rawChap === state.flashcards.chapter || rawChap.startsWith(state.flashcards.chapter);
         });
         if (!hasChapter) return false;
       }
