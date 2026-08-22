@@ -1040,7 +1040,7 @@
       return;
     }
 
-    const htmlChunk = nextItems.map(item => s.renderCard(item)).join('');
+    const htmlChunk = nextItems.map((item, idx) => s.renderCard(item, s.renderedCount + idx + 1)).join('');
     container.insertAdjacentHTML('beforeend', htmlChunk);
     s.renderedCount += nextItems.length;
 
@@ -1079,7 +1079,7 @@
   }
 
   // --- 1. KANJI MATRIX RENDERER ---
-  function renderKanjiCardHtml(k) {
+  function renderKanjiCardHtml(k, sNo) {
     const isBookmarked = state.bookmarks.has(k.id);
     const isMastered = state.mastered.has(k.id);
     const sourceInfo = k.sources && k.sources[0] ? k.sources[0] : null;
@@ -1091,6 +1091,7 @@
       <div class="kanji-card card-glass ${isMastered ? 'mastered-card' : ''}" data-kanji-modal-id="${k.id}">
         <div class="kanji-card-top">
           <div class="kanji-badges">
+            ${sNo ? `<span class="sno-badge" title="Card #${sNo}">#${sNo}</span>` : ''}
             ${renderLevelPills(k.levels)}
             ${renderOriginBadge(k)}
           </div>
@@ -1343,7 +1344,7 @@
 
   // --- 2. VOCABULARY RENDERER (UNIFIED & 3-WAY SCRIPT) ---
   // --- 2. VOCABULARY RENDERER (UNIFIED & 3-WAY SCRIPT) ---
-  function renderVocabCardHtml(v) {
+  function renderVocabCardHtml(v, sNo) {
     const isBookmarked = state.bookmarks.has(v.id);
     const isMastered = state.mastered.has(v.id);
     const components = v.kanjiComponents || [];
@@ -1352,6 +1353,7 @@
       <div class="vocab-card card-glass ${isMastered ? 'mastered-card' : ''}">
         <div class="vocab-top">
           <div class="vocab-badges">
+            ${sNo ? `<span class="sno-badge" title="Card #${sNo}">#${sNo}</span>` : ''}
             ${renderLevelPills(v.levels || [v.level])}
             ${renderOriginBadge(v)}
             ${v.isTextbookVocab ? '<span class="source-pill badge-textbook" title="Extracted from textbook chapters/index">📚 Textbook Vocab</span>' : ''}
@@ -1438,13 +1440,14 @@
   }
 
   // --- 3. GRAMMAR RENDERER ---
-  function renderGrammarCardHtml(g) {
+  function renderGrammarCardHtml(g, sNo) {
     const isBookmarked = state.bookmarks.has(g.id);
     const isMastered = state.mastered.has(g.id);
     return `
       <div class="grammar-card card-glass ${isMastered ? 'mastered-card' : ''}">
         <div class="grammar-top">
           <div class="grammar-badges">
+            ${sNo ? `<span class="sno-badge" title="Card #${sNo}">#${sNo}</span>` : ''}
             ${renderLevelPills(g.levels || [g.level])}
             ${renderOriginBadge(g)}
           </div>
@@ -1654,14 +1657,17 @@
   }
 
   // --- 6. BOOKMARKS RENDERER ---
-  function renderBookmarkCardHtml(item) {
+  function renderBookmarkCardHtml(item, sNo) {
     const isKanji = !!item.char;
     const isVocab = !!item.word;
 
     return `
       <div class="bookmark-card card-glass">
         <div class="bm-header">
-          <div class="bm-type-badge">${isKanji ? 'Kanji' : isVocab ? 'Vocab' : 'Grammar'}</div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            ${sNo ? `<span class="sno-badge" title="Card #${sNo}">#${sNo}</span>` : ''}
+            <div class="bm-type-badge">${isKanji ? 'Kanji' : isVocab ? 'Vocab' : 'Grammar'}</div>
+          </div>
           <button class="action-btn" data-bookmark-id="${item.id}" title="Remove Bookmark">
             ${UI_ICONS.starFilled}
           </button>

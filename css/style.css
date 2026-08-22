@@ -2877,3 +2877,26 @@ body.hide-english .grammar-meaning:active {
   letter-spacing: 0.02em;
 }
 
+/* Card Serial Number Badge */
+.sno-badge {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 2px 7px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+[data-theme="light"] .sno-badge {
+  background: #e2e8f0;
+  color: #475569;
+  border-color: #cbd5e1;
+}
+
+
