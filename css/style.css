@@ -2107,6 +2107,9 @@ body.hide-romaji .kana-romaji {
   padding: 5px 12px;
   border-radius: 8px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   transition: all var(--trans-fast);
 }
 
@@ -2119,6 +2122,34 @@ body.hide-romaji .kana-romaji {
   background: #3b82f6;
   color: white;
   border-color: #3b82f6;
+}
+
+.vtype-count-badge {
+  display: inline-block;
+  padding: 1px 7px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--text-primary);
+  transition: all var(--trans-fast);
+}
+
+.vtype-pill.active .vtype-count-badge {
+  background: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+}
+
+.badge-textbook {
+  color: #10b981 !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  background: rgba(16, 185, 129, 0.1) !important;
+}
+
+.badge-compound {
+  color: #38bdf8 !important;
+  border-color: rgba(56, 189, 248, 0.35) !important;
+  background: rgba(56, 189, 248, 0.1) !important;
 }
 
 /* Kanji Building Block Anatomy Section */

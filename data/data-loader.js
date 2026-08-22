@@ -171,9 +171,10 @@
   // --- UNIFY VOCABULARY: Standalone + All Kanji Compound Target Vocabulary ---
   const unifiedVocabMap = new Map();
 
-  // 1. Insert standalone vocabulary words
+  // 1. Insert standalone textbook vocabulary words
   standaloneVocab.forEach(v => {
     const cloned = JSON.parse(JSON.stringify(v));
+    cloned.isTextbookVocab = true;
     cloned.isKanjiCompound = false;
     cloned.parentKanji = [];
     unifiedVocabMap.set(cloned.word, cloned);
@@ -211,7 +212,7 @@
         if (!existing.meaning && ex.meaning) existing.meaning = ex.meaning;
 
       } else {
-        // Brand new compound vocabulary entry
+        // Brand new compound vocabulary entry from Kanji examples
         const exLevels = ex.levels || (ex.level ? [ex.level] : [k.firstLevel || 'N5']);
         const sources = [];
         if (ex.source) sources.push({ book: ex.source });
@@ -225,6 +226,7 @@
           meaning: ex.meaning || '',
           levels: [...exLevels].sort((a, b) => (LEVEL_ORDER[a] || 99) - (LEVEL_ORDER[b] || 99)),
           firstLevel: ex.firstLevel || exLevels[0] || k.firstLevel || 'N5',
+          isTextbookVocab: false,
           isKanjiCompound: true,
           parentKanji: [k.char],
           sources: sources,
@@ -255,7 +257,6 @@
         });
         if (!item.parentKanji) item.parentKanji = [];
         if (!item.parentKanji.includes(ch)) item.parentKanji.push(ch);
-        item.isKanjiCompound = true;
       } else {
         components.push({
           char: ch,
@@ -296,6 +297,23 @@
     // Helper: Find all vocabulary containing a specific Kanji character
     getWordsForKanji: function (char) {
       return this.vocabulary.filter(v => v.word && v.word.includes(char));
+    },
+
+    // Helper: Get detailed vocabulary breakdown (Textbook vs Kanji Compounds)
+    getVocabStats: function (targetLevel = 'ALL') {
+      const items = this.vocabulary.filter(v => {
+        if (targetLevel === 'ALL') return true;
+        return v.levels && v.levels.includes(targetLevel);
+      });
+      const textbookCount = items.filter(v => v.isTextbookVocab).length;
+      const compoundsCount = items.filter(v => v.isKanjiCompound).length;
+      const bothCount = items.filter(v => v.isTextbookVocab && v.isKanjiCompound).length;
+      return {
+        textbookCount,
+        compoundsCount,
+        bothCount,
+        total: items.length
+      };
     },
 
     // Helper: Determine if item is brand-new or review in a given level

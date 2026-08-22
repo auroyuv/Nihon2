@@ -490,10 +490,10 @@
       if (!matchLevel(item)) return false;
       if (!matchOrigin(item)) return false;
 
-      // Filter by Vocab Type (Compounds vs General)
+      // Filter by Vocab Source (Textbook vs Kanji Compounds vs All)
       if (category === 'vocabulary') {
+        if (state.vocabTypeFilter === 'TEXTBOOK' && !item.isTextbookVocab) return false;
         if (state.vocabTypeFilter === 'COMPOUNDS' && !item.isKanjiCompound) return false;
-        if (state.vocabTypeFilter === 'GENERAL' && item.isKanjiCompound) return false;
       }
 
       // Filter by selected Book
@@ -1151,16 +1151,28 @@
     const breakdownTag = document.getElementById('vocab-origin-breakdown');
     if (!list) return;
 
+    // Update pill badge numbers for currently active level
+    if (window.JLPT_DATA.getVocabStats) {
+      const vStats = window.JLPT_DATA.getVocabStats(state.selectedLevel);
+      const btnAll = document.getElementById('vtype-count-all');
+      const btnTb = document.getElementById('vtype-count-textbook');
+      const btnCmp = document.getElementById('vtype-count-compounds');
+      if (btnAll) btnAll.textContent = vStats.total;
+      if (btnTb) btnTb.textContent = vStats.textbookCount;
+      if (btnCmp) btnCmp.textContent = vStats.compoundsCount;
+    }
+
     const items = filterItems(window.JLPT_DATA.vocabulary, ['word', 'reading', 'romaji', 'meaning'], 'vocabulary');
 
-    if (countTag) countTag.textContent = `${items.length} Words displayed`;
+    const filterTypeName = state.vocabTypeFilter === 'TEXTBOOK' ? 'Textbook' : state.vocabTypeFilter === 'COMPOUNDS' ? 'Kanji Compound' : 'Total';
+    if (countTag) countTag.textContent = `${items.length} ${filterTypeName} Words displayed`;
 
-    if (breakdownTag && window.JLPT_DATA.getLevelStats) {
-      const stats = window.JLPT_DATA.getLevelStats('vocabulary', state.selectedLevel);
+    if (breakdownTag && window.JLPT_DATA.getVocabStats) {
+      const vStats = window.JLPT_DATA.getVocabStats(state.selectedLevel);
       if (state.selectedLevel === 'ALL') {
-        breakdownTag.textContent = `(${stats.total} total across all levels)`;
+        breakdownTag.innerHTML = `&bull; <strong>${vStats.textbookCount}</strong> Textbook Vocab &bull; <strong>${vStats.compoundsCount}</strong> Kanji Compounds &bull; <strong>${vStats.total}</strong> Total`;
       } else {
-        breakdownTag.innerHTML = `&bull; <strong>${stats.newCount}</strong> New in ${state.selectedLevel} &bull; <strong>${stats.reviewCount}</strong> Review`;
+        breakdownTag.innerHTML = `&bull; <strong>${vStats.textbookCount}</strong> Textbook Vocab in ${state.selectedLevel} &bull; <strong>${vStats.compoundsCount}</strong> Kanji Compounds`;
       }
     }
 
@@ -1180,7 +1192,8 @@
             <div class="vocab-badges">
               ${renderLevelPills(v.levels || [v.level])}
               ${renderOriginBadge(v)}
-              ${v.isKanjiCompound ? '<span class="source-pill" style="color: #38bdf8; border-color: rgba(56,189,248,0.3);">熟語 Compound</span>' : ''}
+              ${v.isTextbookVocab ? '<span class="source-pill badge-textbook" title="Extracted from textbook chapters/index">📚 Textbook Vocab</span>' : ''}
+              ${v.isKanjiCompound ? '<span class="source-pill badge-compound" title="Learned from Kanji compound examples">🈁 Kanji Compound</span>' : ''}
             </div>
             <div class="vocab-actions">
               <button class="mastery-btn ${isMastered ? 'is-mastered' : ''}" data-mastery-id="${v.id}" title="${isMastered ? 'Marked Mastered' : 'Mark Mastered'}">

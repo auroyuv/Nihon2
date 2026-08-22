@@ -272,11 +272,17 @@
           </div>
 
           <div class="study-control-group">
-            <span class="control-group-title">📂 Vocab Category:</span>
+            <span class="control-group-title">📂 Vocabulary Source:</span>
             <div class="vocab-type-pills">
-              <button class="vtype-pill active" data-vocab-type="ALL">All Vocabulary</button>
-              <button class="vtype-pill" data-vocab-type="COMPOUNDS">Kanji Compounds (熟語)</button>
-              <button class="vtype-pill" data-vocab-type="GENERAL">General Vocab</button>
+              <button class="vtype-pill active" data-vocab-type="ALL" title="View all vocabulary words combined">
+                ✨ All Combined <span id="vtype-count-all" class="vtype-count-badge">0</span>
+              </button>
+              <button class="vtype-pill" data-vocab-type="TEXTBOOK" title="Pure Vocabulary extracted directly from textbook chapters & vocabulary lists">
+                📚 Textbook Vocab <span id="vtype-count-textbook" class="vtype-count-badge">0</span>
+              </button>
+              <button class="vtype-pill" data-vocab-type="COMPOUNDS" title="Kanji compound words (熟語) learned from Kanji stroke & reading examples">
+                🈁 Kanji Compounds <span id="vtype-count-compounds" class="vtype-count-badge">0</span>
+              </button>
             </div>
           </div>
         </div>
