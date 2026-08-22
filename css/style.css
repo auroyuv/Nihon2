@@ -292,9 +292,10 @@ body.hide-romaji .kana-romaji {
 
 /* --- App Layout --- */
 .app-container {
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: 0 20px 60px 20px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 24px 60px 24px;
 }
 
 /* --- Header & Top Navbar --- */
@@ -310,13 +311,14 @@ body.hide-romaji .kana-romaji {
 }
 
 .header-inner {
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: 12px 20px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 20px;
 }
 
 .brand-logo {
@@ -2296,8 +2298,9 @@ body.hide-english .grammar-meaning:active {
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
   gap: 24px;
-  max-width: 1760px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
   align-items: start;
 }
 
