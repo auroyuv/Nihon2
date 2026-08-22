@@ -376,7 +376,7 @@
     });
   }
 
-  // --- DYNAMIC LEVEL PROGRESSION & OVERLAP BANNER ---
+  // --- DYNAMIC LEVEL PROGRESSION & OVERLAP BANNER (COMPACT SLEEK UI) ---
   function updateLevelProgressionBanner() {
     const banner = document.getElementById('level-progression-banner');
     if (!banner || !window.JLPT_DATA) return;
@@ -406,6 +406,13 @@
     const newPct = stats.total > 0 ? Math.round((stats.newCount / stats.total) * 100) : 100;
     const reviewPct = stats.total > 0 ? 100 - newPct : 0;
 
+    // Update Header Level Badge
+    const badgeEl = document.getElementById('active-level-indicator-badge');
+    if (badgeEl) {
+      badgeEl.textContent = state.selectedLevel;
+      badgeEl.className = `header-level-badge badge-${state.selectedLevel.toLowerCase()}`;
+    }
+
     if (state.selectedLevel === 'ALL') {
       const n5Count = masterList.filter(i => i.firstLevel === 'N5').length;
       const n4Count = masterList.filter(i => i.firstLevel === 'N4').length;
@@ -413,52 +420,34 @@
       const n2Count = masterList.filter(i => i.firstLevel === 'N2').length;
 
       banner.innerHTML = `
-        <div class="progression-banner-inner">
-          <div class="prog-stat-box">
-            <span class="prog-label">Total Unique ${catTitle} (N5 to N2):</span>
-            <span class="prog-huge-val">${totalMasterCount}</span>
+        <div class="compact-banner-row">
+          <div class="compact-banner-left">
+            <span class="compact-banner-title">Cumulative ${catTitle}:</span>
+            <span class="compact-banner-badge-big">${totalMasterCount} Total</span>
           </div>
-          <div class="prog-levels-breakdown">
-            <div class="prog-level-chip badge-n5"><strong>N5 Origin:</strong> ${n5Count}</div>
-            <div class="prog-level-chip badge-n4"><strong>N4 Origin:</strong> ${n4Count}</div>
-            <div class="prog-level-chip badge-n3"><strong>N3 Origin:</strong> ${n3Count}</div>
-            <div class="prog-level-chip badge-n2"><strong>N2 Origin:</strong> ${n2Count}</div>
-          </div>
-          <div class="prog-desc">
-            Cumulative view showing all unique ${catTitle.toLowerCase()} across all 4 JLPT levels combined.
+          <div class="compact-origin-pills">
+            <span class="prog-chip-sm badge-n5">N5: ${n5Count}</span>
+            <span class="prog-chip-sm badge-n4">N4: ${n4Count}</span>
+            <span class="prog-chip-sm badge-n3">N3: ${n3Count}</span>
+            <span class="prog-chip-sm badge-n2">N2: ${n2Count}</span>
           </div>
         </div>
       `;
     } else {
       banner.innerHTML = `
-        <div class="progression-banner-inner">
-          <div class="prog-stat-box">
-            <span class="prog-label">JLPT ${state.selectedLevel} ${catTitle} Syllabus:</span>
-            <span class="prog-huge-val">${stats.total} <small>Total</small></span>
+        <div class="compact-banner-row">
+          <div class="compact-banner-left">
+            <span class="compact-banner-title">JLPT ${state.selectedLevel} ${catTitle}:</span>
+            <span class="compact-banner-badge-big">${stats.total} Total</span>
           </div>
-          <div class="prog-split-row">
-            <div class="prog-split-card new-card">
-              <div class="split-top">
-                <span class="split-icon">✨</span>
-                <span class="split-title">Brand New in ${state.selectedLevel}:</span>
-              </div>
-              <div class="split-val"><strong>${stats.newCount}</strong> ${catTitle} (${newPct}%)</div>
-              <div class="split-hint">Introduced for the first time in JLPT ${state.selectedLevel}</div>
-            </div>
-            
-            <div class="prog-split-card review-card">
-              <div class="split-top">
-                <span class="split-icon">🔄</span>
-                <span class="split-title">Repeated from Lower Levels:</span>
-              </div>
-              <div class="split-val"><strong>${stats.reviewCount}</strong> ${catTitle} (${reviewPct}%)</div>
-              <div class="split-hint">Learned in earlier levels, reappearing in ${state.selectedLevel} with advanced compound words</div>
-            </div>
+          <div class="compact-origin-pills">
+            <span class="prog-chip-sm new-chip" title="Brand new in ${state.selectedLevel}">✨ New: <strong>${stats.newCount}</strong> (${newPct}%)</span>
+            <span class="prog-chip-sm review-chip" title="Repeated from earlier levels">🔄 Review: <strong>${stats.reviewCount}</strong> (${reviewPct}%)</span>
           </div>
-          <div class="prog-split-bar">
-            <div class="split-fill-new" style="width: ${newPct}%;" title="${stats.newCount} New (${newPct}%)"></div>
-            <div class="split-fill-review" style="width: ${reviewPct}%;" title="${stats.reviewCount} Review (${reviewPct}%)"></div>
-          </div>
+        </div>
+        <div class="compact-split-bar">
+          <div class="split-fill-new" style="width: ${newPct}%;" title="${stats.newCount} New (${newPct}%)"></div>
+          <div class="split-fill-review" style="width: ${reviewPct}%;" title="${stats.reviewCount} Review (${reviewPct}%)"></div>
         </div>
       `;
     }
@@ -626,7 +615,7 @@
         e.currentTarget.classList.add('active');
         state.selectedLevel = e.currentTarget.getAttribute('data-level');
         
-        const activeLevelText = document.getElementById('active-level-indicator-text');
+        const activeLevelText = document.getElementById('active-level-indicator-badge');
         if (activeLevelText) activeLevelText.textContent = state.selectedLevel;
 
         state.filters.kanji.chapter = 'ALL';
@@ -1521,7 +1510,7 @@
       document.querySelectorAll('.level-pill').forEach(p => {
         p.classList.toggle('active', p.getAttribute('data-level') === lvl);
       });
-      const activeLevelText = document.getElementById('active-level-indicator-text');
+      const activeLevelText = document.getElementById('active-level-indicator-badge');
       if (activeLevelText) activeLevelText.textContent = state.selectedLevel;
 
       state.filters.kanji.chapter = 'ALL';
@@ -1540,7 +1529,7 @@
       state.filters.grammar = { book: 'ALL', chapter: 'ALL' };
       const s = document.getElementById('global-search-input');
       if (s) s.value = '';
-      const activeLevelText = document.getElementById('active-level-indicator-text');
+      const activeLevelText = document.getElementById('active-level-indicator-badge');
       if (activeLevelText) activeLevelText.textContent = 'ALL';
       document.querySelectorAll('.level-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-level') === 'ALL'));
       document.querySelectorAll('.origin-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-origin') === 'ALL'));

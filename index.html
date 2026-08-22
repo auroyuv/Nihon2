@@ -17,22 +17,34 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23ff4757%22 stroke-width=%222%22><path d=%22M4 6h16M2 3h20M6 3v18M18 3v18M6 10h12%22/></svg>">
 
   <!-- Google Fonts & Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=3.7">
-  <link rel="stylesheet" href="css/mobile.css?v=3.7">
+  <link rel="stylesheet" href="css/style.css?v=3.8">
+  <link rel="stylesheet" href="css/mobile.css?v=3.8">
 </head>
 <body>
 
   <!-- Site Header -->
   <header class="site-header">
     <div class="header-inner">
-      <!-- Logo -->
-      <div class="brand-logo" onclick="window.NihonHub.switchTab('kanji')" style="cursor: pointer;">
-        <div class="logo-torii">
-          <svg class="ui-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 6h16"/><path d="M2 3h20"/><path d="M6 3v18"/><path d="M18 3v18"/><path d="M6 10h12"/>
+      <!-- Left: Hamburger Button + Level Badge + Logo -->
+      <div class="header-left-group">
+        <button id="sidebar-toggle-btn" class="header-menu-btn" title="Toggle Filters & Study Settings">
+          <svg class="ui-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" x2="21" y1="6" y2="6"/>
+            <line x1="3" x2="21" y1="12" y2="12"/>
+            <line x1="3" x2="21" y1="18" y2="18"/>
           </svg>
+        </button>
+        <span id="active-level-indicator-badge" class="header-level-badge">ALL</span>
+        
+        <!-- Logo -->
+        <div class="brand-logo" onclick="window.NihonHub.switchTab('kanji')" style="cursor: pointer;">
+          <div class="logo-torii">
+            <svg class="ui-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16"/><path d="M2 3h20"/><path d="M6 3v18"/><path d="M18 3v18"/><path d="M6 10h12"/>
+            </svg>
+          </div>
+          <div class="logo-text">Nihon<span>Hub</span></div>
         </div>
-        <div class="logo-text">Nihon<span>Hub</span></div>
       </div>
 
       <!-- Global Live Search -->
@@ -129,7 +141,7 @@
               </label>
               <label class="toggle-switch-label recall-toggle" title="Hide English meanings for active memory recall practice">
                 <input type="checkbox" id="hide-english-toggle">
-                <span>👁️ Hide English (Quiz)</span>
+                <span>Hide English (Quiz)</span>
               </label>
               <button id="audio-speed-btn" class="toolbar-speed-btn sidebar-speed-btn" title="Toggle audio pronunciation speed">
                 <span id="audio-speed-icon">🐇</span>
@@ -155,19 +167,6 @@
       <!-- Main App Content Column -->
       <div class="app-main-content">
         
-        <!-- Mobile/Tablet Filter Trigger Bar -->
-        <div class="mobile-filter-trigger-bar">
-          <button id="sidebar-toggle-btn" class="mobile-filter-btn" title="Open Filters & Tools">
-            <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
-            </svg>
-            <span>⚙️ Filters & Settings</span>
-          </button>
-          <div class="active-level-indicator">
-            <span>Level: <strong id="active-level-indicator-text">ALL</strong></span>
-          </div>
-        </div>
-
         <!-- Dynamic Level Overview & Repetition Banner -->
         <div id="level-progression-banner" class="progression-banner card-glass"></div>
 
@@ -477,30 +476,30 @@
   </nav>
 
   <!-- Modular Datasets -->
-  <script src="data/kana.js?v=3.7"></script>
+  <script src="data/kana.js?v=3.8"></script>
 
   <!-- N5 Data -->
-  <script src="data/n5/kanji.js?v=3.7"></script>
-  <script src="data/n5/vocabulary.js?v=3.7"></script>
-  <script src="data/n5/grammar.js?v=3.7"></script>
+  <script src="data/n5/kanji.js?v=3.8"></script>
+  <script src="data/n5/vocabulary.js?v=3.8"></script>
+  <script src="data/n5/grammar.js?v=3.8"></script>
 
   <!-- N4 Data -->
-  <script src="data/n4/kanji.js?v=3.7"></script>
-  <script src="data/n4/vocabulary.js?v=3.7"></script>
-  <script src="data/n4/grammar.js?v=3.7"></script>
+  <script src="data/n4/kanji.js?v=3.8"></script>
+  <script src="data/n4/vocabulary.js?v=3.8"></script>
+  <script src="data/n4/grammar.js?v=3.8"></script>
 
   <!-- N3 Data -->
-  <script src="data/n3/kanji.js?v=3.7"></script>
-  <script src="data/n3/vocabulary.js?v=3.7"></script>
-  <script src="data/n3/grammar.js?v=3.7"></script>
+  <script src="data/n3/kanji.js?v=3.8"></script>
+  <script src="data/n3/vocabulary.js?v=3.8"></script>
+  <script src="data/n3/grammar.js?v=3.8"></script>
 
   <!-- N2 Data -->
-  <script src="data/n2/kanji.js?v=3.7"></script>
-  <script src="data/n2/vocabulary.js?v=3.7"></script>
-  <script src="data/n2/grammar.js?v=3.7"></script>
+  <script src="data/n2/kanji.js?v=3.8"></script>
+  <script src="data/n2/vocabulary.js?v=3.8"></script>
+  <script src="data/n2/grammar.js?v=3.8"></script>
 
   <!-- Master Data Loader & Application Engine -->
-  <script src="data/data-loader.js?v=3.7"></script>
-  <script src="js/app.js?v=3.7"></script>
+  <script src="data/data-loader.js?v=3.8"></script>
+  <script src="js/app.js?v=3.8"></script>
 </body>
 </html>
