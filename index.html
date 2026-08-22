@@ -379,22 +379,79 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- TAB 4: FLASHCARDS                          -->
+    <!-- TAB 4: FLASHCARDS (Deck Quiz Studio)       -->
     <!-- ========================================== -->
     <section id="tab-flashcards" class="tab-pane">
       <div class="flashcards-container">
-        <!-- Category Filter -->
-        <div class="fc-filter-bar">
-          <button class="fc-category-pill active" data-category="kanji">Kanji Deck</button>
-          <button class="fc-category-pill" data-category="vocab">Vocabulary Deck</button>
-          <button class="fc-category-pill" data-category="grammar">Grammar Deck</button>
+
+        <!-- Deck Hub Header & Secondary Filters Card -->
+        <div class="sub-filter-card card-glass fc-filter-studio-card">
+          <div class="sub-filter-header">
+            <div class="sub-filter-title">
+              <svg class="ui-icon text-accent" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/>
+              </svg>
+              <span>Flashcard Deck Trainer & Quiz Studio</span>
+            </div>
+            <div class="header-stats-badges">
+              <span id="fc-deck-stats-badge" class="section-count-tag">0 Cards in Deck</span>
+            </div>
+          </div>
+
+          <!-- Primary Deck Selector (Kanji, Vocab, Grammar, Bookmarks) -->
+          <div class="fc-category-bar">
+            <button class="fc-category-pill active" data-category="kanji">🈁 Kanji Deck</button>
+            <button class="fc-category-pill" data-category="vocab">📚 Vocabulary Deck</button>
+            <button class="fc-category-pill" data-category="grammar">🔖 Grammar Deck</button>
+            <button class="fc-category-pill" data-category="bookmarks">⭐ Saved Bookmarks</button>
+          </div>
+
+          <!-- Secondary Filter Controls Row -->
+          <div class="fc-filter-controls-row">
+            <!-- Dynamic Textbook Selector -->
+            <div class="book-select-wrapper fc-filter-item">
+              <label for="fc-book-select" class="book-select-label">📖 Textbook:</label>
+              <select id="fc-book-select" class="book-select-dropdown">
+                <option value="ALL">All Textbooks</option>
+              </select>
+            </div>
+
+            <!-- Study Status Filter (All / Unmastered / Mastered) -->
+            <div class="fc-status-pills">
+              <button class="fc-status-pill active" data-fc-status="ALL" title="Practice all cards in the deck">
+                ✨ All Cards
+              </button>
+              <button class="fc-status-pill" data-fc-status="UNMASTERED" title="Practice only cards not yet marked as mastered">
+                ⏳ Unmastered (<span id="fc-count-unmastered">0</span>)
+              </button>
+              <button class="fc-status-pill" data-fc-status="MASTERED" title="Review cards you already marked as mastered">
+                ✓ Mastered (<span id="fc-count-mastered">0</span>)
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Chapter / Week Pills for Flashcards -->
+          <div id="fc-chapter-pills-container" class="week-pills-row"></div>
         </div>
 
-        <!-- Progress Indicator -->
-        <div class="fc-meta-bar">
-          <span>Card <strong id="fc-index-display">0</strong> of <strong id="fc-total-display">0</strong></span>
-          <span class="fc-tip">Click card or press <strong>Space</strong> to flip</span>
+        <!-- Meta Bar (Card X of Y & Quick Actions) -->
+        <div class="fc-meta-bar card-glass">
+          <div class="fc-meta-left">
+            <span>Card <strong id="fc-index-display">0</strong> of <strong id="fc-total-display">0</strong></span>
+            <div class="fc-jump-box">
+              <label for="fc-jump-input">Jump to #</label>
+              <input type="number" id="fc-jump-input" min="1" max="1" placeholder="1" />
+              <button id="fc-jump-btn" class="btn-secondary-sm">Go</button>
+            </div>
+          </div>
+          <div class="fc-meta-right">
+            <span class="fc-tip">Click card or press <kbd>Space</kbd> to flip</span>
+            <button id="fc-quick-audio-btn" class="mini-audio-btn" title="Listen pronunciation (A)">
+              <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            </button>
+          </div>
         </div>
+
         <div class="progress-bar-container">
           <div id="fc-progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
         </div>
@@ -407,33 +464,53 @@
           </div>
         </div>
 
-        <!-- Navigation Controls -->
+        <!-- Navigation & Quick Response Controls -->
         <div class="fc-controls-row">
-          <button id="fc-prev-btn" class="fc-ctrl-btn">
+          <button id="fc-prev-btn" class="fc-ctrl-btn" title="Previous Card (Left Arrow)">
             <svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
             </svg>
-            Previous
+            <span>Previous</span>
           </button>
-          <button id="fc-flip-btn" class="fc-ctrl-btn primary">
+          
+          <button id="fc-flip-btn" class="fc-ctrl-btn primary" title="Flip Card (Space)">
             <svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>
             </svg>
-            Flip (Space)
+            <span>Flip Card</span>
           </button>
-          <button id="fc-next-btn" class="fc-ctrl-btn">
-            Next
+
+          <button id="fc-next-btn" class="fc-ctrl-btn" title="Next Card (Right Arrow)">
+            <span>Next</span>
             <svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
             </svg>
           </button>
-          <button id="fc-shuffle-btn" class="fc-ctrl-btn" title="Shuffle Deck">
+
+          <button id="fc-shuffle-btn" class="fc-ctrl-btn" title="Shuffle Deck (S)">
             <svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.8-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.4c1.3 0 2.5.6 3.3 1.7l6.1 8.6c.8 1.1 2 1.7 3.3 1.7H22"/><path d="m18 20 4-4-4-4"/>
             </svg>
-            Shuffle
+            <span>Shuffle</span>
+          </button>
+
+          <button id="fc-toggle-mastery-btn" class="fc-ctrl-btn success" title="Toggle Mastered (M)">
+            <span id="fc-mastery-icon">✓</span>
+            <span id="fc-mastery-text">Mark Mastered</span>
           </button>
         </div>
+
+        <!-- Keyboard Shortcuts Legend Bar -->
+        <div class="fc-shortcuts-legend">
+          <span><kbd>Space</kbd> Flip</span>
+          <span><kbd>&larr;</kbd> Prev</span>
+          <span><kbd>&rarr;</kbd> Next</span>
+          <span><kbd>A</kbd> Audio</span>
+          <span><kbd>M</kbd> Mastered</span>
+          <span><kbd>B</kbd> Bookmark</span>
+          <span><kbd>S</kbd> Shuffle</span>
+        </div>
+
       </div>
     </section>
 

@@ -57,10 +57,13 @@
 
     // Flashcard state
     flashcards: {
+      category: 'kanji',   // 'kanji' | 'vocab' | 'grammar' | 'bookmarks'
+      book: 'ALL',
+      chapter: 'ALL',
+      status: 'ALL',       // 'ALL' | 'UNMASTERED' | 'MASTERED'
       deck: [],
       currentIndex: 0,
-      isFlipped: false,
-      category: 'kanji'
+      isFlipped: false
     }
   };
 
@@ -865,12 +868,54 @@
         document.querySelectorAll('.fc-category-pill').forEach(p => p.classList.remove('active'));
         e.currentTarget.classList.add('active');
         state.flashcards.category = e.currentTarget.getAttribute('data-category');
+        state.flashcards.book = 'ALL';
+        state.flashcards.chapter = 'ALL';
+        renderFlashcardSourceFilter();
         buildFlashcardDeck();
         renderFlashcard();
       });
     });
 
-    // Flashcard buttons
+    // Flashcard status pills (All / Unmastered / Mastered)
+    document.querySelectorAll('.fc-status-pill').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.fc-status-pill').forEach(p => p.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        state.flashcards.status = e.currentTarget.getAttribute('data-fc-status');
+        buildFlashcardDeck();
+        renderFlashcard();
+      });
+    });
+
+    // Flashcard textbook select
+    const fcBookSelect = document.getElementById('fc-book-select');
+    if (fcBookSelect) {
+      fcBookSelect.addEventListener('change', (e) => {
+        state.flashcards.book = e.target.value;
+        state.flashcards.chapter = 'ALL';
+        renderFlashcardSourceFilter();
+        buildFlashcardDeck();
+        renderFlashcard();
+      });
+    }
+
+    // Flashcard jump controls
+    const fcJumpBtn = document.getElementById('fc-jump-btn');
+    const fcJumpInput = document.getElementById('fc-jump-input');
+    if (fcJumpBtn && fcJumpInput) {
+      fcJumpBtn.addEventListener('click', () => {
+        const val = parseInt(fcJumpInput.value, 10);
+        if (!isNaN(val)) jumpToFlashcard(val - 1);
+      });
+      fcJumpInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const val = parseInt(fcJumpInput.value, 10);
+          if (!isNaN(val)) jumpToFlashcard(val - 1);
+        }
+      });
+    }
+
+    // Flashcard action buttons
     const fcCard = document.getElementById('flashcard-element');
     if (fcCard) fcCard.addEventListener('click', flipFlashcard);
     const fcPrev = document.getElementById('fc-prev-btn');
@@ -881,6 +926,10 @@
     if (fcFlip) fcFlip.addEventListener('click', flipFlashcard);
     const fcShuffle = document.getElementById('fc-shuffle-btn');
     if (fcShuffle) fcShuffle.addEventListener('click', shuffleFlashcards);
+    const fcQuickAudio = document.getElementById('fc-quick-audio-btn');
+    if (fcQuickAudio) fcQuickAudio.addEventListener('click', speakCurrentFlashcard);
+    const fcMasteryBtn = document.getElementById('fc-toggle-mastery-btn');
+    if (fcMasteryBtn) fcMasteryBtn.addEventListener('click', toggleMasteryCurrentFlashcard);
 
     // Modal Close
     document.querySelectorAll('.modal-close-btn').forEach(btn => {
@@ -897,13 +946,21 @@
     document.addEventListener('keydown', (e) => {
       if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
       if (state.currentTab === 'flashcards') {
-        if (e.code === 'Space') {
+        if (e.code === 'Space' || e.key === 'Enter') {
           e.preventDefault();
           flipFlashcard();
-        } else if (e.key === 'ArrowRight' || e.key === 'j') {
+        } else if (e.key === 'ArrowRight' || e.key === 'j' || e.key === 'J') {
           nextFlashcard();
-        } else if (e.key === 'ArrowLeft' || e.key === 'k') {
+        } else if (e.key === 'ArrowLeft' || e.key === 'k' || e.key === 'K') {
           prevFlashcard();
+        } else if (e.key === 'a' || e.key === 'A') {
+          speakCurrentFlashcard();
+        } else if (e.key === 'm' || e.key === 'M') {
+          toggleMasteryCurrentFlashcard();
+        } else if (e.key === 'b' || e.key === 'B') {
+          toggleBookmarkCurrentFlashcard();
+        } else if (e.key === 's' || e.key === 'S') {
+          shuffleFlashcards();
         }
       }
     });
@@ -982,6 +1039,8 @@
     renderGrammar();
     renderKana();
     renderBookmarks();
+    renderFlashcardSourceFilter();
+    buildFlashcardDeck();
     renderFlashcard();
   }
 
@@ -1002,7 +1061,11 @@
         renderSourceFilter('grammar');
         renderGrammar();
         break;
-      case 'flashcards': renderFlashcard(); break;
+      case 'flashcards':
+        renderFlashcardSourceFilter();
+        buildFlashcardDeck();
+        renderFlashcard();
+        break;
       case 'kana': renderKana(); break;
       case 'bookmarks': renderBookmarks(); break;
     }
@@ -1822,20 +1885,144 @@
   }
 
   // --- 4. FLASHCARDS ENGINE ---
-  function buildFlashcardDeck() {
-    let items = [];
-    const cat = state.flashcards.category;
+  function renderFlashcardSourceFilter() {
+    const bookSelect = document.getElementById('fc-book-select');
+    const chapterContainer = document.getElementById('fc-chapter-pills-container');
+    if (!bookSelect) return;
 
-    if (cat === 'kanji') {
-      items = window.JLPT_DATA.kanji.filter(matchLevel);
-    } else if (cat === 'vocab') {
-      items = window.JLPT_DATA.vocabulary.filter(matchLevel);
-    } else if (cat === 'grammar') {
-      items = window.JLPT_DATA.grammar.filter(matchLevel);
+    const cat = state.flashcards.category;
+    let books = [];
+    if (cat === 'kanji') books = getAvailableBooks('kanji');
+    else if (cat === 'vocab') books = getAvailableBooks('vocabulary');
+    else if (cat === 'grammar') books = getAvailableBooks('grammar');
+    else if (cat === 'bookmarks') {
+      const allBookmarks = [
+        ...(window.JLPT_DATA.kanji || []),
+        ...(window.JLPT_DATA.vocabulary || []),
+        ...(window.JLPT_DATA.grammar || [])
+      ].filter(item => state.bookmarks.has(item.id));
+      const bMap = new Map();
+      allBookmarks.forEach(item => {
+        const dBooks = [...new Set((item.sources || []).map(s => s.book).filter(Boolean))];
+        dBooks.forEach(b => bMap.set(b, (bMap.get(b) || 0) + 1));
+      });
+      books = Array.from(bMap.entries()).map(([book, count]) => ({ book, count })).sort((a, b) => b.count - a.count);
     }
 
-    state.flashcards.deck = items;
-    state.flashcards.currentIndex = 0;
+    const currentBook = state.flashcards.book;
+    let bookOptions = `<option value="ALL">All Textbooks</option>`;
+    books.forEach(b => {
+      bookOptions += `<option value="${b.book}" ${b.book === currentBook ? 'selected' : ''}>${b.book} (${b.count})</option>`;
+    });
+    bookSelect.innerHTML = bookOptions;
+
+    // Populate Chapter / Week Pills
+    if (chapterContainer) {
+      if (currentBook === 'ALL' || books.length === 0) {
+        chapterContainer.innerHTML = '';
+      } else {
+        const chapters = getAvailableChapters(cat === 'vocab' ? 'vocabulary' : cat, currentBook);
+        if (chapters.length > 0) {
+          const currentChapter = state.flashcards.chapter;
+          chapterContainer.innerHTML = `
+            <button class="week-pill ${currentChapter === 'ALL' ? 'active' : ''}" data-fc-chapter="ALL">All Lessons</button>
+            ${chapters.map(ch => `
+              <button class="week-pill ${currentChapter === ch ? 'active' : ''}" data-fc-chapter="${ch}">${ch}</button>
+            `).join('')}
+          `;
+          chapterContainer.querySelectorAll('[data-fc-chapter]').forEach(pill => {
+            pill.addEventListener('click', (e) => {
+              state.flashcards.chapter = e.currentTarget.getAttribute('data-fc-chapter');
+              chapterContainer.querySelectorAll('[data-fc-chapter]').forEach(p => p.classList.remove('active'));
+              e.currentTarget.classList.add('active');
+              buildFlashcardDeck();
+              renderFlashcard();
+            });
+          });
+        } else {
+          chapterContainer.innerHTML = '';
+        }
+      }
+    }
+  }
+
+  function buildFlashcardDeck() {
+    const cat = state.flashcards.category;
+    let baseItems = [];
+
+    if (cat === 'kanji') {
+      baseItems = window.JLPT_DATA.kanji || [];
+    } else if (cat === 'vocab') {
+      baseItems = window.JLPT_DATA.vocabulary || [];
+    } else if (cat === 'grammar') {
+      baseItems = window.JLPT_DATA.grammar || [];
+    } else if (cat === 'bookmarks') {
+      baseItems = [
+        ...(window.JLPT_DATA.kanji || []),
+        ...(window.JLPT_DATA.vocabulary || []),
+        ...(window.JLPT_DATA.grammar || [])
+      ].filter(item => state.bookmarks.has(item.id));
+    }
+
+    // 1. Filter by JLPT Level & Scope
+    let filtered = baseItems.filter(item => {
+      if (cat !== 'bookmarks') {
+        if (!matchLevel(item)) return false;
+        if (!matchOrigin(item)) return false;
+      }
+
+      // Filter by selected Textbook
+      if (state.flashcards.book !== 'ALL') {
+        let srcList = item.sources || [];
+        if (cat === 'vocab') {
+          if (state.vocabTypeFilter === 'TEXTBOOK' && item.textbookSources && item.textbookSources.length > 0) srcList = item.textbookSources;
+          else if (state.vocabTypeFilter === 'COMPOUNDS' && item.compoundSources && item.compoundSources.length > 0) srcList = item.compoundSources;
+        }
+        const hasBook = Array.isArray(srcList) && srcList.some(s => s.book === state.flashcards.book);
+        if (!hasBook) return false;
+      }
+
+      // Filter by selected Chapter / Lesson
+      if (state.flashcards.chapter !== 'ALL') {
+        let srcList = item.sources || [];
+        if (cat === 'vocab') {
+          if (state.vocabTypeFilter === 'TEXTBOOK' && item.textbookSources && item.textbookSources.length > 0) srcList = item.textbookSources;
+          else if (state.vocabTypeFilter === 'COMPOUNDS' && item.compoundSources && item.compoundSources.length > 0) srcList = item.compoundSources;
+        }
+        const hasChapter = Array.isArray(srcList) && srcList.some(s => {
+          if (state.flashcards.book !== 'ALL' && s.book !== state.flashcards.book) return false;
+          const rawChap = s.chapter || s.lesson;
+          return rawChap && (rawChap === state.flashcards.chapter || rawChap.startsWith(state.flashcards.chapter));
+        });
+        if (!hasChapter) return false;
+      }
+
+      return true;
+    });
+
+    // Compute status counts
+    const unmasteredCount = filtered.filter(item => !state.mastered.has(item.id)).length;
+    const masteredCount = filtered.filter(item => state.mastered.has(item.id)).length;
+
+    const unmasteredBadge = document.getElementById('fc-count-unmastered');
+    const masteredBadge = document.getElementById('fc-count-mastered');
+    const deckStatsBadge = document.getElementById('fc-deck-stats-badge');
+    if (unmasteredBadge) unmasteredBadge.textContent = unmasteredCount;
+    if (masteredBadge) masteredBadge.textContent = masteredCount;
+
+    // Apply Status filter (All / Unmastered / Mastered)
+    if (state.flashcards.status === 'UNMASTERED') {
+      filtered = filtered.filter(item => !state.mastered.has(item.id));
+    } else if (state.flashcards.status === 'MASTERED') {
+      filtered = filtered.filter(item => state.mastered.has(item.id));
+    }
+
+    if (deckStatsBadge) deckStatsBadge.textContent = `${filtered.length} Cards in Deck`;
+
+    state.flashcards.deck = filtered;
+    if (state.flashcards.currentIndex >= filtered.length) {
+      state.flashcards.currentIndex = Math.max(0, filtered.length - 1);
+    }
     state.flashcards.isFlipped = false;
   }
 
@@ -1844,6 +2031,10 @@
     const indexDisplay = document.getElementById('fc-index-display');
     const totalDisplay = document.getElementById('fc-total-display');
     const progressFill = document.getElementById('fc-progress-fill');
+    const jumpInput = document.getElementById('fc-jump-input');
+    const masteryBtn = document.getElementById('fc-toggle-mastery-btn');
+    const masteryIcon = document.getElementById('fc-mastery-icon');
+    const masteryText = document.getElementById('fc-mastery-text');
     if (!cardEl) return;
 
     const deck = state.flashcards.deck;
@@ -1852,6 +2043,10 @@
 
     if (indexDisplay) indexDisplay.textContent = total > 0 ? idx + 1 : 0;
     if (totalDisplay) totalDisplay.textContent = total;
+    if (jumpInput) {
+      jumpInput.max = total || 1;
+      jumpInput.value = total > 0 ? idx + 1 : 1;
+    }
     if (progressFill) {
       const pct = total > 0 ? ((idx + 1) / total) * 100 : 0;
       progressFill.style.width = `${pct}%`;
@@ -1862,55 +2057,270 @@
     if (!frontEl || !backEl) return;
 
     if (total === 0) {
-      frontEl.innerHTML = `<div class="fc-empty"><p>No cards available for ${state.selectedLevel}.</p></div>`;
-      backEl.innerHTML = `<div class="fc-empty"><p>Select another level.</p></div>`;
+      cardEl.classList.remove('flipped');
+      frontEl.innerHTML = `
+        <div class="fc-main-center">
+          <div style="font-size: 2.2rem; margin-bottom: 8px;">📭</div>
+          <div class="fc-meaning-lead">No Cards Found in Deck</div>
+          <p class="text-muted" style="font-size: 0.88rem; max-width: 320px; margin: 0 auto 16px;">Try selecting "All Cards" or choosing another level / textbook filter above.</p>
+          <button class="btn-primary-sm" onclick="window.NihonHub.resetFlashcardFilters()">Reset Deck Filters</button>
+        </div>
+      `;
+      backEl.innerHTML = frontEl.innerHTML;
+      if (masteryBtn) masteryBtn.style.display = 'none';
       return;
     }
 
+    if (masteryBtn) masteryBtn.style.display = 'inline-flex';
+
     const item = deck[idx];
-    const cat = state.flashcards.category;
+    const isMastered = state.mastered.has(item.id);
+    const isBookmarked = state.bookmarks.has(item.id);
+    const sNo = idx + 1;
+
+    // Update bottom mastery button
+    if (masteryBtn) {
+      masteryBtn.classList.toggle('is-mastered', isMastered);
+      if (masteryIcon) masteryIcon.textContent = isMastered ? '✓' : '○';
+      if (masteryText) masteryText.textContent = isMastered ? 'Mastered' : 'Mark Mastered';
+    }
 
     cardEl.classList.toggle('flipped', state.flashcards.isFlipped);
 
-    if (cat === 'kanji') {
+    // Identify item type
+    const isKanji = !!item.char;
+    const isVocab = !!item.word;
+
+    const sourceInfo = item.sources && item.sources[0] ? item.sources[0] : null;
+    const chapterTag = sourceInfo ? (sourceInfo.chapter || sourceInfo.lesson || sourceInfo.book || '') : '';
+
+    if (isKanji) {
+      // Kanji Card Face
       frontEl.innerHTML = `
-        <div class="fc-badges-top">${renderLevelPills(item.levels)}</div>
-        <div class="fc-kanji-char">${item.char}</div>
-        <div class="fc-hint">Click card to reveal readings & meaning</div>
-      `;
-      backEl.innerHTML = `
-        <div class="fc-meaning">${item.meaning}</div>
-        <div class="fc-readings">
-          ${item.onyomi ? `<div><span class="fc-r-label">ON:</span> ${item.onyomi}</div>` : ''}
-          ${item.kunyomi ? `<div><span class="fc-r-label">KUN:</span> ${item.kunyomi}</div>` : ''}
-        </div>
-        ${item.examples && item.examples.length > 0 ? `
-          <div class="fc-example-preview">
-            <span>Example: <strong>${item.examples[0].word}</strong> 【${item.examples[0].reading}】 (${item.examples[0].meaning})</span>
+        <div class="fc-face-header">
+          <div class="fc-face-badges">
+            <span class="sno-badge">#${sNo}</span>
+            ${renderLevelPills(item.levels)}
+            ${renderOriginBadge(item)}
+            ${chapterTag ? `<span class="source-pill">${chapterTag}</span>` : ''}
           </div>
-        ` : ''}
+          <div class="fc-face-actions" onclick="event.stopPropagation()">
+            <button class="action-btn" data-speak="${item.char}" title="Listen (A)">${UI_ICONS.volume}</button>
+            <button class="action-btn" data-bookmark-id="${item.id}" title="Bookmark (B)">
+              ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
+            </button>
+          </div>
+        </div>
+
+        <div class="fc-main-center">
+          <div class="fc-big-text">${item.char}</div>
+          <div class="fc-prompt-hint">Tap card or press <kbd>Space</kbd> to reveal readings & meaning ↺</div>
+        </div>
+
+        <div class="fc-face-footer">
+          <span class="text-muted" style="font-size: 0.78rem;">${item.examples ? item.examples.length : 0} Compound Examples</span>
+          <span class="fc-prompt-hint">Flip ↺</span>
+        </div>
       `;
-    } else if (cat === 'vocab') {
-      frontEl.innerHTML = `
-        <div class="fc-badges-top">${renderLevelPills(item.levels || [item.level])}</div>
-        <div class="fc-vocab-word">${item.word}</div>
-        <div class="fc-hint">Click to reveal reading & English</div>
-      `;
+
       backEl.innerHTML = `
-        <div class="fc-vocab-reading">【${item.reading}】</div>
-        <div class="fc-meaning">${item.meaning}</div>
-        ${item.romaji ? `<div class="fc-romaji">${item.romaji}</div>` : ''}
+        <div class="fc-face-header">
+          <div class="fc-face-badges">
+            <span class="sno-badge">#${sNo}</span>
+            ${renderLevelPills(item.levels)}
+          </div>
+          <div class="fc-face-actions" onclick="event.stopPropagation()">
+            <button class="action-btn" data-speak="${item.char}" title="Listen (A)">${UI_ICONS.volume}</button>
+            <button class="action-btn" data-bookmark-id="${item.id}" title="Bookmark (B)">
+              ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
+            </button>
+          </div>
+        </div>
+
+        <div class="fc-main-center">
+          <div class="fc-meaning-lead">${item.meaning}</div>
+          <div class="fc-readings-box">
+            ${item.onyomi ? `<div><span class="r-label">ON:</span> <span class="r-val">${item.onyomi}</span></div>` : ''}
+            ${item.kunyomi ? `<div><span class="r-label">KUN:</span> <span class="r-val">${item.kunyomi}</span></div>` : ''}
+          </div>
+          ${item.examples && item.examples.length > 0 ? `
+            <div class="fc-examples-box">
+              <div class="fc-ex-row">
+                <span class="fc-ex-ja"><strong>${item.examples[0].word}</strong> 【${item.examples[0].reading}】</span>
+                <button class="mini-audio-btn" data-speak="${item.examples[0].word}" onclick="event.stopPropagation()" title="Listen">${UI_ICONS.volume}</button>
+              </div>
+              <div class="fc-ex-en">${item.examples[0].meaning}</div>
+            </div>
+          ` : ''}
+        </div>
+
+        <div class="fc-face-footer" onclick="event.stopPropagation()">
+          <div class="fc-quick-response-btns">
+            <button class="fc-resp-btn needs-review" onclick="window.NihonHub.flashcardResponse(false)">
+              🔄 Needs Practice
+            </button>
+            <button class="fc-resp-btn got-it" onclick="window.NihonHub.flashcardResponse(true)">
+              ✅ Mastered (Got It!)
+            </button>
+          </div>
+        </div>
       `;
-    } else if (cat === 'grammar') {
+
+    } else if (isVocab) {
+      // Vocabulary Card Face
+      const components = item.kanjiComponents || [];
       frontEl.innerHTML = `
-        <div class="fc-badges-top">${renderLevelPills(item.levels || [item.level])}</div>
-        <div class="fc-grammar-pattern">${item.pattern}</div>
-        <div class="fc-hint">Click to reveal meaning & structure</div>
+        <div class="fc-face-header">
+          <div class="fc-face-badges">
+            <span class="sno-badge">#${sNo}</span>
+            ${renderLevelPills(item.levels || [item.level])}
+            ${renderOriginBadge(item)}
+            ${item.isTextbookVocab ? '<span class="source-pill badge-textbook">📚 Textbook</span>' : ''}
+            ${item.isKanjiCompound ? '<span class="source-pill badge-compound">🈁 Compound</span>' : ''}
+          </div>
+          <div class="fc-face-actions" onclick="event.stopPropagation()">
+            <button class="action-btn" data-speak="${item.word}" title="Listen (A)">${UI_ICONS.volume}</button>
+            <button class="action-btn" data-bookmark-id="${item.id}" title="Bookmark (B)">
+              ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
+            </button>
+          </div>
+        </div>
+
+        <div class="fc-main-center">
+          <div class="fc-big-word">${renderVocabWordByMode(item)}</div>
+          ${state.vocabScriptMode !== 'hiragana' && item.reading ? `<div class="fc-reading-sub">【${item.reading}】</div>` : ''}
+          <div class="fc-prompt-hint" style="margin-top: 12px;">Tap card or press <kbd>Space</kbd> to reveal meaning ↺</div>
+        </div>
+
+        <div class="fc-face-footer">
+          <span class="text-muted" style="font-size: 0.78rem;">${chapterTag}</span>
+          <span class="fc-prompt-hint">Flip ↺</span>
+        </div>
       `;
+
       backEl.innerHTML = `
-        <div class="fc-meaning">${item.meaning}</div>
-        ${item.structure ? `<div class="fc-structure"><code>${item.structure}</code></div>` : ''}
-        <div class="fc-explanation">${item.explanation || ''}</div>
+        <div class="fc-face-header">
+          <div class="fc-face-badges">
+            <span class="sno-badge">#${sNo}</span>
+            ${renderLevelPills(item.levels || [item.level])}
+          </div>
+          <div class="fc-face-actions" onclick="event.stopPropagation()">
+            <button class="action-btn" data-speak="${item.word}" title="Listen (A)">${UI_ICONS.volume}</button>
+            <button class="action-btn" data-bookmark-id="${item.id}" title="Bookmark (B)">
+              ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
+            </button>
+          </div>
+        </div>
+
+        <div class="fc-main-center">
+          <div class="fc-reading-sub" style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary);">
+            ${item.word} 【${item.reading}】
+          </div>
+          ${item.romaji ? `<div class="text-muted" style="font-size: 0.85rem; margin-bottom: 6px;">${item.romaji}</div>` : ''}
+          <div class="fc-meaning-lead">${item.meaning}</div>
+
+          ${components.length > 0 ? `
+            <div class="t-mini-blocks" style="justify-content: center; margin-bottom: 10px;" onclick="event.stopPropagation()">
+              ${components.map(comp => `
+                <span class="t-mini-block" onclick="window.NihonHub.openKanjiModalByChar('${comp.char}')" title="${comp.char}: ${comp.meaning}">
+                  ${comp.char} (${comp.meaning})
+                </span>
+              `).join('')}
+            </div>
+          ` : ''}
+
+          ${item.example ? `
+            <div class="fc-examples-box">
+              <div class="fc-ex-row">
+                <span class="fc-ex-ja">${parseFurigana(item.example.furigana || item.example.ja)}</span>
+                <button class="mini-audio-btn" data-speak="${item.example.ja}" onclick="event.stopPropagation()" title="Listen">${UI_ICONS.volume}</button>
+              </div>
+              <div class="fc-ex-en">${item.example.en || ''}</div>
+            </div>
+          ` : ''}
+        </div>
+
+        <div class="fc-face-footer" onclick="event.stopPropagation()">
+          <div class="fc-quick-response-btns">
+            <button class="fc-resp-btn needs-review" onclick="window.NihonHub.flashcardResponse(false)">
+              🔄 Needs Practice
+            </button>
+            <button class="fc-resp-btn got-it" onclick="window.NihonHub.flashcardResponse(true)">
+              ✅ Mastered (Got It!)
+            </button>
+          </div>
+        </div>
+      `;
+
+    } else {
+      // Grammar Card Face
+      frontEl.innerHTML = `
+        <div class="fc-face-header">
+          <div class="fc-face-badges">
+            <span class="sno-badge">#${sNo}</span>
+            ${renderLevelPills(item.levels || [item.level])}
+            ${renderOriginBadge(item)}
+            ${chapterTag ? `<span class="source-pill">${chapterTag}</span>` : ''}
+          </div>
+          <div class="fc-face-actions" onclick="event.stopPropagation()">
+            <button class="action-btn" data-speak="${item.pattern}" title="Listen (A)">${UI_ICONS.volume}</button>
+            <button class="action-btn" data-bookmark-id="${item.id}" title="Bookmark (B)">
+              ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
+            </button>
+          </div>
+        </div>
+
+        <div class="fc-main-center">
+          <div class="fc-big-pattern">${item.pattern}</div>
+          <div class="fc-prompt-hint">Tap card or press <kbd>Space</kbd> to reveal structure & explanation ↺</div>
+        </div>
+
+        <div class="fc-face-footer">
+          <span class="text-muted" style="font-size: 0.78rem;">Grammar Rule</span>
+          <span class="fc-prompt-hint">Flip ↺</span>
+        </div>
+      `;
+
+      backEl.innerHTML = `
+        <div class="fc-face-header">
+          <div class="fc-face-badges">
+            <span class="sno-badge">#${sNo}</span>
+            ${renderLevelPills(item.levels || [item.level])}
+          </div>
+          <div class="fc-face-actions" onclick="event.stopPropagation()">
+            <button class="action-btn" data-speak="${item.pattern}" title="Listen (A)">${UI_ICONS.volume}</button>
+            <button class="action-btn" data-bookmark-id="${item.id}" title="Bookmark (B)">
+              ${isBookmarked ? UI_ICONS.starFilled : UI_ICONS.starOutline}
+            </button>
+          </div>
+        </div>
+
+        <div class="fc-main-center">
+          <div class="fc-meaning-lead">${item.meaning}</div>
+          ${item.structure ? `<div style="margin-bottom: 8px;"><code class="t-structure-code">${item.structure}</code></div>` : ''}
+          ${item.explanation ? `<div class="t-grammar-expl" style="margin-bottom: 10px; max-width: 580px;">${item.explanation}</div>` : ''}
+          
+          ${Array.isArray(item.examples) && item.examples.length > 0 ? `
+            <div class="fc-examples-box">
+              <div class="fc-ex-row">
+                <span class="fc-ex-ja">${parseFurigana(item.examples[0].furigana || item.examples[0].ja)}</span>
+                <button class="mini-audio-btn" data-speak="${item.examples[0].ja}" onclick="event.stopPropagation()" title="Listen">${UI_ICONS.volume}</button>
+              </div>
+              <div class="fc-ex-en">${item.examples[0].en}</div>
+            </div>
+          ` : ''}
+        </div>
+
+        <div class="fc-face-footer" onclick="event.stopPropagation()">
+          <div class="fc-quick-response-btns">
+            <button class="fc-resp-btn needs-review" onclick="window.NihonHub.flashcardResponse(false)">
+              🔄 Needs Practice
+            </button>
+            <button class="fc-resp-btn got-it" onclick="window.NihonHub.flashcardResponse(true)">
+              ✅ Mastered (Got It!)
+            </button>
+          </div>
+        </div>
       `;
     }
   }
@@ -1942,6 +2352,75 @@
     }
     state.flashcards.currentIndex = 0;
     state.flashcards.isFlipped = false;
+    renderFlashcard();
+  }
+
+  function flashcardResponse(isMastered) {
+    const deck = state.flashcards.deck;
+    const idx = state.flashcards.currentIndex;
+    if (deck.length === 0 || idx >= deck.length) return;
+    const item = deck[idx];
+    if (isMastered) {
+      state.mastered.add(item.id);
+    } else {
+      state.mastered.delete(item.id);
+    }
+    savePreferences();
+    updateFooterStats();
+    
+    // Auto advance to next card
+    state.flashcards.isFlipped = false;
+    if (state.flashcards.status !== 'ALL') {
+      buildFlashcardDeck();
+    } else {
+      state.flashcards.currentIndex = (state.flashcards.currentIndex + 1) % state.flashcards.deck.length;
+    }
+    renderFlashcard();
+  }
+
+  function toggleMasteryCurrentFlashcard() {
+    const deck = state.flashcards.deck;
+    const idx = state.flashcards.currentIndex;
+    if (deck.length === 0 || idx >= deck.length) return;
+    const item = deck[idx];
+    toggleMastery(item.id);
+    renderFlashcard();
+  }
+
+  function toggleBookmarkCurrentFlashcard() {
+    const deck = state.flashcards.deck;
+    const idx = state.flashcards.currentIndex;
+    if (deck.length === 0 || idx >= deck.length) return;
+    const item = deck[idx];
+    toggleBookmark(item.id);
+    renderFlashcard();
+  }
+
+  function speakCurrentFlashcard() {
+    const deck = state.flashcards.deck;
+    const idx = state.flashcards.currentIndex;
+    if (deck.length === 0 || idx >= deck.length) return;
+    const item = deck[idx];
+    const textToSpeak = item.char || item.word || item.pattern;
+    if (textToSpeak) speakJapanese(textToSpeak);
+  }
+
+  function jumpToFlashcard(targetIdx) {
+    const total = state.flashcards.deck.length;
+    if (total === 0) return;
+    const validIdx = Math.max(0, Math.min(targetIdx, total - 1));
+    state.flashcards.currentIndex = validIdx;
+    state.flashcards.isFlipped = false;
+    renderFlashcard();
+  }
+
+  function resetFlashcardFilters() {
+    state.flashcards.book = 'ALL';
+    state.flashcards.chapter = 'ALL';
+    state.flashcards.status = 'ALL';
+    document.querySelectorAll('.fc-status-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-fc-status') === 'ALL'));
+    renderFlashcardSourceFilter();
+    buildFlashcardDeck();
     renderFlashcard();
   }
 
@@ -2119,7 +2598,14 @@
     openKanjiModalByChar: openKanjiModalByChar,
     speakJapanese: speakJapanese,
     toggleBookmark: toggleBookmark,
-    toggleMastery: toggleMastery
+    toggleMastery: toggleMastery,
+    flashcardResponse: flashcardResponse,
+    resetFlashcardFilters: resetFlashcardFilters,
+    jumpToFlashcard: jumpToFlashcard,
+    flipFlashcard: flipFlashcard,
+    nextFlashcard: nextFlashcard,
+    prevFlashcard: prevFlashcard,
+    shuffleFlashcards: shuffleFlashcards
   };
 
 })();
