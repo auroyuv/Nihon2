@@ -1,12 +1,123 @@
 /**
  * NihonHub - Dedicated Mobile & Tablet Responsive Stylesheet
  * Optimized for smartphones (iPhone, Android) and tablets (iPad, Galaxy Tab).
- * Features bottom app-like navigation, touch-friendly tap targets, momentum scrolling,
- * responsive modal sheets, and fluid card layouts.
+ * Features bottom app-like navigation, mobile slide-over filter drawer, touch-friendly tap targets,
+ * momentum scrolling, responsive modal sheets, and fluid card layouts.
  */
 
 /* ====================================================== */
-/* 1. SMARTPHONE OPTIMIZATIONS (Screen width <= 640px)    */
+/* 1. SMARTPHONE & TABLET OPTIMIZATIONS (<= 1024px)       */
+/* ====================================================== */
+@media screen and (max-width: 1024px) {
+  
+  /* --- Layout Reset for Sidebar --- */
+  .app-layout {
+    display: block !important;
+  }
+
+  .app-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 86vw !important;
+    max-width: 340px !important;
+    max-height: 100vh !important;
+    height: 100vh !important;
+    z-index: 2000 !important;
+    background: rgba(15, 23, 42, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    box-shadow: 6px 0 30px rgba(0, 0, 0, 0.6) !important;
+    transform: translateX(-105%) !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border-radius: 0 18px 18px 0 !important;
+    padding: 20px 16px !important;
+    overflow-y: auto !important;
+  }
+
+  [data-theme="light"] .app-sidebar {
+    background: rgba(255, 255, 255, 0.98) !important;
+    box-shadow: 6px 0 30px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .app-sidebar.open {
+    transform: translateX(0) !important;
+  }
+
+  .sidebar-close-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all var(--trans-fast);
+  }
+
+  .sidebar-close-btn:hover {
+    background: var(--brand-primary);
+    color: white;
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 1999;
+    transition: opacity 0.3s;
+  }
+
+  .sidebar-backdrop.hidden {
+    display: none !important;
+  }
+
+  /* --- Mobile Filter Trigger Bar --- */
+  .mobile-filter-trigger-bar {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 8px 14px;
+    margin-bottom: 12px;
+  }
+
+  .mobile-filter-btn {
+    background: var(--brand-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 8px rgba(255, 71, 87, 0.35);
+  }
+
+  .active-level-indicator {
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+  }
+
+  .active-level-indicator strong {
+    color: var(--brand-primary);
+  }
+}
+
+/* ====================================================== */
+/* 2. SMARTPHONE ONLY (Screen width <= 640px)             */
 /* ====================================================== */
 @media screen and (max-width: 640px) {
   
@@ -65,79 +176,6 @@
 
   #theme-text-container {
     display: none; /* Icon-only on small screens */
-  }
-
-  /* --- Top Control Bar --- */
-  .control-bar {
-    padding: 10px 8px;
-    gap: 10px;
-  }
-
-  .level-selector-group {
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    padding-bottom: 4px;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .level-selector-group::-webkit-scrollbar {
-    display: none;
-  }
-
-  .level-pill {
-    padding: 6px 12px;
-    font-size: 0.8rem;
-    flex-shrink: 0;
-  }
-
-  .origin-selector-group {
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    padding-bottom: 4px;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .origin-selector-group::-webkit-scrollbar {
-    display: none;
-  }
-
-  .origin-pill {
-    padding: 6px 10px;
-    font-size: 0.76rem;
-    flex-shrink: 0;
-  }
-
-  .toggles-group {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-  }
-
-  .toggle-switch-label {
-    font-size: 0.76rem;
-    padding: 6px 8px;
-    background: rgba(255, 255, 255, 0.04);
-    border-radius: 8px;
-    border: 1px solid var(--border-subtle);
-    justify-content: flex-start;
-  }
-
-  .toolbar-speed-btn,
-  .mastery-status-chip {
-    font-size: 0.76rem;
-    padding: 5px 8px;
-    justify-content: center;
   }
 
   /* --- Level Progression Banner --- */
@@ -436,7 +474,7 @@
 }
 
 /* ====================================================== */
-/* 2. TABLET OPTIMIZATIONS (641px <= Screen width <= 1024px) */
+/* 3. TABLET ONLY (641px <= Screen width <= 1024px)       */
 /* ====================================================== */
 @media screen and (min-width: 641px) and (max-width: 1024px) {
   
@@ -477,10 +515,13 @@
 }
 
 /* ====================================================== */
-/* 3. DESKTOP SCREENS (> 1024px)                          */
+/* 4. DESKTOP SCREENS (> 1024px)                          */
 /* ====================================================== */
 @media screen and (min-width: 1025px) {
   .mobile-bottom-nav {
+    display: none !important;
+  }
+  .mobile-filter-trigger-bar {
     display: none !important;
   }
 }

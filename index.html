@@ -17,8 +17,8 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23ff4757%22 stroke-width=%222%22><path d=%22M4 6h16M2 3h20M6 3v18M18 3v18M6 10h12%22/></svg>">
 
   <!-- Google Fonts & Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=3.5">
-  <link rel="stylesheet" href="css/mobile.css?v=3.5">
+  <link rel="stylesheet" href="css/style.css?v=3.6">
+  <link rel="stylesheet" href="css/mobile.css?v=3.6">
 </head>
 <body>
 
@@ -69,88 +69,132 @@
   </header>
 
   <main class="app-container">
-    
-    <!-- Top Filter & Options Bar -->
-    <div class="control-bar card-glass">
-      <!-- JLPT Level Selector -->
-      <div class="level-selector-group">
-        <span class="level-group-label">JLPT Level:</span>
-        <button class="level-pill active" data-level="ALL">All (N5-N2)</button>
-        <button class="level-pill" data-level="N5">N5</button>
-        <button class="level-pill" data-level="N4">N4</button>
-        <button class="level-pill" data-level="N3">N3</button>
-        <button class="level-pill" data-level="N2">N2</button>
-      </div>
-
-      <!-- Progression / Overlap Filter (New vs Review) -->
-      <div class="origin-selector-group" id="origin-filter-container">
-        <span class="level-group-label">Filter Items:</span>
-        <button class="origin-pill active" data-origin="ALL">
-          <span>All Items</span>
-          <span id="scope-count-all" class="pill-chip">0</span>
-        </button>
-        <button class="origin-pill" data-origin="NEW">
-          <span>✨ New Only</span>
-          <span id="scope-count-new" class="pill-chip">0</span>
-        </button>
-        <button class="origin-pill" data-origin="REVIEW">
-          <span>🔄 Review / Repeated</span>
-          <span id="scope-count-review" class="pill-chip">0</span>
-        </button>
-      </div>
-
-      <!-- Feature Toggles & Study Tools -->
-      <div class="toggles-group">
-        <label class="toggle-switch-label" title="Show or hide furigana reading aids">
-          <input type="checkbox" id="furigana-toggle" checked>
-          <span>Furigana (ふりがな)</span>
-        </label>
-        <label class="toggle-switch-label" title="Show or hide Romaji spelling">
-          <input type="checkbox" id="romaji-toggle" checked>
-          <span>Romaji</span>
-        </label>
-        <label class="toggle-switch-label recall-toggle" title="Hide English meanings for active memory recall practice">
-          <input type="checkbox" id="hide-english-toggle">
-          <span>👁️ Hide English (Quiz)</span>
-        </label>
-        <button id="audio-speed-btn" class="toolbar-speed-btn" title="Toggle audio pronunciation speed (1.0x Normal / 0.75x Slow)">
-          <span id="audio-speed-icon">🐇</span>
-          <span id="audio-speed-text">1.0x Audio</span>
-        </button>
-        <div id="mastery-status-chip" class="mastery-status-chip" title="Items marked as mastered in your study session">
-          <span class="mastery-icon">✓</span>
-          <span id="mastery-stats-text">0 Mastered</span>
+    <div class="app-layout">
+      
+      <!-- Left Sidebar (Desktop Sticky / Mobile Slide Drawer) -->
+      <aside id="app-sidebar" class="app-sidebar card-glass">
+        <div class="sidebar-header">
+          <div class="sidebar-title">
+            <svg class="ui-icon text-accent" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v2"/><path d="M12 22v-2"/><path d="m17 7-1.5 1.5"/><path d="M7 17l-1.5 1.5"/><path d="M22 12h-2"/><path d="M2 12h2"/><path d="m17 17-1.5-1.5"/><path d="M7 7 5.5 5.5"/>
+            </svg>
+            <span>Filters & Settings</span>
+          </div>
+          <button id="sidebar-close-btn" class="sidebar-close-btn" title="Close Filters Drawer">✕</button>
         </div>
-      </div>
-    </div>
 
-    <!-- Dynamic Level Overview & Repetition Banner -->
-    <div id="level-progression-banner" class="progression-banner card-glass"></div>
+        <div class="sidebar-body">
+          <!-- JLPT Level Selector -->
+          <div class="sidebar-section">
+            <div class="sidebar-section-title">JLPT Target Level</div>
+            <div class="level-selector-group vertical">
+              <button class="level-pill active" data-level="ALL">All (N5-N2)</button>
+              <button class="level-pill" data-level="N5">N5 Foundation</button>
+              <button class="level-pill" data-level="N4">N4 Elementary</button>
+              <button class="level-pill" data-level="N3">N3 Intermediate</button>
+              <button class="level-pill" data-level="N2">N2 Upper-Inter</button>
+            </div>
+          </div>
 
-    <!-- Main Navigation Tabs -->
-    <nav class="main-nav-tabs" aria-label="Main Navigation">
-      <button class="nav-tab-btn active" data-tab="kanji">
-        <span class="tab-jp-badge">漢字</span> Kanji Matrix
-      </button>
-      <button class="nav-tab-btn" data-tab="vocab">
-        <span class="tab-jp-badge">語彙</span> Vocabulary Vault
-      </button>
-      <button class="nav-tab-btn" data-tab="grammar">
-        <span class="tab-jp-badge">文法</span> Grammar Guide
-      </button>
-      <button class="nav-tab-btn" data-tab="flashcards">
-        <span class="tab-jp-badge">暗記</span> Flashcards
-      </button>
-      <button class="nav-tab-btn" data-tab="kana">
-        <span class="tab-jp-badge">仮名</span> Kana Chart
-      </button>
-      <button class="nav-tab-btn" data-tab="bookmarks">
-        <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
-        </svg>
-        Bookmarks
-      </button>
-    </nav>
+          <!-- Progression / Overlap Filter (New vs Review) -->
+          <div class="sidebar-section" id="origin-filter-container">
+            <div class="sidebar-section-title">Content Scope</div>
+            <div class="origin-selector-group vertical">
+              <button class="origin-pill active" data-origin="ALL">
+                <span>All Content</span>
+                <span id="scope-count-all" class="pill-chip">0</span>
+              </button>
+              <button class="origin-pill" data-origin="NEW">
+                <span>✨ New Only</span>
+                <span id="scope-count-new" class="pill-chip">0</span>
+              </button>
+              <button class="origin-pill" data-origin="REVIEW">
+                <span>🔄 Review / Repeated</span>
+                <span id="scope-count-review" class="pill-chip">0</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Feature Toggles & Study Tools -->
+          <div class="sidebar-section">
+            <div class="sidebar-section-title">Study Aids & Quiz Mode</div>
+            <div class="toggles-group vertical">
+              <label class="toggle-switch-label" title="Show or hide furigana reading aids">
+                <input type="checkbox" id="furigana-toggle" checked>
+                <span>Furigana (ふりがな)</span>
+              </label>
+              <label class="toggle-switch-label" title="Show or hide Romaji spelling">
+                <input type="checkbox" id="romaji-toggle" checked>
+                <span>Romaji (ローマ字)</span>
+              </label>
+              <label class="toggle-switch-label recall-toggle" title="Hide English meanings for active memory recall practice">
+                <input type="checkbox" id="hide-english-toggle">
+                <span>👁️ Hide English (Quiz)</span>
+              </label>
+              <button id="audio-speed-btn" class="toolbar-speed-btn sidebar-speed-btn" title="Toggle audio pronunciation speed">
+                <span id="audio-speed-icon">🐇</span>
+                <span id="audio-speed-text">1.0x Audio</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Personal Mastery Status -->
+          <div class="sidebar-section">
+            <div class="sidebar-section-title">Mastery Progress</div>
+            <div id="mastery-status-chip" class="mastery-status-chip sidebar-mastery-chip" title="Items marked as mastered in your session">
+              <span class="mastery-icon">✓</span>
+              <span id="mastery-stats-text">0 Mastered</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Sidebar Backdrop for Mobile/Tablet Drawer -->
+      <div id="sidebar-backdrop" class="sidebar-backdrop hidden"></div>
+
+      <!-- Main App Content Column -->
+      <div class="app-main-content">
+        
+        <!-- Mobile/Tablet Filter Trigger Bar -->
+        <div class="mobile-filter-trigger-bar">
+          <button id="sidebar-toggle-btn" class="mobile-filter-btn" title="Open Filters & Tools">
+            <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+            </svg>
+            <span>⚙️ Filters & Settings</span>
+          </button>
+          <div class="active-level-indicator">
+            <span>Level: <strong id="active-level-indicator-text">ALL</strong></span>
+          </div>
+        </div>
+
+        <!-- Dynamic Level Overview & Repetition Banner -->
+        <div id="level-progression-banner" class="progression-banner card-glass"></div>
+
+        <!-- Main Navigation Tabs (Desktop / Tablet) -->
+        <nav class="main-nav-tabs" aria-label="Main Navigation">
+          <button class="nav-tab-btn active" data-tab="kanji">
+            <span class="tab-jp-badge">漢字</span> Kanji Matrix
+          </button>
+          <button class="nav-tab-btn" data-tab="vocab">
+            <span class="tab-jp-badge">語彙</span> Vocabulary Vault
+          </button>
+          <button class="nav-tab-btn" data-tab="grammar">
+            <span class="tab-jp-badge">文法</span> Grammar Guide
+          </button>
+          <button class="nav-tab-btn" data-tab="flashcards">
+            <span class="tab-jp-badge">暗記</span> Flashcards
+          </button>
+          <button class="nav-tab-btn" data-tab="kana">
+            <span class="tab-jp-badge">仮名</span> Kana Chart
+          </button>
+          <button class="nav-tab-btn" data-tab="bookmarks">
+            <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+            </svg>
+            Bookmarks
+          </button>
+        </nav>
 
     <!-- ========================================== -->
     <!-- TAB 1: KANJI MATRIX (Flagship Feature)     -->
@@ -384,6 +428,8 @@
       <div id="bookmarks-list" class="bookmarks-list"></div>
     </section>
 
+      </div> <!-- /.app-main-content -->
+    </div> <!-- /.app-layout -->
   </main>
 
   <!-- Kanji Detail Modal -->
@@ -431,30 +477,30 @@
   </nav>
 
   <!-- Modular Datasets -->
-  <script src="data/kana.js?v=3.5"></script>
+  <script src="data/kana.js?v=3.6"></script>
 
   <!-- N5 Data -->
-  <script src="data/n5/kanji.js?v=3.5"></script>
-  <script src="data/n5/vocabulary.js?v=3.5"></script>
-  <script src="data/n5/grammar.js?v=3.5"></script>
+  <script src="data/n5/kanji.js?v=3.6"></script>
+  <script src="data/n5/vocabulary.js?v=3.6"></script>
+  <script src="data/n5/grammar.js?v=3.6"></script>
 
   <!-- N4 Data -->
-  <script src="data/n4/kanji.js?v=3.5"></script>
-  <script src="data/n4/vocabulary.js?v=3.5"></script>
-  <script src="data/n4/grammar.js?v=3.5"></script>
+  <script src="data/n4/kanji.js?v=3.6"></script>
+  <script src="data/n4/vocabulary.js?v=3.6"></script>
+  <script src="data/n4/grammar.js?v=3.6"></script>
 
   <!-- N3 Data -->
-  <script src="data/n3/kanji.js?v=3.5"></script>
-  <script src="data/n3/vocabulary.js?v=3.5"></script>
-  <script src="data/n3/grammar.js?v=3.5"></script>
+  <script src="data/n3/kanji.js?v=3.6"></script>
+  <script src="data/n3/vocabulary.js?v=3.6"></script>
+  <script src="data/n3/grammar.js?v=3.6"></script>
 
   <!-- N2 Data -->
-  <script src="data/n2/kanji.js?v=3.5"></script>
-  <script src="data/n2/vocabulary.js?v=3.5"></script>
-  <script src="data/n2/grammar.js?v=3.5"></script>
+  <script src="data/n2/kanji.js?v=3.6"></script>
+  <script src="data/n2/vocabulary.js?v=3.6"></script>
+  <script src="data/n2/grammar.js?v=3.6"></script>
 
   <!-- Master Data Loader & Application Engine -->
-  <script src="data/data-loader.js?v=3.5"></script>
-  <script src="js/app.js?v=3.5"></script>
+  <script src="data/data-loader.js?v=3.6"></script>
+  <script src="js/app.js?v=3.6"></script>
 </body>
 </html>

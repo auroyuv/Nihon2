@@ -2288,3 +2288,110 @@ body.hide-english .kanji-meaning:active,
 body.hide-english .grammar-meaning:active {
   filter: blur(0);
 }
+
+/* ====================================================== */
+/* DESKTOP SIDEBAR & ULTRA-WIDE CONTENT LAYOUT            */
+/* ====================================================== */
+.app-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 24px;
+  max-width: 1760px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.app-sidebar {
+  position: sticky;
+  top: calc(var(--header-height, 64px) + 16px);
+  max-height: calc(100vh - var(--header-height, 64px) - 36px);
+  overflow-y: auto;
+  padding: 20px;
+  border-radius: 16px;
+  scrollbar-width: thin;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sidebar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.sidebar-close-btn {
+  display: none;
+}
+
+.sidebar-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-section-title {
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+}
+
+.level-selector-group.vertical,
+.origin-selector-group.vertical,
+.toggles-group.vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.level-selector-group.vertical .level-pill,
+.origin-selector-group.vertical .origin-pill {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.sidebar-speed-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 8px 12px;
+}
+
+.sidebar-mastery-chip {
+  width: 100%;
+  justify-content: center;
+  padding: 8px 12px;
+}
+
+.app-main-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-filter-trigger-bar {
+  display: none;
+}

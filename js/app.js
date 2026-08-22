@@ -597,6 +597,28 @@
       });
     });
 
+    // Sidebar Drawer Toggle (Mobile / Tablet)
+    const sidebar = document.getElementById('app-sidebar');
+    const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
+    const sidebarCloseBtn = document.getElementById('sidebar-close-btn');
+    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+
+    function openSidebar() {
+      if (sidebar) sidebar.classList.add('open');
+      if (sidebarBackdrop) sidebarBackdrop.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSidebar() {
+      if (sidebar) sidebar.classList.remove('open');
+      if (sidebarBackdrop) sidebarBackdrop.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    if (sidebarToggleBtn) sidebarToggleBtn.addEventListener('click', openSidebar);
+    if (sidebarCloseBtn) sidebarCloseBtn.addEventListener('click', closeSidebar);
+    if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
+
     // Level selector pills
     document.querySelectorAll('.level-pill').forEach(pill => {
       pill.addEventListener('click', (e) => {
@@ -604,6 +626,9 @@
         e.currentTarget.classList.add('active');
         state.selectedLevel = e.currentTarget.getAttribute('data-level');
         
+        const activeLevelText = document.getElementById('active-level-indicator-text');
+        if (activeLevelText) activeLevelText.textContent = state.selectedLevel;
+
         state.filters.kanji.chapter = 'ALL';
         state.filters.vocabulary.chapter = 'ALL';
         state.filters.grammar.chapter = 'ALL';
@@ -1496,6 +1521,9 @@
       document.querySelectorAll('.level-pill').forEach(p => {
         p.classList.toggle('active', p.getAttribute('data-level') === lvl);
       });
+      const activeLevelText = document.getElementById('active-level-indicator-text');
+      if (activeLevelText) activeLevelText.textContent = state.selectedLevel;
+
       state.filters.kanji.chapter = 'ALL';
       state.filters.vocabulary.chapter = 'ALL';
       state.filters.grammar.chapter = 'ALL';
@@ -1512,6 +1540,8 @@
       state.filters.grammar = { book: 'ALL', chapter: 'ALL' };
       const s = document.getElementById('global-search-input');
       if (s) s.value = '';
+      const activeLevelText = document.getElementById('active-level-indicator-text');
+      if (activeLevelText) activeLevelText.textContent = 'ALL';
       document.querySelectorAll('.level-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-level') === 'ALL'));
       document.querySelectorAll('.origin-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-origin') === 'ALL'));
       document.querySelectorAll('.vtype-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-vocab-type') === 'ALL'));
