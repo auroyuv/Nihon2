@@ -345,6 +345,7 @@ body.hide-romaji .kana-romaji {
 
 .logo-text span {
   background: var(--brand-gradient);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
