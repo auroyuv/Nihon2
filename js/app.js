@@ -707,9 +707,40 @@
       document.body.style.overflow = '';
     }
 
-    if (sidebarToggleBtn) sidebarToggleBtn.addEventListener('click', openSidebar);
-    if (sidebarCloseBtn) sidebarCloseBtn.addEventListener('click', closeSidebar);
-    if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
+    function toggleSidebar() {
+      if (sidebar && sidebar.classList.contains('open')) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    }
+
+    if (sidebarToggleBtn) {
+      sidebarToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleSidebar();
+      });
+    }
+    if (sidebarCloseBtn) {
+      sidebarCloseBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeSidebar();
+      });
+    }
+    if (sidebarBackdrop) {
+      sidebarBackdrop.addEventListener('click', closeSidebar);
+    }
+
+    // Allow tapping the active level indicator badge in the header to open filters drawer on mobile
+    const activeLevelBadge = document.getElementById('active-level-indicator-badge');
+    if (activeLevelBadge) {
+      activeLevelBadge.addEventListener('click', (e) => {
+        if (window.innerWidth <= 1024) {
+          e.stopPropagation();
+          toggleSidebar();
+        }
+      });
+    }
 
     // Level selector pills
     document.querySelectorAll('.level-pill').forEach(pill => {
@@ -727,6 +758,11 @@
 
         buildFlashcardDeck();
         renderAll();
+
+        // On mobile/tablet, smoothly close drawer after selection
+        if (window.innerWidth <= 1024) {
+          setTimeout(closeSidebar, 200);
+        }
       });
     });
 
@@ -737,6 +773,11 @@
         e.currentTarget.classList.add('active');
         state.originFilter = e.currentTarget.getAttribute('data-origin');
         renderActiveTab();
+
+        // On mobile/tablet, smoothly close drawer after selection
+        if (window.innerWidth <= 1024) {
+          setTimeout(closeSidebar, 200);
+        }
       });
     });
 
@@ -2335,8 +2376,8 @@
     } else if (isVocab) {
       // Vocabulary Card Face
       const components = item.kanjiComponents || [];
-      const frontReadingHtml = (state.vocabScriptMode !== 'hiragana' && item.reading) ? 
-        (showHira ? `<div class="fc-reading-sub">【${item.reading}】</div>` : `<div class="fc-reading-sub"><span class="fc-spoiler-mask" onclick="this.outerHTML='【${item.reading}】'; event.stopPropagation();">【•••• (H)】</span></div>`) : '';
+      const frontReadingHtml = (state.vocabScriptMode !== 'hiragana' && item.reading && showHira) ? 
+        `<div class="fc-reading-sub">【${item.reading}】</div>` : '';
 
       frontEl.innerHTML = `
         <div class="fc-face-header">
@@ -2367,7 +2408,8 @@
         </div>
       `;
 
-      const backReadingHtml = showHira ? `【${item.reading}】` : `<span class="fc-spoiler-mask" onclick="this.outerHTML='【${item.reading}】'; event.stopPropagation();" title="Click or press H">【•••• (H)】</span>`;
+      // Always show reading on the flip side of vocabulary flashcards (hide only on front when showHira is false)
+      const backReadingHtml = item.reading ? `【${item.reading}】` : '';
       const vocabMeaningHtml = showEn ? item.meaning : `<span class="fc-spoiler-mask" onclick="this.outerHTML='${(item.meaning || '').replace(/'/g, "\\'")}'; event.stopPropagation();" title="Click or press E">•••• Reveal Meaning (E)</span>`;
 
       backEl.innerHTML = `
@@ -2404,7 +2446,7 @@
           ${item.example ? `
             <div class="fc-examples-box">
               <div class="fc-ex-row">
-                <span class="fc-ex-ja">${showHira ? parseFurigana(item.example.furigana || item.example.ja) : item.example.ja}</span>
+                <span class="fc-ex-ja">${parseFurigana(item.example.furigana || item.example.ja)}</span>
                 <button class="mini-audio-btn" data-speak="${item.example.ja}" onclick="event.stopPropagation()" title="Listen">${UI_ICONS.volume}</button>
               </div>
               <div class="fc-ex-en">${showEn ? (item.example.en || '') : `<span class="fc-spoiler-mask" onclick="this.outerHTML='${(item.example.en || '').replace(/'/g, "\\'")}'; event.stopPropagation();">•••• Reveal Example Translation (E)</span>`}</div>
@@ -2477,7 +2519,7 @@
           ${Array.isArray(item.examples) && item.examples.length > 0 ? `
             <div class="fc-examples-box">
               <div class="fc-ex-row">
-                <span class="fc-ex-ja">${showHira ? parseFurigana(item.examples[0].furigana || item.examples[0].ja) : item.examples[0].ja}</span>
+                <span class="fc-ex-ja">${parseFurigana(item.examples[0].furigana || item.examples[0].ja)}</span>
                 <button class="mini-audio-btn" data-speak="${item.examples[0].ja}" onclick="event.stopPropagation()" title="Listen">${UI_ICONS.volume}</button>
               </div>
               <div class="fc-ex-en">${showEn ? item.examples[0].en : `<span class="fc-spoiler-mask" onclick="this.outerHTML='${(item.examples[0].en || '').replace(/'/g, "\\'")}'; event.stopPropagation();">•••• Reveal Translation (E)</span>`}</div>
@@ -2806,7 +2848,10 @@
     prevFlashcard: prevFlashcard,
     shuffleFlashcards: shuffleFlashcards,
     toggleFlashcardHiragana: toggleFlashcardHiragana,
-    toggleFlashcardEnglish: toggleFlashcardEnglish
+    toggleFlashcardEnglish: toggleFlashcardEnglish,
+    openSidebar: openSidebar,
+    closeSidebar: closeSidebar,
+    toggleSidebar: toggleSidebar
   };
 
 })();
