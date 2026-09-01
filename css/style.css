@@ -3830,6 +3830,9 @@ body.hide-english .grammar-meaning:active {
   color: #0f172a !important;
   font-family: 'Noto Sans JP', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
 }
 
 .pdf-page-box {

@@ -3029,9 +3029,9 @@
     const opt = {
       margin: 0,
       filename: filename,
-      image: { type: 'jpeg', quality: 0.95 },
+      image: { type: 'jpeg', quality: 1.0 },
       html2canvas: {
-        scale: 1.5,
+        scale: 2.5,
         useCORS: true,
         letterRendering: true,
         logging: false,
@@ -3041,7 +3041,8 @@
       jsPDF: {
         unit: 'mm',
         format: 'a4',
-        orientation: 'portrait'
+        orientation: 'portrait',
+        compress: true
       }
     };
 
