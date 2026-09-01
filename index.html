@@ -220,6 +220,14 @@
                 <span>Table</span>
               </button>
             </div>
+            <button id="download-kanji-pdf-btn" class="btn-pdf-export" title="Download Filtered Kanji as PDF">
+              <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span>Download PDF</span>
+            </button>
             <div class="header-stats-badges">
               <span id="kanji-count" class="section-count-tag">Loading Kanji...</span>
               <span id="kanji-origin-breakdown" class="origin-breakdown-tag"></span>
@@ -271,6 +279,14 @@
                 <span>Table</span>
               </button>
             </div>
+            <button id="download-vocab-pdf-btn" class="btn-pdf-export" title="Download Filtered Vocabulary as PDF">
+              <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span>Download PDF</span>
+            </button>
             <div class="header-stats-badges">
               <span id="vocab-count" class="section-count-tag">Loading Vocabulary...</span>
               <span id="vocab-origin-breakdown" class="origin-breakdown-tag"></span>
@@ -599,6 +615,17 @@
     </div>
   </div>
 
+  <!-- PDF Export Progress Modal -->
+  <div id="pdf-export-modal" class="modal-backdrop hidden">
+    <div class="modal-dialog card-glass pdf-export-dialog">
+      <div class="pdf-export-content">
+        <div class="pdf-export-spinner"></div>
+        <h3 id="pdf-export-title">Preparing PDF Document...</h3>
+        <p id="pdf-export-status" class="text-muted">Filtering data and generating print layout...</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Site Footer -->
   <footer class="site-footer">
     <p><strong>NihonHub</strong> &mdash; All-in-One JLPT N5 to N2 Learning Hub</p>
@@ -662,8 +689,9 @@
   <script src="data/n2/vocabulary.js?v=4.1"></script>
   <script src="data/n2/grammar.js?v=4.1"></script>
 
-  <!-- Master Data Loader & Application Engine -->
+  <!-- Master Data Loader, PDF Export Engine & Application Engine -->
   <script src="data/data-loader.js?v=4.1"></script>
+  <script src="js/html2pdf.bundle.min.js?v=4.1"></script>
   <script src="js/app.js?v=4.1"></script>
 </body>
 </html>

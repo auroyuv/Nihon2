@@ -690,30 +690,9 @@
     });
 
     // Sidebar Drawer Toggle (Mobile / Tablet)
-    const sidebar = document.getElementById('app-sidebar');
     const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
     const sidebarCloseBtn = document.getElementById('sidebar-close-btn');
     const sidebarBackdrop = document.getElementById('sidebar-backdrop');
-
-    function openSidebar() {
-      if (sidebar) sidebar.classList.add('open');
-      if (sidebarBackdrop) sidebarBackdrop.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeSidebar() {
-      if (sidebar) sidebar.classList.remove('open');
-      if (sidebarBackdrop) sidebarBackdrop.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-
-    function toggleSidebar() {
-      if (sidebar && sidebar.classList.contains('open')) {
-        closeSidebar();
-      } else {
-        openSidebar();
-      }
-    }
 
     if (sidebarToggleBtn) {
       sidebarToggleBtn.addEventListener('click', (e) => {
@@ -994,6 +973,16 @@
     const fcToggleMeaning = document.getElementById('fc-toggle-meaning-btn');
     if (fcToggleMeaning) fcToggleMeaning.addEventListener('click', toggleFlashcardEnglish);
 
+    // Download PDF Buttons (Kanji & Vocab)
+    const downloadKanjiPdfBtn = document.getElementById('download-kanji-pdf-btn');
+    if (downloadKanjiPdfBtn) {
+      downloadKanjiPdfBtn.addEventListener('click', () => exportToPdf('kanji'));
+    }
+    const downloadVocabPdfBtn = document.getElementById('download-vocab-pdf-btn');
+    if (downloadVocabPdfBtn) {
+      downloadVocabPdfBtn.addEventListener('click', () => exportToPdf('vocabulary'));
+    }
+
     // Modal Close
     document.querySelectorAll('.modal-close-btn').forEach(btn => {
       btn.addEventListener('click', closeModal);
@@ -1092,6 +1081,32 @@
     });
     renderActiveTab();
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // --- SIDEBAR DRAWER ACTIONS ---
+  function openSidebar() {
+    const sidebar = document.getElementById('app-sidebar');
+    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+    if (sidebar) sidebar.classList.add('open');
+    if (sidebarBackdrop) sidebarBackdrop.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSidebar() {
+    const sidebar = document.getElementById('app-sidebar');
+    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+    if (sidebar) sidebar.classList.remove('open');
+    if (sidebarBackdrop) sidebarBackdrop.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  function toggleSidebar() {
+    const sidebar = document.getElementById('app-sidebar');
+    if (sidebar && sidebar.classList.contains('open')) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
   }
 
   function renderAll() {
@@ -2778,6 +2793,298 @@
     renderCategoryWithProgressiveScroll('bookmarks', saved, 'No bookmarked items yet. Click the star icon on any Kanji, word, or grammar rule to save it here!');
   }
 
+  // --- PDF EXPORT ENGINE (HIGH FIDELITY CLIENT-SIDE EXPORT) ---
+  function getFilteredItemsForExport(category) {
+    if (!window.JLPT_DATA) return [];
+    if (category === 'kanji') {
+      return filterItems(window.JLPT_DATA.kanji || [], ['char', 'meaning', 'onyomi', 'kunyomi', 'radical'], 'kanji');
+    }
+    if (category === 'vocabulary') {
+      return filterItems(window.JLPT_DATA.vocabulary || [], ['word', 'reading', 'romaji', 'meaning'], 'vocabulary');
+    }
+    return [];
+  }
+
+  function showPdfExportProgress(show, title = 'Preparing PDF Document...', status = 'Generating layout and styles...') {
+    const modal = document.getElementById('pdf-export-modal');
+    const titleEl = document.getElementById('pdf-export-title');
+    const statusEl = document.getElementById('pdf-export-status');
+    if (!modal) return;
+    if (show) {
+      if (titleEl) titleEl.textContent = title;
+      if (statusEl) statusEl.textContent = status;
+      modal.classList.remove('hidden');
+    } else {
+      modal.classList.add('hidden');
+    }
+  }
+
+  async function exportToPdf(category) {
+    if (typeof html2pdf === 'undefined') {
+      alert('PDF generation module is currently loading or unavailable. Please check your connection and try again.');
+      return;
+    }
+
+    const items = getFilteredItemsForExport(category);
+    if (!items || items.length === 0) {
+      alert(`No ${category === 'kanji' ? 'Kanji' : 'Vocabulary'} items found matching the current active filters to export.`);
+      return;
+    }
+
+    const isKanji = (category === 'kanji');
+    const typeLabel = isKanji ? 'Kanji' : 'Vocabulary';
+    const activeLevel = state.selectedLevel;
+    const catFilter = state.filters[category] || { book: 'ALL', chapter: 'ALL' };
+    const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+
+    showPdfExportProgress(true, `Exporting ${items.length} ${typeLabel}...`, 'Building high-contrast print layout...');
+
+    // Small delay to allow UI to render the progress dialog
+    await new Promise(r => setTimeout(r, 60));
+
+    // Construct Printable HTML Element and attach to DOM for exact layout measurement
+    const printContainer = document.createElement('div');
+    printContainer.className = 'pdf-print-container';
+    document.body.appendChild(printContainer);
+
+    // Document Meta
+    const activeBook = catFilter.book !== 'ALL' ? catFilter.book : 'All Textbooks';
+    const activeChapter = catFilter.chapter !== 'ALL' ? catFilter.chapter : 'All Chapters';
+    const scopeLabel = state.originFilter === 'NEW' ? 'New Only' : state.originFilter === 'REVIEW' ? 'Review Only' : 'All Scope';
+    const queryLabel = state.searchQuery ? `Search: "${state.searchQuery}"` : '';
+
+    const theadHtml = `
+      <thead>
+        <tr>
+          <th style="width: 32px; text-align: center;">#</th>
+          ${isKanji ? `
+            <th style="width: 55px; text-align: center;">Kanji</th>
+            <th style="width: 125px;">Reading (ON / KUN)</th>
+            <th>Meaning & Compounds</th>
+            <th style="width: 55px; text-align: center;">Level</th>
+            <th style="width: 147px;">Textbook / Source</th>
+          ` : `
+            <th style="width: 110px;">Kanji / Word</th>
+            <th style="width: 110px;">Reading (Kana)</th>
+            <th>Meaning & Examples</th>
+            <th style="width: 60px; text-align: center;">Level</th>
+            <th style="width: 152px;">Textbook / Source</th>
+          `}
+        </tr>
+      </thead>
+    `;
+
+    function createNewPageBox() {
+      const pageBox = document.createElement('div');
+      pageBox.className = 'pdf-page-box';
+      pageBox.innerHTML = `
+        <div class="pdf-doc-header">
+          <div>
+            <div class="pdf-doc-title-row">
+              <span class="pdf-brand-title">NihonHub</span>
+              <span class="pdf-brand-subtitle">&mdash; ${typeLabel} Study Sheet</span>
+            </div>
+            <div class="pdf-meta-badges">
+              <span class="pdf-meta-chip">Level: ${activeLevel}</span>
+              <span class="pdf-meta-chip">Textbook: ${activeBook}</span>
+              <span class="pdf-meta-chip">Chapter: ${activeChapter}</span>
+              <span class="pdf-meta-chip">Scope: ${scopeLabel}</span>
+              ${queryLabel ? `<span class="pdf-meta-chip">${queryLabel}</span>` : ''}
+            </div>
+          </div>
+          <div class="pdf-doc-right-info">
+            <div class="pdf-page-counter-header">Page --</div>
+            <div>Generated: ${dateStr}</div>
+            <div>JLPT N5 &mdash; N2 Curriculum</div>
+          </div>
+        </div>
+
+        <div class="pdf-table-container">
+          <table class="pdf-table">
+            ${theadHtml}
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="pdf-page-footer">
+          <span>Generated by NihonHub &bull; Master Japanese from N5 foundation through N2</span>
+          <span class="pdf-page-counter-footer">Page --</span>
+        </div>
+      `;
+
+      printContainer.appendChild(pageBox);
+      const tbody = pageBox.querySelector('tbody');
+      const table = pageBox.querySelector('.pdf-table');
+      return { pageBox, tbody, table };
+    }
+
+    let currentPage = createNewPageBox();
+
+    for (let idx = 0; idx < items.length; idx++) {
+      const globalIdx = idx + 1;
+      let trHtml = '';
+
+      if (isKanji) {
+        const k = items[idx];
+        const sourceInfo = k.sources && k.sources[0] ? k.sources[0] : null;
+        const chapter = sourceInfo ? (sourceInfo.chapter || sourceInfo.lesson || sourceInfo.book || '') : '';
+        const levelBadges = (k.levels || [k.level || 'N5']).map(l => `<span class="pdf-badge-level pdf-badge-${l.toLowerCase()}">${l}</span>`).join(' ');
+        const compoundsList = (k.examples || []).slice(0, 3);
+        const compoundsHtml = compoundsList.length > 0 ? `
+          <table class="pdf-compounds-subtable">
+            <tbody>
+              ${compoundsList.map(ex => `
+                <tr>
+                  <td class="pdf-compound-word">${ex.word}</td>
+                  <td class="pdf-compound-reading">${ex.reading || ''}</td>
+                  <td class="pdf-compound-meaning">${ex.meaning || ''}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        ` : '';
+
+        trHtml = `
+          <tr>
+            <td class="pdf-sno" style="width: 32px; text-align: center;">${globalIdx}</td>
+            <td style="width: 55px; text-align: center;"><span class="pdf-kanji-char">${k.char}</span></td>
+            <td style="width: 125px;">
+              ${k.onyomi ? `<div><strong style="color: #64748b; font-size: 8.5px;">ON:</strong> <span class="pdf-reading">${k.onyomi}</span></div>` : ''}
+              ${k.kunyomi ? `<div><strong style="color: #64748b; font-size: 8.5px;">KUN:</strong> <span class="pdf-reading">${k.kunyomi}</span></div>` : ''}
+              ${k.strokes ? `<div style="font-size: 8.5px; color: #64748b; margin-top: 1px;">${k.strokes} strokes ${k.radical ? `&bull; Rad: ${k.radical}` : ''}</div>` : ''}
+            </td>
+            <td>
+              <div class="pdf-kanji-main-meaning">${k.meaning}</div>
+              ${compoundsHtml}
+            </td>
+            <td style="width: 55px; text-align: center;">${levelBadges}</td>
+            <td style="width: 147px; font-size: 9.5px;">${chapter ? `<span class="pdf-badge-source">${chapter}</span>` : '—'}</td>
+          </tr>
+        `;
+      } else {
+        const v = items[idx];
+        const sourceInfo = v.sources && v.sources[0] ? v.sources[0] : null;
+        const chapter = sourceInfo ? (sourceInfo.chapter || sourceInfo.lesson || sourceInfo.book || '') : '';
+        const levelBadges = (v.levels || [v.level || 'N5']).map(l => `<span class="pdf-badge-level pdf-badge-${l.toLowerCase()}">${l}</span>`).join(' ');
+        const exText = v.example ? (v.example.ja || '') : '';
+        const exEn = v.example ? (v.example.en || '') : '';
+
+        trHtml = `
+          <tr>
+            <td class="pdf-sno" style="width: 32px; text-align: center;">${globalIdx}</td>
+            <td style="width: 110px;">
+              <div class="pdf-vocab-word">${v.word}</div>
+            </td>
+            <td style="width: 110px;">
+              ${v.reading ? `<div class="pdf-reading">${v.reading}</div>` : ''}
+              ${v.romaji ? `<div class="pdf-romaji">${v.romaji}</div>` : ''}
+            </td>
+            <td>
+              <div class="pdf-meaning">${v.meaning || ''}</div>
+              ${exText ? `
+                <div style="margin-top: 3px; padding-left: 6px; border-left: 2px solid #cbd5e1;">
+                  <div class="pdf-ex-ja">${exText}</div>
+                  ${exEn ? `<div class="pdf-ex-en">${exEn}</div>` : ''}
+                </div>
+              ` : ''}
+            </td>
+            <td style="width: 60px; text-align: center;">${levelBadges}</td>
+            <td style="width: 152px; font-size: 9.5px;">
+              ${chapter ? `<span class="pdf-badge-source">${chapter}</span>` : '—'}
+              ${v.isKanjiCompound ? '<div style="font-size: 8.5px; color: #0284c7; margin-top: 2px; font-weight: 600;">Compound</div>' : ''}
+            </td>
+          </tr>
+        `;
+      }
+
+      currentPage.tbody.insertAdjacentHTML('beforeend', trHtml);
+
+      // Check if this row causes the table to exceed the safe height available above footer
+      // Max usable table height between header and footer is 920px (leaves 70px safe margin)
+      const MAX_TABLE_HEIGHT = 920;
+      if (currentPage.tbody.children.length > 1 && currentPage.table.offsetHeight > MAX_TABLE_HEIGHT) {
+        // Remove the row from the current page
+        currentPage.tbody.removeChild(currentPage.tbody.lastElementChild);
+        // Create new page and add the row to the new page
+        currentPage = createNewPageBox();
+        currentPage.tbody.insertAdjacentHTML('beforeend', trHtml);
+      }
+    }
+
+    // Update all page counters now that total page count is known
+    const pageBoxes = Array.from(printContainer.querySelectorAll('.pdf-page-box'));
+    const totalPages = pageBoxes.length;
+
+    pageBoxes.forEach((pBox, pIdx) => {
+      const hCounter = pBox.querySelector('.pdf-page-counter-header');
+      if (hCounter) hCounter.innerHTML = `<strong>Page ${pIdx + 1} of ${totalPages}</strong> &bull; Total ${items.length} ${typeLabel}`;
+      const fCounter = pBox.querySelector('.pdf-page-counter-footer');
+      if (fCounter) fCounter.textContent = `Page ${pIdx + 1} of ${totalPages}`;
+    });
+
+    const safeLevel = activeLevel.replace(/[^a-zA-Z0-9]/g, '_');
+    const safeBook = (catFilter.book || 'All').replace(/[^a-zA-Z0-9]/g, '_');
+    const filename = `NihonHub_${typeLabel}_${safeLevel}_${safeBook}.pdf`;
+
+    const opt = {
+      margin: 0,
+      filename: filename,
+      image: { type: 'jpeg', quality: 0.95 },
+      html2canvas: {
+        scale: 1.5,
+        useCORS: true,
+        letterRendering: true,
+        logging: false,
+        scrollY: 0,
+        scrollX: 0
+      },
+      jsPDF: {
+        unit: 'mm',
+        format: 'a4',
+        orientation: 'portrait'
+      }
+    };
+
+    const pageElements = Array.from(printContainer.children);
+
+    try {
+      showPdfExportProgress(true, `Exporting ${items.length} ${typeLabel}...`, `Rendering page 1 of ${totalPages}...`);
+      
+      // Start the html2pdf chain with the first page element
+      let worker = html2pdf().set(opt).from(pageElements[0]).toPdf();
+
+      // Loop and chain the remaining page elements sequentially
+      for (let i = 1; i < pageElements.length; i++) {
+        const pageIdx = i;
+        worker = worker.then(() => {
+          showPdfExportProgress(true, `Exporting ${items.length} ${typeLabel}...`, `Rendering page ${pageIdx + 1} of ${totalPages}...`);
+        }).get('pdf').then(pdf => {
+          pdf.addPage();
+        }).from(pageElements[pageIdx]).toContainer().toCanvas().toPdf();
+      }
+
+      // Add a final progress update right before saving
+      worker = worker.then(() => {
+        showPdfExportProgress(true, `Exporting ${items.length} ${typeLabel}...`, `Saving PDF document...`);
+      });
+
+      // Capture output stats in console for testing/logging
+      worker = worker.get('pdf').then((pdf) => {
+        console.log(`[E2E_PDF_SIZE] pages: ${pdf.internal.getNumberOfPages()}`);
+      });
+
+      await worker.save();
+    } catch (err) {
+      console.error('PDF generation error:', err);
+      alert('An error occurred during PDF generation: ' + (err.message || err));
+    } finally {
+      if (printContainer && printContainer.parentNode) {
+        printContainer.parentNode.removeChild(printContainer);
+      }
+      showPdfExportProgress(false);
+    }
+  }
+
   // --- EXPOSE API GLOBALLY ---
   window.NihonHub = {
     selectLevel: (lvl) => {
@@ -2835,6 +3142,7 @@
         else if (category === 'bookmarks') renderBookmarks();
       }
     },
+    exportToPdf: exportToPdf,
     openKanjiModal: openKanjiModal,
     openKanjiModalByChar: openKanjiModalByChar,
     speakJapanese: speakJapanese,
@@ -2855,3 +3163,4 @@
   };
 
 })();
+

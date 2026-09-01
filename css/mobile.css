@@ -451,6 +451,12 @@
     font-size: 0.76rem !important;
   }
 
+  .btn-pdf-export {
+    padding: 4px 9px !important;
+    font-size: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
   .header-stats-badges {
     display: flex !important;
     align-items: center !important;
