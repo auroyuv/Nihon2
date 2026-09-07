@@ -77,6 +77,7 @@
     setupEventListeners();
     buildFlashcardDeck();
     renderAll();
+    initFlashcardSwipeGestures();
   });
 
   // --- PREFERENCES STORAGE ---
@@ -148,7 +149,18 @@
     savePreferences();
   }
 
-  // --- NATIVE SPEECH SYNTHESIS (WITH SPEED CONTROL) ---
+  // --- NATIVE SPEECH SYNTHESIS (WITH SPEED CONTROL & VOICE CACHING) ---
+  let cachedVoices = [];
+  function updateCachedVoices() {
+    if ('speechSynthesis' in window) {
+      cachedVoices = window.speechSynthesis.getVoices();
+    }
+  }
+  if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+    window.speechSynthesis.onvoiceschanged = updateCachedVoices;
+    updateCachedVoices();
+  }
+
   function speakJapanese(text) {
     if (!('speechSynthesis' in window)) {
       alert('Speech synthesis is not supported in this browser.');
@@ -162,8 +174,10 @@
     utterance.lang = 'ja-JP';
     utterance.rate = state.audioSpeed || 0.9;
 
-    const voices = window.speechSynthesis.getVoices();
-    const jaVoice = voices.find(v => v.lang.startsWith('ja') || v.lang.includes('JP'));
+    if (!cachedVoices || cachedVoices.length === 0) {
+      cachedVoices = window.speechSynthesis.getVoices();
+    }
+    const jaVoice = cachedVoices.find(v => v.lang && (v.lang.startsWith('ja') || v.lang.includes('JP')));
     if (jaVoice) utterance.voice = jaVoice;
 
     window.speechSynthesis.speak(utterance);
@@ -239,19 +253,19 @@
   }
 
   // --- DYNAMIC SOURCE / BOOK / CHAPTER QUERY HELPERS ---
-  // --- DYNAMIC SOURCE / BOOK / CHAPTER QUERY HELPERS ---
   function getAvailableBooks(category, level) {
     const masterList = (window.JLPT_DATA && window.JLPT_DATA[category]) ? window.JLPT_DATA[category] : [];
     let levelItems = masterList.filter(item => level === 'ALL' || (item.levels && item.levels.includes(level)));
+    levelItems = levelItems.filter(item => matchOrigin(item));
     
     if (category === 'vocabulary') {
       if (state.vocabTypeFilter === 'TEXTBOOK') {
-        levelItems = masterList.filter(item => {
+        levelItems = levelItems.filter(item => {
           if (!item.isTextbookVocab) return false;
           return level === 'ALL' || (item.textbookLevels && item.textbookLevels.includes(level));
         });
       } else if (state.vocabTypeFilter === 'COMPOUNDS') {
-        levelItems = masterList.filter(item => {
+        levelItems = levelItems.filter(item => {
           if (!item.isKanjiCompound) return false;
           return level === 'ALL' || (item.compoundLevels && item.compoundLevels.includes(level));
         });
@@ -282,15 +296,16 @@
   function getAvailableChapters(category, level, selectedBook) {
     const masterList = (window.JLPT_DATA && window.JLPT_DATA[category]) ? window.JLPT_DATA[category] : [];
     let levelItems = masterList.filter(item => level === 'ALL' || (item.levels && item.levels.includes(level)));
+    levelItems = levelItems.filter(item => matchOrigin(item));
     
     if (category === 'vocabulary') {
       if (state.vocabTypeFilter === 'TEXTBOOK') {
-        levelItems = masterList.filter(item => {
+        levelItems = levelItems.filter(item => {
           if (!item.isTextbookVocab) return false;
           return level === 'ALL' || (item.textbookLevels && item.textbookLevels.includes(level));
         });
       } else if (state.vocabTypeFilter === 'COMPOUNDS') {
-        levelItems = masterList.filter(item => {
+        levelItems = levelItems.filter(item => {
           if (!item.isKanjiCompound) return false;
           return level === 'ALL' || (item.compoundLevels && item.compoundLevels.includes(level));
         });
@@ -368,14 +383,17 @@
     const availableBooks = getAvailableBooks(category, state.selectedLevel);
     
     let currentCategoryTotal = 0;
-    if (category === 'vocabulary' && window.JLPT_DATA.getVocabStats) {
-      const vStats = window.JLPT_DATA.getVocabStats(state.selectedLevel);
-      currentCategoryTotal = state.vocabTypeFilter === 'TEXTBOOK' ? vStats.textbookCount :
-                             state.vocabTypeFilter === 'COMPOUNDS' ? vStats.compoundsCount : vStats.total;
-    } else {
-      const stats = window.JLPT_DATA ? window.JLPT_DATA.getLevelStats(category, state.selectedLevel) : { total: 0 };
-      currentCategoryTotal = stats.total;
+    const masterList = (window.JLPT_DATA && window.JLPT_DATA[category]) ? window.JLPT_DATA[category] : [];
+    let allLevelItems = masterList.filter(item => state.selectedLevel === 'ALL' || (item.levels && item.levels.includes(state.selectedLevel)));
+    allLevelItems = allLevelItems.filter(item => matchOrigin(item));
+    if (category === 'vocabulary') {
+      if (state.vocabTypeFilter === 'TEXTBOOK') {
+        allLevelItems = allLevelItems.filter(item => item.isTextbookVocab && (state.selectedLevel === 'ALL' || (item.textbookLevels && item.textbookLevels.includes(state.selectedLevel))));
+      } else if (state.vocabTypeFilter === 'COMPOUNDS') {
+        allLevelItems = allLevelItems.filter(item => item.isKanjiCompound && (state.selectedLevel === 'ALL' || (item.compoundLevels && item.compoundLevels.includes(state.selectedLevel))));
+      }
     }
+    currentCategoryTotal = allLevelItems.length;
 
     if (currentFilter.book !== 'ALL' && !availableBooks.some(b => b.book === currentFilter.book)) {
       currentFilter.book = 'ALL';
@@ -734,6 +752,7 @@
         state.filters.kanji.chapter = 'ALL';
         state.filters.vocabulary.chapter = 'ALL';
         state.filters.grammar.chapter = 'ALL';
+        state.flashcards.chapter = 'ALL';
 
         buildFlashcardDeck();
         renderAll();
@@ -983,6 +1002,16 @@
       downloadVocabPdfBtn.addEventListener('click', () => exportToPdf('vocabulary'));
     }
 
+    // Study in Flashcards Quick Action Buttons
+    const studyKanjiFcBtn = document.getElementById('study-kanji-fc-btn');
+    if (studyKanjiFcBtn) {
+      studyKanjiFcBtn.addEventListener('click', () => launchFlashcardsFromCurrentFilter('kanji'));
+    }
+    const studyVocabFcBtn = document.getElementById('study-vocab-fc-btn');
+    if (studyVocabFcBtn) {
+      studyVocabFcBtn.addEventListener('click', () => launchFlashcardsFromCurrentFilter('vocabulary'));
+    }
+
     // Modal Close
     document.querySelectorAll('.modal-close-btn').forEach(btn => {
       btn.addEventListener('click', closeModal);
@@ -1111,6 +1140,7 @@
 
   function renderAll() {
     updateLevelProgressionBanner();
+    renderActiveFiltersBar();
     updateFooterStats();
     updateMasteryHeaderStatus();
     renderSourceFilter('kanji');
@@ -1128,6 +1158,7 @@
 
   function renderActiveTab() {
     updateLevelProgressionBanner();
+    renderActiveFiltersBar();
     updateFooterStats();
     updateMasteryHeaderStatus();
     switch (state.currentTab) {
@@ -1151,6 +1182,165 @@
       case 'kana': renderKana(); break;
       case 'bookmarks': renderBookmarks(); break;
     }
+  }
+
+  // --- DYNAMIC ACTIVE FILTERS BAR & ACTIONS ---
+  function renderActiveFiltersBar() {
+    const bar = document.getElementById('active-filters-bar');
+    if (!bar) return;
+
+    const chips = [];
+    const cat = state.currentTab === 'vocab' ? 'vocabulary' : state.currentTab;
+    const catFilter = state.filters[cat] || { book: 'ALL', chapter: 'ALL' };
+
+    // 1. Level Filter
+    if (state.selectedLevel !== 'ALL') {
+      chips.push(`
+        <span class="active-filter-chip badge-${state.selectedLevel.toLowerCase()}">
+          <span class="chip-label">Level:</span>
+          <strong>JLPT ${state.selectedLevel}</strong>
+          <button class="chip-remove-btn" onclick="window.NihonHub.removeFilter('level')" title="Remove Level Filter">✕</button>
+        </span>
+      `);
+    }
+
+    // 2. Scope Filter (New vs Review)
+    if (state.originFilter !== 'ALL') {
+      const label = state.originFilter === 'NEW' ? '✨ New Only' : '🔄 Review';
+      chips.push(`
+        <span class="active-filter-chip chip-scope">
+          <span class="chip-label">Scope:</span>
+          <strong>${label}</strong>
+          <button class="chip-remove-btn" onclick="window.NihonHub.removeFilter('origin')" title="Remove Scope Filter">✕</button>
+        </span>
+      `);
+    }
+
+    // 3. Search Query
+    if (state.searchQuery && state.searchQuery.trim()) {
+      chips.push(`
+        <span class="active-filter-chip chip-search">
+          <span class="chip-label">Search:</span>
+          <strong>"${escapeHtml(state.searchQuery)}"</strong>
+          <button class="chip-remove-btn" onclick="window.NihonHub.removeFilter('search')" title="Clear Search">✕</button>
+        </span>
+      `);
+    }
+
+    // 4. Vocab Type (in Vocab Tab)
+    if (state.currentTab === 'vocab' && state.vocabTypeFilter !== 'ALL') {
+      const vtypeLabel = state.vocabTypeFilter === 'TEXTBOOK' ? '📚 Textbook Vocab' : '🈁 Kanji Compounds';
+      chips.push(`
+        <span class="active-filter-chip chip-vtype">
+          <span class="chip-label">Source:</span>
+          <strong>${vtypeLabel}</strong>
+          <button class="chip-remove-btn" onclick="window.NihonHub.removeFilter('vocabType')" title="Reset Vocab Source">✕</button>
+        </span>
+      `);
+    }
+
+    // 5. Textbook / Book
+    if (catFilter.book && catFilter.book !== 'ALL') {
+      chips.push(`
+        <span class="active-filter-chip chip-book">
+          <span class="chip-label">Book:</span>
+          <strong>${catFilter.book}</strong>
+          <button class="chip-remove-btn" onclick="window.NihonHub.removeFilter('book')" title="Reset Textbook Filter">✕</button>
+        </span>
+      `);
+    }
+
+    // 6. Chapter / Week
+    if (catFilter.chapter && catFilter.chapter !== 'ALL') {
+      chips.push(`
+        <span class="active-filter-chip chip-chapter">
+          <span class="chip-label">Chapter:</span>
+          <strong>${catFilter.chapter}</strong>
+          <button class="chip-remove-btn" onclick="window.NihonHub.removeFilter('chapter')" title="Reset Chapter Filter">✕</button>
+        </span>
+      `);
+    }
+
+    if (chips.length === 0) {
+      bar.innerHTML = '';
+      bar.classList.add('hidden');
+    } else {
+      bar.classList.remove('hidden');
+      bar.innerHTML = `
+        <div class="active-filters-inner">
+          <span class="active-filters-title">
+            <svg class="ui-icon text-accent" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+            Active Filters:
+          </span>
+          <div class="active-filter-chips-list">
+            ${chips.join('')}
+          </div>
+          <button class="btn-clear-all-filters" onclick="window.NihonHub.resetFilters()" title="Reset all active filters">
+            Clear All ✕
+          </button>
+        </div>
+      `;
+    }
+  }
+
+  function removeFilter(type) {
+    const cat = state.currentTab === 'vocab' ? 'vocabulary' : state.currentTab;
+    if (type === 'level') {
+      state.selectedLevel = 'ALL';
+      const activeLevelText = document.getElementById('active-level-indicator-badge');
+      if (activeLevelText) activeLevelText.textContent = 'ALL';
+      document.querySelectorAll('.level-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-level') === 'ALL'));
+    } else if (type === 'origin') {
+      state.originFilter = 'ALL';
+      document.querySelectorAll('.origin-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-origin') === 'ALL'));
+    } else if (type === 'search') {
+      state.searchQuery = '';
+      const s = document.getElementById('global-search-input');
+      if (s) s.value = '';
+      const clearBtn = document.getElementById('search-clear-btn');
+      if (clearBtn) clearBtn.classList.add('hidden');
+    } else if (type === 'vocabType') {
+      state.vocabTypeFilter = 'ALL';
+      document.querySelectorAll('.vtype-pill').forEach(p => p.classList.toggle('active', p.getAttribute('data-vocab-type') === 'ALL'));
+    } else if (type === 'book') {
+      if (state.filters[cat]) {
+        state.filters[cat].book = 'ALL';
+        state.filters[cat].chapter = 'ALL';
+      }
+    } else if (type === 'chapter') {
+      if (state.filters[cat]) {
+        state.filters[cat].chapter = 'ALL';
+      }
+    }
+    buildFlashcardDeck();
+    renderAll();
+  }
+
+  function launchFlashcardsFromCurrentFilter(category) {
+    state.flashcards.category = category === 'vocabulary' || category === 'vocab' ? 'vocab' : 'kanji';
+    const activeCatFilter = state.filters[category === 'vocab' ? 'vocabulary' : category] || { book: 'ALL', chapter: 'ALL' };
+    state.flashcards.book = activeCatFilter.book || 'ALL';
+    state.flashcards.chapter = activeCatFilter.chapter || 'ALL';
+    state.flashcards.status = 'ALL';
+
+    // Sync FC UI category pills
+    document.querySelectorAll('.fc-category-pill').forEach(p => {
+      p.classList.toggle('active', p.getAttribute('data-category') === state.flashcards.category);
+    });
+    // Sync FC UI status pills
+    document.querySelectorAll('.fc-status-pill').forEach(p => {
+      p.classList.toggle('active', p.getAttribute('data-fc-status') === 'ALL');
+    });
+
+    switchTab('flashcards');
+    renderFlashcardSourceFilter();
+    buildFlashcardDeck();
+    renderFlashcard();
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
   // --- PROGRESSIVE INFINITE SCROLL ENGINE (HIGH PERFORMANCE) ---
@@ -1346,7 +1536,19 @@
     }
 
     if (items.length === 0) {
-      container.innerHTML = `<div class="empty-state card-glass" style="grid-column: 1 / -1;"><p>${emptyMessage}</p></div>`;
+      container.innerHTML = `
+        <div class="empty-state-card card-glass" style="grid-column: 1 / -1;">
+          <div class="empty-state-icon">🔍</div>
+          <h3 class="empty-state-title">No items found</h3>
+          <p class="empty-state-desc">${emptyMessage}</p>
+          <div class="empty-state-actions">
+            <button class="btn-reset-filters" onclick="window.NihonHub.resetFilters()">
+              <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+              <span>Reset All Filters</span>
+            </button>
+          </div>
+        </div>
+      `;
       return;
     }
 
@@ -2601,6 +2803,144 @@
     renderFlashcard();
   }
 
+  // --- FLASHCARD TOUCH & MOUSE SWIPE GESTURE ENGINE ---
+  let isSwipeInitialized = false;
+  function initFlashcardSwipeGestures() {
+    if (isSwipeInitialized) return;
+    const wrapper = document.querySelector('.flashcard-wrapper');
+    if (!wrapper) return;
+    isSwipeInitialized = true;
+
+    let startX = 0;
+    let startY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let isDragging = false;
+    let isHorizontalSwipe = false;
+    let startTime = 0;
+    let hasSwiped = false;
+    const SWIPE_THRESHOLD = 50; // px threshold to trigger card change
+
+    function onStart(e) {
+      if (!state.flashcards.deck || state.flashcards.deck.length === 0) return;
+      if (e.target.closest('button, input, a, .fc-spoiler-mask, .t-mini-block, .action-btn, .mini-audio-btn, .zen-audio-btn')) return;
+
+      const touch = e.touches ? e.touches[0] : e;
+      startX = touch.clientX;
+      startY = touch.clientY;
+      currentX = startX;
+      currentY = startY;
+      startTime = Date.now();
+      isDragging = true;
+      isHorizontalSwipe = false;
+      hasSwiped = false;
+      wrapper.style.transition = 'none';
+    }
+
+    function onMove(e) {
+      if (!isDragging) return;
+      const touch = e.touches ? e.touches[0] : e;
+      currentX = touch.clientX;
+      currentY = touch.clientY;
+
+      const deltaX = currentX - startX;
+      const deltaY = currentY - startY;
+
+      if (!isHorizontalSwipe) {
+        if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+          isHorizontalSwipe = true;
+        } else if (Math.abs(deltaY) > 12) {
+          isDragging = false;
+          return;
+        }
+      }
+
+      if (isHorizontalSwipe) {
+        if (e.cancelable) e.preventDefault();
+        const rot = deltaX * 0.04;
+        const opacity = Math.max(0.65, 1 - Math.abs(deltaX) / 500);
+        wrapper.style.transform = `translateX(${deltaX}px) rotate(${rot}deg)`;
+        wrapper.style.opacity = opacity;
+      }
+    }
+
+    function onEnd(e) {
+      if (!isDragging) return;
+      isDragging = false;
+
+      const deltaX = currentX - startX;
+      const deltaY = currentY - startY;
+      const elapsed = Date.now() - startTime;
+      const velocity = Math.abs(deltaX) / (elapsed || 1);
+
+      if (isHorizontalSwipe && (Math.abs(deltaX) > SWIPE_THRESHOLD || (velocity > 0.35 && Math.abs(deltaX) > 25))) {
+        hasSwiped = true;
+        if (deltaX < 0) {
+          // Swipe Left -> Next Card
+          animateSwipeComplete('left', nextFlashcard);
+        } else {
+          // Swipe Right -> Prev Card
+          animateSwipeComplete('right', prevFlashcard);
+        }
+      } else if (!isHorizontalSwipe && Math.abs(deltaX) < 10 && Math.abs(deltaY) < 10 && elapsed < 400) {
+        // Simple Tap -> Flip Card
+        resetWrapper();
+        flipFlashcard();
+      } else {
+        // Drag cancelled -> Snap Back smoothly
+        wrapper.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease';
+        resetWrapper();
+      }
+    }
+
+    function animateSwipeComplete(direction, navCallback) {
+      const exitX = direction === 'left' ? -wrapper.offsetWidth * 0.8 : wrapper.offsetWidth * 0.8;
+      const exitRot = direction === 'left' ? -10 : 10;
+
+      wrapper.style.transition = 'transform 0.2s ease-out, opacity 0.2s ease-out';
+      wrapper.style.transform = `translateX(${exitX}px) rotate(${exitRot}deg)`;
+      wrapper.style.opacity = '0';
+
+      setTimeout(() => {
+        navCallback();
+        const enterX = direction === 'left' ? 45 : -45;
+        wrapper.style.transition = 'none';
+        wrapper.style.transform = `translateX(${enterX}px)`;
+        wrapper.style.opacity = '0';
+
+        requestAnimationFrame(() => {
+          wrapper.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease';
+          wrapper.style.transform = 'translateX(0px) rotate(0deg)';
+          wrapper.style.opacity = '1';
+        });
+      }, 200);
+    }
+
+    function resetWrapper() {
+      wrapper.style.transform = 'translateX(0px) rotate(0deg)';
+      wrapper.style.opacity = '1';
+    }
+
+    // Touch events for mobile/tablet
+    wrapper.addEventListener('touchstart', onStart, { passive: true });
+    wrapper.addEventListener('touchmove', onMove, { passive: false });
+    wrapper.addEventListener('touchend', onEnd, { passive: true });
+    wrapper.addEventListener('touchcancel', () => {
+      isDragging = false;
+      wrapper.style.transition = 'transform 0.25s ease, opacity 0.25s ease';
+      resetWrapper();
+    }, { passive: true });
+
+    // Mouse events for desktop drag support
+    wrapper.addEventListener('mousedown', onStart);
+    window.addEventListener('mousemove', (e) => {
+      if (isDragging) onMove(e);
+    });
+    window.addEventListener('mouseup', (e) => {
+      if (isDragging) onEnd(e);
+    });
+  }
+
   function shuffleFlashcards() {
     for (let i = state.flashcards.deck.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -3160,7 +3500,9 @@
     toggleFlashcardEnglish: toggleFlashcardEnglish,
     openSidebar: openSidebar,
     closeSidebar: closeSidebar,
-    toggleSidebar: toggleSidebar
+    toggleSidebar: toggleSidebar,
+    removeFilter: removeFilter,
+    launchFlashcardsFromCurrentFilter: launchFlashcardsFromCurrentFilter
   };
 
 })();

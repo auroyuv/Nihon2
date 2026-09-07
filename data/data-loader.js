@@ -223,6 +223,7 @@
           if (!existing.levels.includes(level)) {
             existing.levels.push(level);
             existing.levels.sort((a, b) => (LEVEL_ORDER[a] || 99) - (LEVEL_ORDER[b] || 99));
+            existing.firstLevel = existing.levels[0];
           }
 
           // Merge overall sources
@@ -261,6 +262,12 @@
   });
 
   const mergedVocab = Array.from(unifiedVocabMap.values());
+  mergedVocab.forEach(item => {
+    if (Array.isArray(item.levels) && item.levels.length > 0) {
+      item.levels.sort((a, b) => (LEVEL_ORDER[a] || 99) - (LEVEL_ORDER[b] || 99));
+      item.firstLevel = item.levels[0];
+    }
+  });
 
   // 3. Enrich all vocabulary items with Kanji Anatomy Components
   const kanjiRegex = /[\u4e00-\u9faf\u3400-\u4dbf]/g;

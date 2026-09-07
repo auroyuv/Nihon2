@@ -17,8 +17,8 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23ff4757%22 stroke-width=%222%22><path d=%22M4 6h16M2 3h20M6 3v18M18 3v18M6 10h12%22/></svg>">
 
   <!-- Google Fonts & Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=4.1">
-  <link rel="stylesheet" href="css/mobile.css?v=4.1">
+  <link rel="stylesheet" href="css/style.css?v=4.2">
+  <link rel="stylesheet" href="css/mobile.css?v=4.2">
 </head>
 <body>
 
@@ -110,17 +110,20 @@
 
           <!-- Progression / Overlap Filter (New vs Review) -->
           <div class="sidebar-section" id="origin-filter-container">
-            <div class="sidebar-section-title">Content Scope</div>
+            <div class="sidebar-section-title">
+              <span>Content Scope</span>
+              <span class="info-tooltip-trigger" title="✨ New: Taught for the 1st time in this level.&#10;🔄 Review: Earlier-level items reappearing with new vocabulary.">ℹ️</span>
+            </div>
             <div class="origin-selector-group vertical">
               <button class="origin-pill active" data-origin="ALL">
                 <span>All Content</span>
                 <span id="scope-count-all" class="pill-chip">0</span>
               </button>
-              <button class="origin-pill" data-origin="NEW">
+              <button class="origin-pill" data-origin="NEW" title="Items introduced for the first time in this JLPT level">
                 <span>✨ New Only</span>
                 <span id="scope-count-new" class="pill-chip">0</span>
               </button>
-              <button class="origin-pill" data-origin="REVIEW">
+              <button class="origin-pill" data-origin="REVIEW" title="Items learned in earlier levels reused with advanced words">
                 <span>🔄 Review / Repeated</span>
                 <span id="scope-count-review" class="pill-chip">0</span>
               </button>
@@ -169,6 +172,9 @@
         
         <!-- Dynamic Level Overview & Repetition Banner -->
         <div id="level-progression-banner" class="progression-banner card-glass"></div>
+
+        <!-- Global Active Filters Summary Bar -->
+        <div id="active-filters-bar" class="active-filters-bar hidden"></div>
 
         <!-- Main Navigation Tabs (Desktop / Tablet) -->
         <nav class="main-nav-tabs" aria-label="Main Navigation">
@@ -220,6 +226,10 @@
                 <span>Table</span>
               </button>
             </div>
+            <button id="study-kanji-fc-btn" class="btn-study-fc" title="Practice current filtered Kanji in Flashcards">
+              <span class="fc-btn-icon">🎴</span>
+              <span>Study in Flashcards</span>
+            </button>
             <button id="download-kanji-pdf-btn" class="btn-pdf-export" title="Download Filtered Kanji as PDF">
               <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -279,6 +289,10 @@
                 <span>Table</span>
               </button>
             </div>
+            <button id="study-vocab-fc-btn" class="btn-study-fc" title="Practice current filtered Vocabulary in Flashcards">
+              <span class="fc-btn-icon">🎴</span>
+              <span>Study in Flashcards</span>
+            </button>
             <button id="download-vocab-pdf-btn" class="btn-pdf-export" title="Download Filtered Vocabulary as PDF">
               <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -477,7 +491,7 @@
             </div>
           </div>
           <div class="fc-meta-right">
-            <span class="fc-tip">Click card or press <kbd>Space</kbd> to flip</span>
+            <span class="fc-tip">👈 Swipe left / right 👉 &bull; Tap or <kbd>Space</kbd> to flip</span>
             <button id="fc-quick-audio-btn" class="mini-audio-btn" title="Listen pronunciation (A)">
               <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
             </button>
@@ -690,8 +704,8 @@
   <script src="data/n2/grammar.js?v=4.1"></script>
 
   <!-- Master Data Loader, PDF Export Engine & Application Engine -->
-  <script src="data/data-loader.js?v=4.1"></script>
-  <script src="js/html2pdf.bundle.min.js?v=4.1"></script>
-  <script src="js/app.js?v=4.1"></script>
+  <script src="data/data-loader.js?v=4.5"></script>
+  <script src="js/html2pdf.bundle.min.js?v=4.5"></script>
+  <script src="js/app.js?v=4.5"></script>
 </body>
 </html>

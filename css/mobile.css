@@ -1113,6 +1113,27 @@
     max-width: 720px;
     padding: 20px;
   }
+
+  /* Mobile Active Filters Bar */
+  .active-filters-inner {
+    padding: 8px 10px !important;
+    gap: 6px !important;
+  }
+
+  .active-filter-chip {
+    font-size: 0.76rem !important;
+    padding: 3px 8px !important;
+  }
+
+  .btn-clear-all-filters {
+    padding: 4px 8px !important;
+    font-size: 0.74rem !important;
+  }
+
+  .btn-study-fc {
+    padding: 5px 10px !important;
+    font-size: 0.78rem !important;
+  }
 }
 
 /* ====================================================== */
@@ -1126,3 +1147,4 @@
     display: none !important;
   }
 }
+

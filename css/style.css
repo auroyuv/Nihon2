@@ -3,7 +3,7 @@
    Modern, Clean, and High-Performance Japanese Learning UI
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&family=Fira+Code:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap');
 
 /* --- Design Tokens --- */
 :root {
@@ -44,7 +44,7 @@
 
   /* Typography */
   --font-ui: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-jp: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+  --font-jp: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, sans-serif;
   --font-code: 'Fira Code', monospace;
 
   /* Shadows & Glassmorphism */
@@ -1780,12 +1780,22 @@ body.hide-romaji .kana-romaji {
   transition: width 0.3s ease-out;
 }
 
-/* 3D Flip Card Container */
+/* 3D Flip Card Container & Swipe Track */
 .flashcard-wrapper {
   width: 100%;
   min-height: 420px;
   perspective: 1200px;
   margin-bottom: 20px;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+  will-change: transform, opacity;
+  cursor: grab;
+}
+
+.flashcard-wrapper:active {
+  cursor: grabbing;
 }
 
 .flashcard-card {
@@ -1796,7 +1806,6 @@ body.hide-romaji .kana-romaji {
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -3962,7 +3971,7 @@ body.hide-english .grammar-meaning:active {
 .pdf-kanji-char {
   font-size: 20px;
   font-weight: 700;
-  font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+  font-family: var(--font-jp);
   color: #0f172a;
   line-height: 1;
   display: inline-block;
@@ -3971,7 +3980,7 @@ body.hide-english .grammar-meaning:active {
 .pdf-vocab-word {
   font-size: 13.5px;
   font-weight: 700;
-  font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+  font-family: var(--font-jp);
   color: #0f172a;
   word-break: break-word;
 }
@@ -3980,7 +3989,7 @@ body.hide-english .grammar-meaning:active {
   color: #dc2626;
   font-weight: 600;
   font-size: 10.5px;
-  font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+  font-family: var(--font-jp);
   word-break: break-word;
 }
 
@@ -4063,7 +4072,7 @@ body.hide-english .grammar-meaning:active {
   width: 28%;
   font-weight: 700;
   color: #1e293b;
-  font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+  font-family: var(--font-jp);
   font-size: 9.5px !important;
 }
 
@@ -4071,7 +4080,7 @@ body.hide-english .grammar-meaning:active {
   width: 32%;
   font-weight: 600;
   color: #dc2626;
-  font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+  font-family: var(--font-jp);
   font-size: 8.5px !important;
 }
 
@@ -4091,6 +4100,257 @@ body.hide-english .grammar-meaning:active {
   justify-content: space-between;
   align-items: center;
 }
+
+/* ==========================================================================
+   Active Filters Summary Bar & Filter Chips
+   ========================================================================== */
+.active-filters-bar {
+  margin-bottom: 16px;
+  animation: fadeIn 0.2s ease;
+}
+
+.active-filters-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: var(--glass-blur);
+}
+
+.active-filters-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 4px;
+}
+
+.active-filter-chips-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.active-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  transition: var(--trans-fast);
+}
+
+.active-filter-chip .chip-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.active-filter-chip strong {
+  font-weight: 700;
+}
+
+.active-filter-chip.badge-n5 {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #10b981;
+}
+
+.active-filter-chip.badge-n4 {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.35);
+  color: #06b6d4;
+}
+
+.active-filter-chip.badge-n3 {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.35);
+  color: #f59e0b;
+}
+
+.active-filter-chip.badge-n2 {
+  background: rgba(244, 63, 94, 0.15);
+  border-color: rgba(244, 63, 94, 0.35);
+  color: #f43f5e;
+}
+
+.active-filter-chip.chip-scope {
+  background: rgba(168, 85, 247, 0.12);
+  border-color: rgba(168, 85, 247, 0.3);
+  color: #c084fc;
+}
+
+.active-filter-chip.chip-search {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #60a5fa;
+}
+
+.chip-remove-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.chip-remove-btn:hover {
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+.btn-clear-all-filters {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+  border-radius: 8px;
+  padding: 5px 11px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--trans-fast);
+  white-space: nowrap;
+}
+
+.btn-clear-all-filters:hover {
+  background: rgba(239, 68, 68, 0.22);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #fca5a5;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Enhanced Empty State Card
+   ========================================================================== */
+.empty-state-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+  border-radius: 16px;
+  margin: 20px 0;
+  background: var(--bg-surface);
+  border: 1px dashed var(--border-subtle);
+}
+
+.empty-state-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  opacity: 0.85;
+}
+
+.empty-state-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.empty-state-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  max-width: 480px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.btn-reset-filters {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--brand-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px var(--brand-subtle-glow);
+  transition: var(--trans-fast);
+}
+
+.btn-reset-filters:hover {
+  background: var(--brand-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--brand-subtle-glow);
+}
+
+/* ==========================================================================
+   Quick Study in Flashcards Action Button
+   ========================================================================== */
+.btn-study-fc {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(239, 68, 68, 0.18));
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--trans-fast);
+  white-space: nowrap;
+}
+
+[data-theme="light"] .btn-study-fc {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(239, 68, 68, 0.12));
+  border-color: rgba(217, 119, 6, 0.4);
+  color: #b45309;
+}
+
+.btn-study-fc:hover {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(239, 68, 68, 0.3));
+  border-color: rgba(245, 158, 11, 0.6);
+  color: #fef08a;
+  transform: translateY(-1px);
+}
+
+.fc-btn-icon {
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   Info Tooltip Trigger
+   ========================================================================== */
+.info-tooltip-trigger {
+  font-size: 0.8rem;
+  cursor: help;
+  opacity: 0.75;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  margin-left: 6px;
+  display: inline-block;
+}
+
+.info-tooltip-trigger:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
 
 
 
