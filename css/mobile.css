@@ -457,6 +457,16 @@
     flex-shrink: 0 !important;
   }
 
+  .pdf-dropdown-wrapper {
+    flex-shrink: 0 !important;
+  }
+
+  .pdf-dropdown-menu {
+    right: 0 !important;
+    min-width: 250px !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+
   .header-stats-badges {
     display: flex !important;
     align-items: center !important;

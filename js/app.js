@@ -992,15 +992,8 @@
     const fcToggleMeaning = document.getElementById('fc-toggle-meaning-btn');
     if (fcToggleMeaning) fcToggleMeaning.addEventListener('click', toggleFlashcardEnglish);
 
-    // Download PDF Buttons (Kanji & Vocab)
-    const downloadKanjiPdfBtn = document.getElementById('download-kanji-pdf-btn');
-    if (downloadKanjiPdfBtn) {
-      downloadKanjiPdfBtn.addEventListener('click', () => exportToPdf('kanji'));
-    }
-    const downloadVocabPdfBtn = document.getElementById('download-vocab-pdf-btn');
-    if (downloadVocabPdfBtn) {
-      downloadVocabPdfBtn.addEventListener('click', () => exportToPdf('vocabulary'));
-    }
+    // Initialize PDF Export Dropdown Menus (Standard & Clean format)
+    initPdfDropdowns();
 
     // Study in Flashcards Quick Action Buttons
     const studyKanjiFcBtn = document.getElementById('study-kanji-fc-btn');
@@ -3159,7 +3152,69 @@
     }
   }
 
-  async function exportToPdf(category) {
+  // Initialize PDF Export Dropdown Menus (Standard & Clean format)
+  function initPdfDropdowns() {
+    const dropdowns = document.querySelectorAll('.pdf-dropdown-wrapper');
+    if (!dropdowns.length) return;
+
+    dropdowns.forEach(wrapper => {
+      const toggleBtn = wrapper.querySelector('.pdf-dropdown-toggle');
+      if (!toggleBtn) return;
+
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = wrapper.classList.contains('open');
+        dropdowns.forEach(w => {
+          if (w !== wrapper) {
+            w.classList.remove('open');
+            const btn = w.querySelector('.pdf-dropdown-toggle');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+        if (isOpen) {
+          wrapper.classList.remove('open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        } else {
+          wrapper.classList.add('open');
+          toggleBtn.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      const options = wrapper.querySelectorAll('.pdf-dropdown-item');
+      options.forEach(opt => {
+        opt.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const category = opt.getAttribute('data-category');
+          const format = opt.getAttribute('data-format') || 'standard';
+          wrapper.classList.remove('open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          exportToPdf(category, format);
+        });
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      dropdowns.forEach(wrapper => {
+        if (!wrapper.contains(e.target)) {
+          wrapper.classList.remove('open');
+          const btn = wrapper.querySelector('.pdf-dropdown-toggle');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        dropdowns.forEach(wrapper => {
+          wrapper.classList.remove('open');
+          const btn = wrapper.querySelector('.pdf-dropdown-toggle');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  }
+
+  async function exportToPdf(category, format = 'standard') {
     if (typeof html2pdf === 'undefined') {
       alert('PDF generation module is currently loading or unavailable. Please check your connection and try again.');
       return;
@@ -3171,13 +3226,14 @@
       return;
     }
 
+    const isClean = (format === 'clean');
     const isKanji = (category === 'kanji');
     const typeLabel = isKanji ? 'Kanji' : 'Vocabulary';
     const activeLevel = state.selectedLevel;
     const catFilter = state.filters[category] || { book: 'ALL', chapter: 'ALL' };
     const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 
-    showPdfExportProgress(true, `Exporting ${items.length} ${typeLabel}...`, 'Building high-contrast print layout...');
+    showPdfExportProgress(true, `Exporting ${items.length} ${typeLabel}${isClean ? ' (Clean)' : ''}...`, 'Building high-contrast print layout...');
 
     // Small delay to allow UI to render the progress dialog
     await new Promise(r => setTimeout(r, 60));
@@ -3193,7 +3249,22 @@
     const scopeLabel = state.originFilter === 'NEW' ? 'New Only' : state.originFilter === 'REVIEW' ? 'Review Only' : 'All Scope';
     const queryLabel = state.searchQuery ? `Search: "${state.searchQuery}"` : '';
 
-    const theadHtml = `
+    const theadHtml = isClean ? `
+      <thead>
+        <tr>
+          <th style="width: 36px; text-align: center;">#</th>
+          ${isKanji ? `
+            <th style="width: 85px; text-align: center;">Kanji</th>
+            <th style="width: 240px;">Reading (ON / KUN)</th>
+            <th>Meaning</th>
+          ` : `
+            <th style="width: 235px;">Kanji / Word</th>
+            <th style="width: 210px;">Reading (Kana)</th>
+            <th>Meaning</th>
+          `}
+        </tr>
+      </thead>
+    ` : `
       <thead>
         <tr>
           <th style="width: 32px; text-align: center;">#</th>
@@ -3216,8 +3287,19 @@
 
     function createNewPageBox() {
       const pageBox = document.createElement('div');
-      pageBox.className = 'pdf-page-box';
-      pageBox.innerHTML = `
+      pageBox.className = isClean ? 'pdf-page-box pdf-clean-page-box' : 'pdf-page-box';
+      pageBox.innerHTML = isClean ? `
+        <div class="pdf-table-container">
+          <table class="pdf-table pdf-clean-table">
+            ${theadHtml}
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="pdf-page-footer pdf-clean-footer">
+          <span class="pdf-page-counter-footer">Page --</span>
+        </div>
+      ` : `
         <div class="pdf-doc-header">
           <div>
             <div class="pdf-doc-title-row">
@@ -3255,7 +3337,9 @@
       printContainer.appendChild(pageBox);
       const tbody = pageBox.querySelector('tbody');
       const table = pageBox.querySelector('.pdf-table');
-      return { pageBox, tbody, table };
+      const tableContainer = pageBox.querySelector('.pdf-table-container');
+      const footer = pageBox.querySelector('.pdf-page-footer');
+      return { pageBox, tbody, table, tableContainer, footer };
     }
 
     let currentPage = createNewPageBox();
@@ -3266,83 +3350,137 @@
 
       if (isKanji) {
         const k = items[idx];
-        const sourceInfo = k.sources && k.sources[0] ? k.sources[0] : null;
-        const chapter = sourceInfo ? (sourceInfo.chapter || sourceInfo.lesson || sourceInfo.book || '') : '';
-        const levelBadges = (k.levels || [k.level || 'N5']).map(l => `<span class="pdf-badge-level pdf-badge-${l.toLowerCase()}">${l}</span>`).join(' ');
-        const compoundsList = (k.examples || []).slice(0, 3);
-        const compoundsHtml = compoundsList.length > 0 ? `
-          <table class="pdf-compounds-subtable">
-            <tbody>
-              ${compoundsList.map(ex => `
-                <tr>
-                  <td class="pdf-compound-word">${ex.word}</td>
-                  <td class="pdf-compound-reading">${ex.reading || ''}</td>
-                  <td class="pdf-compound-meaning">${ex.meaning || ''}</td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        ` : '';
+        if (isClean) {
+          trHtml = `
+            <tr class="pdf-clean-tr">
+              <td class="pdf-sno pdf-clean-sno" style="width: 36px; text-align: center;">${globalIdx}</td>
+              <td style="width: 85px; text-align: center;"><span class="pdf-clean-kanji-char">${k.char}</span></td>
+              <td style="width: 240px;">
+                ${k.onyomi ? `<div><strong style="color: #64748b; font-size: 11px;">ON:</strong> <span class="pdf-clean-reading">${k.onyomi}</span></div>` : ''}
+                ${k.kunyomi ? `<div><strong style="color: #64748b; font-size: 11px;">KUN:</strong> <span class="pdf-clean-reading">${k.kunyomi}</span></div>` : ''}
+                ${k.strokes ? `<div style="font-size: 10px; color: #64748b; margin-top: 2px;">${k.strokes} strokes ${k.radical ? `&bull; Rad: ${k.radical}` : ''}</div>` : ''}
+              </td>
+              <td>
+                <div class="pdf-clean-meaning">${k.meaning}</div>
+              </td>
+            </tr>
+          `;
+        } else {
+          const sourceInfo = k.sources && k.sources[0] ? k.sources[0] : null;
+          const chapter = sourceInfo ? (sourceInfo.chapter || sourceInfo.lesson || sourceInfo.book || '') : '';
+          const levelBadges = (k.levels || [k.level || 'N5']).map(l => `<span class="pdf-badge-level pdf-badge-${l.toLowerCase()}">${l}</span>`).join(' ');
+          const compoundsList = (k.examples || []).slice(0, 3);
+          const compoundsHtml = compoundsList.length > 0 ? `
+            <table class="pdf-compounds-subtable">
+              <tbody>
+                ${compoundsList.map(ex => `
+                  <tr>
+                    <td class="pdf-compound-word">${ex.word}</td>
+                    <td class="pdf-compound-reading">${ex.reading || ''}</td>
+                    <td class="pdf-compound-meaning">${ex.meaning || ''}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          ` : '';
 
-        trHtml = `
-          <tr>
-            <td class="pdf-sno" style="width: 32px; text-align: center;">${globalIdx}</td>
-            <td style="width: 55px; text-align: center;"><span class="pdf-kanji-char">${k.char}</span></td>
-            <td style="width: 125px;">
-              ${k.onyomi ? `<div><strong style="color: #64748b; font-size: 8.5px;">ON:</strong> <span class="pdf-reading">${k.onyomi}</span></div>` : ''}
-              ${k.kunyomi ? `<div><strong style="color: #64748b; font-size: 8.5px;">KUN:</strong> <span class="pdf-reading">${k.kunyomi}</span></div>` : ''}
-              ${k.strokes ? `<div style="font-size: 8.5px; color: #64748b; margin-top: 1px;">${k.strokes} strokes ${k.radical ? `&bull; Rad: ${k.radical}` : ''}</div>` : ''}
-            </td>
-            <td>
-              <div class="pdf-kanji-main-meaning">${k.meaning}</div>
-              ${compoundsHtml}
-            </td>
-            <td style="width: 55px; text-align: center;">${levelBadges}</td>
-            <td style="width: 147px; font-size: 9.5px;">${chapter ? `<span class="pdf-badge-source">${chapter}</span>` : '—'}</td>
-          </tr>
-        `;
+          trHtml = `
+            <tr>
+              <td class="pdf-sno" style="width: 32px; text-align: center;">${globalIdx}</td>
+              <td style="width: 55px; text-align: center;"><span class="pdf-kanji-char">${k.char}</span></td>
+              <td style="width: 125px;">
+                ${k.onyomi ? `<div><strong style="color: #64748b; font-size: 8.5px;">ON:</strong> <span class="pdf-reading">${k.onyomi}</span></div>` : ''}
+                ${k.kunyomi ? `<div><strong style="color: #64748b; font-size: 8.5px;">KUN:</strong> <span class="pdf-reading">${k.kunyomi}</span></div>` : ''}
+                ${k.strokes ? `<div style="font-size: 8.5px; color: #64748b; margin-top: 1px;">${k.strokes} strokes ${k.radical ? `&bull; Rad: ${k.radical}` : ''}</div>` : ''}
+              </td>
+              <td>
+                <div class="pdf-kanji-main-meaning">${k.meaning}</div>
+                ${compoundsHtml}
+              </td>
+              <td style="width: 55px; text-align: center;">${levelBadges}</td>
+              <td style="width: 147px; font-size: 9.5px;">${chapter ? `<span class="pdf-badge-source">${chapter}</span>` : '—'}</td>
+            </tr>
+          `;
+        }
       } else {
         const v = items[idx];
-        const sourceInfo = v.sources && v.sources[0] ? v.sources[0] : null;
-        const chapter = sourceInfo ? (sourceInfo.chapter || sourceInfo.lesson || sourceInfo.book || '') : '';
-        const levelBadges = (v.levels || [v.level || 'N5']).map(l => `<span class="pdf-badge-level pdf-badge-${l.toLowerCase()}">${l}</span>`).join(' ');
-        const exText = v.example ? (v.example.ja || '') : '';
-        const exEn = v.example ? (v.example.en || '') : '';
+        if (isClean) {
+          trHtml = `
+            <tr class="pdf-clean-tr">
+              <td class="pdf-sno pdf-clean-sno" style="width: 36px; text-align: center;">${globalIdx}</td>
+              <td style="width: 235px;">
+                <div class="pdf-clean-word">${v.word}</div>
+              </td>
+              <td style="width: 210px;">
+                ${v.reading ? `<div class="pdf-clean-reading">${v.reading}</div>` : ''}
+              </td>
+              <td>
+                <div class="pdf-clean-meaning">${v.meaning || ''}</div>
+              </td>
+            </tr>
+          `;
+        } else {
+          const sourceInfo = v.sources && v.sources[0] ? v.sources[0] : null;
+          const chapter = sourceInfo ? (sourceInfo.chapter || sourceInfo.lesson || sourceInfo.book || '') : '';
+          const levelBadges = (v.levels || [v.level || 'N5']).map(l => `<span class="pdf-badge-level pdf-badge-${l.toLowerCase()}">${l}</span>`).join(' ');
+          const exText = v.example ? (v.example.ja || '') : '';
+          const exEn = v.example ? (v.example.en || '') : '';
 
-        trHtml = `
-          <tr>
-            <td class="pdf-sno" style="width: 32px; text-align: center;">${globalIdx}</td>
-            <td style="width: 110px;">
-              <div class="pdf-vocab-word">${v.word}</div>
-            </td>
-            <td style="width: 110px;">
-              ${v.reading ? `<div class="pdf-reading">${v.reading}</div>` : ''}
-              ${v.romaji ? `<div class="pdf-romaji">${v.romaji}</div>` : ''}
-            </td>
-            <td>
-              <div class="pdf-meaning">${v.meaning || ''}</div>
-              ${exText ? `
-                <div style="margin-top: 3px; padding-left: 6px; border-left: 2px solid #cbd5e1;">
-                  <div class="pdf-ex-ja">${exText}</div>
-                  ${exEn ? `<div class="pdf-ex-en">${exEn}</div>` : ''}
-                </div>
-              ` : ''}
-            </td>
-            <td style="width: 60px; text-align: center;">${levelBadges}</td>
-            <td style="width: 152px; font-size: 9.5px;">
-              ${chapter ? `<span class="pdf-badge-source">${chapter}</span>` : '—'}
-              ${v.isKanjiCompound ? '<div style="font-size: 8.5px; color: #0284c7; margin-top: 2px; font-weight: 600;">Compound</div>' : ''}
-            </td>
-          </tr>
-        `;
+          trHtml = `
+            <tr>
+              <td class="pdf-sno" style="width: 32px; text-align: center;">${globalIdx}</td>
+              <td style="width: 110px;">
+                <div class="pdf-vocab-word">${v.word}</div>
+              </td>
+              <td style="width: 110px;">
+                ${v.reading ? `<div class="pdf-reading">${v.reading}</div>` : ''}
+                ${v.romaji ? `<div class="pdf-romaji">${v.romaji}</div>` : ''}
+              </td>
+              <td>
+                <div class="pdf-meaning">${v.meaning || ''}</div>
+                ${exText ? `
+                  <div style="margin-top: 3px; padding-left: 6px; border-left: 2px solid #cbd5e1;">
+                    <div class="pdf-ex-ja">${exText}</div>
+                    ${exEn ? `<div class="pdf-ex-en">${exEn}</div>` : ''}
+                  </div>
+                ` : ''}
+              </td>
+              <td style="width: 60px; text-align: center;">${levelBadges}</td>
+              <td style="width: 152px; font-size: 9.5px;">
+                ${chapter ? `<span class="pdf-badge-source">${chapter}</span>` : '—'}
+                ${v.isKanjiCompound ? '<div style="font-size: 8.5px; color: #0284c7; margin-top: 2px; font-weight: 600;">Compound</div>' : ''}
+              </td>
+            </tr>
+          `;
+        }
       }
 
       currentPage.tbody.insertAdjacentHTML('beforeend', trHtml);
 
       // Check if this row causes the table to exceed the safe height available above footer
-      // Max usable table height between header and footer is 920px (leaves 70px safe margin)
-      const MAX_TABLE_HEIGHT = 920;
-      if (currentPage.tbody.children.length > 1 && currentPage.table.offsetHeight > MAX_TABLE_HEIGHT) {
+      // For Clean format: strict 25 items cap, plus dynamic overflow guard so content never cuts off
+      // For Standard format: height-based pagination (max 920px between header and footer)
+      let isPageFull = false;
+
+      if (isClean) {
+        // 1. Cap clean page at exactly 25 items
+        if (currentPage.tbody.children.length > 25) {
+          isPageFull = true;
+        } else {
+          // 2. Dynamic height overflow detection:
+          // Maximum safe height the table can occupy before reaching the footer divider
+          const maxTableHeight = 1045;
+          if (currentPage.table.offsetHeight > maxTableHeight) {
+            isPageFull = true;
+          }
+        }
+      } else {
+        if (currentPage.tbody.children.length > 1 && currentPage.table.offsetHeight > 920) {
+          isPageFull = true;
+        }
+      }
+
+      if (currentPage.tbody.children.length > 1 && isPageFull) {
         // Remove the row from the current page
         currentPage.tbody.removeChild(currentPage.tbody.lastElementChild);
         // Create new page and add the row to the new page
@@ -3364,7 +3502,9 @@
 
     const safeLevel = activeLevel.replace(/[^a-zA-Z0-9]/g, '_');
     const safeBook = (catFilter.book || 'All').replace(/[^a-zA-Z0-9]/g, '_');
-    const filename = `NihonHub_${typeLabel}_${safeLevel}_${safeBook}.pdf`;
+    const filename = isClean
+      ? `NihonHub_${typeLabel}_Clean_${safeLevel}_${safeBook}.pdf`
+      : `NihonHub_${typeLabel}_${safeLevel}_${safeBook}.pdf`;
 
     const opt = {
       margin: 0,

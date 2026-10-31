@@ -230,14 +230,42 @@
               <span class="fc-btn-icon">🎴</span>
               <span>Study in Flashcards</span>
             </button>
-            <button id="download-kanji-pdf-btn" class="btn-pdf-export" title="Download Filtered Kanji as PDF">
-              <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/>
-                <line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-              <span>Download PDF</span>
-            </button>
+            <div class="pdf-dropdown-wrapper" id="kanji-pdf-dropdown">
+              <button id="download-kanji-pdf-btn" class="btn-pdf-export pdf-dropdown-toggle" title="Download Filtered Kanji as PDF" aria-haspopup="true" aria-expanded="false">
+                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span>Download PDF</span>
+                <svg class="pdf-dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              <div class="pdf-dropdown-menu">
+                <button type="button" class="pdf-dropdown-item" data-category="kanji" data-format="standard">
+                  <div class="pdf-item-header">
+                    <span class="pdf-item-title">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                      Standard Format
+                    </span>
+                    <span class="pdf-item-badge">Current</span>
+                  </div>
+                  <span class="pdf-item-desc">Full details &bull; Readings, compounds, level &amp; sources</span>
+                </button>
+                <div class="pdf-menu-divider"></div>
+                <button type="button" class="pdf-dropdown-item" data-category="kanji" data-format="clean">
+                  <div class="pdf-item-header">
+                    <span class="pdf-item-title">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                      Clean Format
+                    </span>
+                    <span class="pdf-item-badge badge-new">New</span>
+                  </div>
+                  <span class="pdf-item-desc">Clean &amp; larger font &bull; Kanji, reading &amp; meaning only</span>
+                </button>
+              </div>
+            </div>
             <div class="header-stats-badges">
               <span id="kanji-count" class="section-count-tag">Loading Kanji...</span>
               <span id="kanji-origin-breakdown" class="origin-breakdown-tag"></span>
@@ -293,14 +321,42 @@
               <span class="fc-btn-icon">🎴</span>
               <span>Study in Flashcards</span>
             </button>
-            <button id="download-vocab-pdf-btn" class="btn-pdf-export" title="Download Filtered Vocabulary as PDF">
-              <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/>
-                <line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-              <span>Download PDF</span>
-            </button>
+            <div class="pdf-dropdown-wrapper" id="vocab-pdf-dropdown">
+              <button id="download-vocab-pdf-btn" class="btn-pdf-export pdf-dropdown-toggle" title="Download Filtered Vocabulary as PDF" aria-haspopup="true" aria-expanded="false">
+                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span>Download PDF</span>
+                <svg class="pdf-dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              <div class="pdf-dropdown-menu">
+                <button type="button" class="pdf-dropdown-item" data-category="vocabulary" data-format="standard">
+                  <div class="pdf-item-header">
+                    <span class="pdf-item-title">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                      Standard Format
+                    </span>
+                    <span class="pdf-item-badge">Current</span>
+                  </div>
+                  <span class="pdf-item-desc">Full details &bull; Examples, romaji, levels &amp; sources</span>
+                </button>
+                <div class="pdf-menu-divider"></div>
+                <button type="button" class="pdf-dropdown-item" data-category="vocabulary" data-format="clean">
+                  <div class="pdf-item-header">
+                    <span class="pdf-item-title">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                      Clean Format
+                    </span>
+                    <span class="pdf-item-badge badge-new">New</span>
+                  </div>
+                  <span class="pdf-item-desc">Clean &amp; larger font &bull; Word, kana &amp; meaning only</span>
+                </button>
+              </div>
+            </div>
             <div class="header-stats-badges">
               <span id="vocab-count" class="section-count-tag">Loading Vocabulary...</span>
               <span id="vocab-origin-breakdown" class="origin-breakdown-tag"></span>
