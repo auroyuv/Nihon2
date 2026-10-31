@@ -3254,12 +3254,12 @@
         <tr>
           <th style="width: 36px; text-align: center;">#</th>
           ${isKanji ? `
-            <th style="width: 85px; text-align: center;">Kanji</th>
-            <th style="width: 240px;">Reading (ON / KUN)</th>
+            <th style="width: 60px; text-align: center;">Kanji</th>
+            <th style="width: 210px;">Reading (ON / KUN)</th>
             <th>Meaning</th>
           ` : `
-            <th style="width: 235px;">Kanji / Word</th>
-            <th style="width: 210px;">Reading (Kana)</th>
+            <th style="width: 140px;">Kanji / Word</th>
+            <th style="width: 205px;">Reading (Kana)</th>
             <th>Meaning</th>
           `}
         </tr>
@@ -3354,8 +3354,8 @@
           trHtml = `
             <tr class="pdf-clean-tr">
               <td class="pdf-sno pdf-clean-sno" style="width: 36px; text-align: center;">${globalIdx}</td>
-              <td style="width: 85px; text-align: center;"><span class="pdf-clean-kanji-char">${k.char}</span></td>
-              <td style="width: 240px;">
+              <td style="width: 60px; text-align: center;"><span class="pdf-clean-kanji-char">${k.char}</span></td>
+              <td style="width: 210px;">
                 ${k.onyomi ? `<div><strong style="color: #64748b; font-size: 11px;">ON:</strong> <span class="pdf-clean-reading">${k.onyomi}</span></div>` : ''}
                 ${k.kunyomi ? `<div><strong style="color: #64748b; font-size: 11px;">KUN:</strong> <span class="pdf-clean-reading">${k.kunyomi}</span></div>` : ''}
                 ${k.strokes ? `<div style="font-size: 10px; color: #64748b; margin-top: 2px;">${k.strokes} strokes ${k.radical ? `&bull; Rad: ${k.radical}` : ''}</div>` : ''}
@@ -3408,10 +3408,10 @@
           trHtml = `
             <tr class="pdf-clean-tr">
               <td class="pdf-sno pdf-clean-sno" style="width: 36px; text-align: center;">${globalIdx}</td>
-              <td style="width: 235px;">
+              <td style="width: 140px;">
                 <div class="pdf-clean-word">${v.word}</div>
               </td>
-              <td style="width: 210px;">
+              <td style="width: 205px;">
                 ${v.reading ? `<div class="pdf-clean-reading">${v.reading}</div>` : ''}
               </td>
               <td>
